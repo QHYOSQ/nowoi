@@ -3,10 +3,13 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <title>nowoi — Global tools & resources</title>
   <meta name="description" content="nowoi is a fast, lightweight directory of global resources and free online tools." />
-  <link rel="icon" href="/assets/icons/favicon.svg" />
-  <link rel="stylesheet" href="/assets/css/styles.css" />
+
+  <!-- ⚠️ 注意这里用相对路径 -->
+  <link rel="icon" href="./assets/icons/favicon.svg" />
+  <link rel="stylesheet" href="./assets/css/styles.css" />
 </head>
 
 <body>
@@ -38,14 +41,17 @@
     </div>
   </footer>
 
-  <!-- Under Construction Modal -->
-  <div id="underConstructionOverlay" role="dialog" aria-modal="true">
+  <!-- 🚧 Under Construction Modal -->
+  <div id="underConstructionOverlay">
     <div class="underConstructionModal">
       <h2>Website Under Construction</h2>
       <p>Services are not available yet.</p>
     </div>
   </div>
 
-  <script src="/assets/js/main.js" defer></script>
+  <script>
+    // 自动年份
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
