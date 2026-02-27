@@ -264,11 +264,11 @@ function convertTime() {
       timeZoneName: 'short'
     };
     
-    const convertedTime = date.toLocaleString('en-US', options);
+    const convertedTime = date.toLocaleString('en-GB', options);
     
     resultDiv.innerHTML = `
       <h3>Converted Time</h3>
-      <p><strong>From:</strong> ${date.toLocaleString('en-US', {
+      <p><strong>From:</strong> ${date.toLocaleString('en-GB', {
         year: 'numeric',
         month: 'long',
         day: 'numeric',
@@ -314,8 +314,8 @@ function calculateInterval() {
     
     resultDiv.innerHTML = `
       <h3>Time Interval</h3>
-      <p><strong>Start:</strong> ${start.toLocaleString()}</p>
-      <p><strong>End:</strong> ${end.toLocaleString()}</p>
+      <p><strong>Start:</strong> ${start.toLocaleString('en-GB')}</p>
+      <p><strong>End:</strong> ${end.toLocaleString('en-GB')}</p>
       <p><strong>Total Time:</strong> ${diffDays} days, ${diffHours} hours, ${diffMinutes} minutes, ${diffSeconds} seconds</p>
     `;
   } catch (error) {
