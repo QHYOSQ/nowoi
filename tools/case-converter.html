@@ -144,8 +144,9 @@ function copyResult() {
   const output = document.getElementById('output');
   output.select();
   document.execCommand('copy');
-  alert('Copied to clipboard!');
+  showToast('Copied to clipboard!');
 }
 </script>
+<script src="../assets/js/common.js"></script>
 </body>
 </html>
