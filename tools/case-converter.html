@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Free Online Case Converter – Convert Text Case</title>
+<meta name="description" content="Use our free online Case Converter to convert text case instantly. No installation required. Fast, secure, and easy to use." />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body>
+
+<header>
+  <h1>Free Online Case Converter</h1>
+  <p>Convert text case instantly. 100% free. No sign-up required.</p>
+</header>
+
+<section class="tool-box">
+  <div class="options">
+    <button onclick="convertCase('uppercase')">UPPERCASE</button>
+    <button onclick="convertCase('lowercase')">lowercase</button>
+    <button onclick="convertCase('titlecase')">Title Case</button>
+    <button onclick="convertCase('sentencecase')">Sentence case</button>
+    <button onclick="convertCase('camelcase')">camelCase</button>
+    <button onclick="convertCase('snakecase')">snake_case</button>
+  </div>
+  <textarea id="input" placeholder="Enter text here..."></textarea>
+  <textarea id="output" placeholder="Converted text will appear here..."></textarea>
+  <button class="copy-btn" onclick="copyResult()">Copy to Clipboard</button>
+</section>
+
+<section>
+  <div class="content">
+      <h2>How to Use This Case Converter</h2>
+      <ol>
+        <li><strong>Enter your text</strong>: Type or paste the text you want to convert in the input box.</li>
+        <li><strong>Select case</strong>: Choose the desired case from the dropdown menu (UPPERCASE, lowercase, Title Case, Sentence case).</li>
+        <li><strong>Convert</strong>: Click the "Convert" button to perform the conversion.</li>
+        <li><strong>Copy result</strong>: Use the "Copy to Clipboard" button to copy the converted text.</li>
+        <li><strong>Reset</strong>: Use the "Clear" button to reset the input and start over.</li>
+      </ol>
+
+      <h2>Step-by-Step Tutorial</h2>
+      <h3>Converting Text to UPPERCASE</h3>
+      <p>1. Type or paste your text into the input box</p>
+      <p>2. Select "UPPERCASE" from the dropdown menu</p>
+      <p>3. Click the "Convert" button</p>
+      <p>4. The text will be converted to all uppercase letters</p>
+      <p>5. Copy the converted text using the "Copy to Clipboard" button</p>
+
+      <h3>Converting Text to Title Case</h3>
+      <p>1. Type or paste your text into the input box</p>
+      <p>2. Select "Title Case" from the dropdown menu</p>
+      <p>3. Click the "Convert" button</p>
+      <p>4. The text will be converted to title case (each word capitalized)</p>
+      <p>5. Copy the converted text using the "Copy to Clipboard" button</p>
+
+      <h2>Why Use This Case Converter?</h2>
+      <ul>
+        <li><strong>Converts text to various cases</strong> with just one click</li>
+        <li><strong>No data stored</strong> - all processing happens locally on your device</li>
+        <li><strong>Free forever</strong> - no hidden fees or limitations</li>
+        <li><strong>Handles multiple case conversions</strong> including UPPERCASE, lowercase, Title Case, and Sentence case</li>
+        <li><strong>Fast and reliable</strong> - instant processing with accurate results</li>
+        <li><strong>Easy to use</strong> - simple interface for quick case conversions</li>
+      </ul>
+
+      <h2>Use Cases</h2>
+      <h3>For Writers</h3>
+      <p>Formatting titles, headings, and proper nouns correctly.</p>
+
+      <h3>For Developers</h3>
+      <p>Converting variable names, constants, and other code elements to appropriate cases.</p>
+
+      <h3>For Content Creators</h3>
+      <p>Formatting social media posts, blog titles, and marketing materials consistently.</p>
+
+      <h3>For Students</h3>
+      <p>Ensuring proper capitalization in essays, reports, and presentations.</p>
+
+      <h2>Case Conversion Best Practices</h2>
+      <ul>
+        <li>Use UPPERCASE for acronyms, constants, and emphasis</li>
+        <li>Use lowercase for regular text and code variables</li>
+        <li>Use Title Case for headings, titles, and proper names</li>
+        <li>Use Sentence case for regular sentences and paragraphs</li>
+        <li>Be consistent with case usage throughout your content</li>
+      </ul>
+
+      <h2>FAQ</h2>
+      <h3>Is this case converter free?</h3>
+      <p>Yes, it is completely free with no hidden fees. You can use it as often as you need without any limitations.</p>
+      
+      <h3>Does this tool store my text?</h3>
+      <p>No. All processing happens locally in your browser. Your text never leaves your device.</p>
+      
+      <h3>What case conversions are available?</h3>
+      <p>This tool supports converting text to UPPERCASE, lowercase, Title Case, and Sentence case.</p>
+      
+      <h3>Can I use this tool offline?</h3>
+      <p>Yes. Once the page is loaded, you can use the case converter offline as all processing happens in your browser.</p>
+    </div>
+</section>
+
+<footer>
+  <p>© 2026 nowoi.com – Free Online Tools</p>
+  <div class="footer-links">
+    <a href="../index.html">Home</a>
+    <a href="../about.html">About</a>
+    <a href="../privacy-policy.html">Privacy Policy</a>
+    <a href="../terms.html">Terms</a>
+    <a href="../contact.html">Contact</a>
+  </div>
+</footer>
+
+<script>
+function convertCase(type) {
+  const input = document.getElementById('input').value;
+  const output = document.getElementById('output');
+  
+  switch (type) {
+    case 'uppercase':
+      output.value = input.toUpperCase();
+      break;
+    case 'lowercase':
+      output.value = input.toLowerCase();
+      break;
+    case 'titlecase':
+      output.value = input.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(' ');
+      break;
+    case 'sentencecase':
+      output.value = input.charAt(0).toUpperCase() + input.slice(1).toLowerCase();
+      break;
+    case 'camelcase':
+      output.value = input.split(' ').map((word, index) => index === 0 ? word.toLowerCase() : word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join('');
+      break;
+    case 'snakecase':
+      output.value = input.toLowerCase().split(' ').join('_');
+      break;
+  }
+}
+
+function copyResult() {
+  const output = document.getElementById('output');
+  output.select();
+  document.execCommand('copy');
+  alert('Copied to clipboard!');
+}
+</script>
+</body>
+</html>

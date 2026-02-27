@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Free Online JSON Validator – Validate JSON</title>
+<meta name="description" content="Use our free online JSON Validator to validate JSON instantly. No installation required. Fast, secure, and easy to use." />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body>
+
+<header>
+  <h1>Free Online JSON Validator</h1>
+  <p>Validate JSON instantly. 100% free. No sign-up required.</p>
+</header>
+
+<section class="tool-box">
+  <textarea id="input" placeholder="Paste your JSON here..." oninput="validateJSON()"></textarea>
+  <textarea id="output" placeholder="Validation result will appear here..."></textarea>
+  <button class="copy-btn" onclick="copyResult()">Copy to Clipboard</button>
+</section>
+
+<section>
+  <h2>How to Use</h2>
+  <ol>
+    <li>Paste your JSON into the input box.</li>
+    <li>The JSON will be validated automatically.</li>
+    <li>Copy the validation result using the "Copy to Clipboard" button.</li>
+  </ol>
+</section>
+
+<section>
+  <h2>Why Use This Tool?</h2>
+  <ul>
+    <li>Works directly in your browser</li>
+    <li>Validates JSON syntax</li>
+    <li>Fast and secure</li>
+    <li>Free forever</li>
+  </ul>
+</section>
+
+<section>
+  <h2>FAQ</h2>
+  <h3>Is this JSON validator free?</h3>
+  <p>Yes, it is completely free with no hidden fees.</p>
+  
+  <h3>Does this tool store my data?</h3>
+  <p>No. All processing happens locally in your browser.</p>
+  
+  <h3>Is this tool safe to use?</h3>
+  <p>Yes. All processing is done in your browser, so your data never leaves your device.</p>
+</section>
+
+<footer>
+  <p>© 2026 nowoi.com – Free Online Tools</p>
+  <div class="footer-links">
+    <a href="../index.html">Home</a>
+    <a href="../about.html">About</a>
+    <a href="../privacy-policy.html">Privacy Policy</a>
+    <a href="../terms.html">Terms</a>
+    <a href="../contact.html">Contact</a>
+  </div>
+</footer>
+
+<script>
+function validateJSON() {
+  const input = document.getElementById('input').value;
+  const output = document.getElementById('output');
+  
+  try {
+    JSON.parse(input);
+    output.value = 'Valid JSON!';
+    output.style.color = 'green';
+  } catch (error) {
+    output.value = 'Error: ' + error.message;
+    output.style.color = 'red';
+  }
+}
+
+function copyResult() {
+  const output = document.getElementById('output');
+  output.select();
+  document.execCommand('copy');
+  alert('Copied to clipboard!');
+}
+</script>
+</body>
+</html>

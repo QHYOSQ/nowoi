@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Free Online CSS Minifier – Minify CSS</title>
+<meta name="description" content="Use our free online CSS Minifier to minify CSS instantly. No installation required. Fast, secure, and easy to use." />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body>
+
+<header>
+  <h1>Free Online CSS Minifier</h1>
+  <p>Minify CSS instantly. 100% free. No sign-up required.</p>
+</header>
+
+<section class="tool-box">
+  <textarea id="input" placeholder="Enter CSS here..." oninput="minifyCSS()"></textarea>
+  <textarea id="output" placeholder="Minified CSS will appear here..."></textarea>
+  <button class="copy-btn" onclick="copyResult()">Copy to Clipboard</button>
+</section>
+
+<section>
+  <h2>How to Use</h2>
+  <ol>
+    <li>Enter CSS into the input box.</li>
+    <li>The CSS will be minified automatically.</li>
+    <li>Copy the minified CSS using the "Copy to Clipboard" button.</li>
+  </ol>
+</section>
+
+<section>
+  <h2>Why Use This Tool?</h2>
+  <ul>
+    <li>Works directly in your browser</li>
+    <li>Minifies CSS to reduce file size</li>
+    <li>Fast and secure</li>
+    <li>Free forever</li>
+  </ul>
+</section>
+
+<section>
+  <h2>FAQ</h2>
+  <h3>Is this CSS minifier free?</h3>
+  <p>Yes, it is completely free with no hidden fees.</p>
+  
+  <h3>Does this tool store my data?</h3>
+  <p>No. All processing happens locally in your browser.</p>
+  
+  <h3>Is this tool safe to use?</h3>
+  <p>Yes. All processing is done in your browser, so your data never leaves your device.</p>
+</section>
+
+<footer>
+  <p>© 2026 nowoi.com – Free Online Tools</p>
+  <div class="footer-links">
+    <a href="../index.html">Home</a>
+    <a href="../about.html">About</a>
+    <a href="../privacy-policy.html">Privacy Policy</a>
+    <a href="../terms.html">Terms</a>
+    <a href="../contact.html">Contact</a>
+  </div>
+</footer>
+
+<script>
+function minifyCSS() {
+  const input = document.getElementById('input').value;
+  const output = document.getElementById('output');
+  
+  // Simple CSS minification
+  let minified = input
+    .replace(/\s+/g, ' ') // Replace multiple spaces with single space
+    .replace(/\/\*[\s\S]*?\*\//g, '') // Remove comments
+    .replace(/\s*:\s*/g, ':') // Remove spaces around colons
+    .replace(/\s*;\s*/g, ';') // Remove spaces around semicolons
+    .replace(/\s*{\s*/g, '{') // Remove spaces before braces
+    .replace(/\s*}\s*/g, '}') // Remove spaces after braces
+    .replace(/;}/g, '}') // Remove trailing semicolons
+    .trim(); // Remove leading/trailing whitespace
+  
+  output.value = minified;
+}
+
+function copyResult() {
+  const output = document.getElementById('output');
+  output.select();
+  document.execCommand('copy');
+  alert('Copied to clipboard!');
+}
+</script>
+</body>
+</html>

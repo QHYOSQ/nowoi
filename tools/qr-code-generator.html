@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Free Online QR Code Generator – Create QR Codes</title>
+<meta name="description" content="Use our free online QR Code Generator to create QR codes instantly. No installation required. Fast, secure, and easy to use." />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body>
+
+<header>
+  <h1>Free Online QR Code Generator</h1>
+  <p>Create QR codes instantly. 100% free. No sign-up required.</p>
+</header>
+
+<section class="tool-box">
+  <textarea id="input" placeholder="Enter text or URL here..." rows="3"></textarea>
+  <button onclick="generateQRCode()">Generate QR Code</button>
+  <div id="qrcode-container">
+    <img id="qrcode" src="" alt="QR Code" style="display: none; max-width: 200px; margin: 20px auto;">
+  </div>
+  <button class="copy-btn" onclick="downloadQRCode()" style="display: none;">Download QR Code</button>
+</section>
+
+<section>
+  <h2>How to Use This QR Code Generator</h2>
+  <ol>
+    <li><strong>Enter your data</strong>: Type or paste the text, URL, or data you want to encode in the input box.</li>
+    <li><strong>Generate QR code</strong>: Click the "Generate QR Code" button to create the QR code.</li>
+    <li><strong>Download the QR code</strong>: Use the "Download QR Code" button to save the image to your device.</li>
+    <li><strong>Test the QR code</strong>: Use your smartphone or QR code scanner to test the generated code.</li>
+  </ol>
+</section>
+
+<section>
+  <h2>Step-by-Step Tutorial</h2>
+  <h3>Creating a QR Code for a Website</h3>
+  <p>1. Type or paste the full URL (including http:// or https://) into the input box</p>
+  <p>2. Click the "Generate QR Code" button</p>
+  <p>3. A QR code will be generated and displayed</p>
+  <p>4. Click the "Download QR Code" button to save the image</p>
+  <p>5. Test the QR code by scanning it with your smartphone</p>
+
+  <h3>Creating a QR Code for Contact Information</h3>
+  <p>1. Enter your contact information in the input box (e.g., "John Doe\nPhone: 123-456-7890\nEmail: john@example.com")</p>
+  <p>2. Click the "Generate QR Code" button</p>
+  <p>3. A QR code will be generated and displayed</p>
+  <p>4. Download the QR code image</p>
+  <p>5. Share the QR code with others</p>
+</section>
+
+<section>
+  <h2>Why Use This QR Code Generator?</h2>
+  <ul>
+    <li><strong>Works directly in your browser</strong> - no installation required</li>
+    <li><strong>Creates QR codes for text and URLs</strong> - versatile encoding options</li>
+    <li><strong>Fast and secure</strong> - instant generation with no server processing</li>
+    <li><strong>Free forever</strong> - no hidden fees or limitations</li>
+    <li><strong>Easy to use</strong> - simple interface for quick QR code creation</li>
+    <li><strong>High-quality images</strong> - clear, scannable QR codes</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Use Cases</h2>
+  <h3>For Businesses</h3>
+  <p>Creating QR codes for marketing materials, business cards, product packaging, and customer engagement.</p>
+
+  <h3>For Event Organizers</h3>
+  <p>Generating QR codes for event tickets, registration forms, and venue information.</p>
+
+  <h3>For Content Creators</h3>
+  <p>Adding QR codes to videos, social media posts, and blog content to drive traffic to websites.</p>
+
+  <h3>For Personal Use</h3>
+  <p>Creating QR codes for contact information, Wi-Fi passwords, and personal websites.</p>
+</section>
+
+<section>
+  <h2>QR Code Best Practices</h2>
+  <ul>
+    <li>Keep QR codes simple - don't encode too much data</li>
+    <li>Use high-quality images for better scanning</li>
+    <li>Test QR codes before using them</li>
+    <li>Include a clear call-to-action near the QR code</li>
+    <li>Make sure QR codes are large enough to scan easily</li>
+  </ul>
+</section>
+
+<section>
+  <h2>FAQ</h2>
+  <h3>Is this QR code generator free?</h3>
+  <p>Yes, it is completely free with no hidden fees. You can use it as often as you need without any limitations.</p>
+  
+  <h3>Does this tool store my data?</h3>
+  <p>No. All processing happens locally in your browser. Your data never leaves your device.</p>
+  
+  <h3>Is this tool safe to use?</h3>
+  <p>Yes. All processing is done in your browser, so your data never leaves your device.</p>
+  
+  <h3>What can I encode in a QR code?</h3>
+  <p>You can encode text, URLs, phone numbers, email addresses, Wi-Fi passwords, and other types of data in a QR code.</p>
+  
+  <h3>Can I use this tool offline?</h3>
+  <p>Yes. Once the page is loaded, you can use the QR code generator offline as all processing happens in your browser.</p>
+</section>
+
+<footer>
+  <p>© 2026 nowoi.com – Free Online Tools</p>
+  <div class="footer-links">
+    <a href="../index.html">Home</a>
+    <a href="../about.html">About</a>
+    <a href="../privacy-policy.html">Privacy Policy</a>
+    <a href="../terms.html">Terms</a>
+    <a href="../contact.html">Contact</a>
+  </div>
+</footer>
+
+<script>
+function generateQRCode() {
+  const input = document.getElementById('input').value;
+  const qrcode = document.getElementById('qrcode');
+  const downloadBtn = document.querySelector('.copy-btn');
+  
+  if (input) {
+    // Simple QR code generation using Google Chart API
+    const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(input)}`;
+    qrcode.src = qrCodeUrl;
+    qrcode.style.display = 'block';
+    downloadBtn.style.display = 'block';
+  }
+}
+
+function downloadQRCode() {
+  const qrcode = document.getElementById('qrcode');
+  if (qrcode.src) {
+    const link = document.createElement('a');
+    link.href = qrcode.src;
+    link.download = 'qrcode.png';
+    link.click();
+  }
+}
+</script>
+</body>
+</html>

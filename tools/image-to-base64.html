@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Free Online Image to Base64 – Convert Images to Base64</title>
+<meta name="description" content="Use our free online Image to Base64 tool to convert images to Base64 instantly. No installation required. Fast, secure, and easy to use." />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body>
+
+<header>
+  <h1>Free Online Image to Base64</h1>
+  <p>Convert images to Base64 instantly. 100% free. No sign-up required.</p>
+</header>
+
+<section class="tool-box">
+  <input type="file" id="image-input" accept="image/*" onchange="convertImageToBase64()">
+  <textarea id="output" placeholder="Base64 encoded image will appear here..."></textarea>
+  <button class="copy-btn" onclick="copyResult()">Copy to Clipboard</button>
+</section>
+
+<section class="content">
+  <h2>How to Use This Image to Base64 Converter</h2>
+  <ol>
+    <li><strong>Select an image</strong>: Click the file input to select an image from your device.</li>
+    <li><strong>View conversion</strong>: The image will be converted to Base64 automatically.</li>
+    <li><strong>Copy the result</strong>: Use the "Copy to Clipboard" button to copy the Base64 string.</li>
+    <li><strong>Reset</strong>: Use the "Clear" button to reset and select a new image.</li>
+  </ol>
+
+  <h2>Step-by-Step Tutorial</h2>
+  <h3>Converting an Image to Base64</h3>
+  <p>1. Click the file input button</p>
+  <p>2. Select an image from your device (JPEG, PNG, GIF, or WebP)</p>
+  <p>3. Wait for the image to be converted to Base64</p>
+  <p>4. The Base64 string will appear in the output box</p>
+  <p>5. Click "Copy to Clipboard" to copy the Base64 string</p>
+  <p>6. Paste the Base64 string into your application or code</p>
+
+  <h3>Using Base64 Images in HTML</h3>
+  <p>1. Convert your image to Base64 using this tool</p>
+  <p>2. Copy the Base64 string</p>
+  <p>3. Use it in your HTML like this:</p>
+  <pre>&lt;img src="data:image/png;base64,YOUR_BASE64_STRING_HERE" alt="Description"&gt;</pre>
+
+  <h2>Why Use This Image to Base64 Converter?</h2>
+  <ul>
+    <li><strong>Converts images to Base64 instantly</strong> with just one click</li>
+    <li><strong>No data stored</strong> - all processing happens locally on your device</li>
+    <li><strong>Free forever</strong> - no hidden fees or limitations</li>
+    <li><strong>Handles common image formats</strong> including JPEG, PNG, GIF, and WebP</li>
+    <li><strong>Fast and reliable</strong> - instant processing with accurate results</li>
+    <li><strong>Easy to use</strong> - simple interface for quick image conversion</li>
+  </ul>
+
+  <h2>Use Cases</h2>
+  <h3>For Developers</h3>
+  <p>Embedding small images directly into HTML/CSS/JS files, reducing HTTP requests and improving page load times.</p>
+
+  <h3>For Web Designers</h3>
+  <p>Creating self-contained HTML files with embedded images, and optimizing small images for web use.</p>
+
+  <h3>For Content Creators</h3>
+  <p>Adding images to emails, chat applications, and other platforms that support Base64-encoded images.</p>
+
+  <h3>For Students</h3>
+  <p>Learning about data encoding and working with different image formats in web development.</p>
+
+  <h2>Image to Base64 Best Practices</h2>
+  <ul>
+    <li>Use Base64 encoding for small images (under 10KB) to reduce HTTP requests</li>
+    <li>For larger images, use traditional image files with proper compression</li>
+    <li>Test the performance impact of Base64 images vs. traditional images</li>
+    <li>Remember that Base64 encoding increases file size by about 33%</li>
+    <li>Use appropriate image formats for different use cases</li>
+  </ul>
+
+  <h2>FAQ</h2>
+  <h3>Is this image to Base64 converter free?</h3>
+  <p>Yes, it is completely free with no hidden fees. You can use it as often as you need without any limitations.</p>
+  
+  <h3>Does this tool store my images?</h3>
+  <p>No. All processing happens locally in your browser. Your images never leave your device.</p>
+  
+  <h3>What image formats are supported?</h3>
+  <p>This tool supports common image formats including JPEG, PNG, GIF, and WebP.</p>
+  
+  <h3>Can I use this tool offline?</h3>
+  <p>Yes. Once the page is loaded, you can use the image to Base64 converter offline as all processing happens in your browser.</p>
+</section>
+
+<footer>
+  <p>© 2026 nowoi.com – Free Online Tools</p>
+  <div class="footer-links">
+    <a href="../index.html">Home</a>
+    <a href="../about.html">About</a>
+    <a href="../privacy-policy.html">Privacy Policy</a>
+    <a href="../terms.html">Terms</a>
+    <a href="../contact.html">Contact</a>
+  </div>
+</footer>
+
+<script>
+function convertImageToBase64() {
+  const input = document.getElementById('image-input');
+  const output = document.getElementById('output');
+  
+  if (input.files && input.files[0]) {
+    const reader = new FileReader();
+    
+    reader.onload = function(e) {
+      output.value = e.target.result;
+    };
+    
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
+function copyResult() {
+  const output = document.getElementById('output');
+  output.select();
+  document.execCommand('copy');
+  alert('Copied to clipboard!');
+}
+</script>
+</body>
+</html>

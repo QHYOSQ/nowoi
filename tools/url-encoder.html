@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Free Online URL Encoder – Encode URLs</title>
+<meta name="description" content="Use our free online URL Encoder to encode URLs instantly. No installation required. Fast, secure, and easy to use." />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body>
+
+<header>
+  <h1>Free Online URL Encoder</h1>
+  <p>Encode URLs instantly. 100% free. No sign-up required.</p>
+</header>
+
+<section class="tool-box">
+  <textarea id="input" placeholder="Enter URL or text here..." oninput="encodeURL()"></textarea>
+  <textarea id="output" placeholder="Encoded URL will appear here..."></textarea>
+  <button class="copy-btn" onclick="copyEncodedURL()">Copy to Clipboard</button>
+</section>
+
+<section>
+  <h2>How to Use This URL Encoder</h2>
+  <ol>
+    <li><strong>Enter your text</strong>: Type or paste the URL or text you want to encode into the input box.</li>
+    <li><strong>View encoded result</strong>: The URL will be encoded automatically as you type.</li>
+    <li><strong>Copy the result</strong>: Use the "Copy to Clipboard" button to copy the encoded URL.</li>
+  </ol>
+</section>
+
+<section>
+  <h2>Step-by-Step Tutorial</h2>
+  <h3>Encoding a URL</h3>
+  <p>1. Type or paste the URL or text you want to encode into the input box</p>
+  <p>2. Watch as the URL is automatically encoded in real-time</p>
+  <p>3. The encoded URL will appear in the output box</p>
+  <p>4. Copy the encoded URL using the "Copy to Clipboard" button</p>
+  <p>5. Paste the encoded URL into your application or website</p>
+</section>
+
+<section>
+  <h2>Why Use This URL Encoder?</h2>
+  <ul>
+    <li><strong>Works directly in your browser</strong> - no installation required</li>
+    <li><strong>Encodes URLs for safe use in web addresses</strong> - handles special characters correctly</li>
+    <li><strong>Fast and secure</strong> - real-time encoding with no server processing</li>
+    <li><strong>Free forever</strong> - no hidden fees or limitations</li>
+    <li><strong>Real-time processing</strong> - encodes as you type</li>
+    <li><strong>Easy to use</strong> - simple interface for quick URL encoding</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Use Cases</h2>
+  <h3>For Developers</h3>
+  <p>Encoding query parameters for API requests, handling form data, and working with URLs in web applications.</p>
+
+  <h3>For Content Creators</h3>
+  <p>Creating shareable links with special characters, embedding URLs in social media posts, and optimizing links for SEO.</p>
+
+  <h3>For Marketers</h3>
+  <p>Creating tracking links, managing UTM parameters, and ensuring links work correctly across different platforms.</p>
+</section>
+
+<section>
+  <h2>URL Encoding Best Practices</h2>
+  <ul>
+    <li>Always encode URLs that contain special characters</li>
+    <li>Use URL encoding for query parameters and form data</li>
+    <li>Be consistent with encoding to avoid errors</li>
+    <li>Test encoded URLs to ensure they work correctly</li>
+    <li>Remember that URL encoding is case-sensitive</li>
+  </ul>
+</section>
+
+<section>
+  <h2>FAQ</h2>
+  <h3>Is this URL encoder free?</h3>
+  <p>Yes, it is completely free with no hidden fees. You can use it as often as you need without any limitations.</p>
+  
+  <h3>Does this tool store my data?</h3>
+  <p>No. All processing happens locally in your browser. Your data never leaves your device.</p>
+  
+  <h3>Is this tool safe to use?</h3>
+  <p>Yes. All processing is done in your browser, so your data never leaves your device. This makes it safe for sensitive information.</p>
+  
+  <h3>What is URL encoding?</h3>
+  <p>URL encoding is the process of converting characters into a format that can be transmitted over the Internet. It replaces unsafe ASCII characters with a "%" followed by two hexadecimal digits.</p>
+  
+  <h3>When should I use URL encoding?</h3>
+  <p>URL encoding is necessary when you need to include special characters in a URL, such as spaces, ampersands, or other non-ASCII characters. It's commonly used in query parameters and form data.</p>
+</section>
+
+<footer>
+  <p>© 2026 nowoi.com – Free Online Tools</p>
+  <div class="footer-links">
+    <a href="../index.html">Home</a>
+    <a href="../about.html">About</a>
+    <a href="../privacy-policy.html">Privacy Policy</a>
+    <a href="../terms.html">Terms</a>
+    <a href="../contact.html">Contact</a>
+  </div>
+</footer>
+
+<script>
+function encodeURL() {
+  const input = document.getElementById('input').value;
+  const output = document.getElementById('output');
+  output.value = encodeURIComponent(input);
+}
+
+function copyEncodedURL() {
+  const output = document.getElementById('output');
+  output.select();
+  document.execCommand('copy');
+  alert('Copied to clipboard!');
+}
+</script>
+</body>
+</html>

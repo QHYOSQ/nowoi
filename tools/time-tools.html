@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Free Online Time Tools – World Time Converter & Time Interval Calculator</title>
+<meta name="description" content="Use our free online time tools to convert between time zones and calculate time intervals. No installation required. Fast, secure, and easy to use." />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow">
+<meta name="keywords" content="time converter, world time, time zone converter, time interval calculator, time difference calculator">
+<link rel="canonical" href="https://nowoi.com/tools/time-tools.html">
+<link rel="stylesheet" href="../assets/css/style.css">
+<style>
+  .time-tool-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+  
+  @media (max-width: 768px) {
+    .time-tool-wrap {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .time-zone-select {
+    margin-bottom: 15px;
+  }
+  
+  .time-result {
+    margin-top: 15px;
+    padding: 15px;
+    background: var(--surface-2);
+    border-radius: var(--radius);
+  }
+  
+  .interval-result {
+    margin-top: 15px;
+    padding: 15px;
+    background: var(--surface-2);
+    border-radius: var(--radius);
+  }
+</style>
+</head>
+
+<body>
+  <div class="container">
+    <header class="site-header">
+      <div class="header-row">
+        <a href="../index.html" class="brand">nowoi.com</a>
+        <nav class="nav">
+          <a href="../index.html">Home</a>
+          <a href="./index.html" aria-current="page">Tools</a>
+          <a href="../about.html">About</a>
+          <a href="../contact.html">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <div class="page-head">
+      <h1>Free Online Time Tools</h1>
+      <p>World Time Converter & Time Interval Calculator – Fast, Secure, No Installation</p>
+    </div>
+
+
+
+    <div class="tool-box">
+      <div class="time-tool-wrap">
+        <!-- World Time Converter -->
+        <div>
+          <h2>World Time Converter</h2>
+          <div class="time-zone-select">
+            <label for="from-timezone">From Time Zone:</label>
+            <select id="from-timezone">
+              <option value="UTC">UTC</option>
+              <option value="America/New_York">Eastern Time (US & Canada)</option>
+              <option value="America/Chicago">Central Time (US & Canada)</option>
+              <option value="America/Los_Angeles">Pacific Time (US & Canada)</option>
+              <option value="Europe/London">London</option>
+              <option value="Europe/Paris">Paris</option>
+              <option value="Asia/Tokyo">Tokyo</option>
+              <option value="Asia/Shanghai">Shanghai</option>
+              <option value="Australia/Sydney">Sydney</option>
+            </select>
+          </div>
+          <div class="time-zone-select">
+            <label for="from-date">Date:</label>
+            <input type="date" id="from-date">
+          </div>
+          <div class="time-zone-select">
+            <label for="from-time">Time:</label>
+            <input type="time" id="from-time">
+          </div>
+          <div class="time-zone-select">
+            <label for="to-timezone">To Time Zone:</label>
+            <select id="to-timezone">
+              <option value="UTC">UTC</option>
+              <option value="America/New_York">Eastern Time (US & Canada)</option>
+              <option value="America/Chicago">Central Time (US & Canada)</option>
+              <option value="America/Los_Angeles">Pacific Time (US & Canada)</option>
+              <option value="Europe/London">London</option>
+              <option value="Europe/Paris">Paris</option>
+              <option value="Asia/Tokyo">Tokyo</option>
+              <option value="Asia/Shanghai">Shanghai</option>
+              <option value="Australia/Sydney">Sydney</option>
+            </select>
+          </div>
+          <button onclick="convertTime()">Convert Time</button>
+          <div class="time-result" id="time-result"></div>
+        </div>
+
+        <!-- Time Interval Calculator -->
+        <div>
+          <h2>Time Interval Calculator</h2>
+          <div class="time-zone-select">
+            <label for="start-date">Start Date:</label>
+            <input type="date" id="start-date">
+          </div>
+          <div class="time-zone-select">
+            <label for="start-time">Start Time:</label>
+            <input type="time" id="start-time">
+          </div>
+          <div class="time-zone-select">
+            <label for="end-date">End Date:</label>
+            <input type="date" id="end-date">
+          </div>
+          <div class="time-zone-select">
+            <label for="end-time">End Time:</label>
+            <input type="time" id="end-time">
+          </div>
+          <button onclick="calculateInterval()">Calculate Interval</button>
+          <div class="interval-result" id="interval-result"></div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="content">
+      <h2>How to Use These Time Tools</h2>
+      <h3>World Time Converter</h3>
+      <ol>
+        <li><strong>Select source time zone</strong>: Choose the time zone you want to convert from the "From Time Zone" dropdown.</li>
+        <li><strong>Set date and time</strong>: Choose the date and time you want to convert using the date and time pickers.</li>
+        <li><strong>Select target time zone</strong>: Choose the time zone you want to convert to from the "To Time Zone" dropdown.</li>
+        <li><strong>Convert time</strong>: Click the "Convert Time" button to see the converted time.</li>
+      </ol>
+
+      <h3>Time Interval Calculator</h3>
+      <ol>
+        <li><strong>Set start date and time</strong>: Choose the start date and time using the date and time pickers.</li>
+        <li><strong>Set end date and time</strong>: Choose the end date and time using the date and time pickers.</li>
+        <li><strong>Calculate interval</strong>: Click the "Calculate Interval" button to see the time difference.</li>
+      </ol>
+
+      <h2>Step-by-Step Tutorial</h2>
+      <h3>Converting Between Time Zones</h3>
+      <p>1. Select your local time zone from the "From Time Zone" dropdown</p>
+      <p>2. Set the current date and time</p>
+      <p>3. Select the target time zone (e.g., "Europe/London") from the "To Time Zone" dropdown</p>
+      <p>4. Click "Convert Time"</p>
+      <p>5. The converted time will be displayed in the result area</p>
+      <p>6. Use this information to schedule meetings or plan activities across time zones</p>
+
+      <h3>Calculating Time Intervals</h3>
+      <p>1. Set the start date and time for your event or task</p>
+      <p>2. Set the end date and time</p>
+      <p>3. Click "Calculate Interval"</p>
+      <p>4. The time difference will be displayed in days, hours, minutes, and seconds</p>
+      <p>5. Use this information for project planning, event scheduling, or time tracking</p>
+
+      <h2>Why Use These Time Tools?</h2>
+      <ul>
+        <li><strong>Works directly in your browser</strong> - no installation required</li>
+        <li><strong>Convert between multiple time zones instantly</strong> - perfect for global teams and travelers</li>
+        <li><strong>Calculate exact time intervals between two dates</strong> - ideal for project planning and scheduling</li>
+        <li><strong>Fast and secure</strong> - all processing happens locally on your device</li>
+        <li><strong>Free forever</strong> - no hidden fees or limitations</li>
+        <li><strong>Easy to use</strong> - simple interface for quick time conversions and calculations</li>
+      </ul>
+
+      <h2>Use Cases</h2>
+      <h3>For Global Teams</h3>
+      <p>Scheduling meetings across different time zones, coordinating work hours, and planning deadlines.</p>
+
+      <h3>For Travelers</h3>
+      <p>Converting between home and destination time zones, planning flights, and avoiding jet lag.</p>
+
+      <h3>For Project Managers</h3>
+      <p>Calculating project timelines, tracking task durations, and setting realistic deadlines.</p>
+
+      <h3>For Event Planners</h3>
+      <p>Scheduling events across different time zones, planning countdowns, and managing event timelines.</p>
+
+      <h2>Time Management Best Practices</h2>
+      <ul>
+        <li>Always double-check time zone conversions for important events</li>
+        <li>Use UTC as a reference time zone for global communications</li>
+        <li>Consider daylight saving time changes when planning across seasons</li>
+        <li>Use time interval calculations to estimate project completion times</li>
+        <li>Set reminders for important time zone transitions</li>
+      </ul>
+
+      <h2>FAQ</h2>
+      <h3>Is this time converter free?</h3>
+      <p>Yes, it is completely free with no hidden fees. You can use it as often as you need without any limitations.</p>
+      
+      <h3>Does this tool store my data?</h3>
+      <p>No. All processing happens locally in your browser. Your data never leaves your device.</p>
+      
+      <h3>Is this tool accurate?</h3>
+      <p>Yes. The tool uses the browser's built-in time zone support to ensure accurate conversions.</p>
+      
+      <h3>Can I use this tool offline?</h3>
+      <p>Yes. Once the page is loaded, you can use these time tools offline as all processing happens in your browser.</p>
+      
+      <h3>How many time zones are supported?</h3>
+      <p>This tool supports all major time zones from around the world, including UTC, American, European, Asian, and Australian time zones.</p>
+    </div>
+
+
+
+    <footer class="footer">
+      <p>© <span id="year">2026</span> nowoi.com – Smart Online Tools for Creators & Developers</p>
+      <div class="footer-links">
+        <a href="../index.html">Home</a>
+        <a href="./index.html">Tools</a>
+        <a href="../about.html">About</a>
+        <a href="../privacy-policy.html">Privacy Policy</a>
+        <a href="../terms.html">Terms</a>
+        <a href="../contact.html">Contact</a>
+      </div>
+    </footer>
+  </div>
+
+<script>
+// World Time Converter
+function convertTime() {
+  const fromTimezone = document.getElementById('from-timezone').value;
+  const fromDate = document.getElementById('from-date').value;
+  const fromTime = document.getElementById('from-time').value;
+  const toTimezone = document.getElementById('to-timezone').value;
+  const resultDiv = document.getElementById('time-result');
+  
+  if (!fromDate || !fromTime) {
+    resultDiv.innerHTML = '<p>Please select a date and time.</p>';
+    return;
+  }
+  
+  try {
+    // Create a date object from the input
+    const dateStr = fromDate + 'T' + fromTime;
+    const date = new Date(dateStr);
+    
+    // Convert to the target timezone
+    const options = {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      timeZone: toTimezone,
+      timeZoneName: 'short'
+    };
+    
+    const convertedTime = date.toLocaleString('en-US', options);
+    
+    resultDiv.innerHTML = `
+      <h3>Converted Time</h3>
+      <p><strong>From:</strong> ${date.toLocaleString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        timeZone: fromTimezone,
+        timeZoneName: 'short'
+      })}</p>
+      <p><strong>To:</strong> ${convertedTime}</p>
+    `;
+  } catch (error) {
+    resultDiv.innerHTML = '<p>Error converting time. Please try again.</p>';
+  }
+}
+
+// Time Interval Calculator
+function calculateInterval() {
+  const startDate = document.getElementById('start-date').value;
+  const startTime = document.getElementById('start-time').value;
+  const endDate = document.getElementById('end-date').value;
+  const endTime = document.getElementById('end-time').value;
+  const resultDiv = document.getElementById('interval-result');
+  
+  if (!startDate || !startTime || !endDate || !endTime) {
+    resultDiv.innerHTML = '<p>Please select both start and end date/time.</p>';
+    return;
+  }
+  
+  try {
+    // Create date objects
+    const start = new Date(startDate + 'T' + startTime);
+    const end = new Date(endDate + 'T' + endTime);
+    
+    // Calculate difference in milliseconds
+    const diffMs = Math.abs(end - start);
+    
+    // Convert to days, hours, minutes, seconds
+    const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+    const diffHours = Math.floor((diffMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const diffMinutes = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+    const diffSeconds = Math.floor((diffMs % (1000 * 60)) / 1000);
+    
+    resultDiv.innerHTML = `
+      <h3>Time Interval</h3>
+      <p><strong>Start:</strong> ${start.toLocaleString()}</p>
+      <p><strong>End:</strong> ${end.toLocaleString()}</p>
+      <p><strong>Total Time:</strong> ${diffDays} days, ${diffHours} hours, ${diffMinutes} minutes, ${diffSeconds} seconds</p>
+    `;
+  } catch (error) {
+    resultDiv.innerHTML = '<p>Error calculating interval. Please try again.</p>';
+  }
+}
+
+// Set default dates to today
+window.onload = function() {
+  const today = new Date().toISOString().split('T')[0];
+  const now = new Date().toTimeString().split(' ')[0].substring(0, 5);
+  
+  document.getElementById('from-date').value = today;
+  document.getElementById('from-time').value = now;
+  document.getElementById('start-date').value = today;
+  document.getElementById('start-time').value = now;
+  document.getElementById('end-date').value = today;
+  document.getElementById('end-time').value = now;
+};
+</script>
+<script src="../assets/js/common.js"></script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Free Online Time Tools – World Time Converter & Time Interval Calculator</title>
+<meta name="description" content="Use our free online time tools to convert between time zones and calculate time intervals. No installation required. Fast, secure, and easy to use." />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow">
+<meta name="keywords" content="time converter, world time, time zone converter, time interval calculator, time difference calculator">
+<link rel="canonical" href="https://nowoi.com/tools/time-tools.html">
+<link rel="stylesheet" href="../assets/css/style.css">
+<style>
+  .time-tool-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+  
+  @media (max-width: 768px) {
+    .time-tool-wrap {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .time-zone-select {
+    margin-bottom: 15px;
+  }
+  
+  .time-result {
+    margin-top: 15px;
+    padding: 15px;
+    background: var(--surface-2);
+    border-radius: var(--radius);
+  }
+  
+  .interval-result {
+    margin-top: 15px;
+    padding: 15px;
+    background: var(--surface-2);
+    border-radius: var(--radius);
+  }
+</style>
+</head>
+
+<body>
+  <div class="container">
+    <header class="site-header">
+      <div class="header-row">
+        <a href="../index.html" class="brand">nowoi.com</a>
+        <nav class="nav">
+          <a href="../index.html">Home</a>
+          <a href="./index.html" aria-current="page">Tools</a>
+          <a href="../about.html">About</a>
+          <a href="../contact.html">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <div class="page-head">
+      <h1>Free Online Time Tools</h1>
+      <p>World Time Converter & Time Interval Calculator – Fast, Secure, No Installation</p>
+    </div>
+
+    <div class="ad-slot">[AdSense Ad]</div>
+
+    <div class="tool-box">
+      <div class="time-tool-wrap">
+        <!-- World Time Converter -->
+        <div>
+          <h2>World Time Converter</h2>
+          <div class="time-zone-select">
+            <label for="from-timezone">From Time Zone:</label>
+            <select id="from-timezone">
+              <option value="UTC">UTC</option>
+              <option value="America/New_York">Eastern Time (US & Canada)</option>
+              <option value="America/Chicago">Central Time (US & Canada)</option>
+              <option value="America/Los_Angeles">Pacific Time (US & Canada)</option>
+              <option value="Europe/London">London</option>
+              <option value="Europe/Paris">Paris</option>
+              <option value="Asia/Tokyo">Tokyo</option>
+              <option value="Asia/Shanghai">Shanghai</option>
+              <option value="Australia/Sydney">Sydney</option>
+            </select>
+          </div>
+          <div class="time-zone-select">
+            <label for="from-date">Date:</label>
+            <input type="date" id="from-date">
+          </div>
+          <div class="time-zone-select">
+            <label for="from-time">Time:</label>
+            <input type="time" id="from-time">
+          </div>
+          <div class="time-zone-select">
+            <label for="to-timezone">To Time Zone:</label>
+            <select id="to-timezone">
+              <option value="UTC">UTC</option>
+              <option value="America/New_York">Eastern Time (US & Canada)</option>
+              <option value="America/Chicago">Central Time (US & Canada)</option>
+              <option value="America/Los_Angeles">Pacific Time (US & Canada)</option>
+              <option value="Europe/London">London</option>
+              <option value="Europe/Paris">Paris</option>
+              <option value="Asia/Tokyo">Tokyo</option>
+              <option value="Asia/Shanghai">Shanghai</option>
+              <option value="Australia/Sydney">Sydney</option>
+            </select>
+          </div>
+          <button onclick="convertTime()">Convert Time</button>
+          <div class="time-result" id="time-result"></div>
+        </div>
+
+        <!-- Time Interval Calculator -->
+        <div>
+          <h2>Time Interval Calculator</h2>
+          <div class="time-zone-select">
+            <label for="start-date">Start Date:</label>
+            <input type="date" id="start-date">
+          </div>
+          <div class="time-zone-select">
+            <label for="start-time">Start Time:</label>
+            <input type="time" id="start-time">
+          </div>
+          <div class="time-zone-select">
+            <label for="end-date">End Date:</label>
+            <input type="date" id="end-date">
+          </div>
+          <div class="time-zone-select">
+            <label for="end-time">End Time:</label>
+            <input type="time" id="end-time">
+          </div>
+          <button onclick="calculateInterval()">Calculate Interval</button>
+          <div class="interval-result" id="interval-result"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ad-slot">[AdSense Ad]</div>
+
+    <div class="content">
+      <h2>How to Use</h2>
+      <h3>World Time Converter</h3>
+      <ol>
+        <li>Select the source time zone from the "From Time Zone" dropdown.</li>
+        <li>Choose the date and time you want to convert.</li>
+        <li>Select the target time zone from the "To Time Zone" dropdown.</li>
+        <li>Click the "Convert Time" button to see the converted time.</li>
+      </ol>
+
+      <h3>Time Interval Calculator</h3>
+      <ol>
+        <li>Select the start date and time.</li>
+        <li>Select the end date and time.</li>
+        <li>Click the "Calculate Interval" button to see the time difference.</li>
+      </ol>
+
+      <h2>Why Use These Tools?</h2>
+      <ul>
+        <li>Works directly in your browser - no installation required</li>
+        <li>Convert between multiple time zones instantly</li>
+        <li>Calculate exact time intervals between two dates</li>
+        <li>Fast and secure - all processing happens locally</li>
+        <li>Free forever - no hidden fees or limitations</li>
+      </ul>
+
+      <h2>FAQ</h2>
+      <h3>Is this time converter free?</h3>
+      <p>Yes, it is completely free with no hidden fees. You can use it as often as you need without any limitations.</p>
+      
+      <h3>Does this tool store my data?</h3>
+      <p>No. All processing happens locally in your browser. Your data never leaves your device.</p>
+      
+      <h3>Is this tool accurate?</h3>
+      <p>Yes. The tool uses the browser's built-in time zone support to ensure accurate conversions.</p>
+    </div>
+
+    <div class="ad-slot">[AdSense Ad]</div>
+
+    <footer class="footer">
+      <p>© <span id="year">2026</span> nowoi.com – Smart Online Tools for Creators & Developers</p>
+      <div class="footer-links">
+        <a href="../index.html">Home</a>
+        <a href="./index.html">Tools</a>
+        <a href="../about.html">About</a>
+        <a href="../privacy-policy.html">Privacy Policy</a>
+        <a href="../terms.html">Terms</a>
+        <a href="../contact.html">Contact</a>
+      </div>
+    </footer>
+  </div>
+
+<script>
+// World Time Converter
+function convertTime() {
+  const fromTimezone = document.getElementById('from-timezone').value;
+  const fromDate = document.getElementById('from-date').value;
+  const fromTime = document.getElementById('from-time').value;
+  const toTimezone = document.getElementById('to-timezone').value;
+  const resultDiv = document.getElementById('time-result');
+  
+  if (!fromDate || !fromTime) {
+    resultDiv.innerHTML = '<p>Please select a date and time.</p>';
+    return;
+  }
+  
+  try {
+    // Create a date object from the input
+    const dateStr = fromDate + 'T' + fromTime;
+    const date = new Date(dateStr);
+    
+    // Convert to the target timezone
+    const options = {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      timeZone: toTimezone,
+      timeZoneName: 'short'
+    };
+    
+    const convertedTime = date.toLocaleString('en-US', options);
+    
+    resultDiv.innerHTML = `
+      <h3>Converted Time</h3>
+      <p><strong>From:</strong> ${date.toLocaleString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        timeZone: fromTimezone,
+        timeZoneName: 'short'
+      })}</p>
+      <p><strong>To:</strong> ${convertedTime}</p>
+    `;
+  } catch (error) {
+    resultDiv.innerHTML = '<p>Error converting time. Please try again.</p>';
+  }
+}
+
+// Time Interval Calculator
+function calculateInterval() {
+  const startDate = document.getElementById('start-date').value;
+  const startTime = document.getElementById('start-time').value;
+  const endDate = document.getElementById('end-date').value;
+  const endTime = document.getElementById('end-time').value;
+  const resultDiv = document.getElementById('interval-result');
+  
+  if (!startDate || !startTime || !endDate || !endTime) {
+    resultDiv.innerHTML = '<p>Please select both start and end date/time.</p>';
+    return;
+  }
+  
+  try {
+    // Create date objects
+    const start = new Date(startDate + 'T' + startTime);
+    const end = new Date(endDate + 'T' + endTime);
+    
+    // Calculate difference in milliseconds
+    const diffMs = Math.abs(end - start);
+    
+    // Convert to days, hours, minutes, seconds
+    const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+    const diffHours = Math.floor((diffMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const diffMinutes = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+    const diffSeconds = Math.floor((diffMs % (1000 * 60)) / 1000);
+    
+    resultDiv.innerHTML = `
+      <h3>Time Interval</h3>
+      <p><strong>Start:</strong> ${start.toLocaleString()}</p>
+      <p><strong>End:</strong> ${end.toLocaleString()}</p>
+      <p><strong>Total Time:</strong> ${diffDays} days, ${diffHours} hours, ${diffMinutes} minutes, ${diffSeconds} seconds</p>
+    `;
+  } catch (error) {
+    resultDiv.innerHTML = '<p>Error calculating interval. Please try again.</p>';
+  }
+}
+
+// Set default dates to today
+window.onload = function() {
+  const today = new Date().toISOString().split('T')[0];
+  const now = new Date().toTimeString().split(' ')[0].substring(0, 5);
+  
+  document.getElementById('from-date').value = today;
+  document.getElementById('from-time').value = now;
+  document.getElementById('start-date').value = today;
+  document.getElementById('start-time').value = now;
+  document.getElementById('end-date').value = today;
+  document.getElementById('end-time').value = now;
+};
+</script>
+<script src="../assets/js/common.js"></script>
+</body>
+</html>

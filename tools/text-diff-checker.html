@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Free Online Text Diff Checker – Compare Text</title>
+<meta name="description" content="Use our free online Text Diff Checker to compare text instantly. No installation required. Fast, secure, and easy to use." />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body>
+
+<header>
+  <h1>Free Online Text Diff Checker</h1>
+  <p>Compare text instantly. 100% free. No sign-up required.</p>
+</header>
+
+<section class="tool-box">
+  <h3>Text 1</h3>
+  <textarea id="text1" placeholder="Enter first text here..." oninput="compareText()"></textarea>
+  <h3>Text 2</h3>
+  <textarea id="text2" placeholder="Enter second text here..." oninput="compareText()"></textarea>
+  <div id="output" style="border: 1px solid #ddd; border-radius: 4px; padding: 20px; min-height: 200px; background: white;"></div>
+  <button class="copy-btn" onclick="copyResult()">Copy Result</button>
+</section>
+
+<section>
+  <h2>How to Use</h2>
+  <ol>
+    <li>Enter text into the first text box.</li>
+    <li>Enter text into the second text box.</li>
+    <li>The differences will be highlighted automatically.</li>
+    <li>Copy the result using the "Copy Result" button.</li>
+  </ol>
+</section>
+
+<section>
+  <h2>Why Use This Tool?</h2>
+  <ul>
+    <li>Works directly in your browser</li>
+    <li>Highlights differences between texts</li>
+    <li>Fast and secure</li>
+    <li>Free forever</li>
+  </ul>
+</section>
+
+<section>
+  <h2>FAQ</h2>
+  <h3>Is this text diff checker free?</h3>
+  <p>Yes, it is completely free with no hidden fees.</p>
+  
+  <h3>Does this tool store my data?</h3>
+  <p>No. All processing happens locally in your browser.</p>
+  
+  <h3>Is this tool safe to use?</h3>
+  <p>Yes. All processing is done in your browser, so your data never leaves your device.</p>
+</section>
+
+<footer>
+  <p>© 2026 nowoi.com – Free Online Tools</p>
+  <div class="footer-links">
+    <a href="../index.html">Home</a>
+    <a href="../about.html">About</a>
+    <a href="../privacy-policy.html">Privacy Policy</a>
+    <a href="../terms.html">Terms</a>
+    <a href="../contact.html">Contact</a>
+  </div>
+</footer>
+
+<script>
+function compareText() {
+  const text1 = document.getElementById('text1').value;
+  const text2 = document.getElementById('text2').value;
+  const output = document.getElementById('output');
+  
+  // Simple text comparison
+  if (!text1 || !text2) {
+    output.innerHTML = '<p>Enter text in both boxes to compare.</p>';
+    return;
+  }
+  
+  const lines1 = text1.split('\n');
+  const lines2 = text2.split('\n');
+  
+  let html = '<h3>Differences:</h3>';
+  
+  for (let i = 0; i < Math.max(lines1.length, lines2.length); i++) {
+    const line1 = lines1[i] || '';
+    const line2 = lines2[i] || '';
+    
+    if (line1 !== line2) {
+      html += `<p><strong>Line ${i + 1}:</strong></p>`;
+      if (line1) {
+        html += `<p style="color: red; margin-left: 20px;">- ${line1}</p>`;
+      }
+      if (line2) {
+        html += `<p style="color: green; margin-left: 20px;">+ ${line2}</p>`;
+      }
+    }
+  }
+  
+  output.innerHTML = html;
+}
+
+function copyResult() {
+  const output = document.getElementById('output');
+  const text = output.textContent;
+  
+  const textarea = document.createElement('textarea');
+  textarea.value = text;
+  document.body.appendChild(textarea);
+  textarea.select();
+  document.execCommand('copy');
+  document.body.removeChild(textarea);
+  
+  alert('Copied to clipboard!');
+}
+</script>
+</body>
+</html>

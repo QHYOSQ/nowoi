@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Free Online Markdown Preview – Preview Markdown</title>
+<meta name="description" content="Use our free online Markdown Preview to preview markdown instantly. No installation required. Fast, secure, and easy to use." />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body>
+
+<header>
+  <h1>Free Online Markdown Preview</h1>
+  <p>Preview markdown instantly. 100% free. No sign-up required.</p>
+</header>
+
+<section class="tool-box">
+  <textarea id="input" placeholder="Enter markdown here..." oninput="previewMarkdown()" style="height: 300px;"></textarea>
+  <div id="output" placeholder="Markdown preview will appear here..." style="border: 1px solid #ddd; border-radius: 4px; padding: 20px; min-height: 300px; background: white;"></div>
+  <button class="copy-btn" onclick="copyResult()">Copy HTML</button>
+</section>
+
+<section>
+    <div class="content">
+      <h2>How to Use This Markdown Previewer</h2>
+      <ol>
+        <li><strong>Enter your Markdown</strong>: Type or paste your Markdown text in the input box.</li>
+        <li><strong>View preview</strong>: The preview will update automatically as you type.</li>
+        <li><strong>Copy HTML</strong>: Use the "Copy HTML" button to copy the generated HTML output.</li>
+        <li><strong>Reset</strong>: Use the "Clear" button to reset the input and start over.</li>
+      </ol>
+
+      <h2>Step-by-Step Tutorial</h2>
+      <h3>Creating and Previewing Markdown</h3>
+      <p>1. Type or paste your Markdown text into the input box</p>
+      <p>2. Watch as the preview updates in real-time</p>
+      <p>3. Use Markdown syntax to format your text (headings, lists, links, etc.)</p>
+      <p>4. When you're satisfied, click "Copy HTML" to get the HTML version</p>
+      <p>5. Paste the HTML into your website or application</p>
+
+      <h3>Common Markdown Syntax Examples</h3>
+      <p><strong>Headings:</strong></p>
+      <pre># Heading 1
+## Heading 2
+### Heading 3</pre>
+      
+      <p><strong>Text Formatting:</strong></p>
+      <pre>**Bold**
+*Italic*
+~~Strikethrough~~</pre>
+      
+      <p><strong>Lists:</strong></p>
+      <pre>- Bullet list item
+- Another item
+
+1. Numbered list item
+2. Another item</pre>
+      
+      <p><strong>Links:</strong></p>
+      <pre>[Link text](https://example.com)</pre>
+
+      <h2>Why Use This Markdown Previewer?</h2>
+      <ul>
+        <li><strong>Real-time Markdown preview</strong> - see changes as you type</li>
+        <li><strong>No data stored</strong> - all processing happens locally on your device</li>
+        <li><strong>Free forever</strong> - no hidden fees or limitations</li>
+        <li><strong>Supports common Markdown syntax</strong> including headings, lists, links, bold, italic, and more</li>
+        <li><strong>Fast and responsive</strong> - instant updates as you type</li>
+        <li><strong>Easy to use</strong> - simple interface for quick Markdown editing</li>
+      </ul>
+
+      <h2>Use Cases</h2>
+      <h3>For Writers</h3>
+      <p>Creating formatted content for blogs, documentation, and online platforms that support Markdown.</p>
+
+      <h3>For Developers</h3>
+      <p>Writing README files, documentation, and comments in code that use Markdown formatting.</p>
+
+      <h3>For Content Creators</h3>
+      <p>Preparing content for platforms like GitHub, Reddit, and other sites that support Markdown.</p>
+
+      <h3>For Students</h3>
+      <p>Creating formatted notes and documents using Markdown syntax.</p>
+
+      <h2>Markdown Best Practices</h2>
+      <ul>
+        <li>Use consistent heading levels</li>
+        <li>Keep lines under 80 characters for readability</li>
+        <li>Use code blocks for code snippets</li>
+        <li>Add blank lines between paragraphs and sections</li>
+        <li>Use descriptive link text instead of URLs</li>
+      </ul>
+
+      <h2>FAQ</h2>
+      <h3>Is this Markdown previewer free?</h3>
+      <p>Yes, it is completely free with no hidden fees. You can use it as often as you need without any limitations.</p>
+      
+      <h3>Does this tool store my text?</h3>
+      <p>No. All processing happens locally in your browser. Your text never leaves your device.</p>
+      
+      <h3>What Markdown syntax is supported?</h3>
+      <p>This tool supports common Markdown syntax including headings, lists, links, bold, italic, code blocks, and more.</p>
+      
+      <h3>Can I use this tool offline?</h3>
+      <p>Yes. Once the page is loaded, you can use the Markdown previewer offline as all processing happens in your browser.</p>
+    </div>
+</section>
+
+<footer>
+  <p>© 2026 nowoi.com – Free Online Tools</p>
+  <div class="footer-links">
+    <a href="../index.html">Home</a>
+    <a href="../about.html">About</a>
+    <a href="../privacy-policy.html">Privacy Policy</a>
+    <a href="../terms.html">Terms</a>
+    <a href="../contact.html">Contact</a>
+  </div>
+</footer>
+
+<script>
+function previewMarkdown() {
+  const input = document.getElementById('input').value;
+  const output = document.getElementById('output');
+  
+  // Simple markdown parsing
+  let html = input
+    .replace(/^# (.*$)/gim, '<h1>$1</h1>')
+    .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+    .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+    .replace(/\*(.*)\*/gim, '<em>$1</em>')
+    .replace(/\*\*(.*)\*\*/gim, '<strong>$1</strong>')
+    .replace(/^- (.*$)/gim, '<li>$1</li>')
+    .replace(/(<li>.*<\/li>)/gim, '<ul>$1</ul>')
+    .replace(/\[([^\]]+)\]\(([^\)]+)\)/gim, '<a href="$2">$1</a>')
+    .replace(/\n\n/gim, '</p><p>')
+    .replace(/^<p>/, '')
+    .replace(/<\/p>$/, '');
+  
+  output.innerHTML = '<p>' + html + '</p>';
+}
+
+function copyResult() {
+  const output = document.getElementById('output');
+  const html = output.innerHTML;
+  
+  const textarea = document.createElement('textarea');
+  textarea.value = html;
+  document.body.appendChild(textarea);
+  textarea.select();
+  document.execCommand('copy');
+  document.body.removeChild(textarea);
+  
+  alert('Copied to clipboard!');
+}
+</script>
+</body>
+</html>

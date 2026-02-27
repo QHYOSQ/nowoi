@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Free Online Base64 Encoder & Decoder</title>
+<meta name="description" content="Use our free online Base64 Encoder & Decoder to encode and decode Base64 instantly. No installation required. Fast, secure, and easy to use." />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body>
+
+<header>
+  <h1>Free Online Base64 Encoder & Decoder</h1>
+  <p>Encode and decode Base64 instantly. 100% free. No sign-up required.</p>
+</header>
+
+<section class="tool-box">
+  <div class="options">
+    <button id="encode-btn" class="active" onclick="setMode('encode')">Encode</button>
+    <button id="decode-btn" onclick="setMode('decode')">Decode</button>
+  </div>
+  <textarea id="input" placeholder="Enter text here..." oninput="processBase64()"></textarea>
+  <textarea id="output" placeholder="Result will appear here..."></textarea>
+  <button class="copy-btn" onclick="copyResult()">Copy to Clipboard</button>
+</section>
+
+<section>
+    <div class="content">
+      <h2>How to Use This Base64 Encoder</h2>
+      <ol>
+        <li><strong>Enter your text</strong>: Type or paste the text you want to encode or decode in the input box.</li>
+        <li><strong>Select operation</strong>: Choose between "Encode" or "Decode" from the dropdown menu.</li>
+        <li><strong>Process</strong>: Click the "Process" button to perform the operation.</li>
+        <li><strong>Copy result</strong>: Use the "Copy to Clipboard" button to copy the processed text.</li>
+        <li><strong>Reset</strong>: Use the "Clear" button to reset the input and start over.</li>
+      </ol>
+
+      <h2>Step-by-Step Tutorial</h2>
+      <h3>Encoding Text to Base64</h3>
+      <p>1. Type or paste the text you want to encode into the input box</p>
+      <p>2. Select "Encode" from the dropdown menu</p>
+      <p>3. Click the "Process" button</p>
+      <p>4. The Base64 encoded text will appear in the output box</p>
+      <p>5. Copy the encoded text using the "Copy to Clipboard" button</p>
+
+      <h3>Decoding Base64 to Text</h3>
+      <p>1. Type or paste the Base64 encoded text into the input box</p>
+      <p>2. Select "Decode" from the dropdown menu</p>
+      <p>3. Click the "Process" button</p>
+      <p>4. The decoded text will appear in the output box</p>
+      <p>5. Copy the decoded text using the "Copy to Clipboard" button</p>
+
+      <h2>Why Use This Base64 Encoder?</h2>
+      <ul>
+        <li><strong>Encodes and decodes Base64 strings</strong> with just one click</li>
+        <li><strong>No data stored</strong> - all processing happens locally on your device</li>
+        <li><strong>Free forever</strong> - no hidden fees or limitations</li>
+        <li><strong>Handles special characters correctly</strong> including non-ASCII characters</li>
+        <li><strong>Fast and reliable</strong> - instant processing with accurate results</li>
+        <li><strong>Easy to use</strong> - simple interface for quick Base64 encoding/decoding</li>
+      </ul>
+
+      <h2>Use Cases</h2>
+      <h3>For Developers</h3>
+      <p>Encoding binary data for API requests, embedding images in HTML/CSS, and working with data in text-based formats.</p>
+
+      <h3>For Web Designers</h3>
+      <p>Embedding small images directly into HTML or CSS files to reduce HTTP requests and improve page load times.</p>
+
+      <h3>For Content Creators</h3>
+      <p>Encoding data for secure transmission, creating data URIs, and working with various web technologies.</p>
+
+      <h2>Base64 Encoding Best Practices</h2>
+      <ul>
+        <li>Use Base64 encoding for binary data that needs to be transmitted over text-based protocols</li>
+        <li>Remember that Base64 encoding increases file size by about 33%</li>
+        <li>Use decoding to troubleshoot Base64 encoded data</li>
+        <li>Test encoded data to ensure it decodes correctly</li>
+        <li>Be aware of character encoding when working with non-ASCII text</li>
+      </ul>
+
+      <h2>FAQ</h2>
+      <h3>Is this Base64 encoder free?</h3>
+      <p>Yes, it is completely free with no hidden fees. You can use it as often as you need without any limitations.</p>
+      
+      <h3>What is Base64 encoding?</h3>
+      <p>Base64 encoding is a way to represent binary data in an ASCII string format. It is commonly used for encoding data that needs to be stored or transferred over media that can only handle ASCII characters.</p>
+      
+      <h3>When should I use Base64 encoding?</h3>
+      <p>Base64 encoding is commonly used for encoding binary data in email attachments, embedding images in HTML, and transmitting data over protocols that only support ASCII.</p>
+      
+      <h3>Can I use this tool offline?</h3>
+      <p>Yes. Once the page is loaded, you can use the Base64 encoder offline as all processing happens in your browser.</p>
+    </div>
+</section>
+
+<footer>
+  <p>© 2026 nowoi.com – Free Online Tools</p>
+  <div class="footer-links">
+    <a href="../index.html">Home</a>
+    <a href="../about.html">About</a>
+    <a href="../privacy-policy.html">Privacy Policy</a>
+    <a href="../terms.html">Terms</a>
+    <a href="../contact.html">Contact</a>
+  </div>
+</footer>
+
+<script>
+let currentMode = 'encode';
+
+function setMode(mode) {
+  currentMode = mode;
+  
+  // Update button styles
+  document.getElementById('encode-btn').classList.toggle('active', mode === 'encode');
+  document.getElementById('decode-btn').classList.toggle('active', mode === 'decode');
+  
+  // Update placeholders
+  const input = document.getElementById('input');
+  const output = document.getElementById('output');
+  
+  if (mode === 'encode') {
+    input.placeholder = 'Enter text here...';
+    output.placeholder = 'Base64 encoded result will appear here...';
+  } else {
+    input.placeholder = 'Enter Base64 encoded text here...';
+    output.placeholder = 'Decoded result will appear here...';
+  }
+  
+  // Process current input
+  processBase64();
+}
+
+function processBase64() {
+  const input = document.getElementById('input').value;
+  const output = document.getElementById('output');
+  
+  try {
+    if (currentMode === 'encode') {
+      output.value = btoa(unescape(encodeURIComponent(input)));
+    } else {
+      output.value = decodeURIComponent(escape(atob(input)));
+    }
+  } catch (error) {
+    output.value = 'Error: ' + error.message;
+  }
+}
+
+function copyResult() {
+  const output = document.getElementById('output');
+  output.select();
+  document.execCommand('copy');
+  alert('Copied to clipboard!');
+}
+</script>
+</body>
+</html>

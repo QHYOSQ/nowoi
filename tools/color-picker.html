@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Free Online Color Picker – Pick Colors</title>
+<meta name="description" content="Use our free online Color Picker to pick colors instantly. No installation required. Fast, secure, and easy to use." />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body>
+
+<header>
+  <h1>Free Online Color Picker</h1>
+  <p>Pick colors instantly. 100% free. No sign-up required.</p>
+</header>
+
+<section class="tool-box">
+  <input type="color" id="color-input" value="#ff0000" oninput="updateColor()">
+  <div id="color-preview" style="width: 100%; height: 100px; background: #ff0000; margin: 20px 0; border-radius: 4px;"></div>
+  <div class="color-values">
+    <p>HEX: <span id="hex-value">#ff0000</span></p>
+    <p>RGB: <span id="rgb-value">rgb(255, 0, 0)</span></p>
+    <p>HSL: <span id="hsl-value">hsl(0, 100%, 50%)</span></p>
+  </div>
+  <button class="copy-btn" onclick="copyHEX()">Copy HEX</button>
+  <button class="copy-btn" onclick="copyRGB()">Copy RGB</button>
+  <button class="copy-btn" onclick="copyHSL()">Copy HSL</button>
+</section>
+
+<section class="content">
+  <h2>How to Use This Color Picker</h2>
+  <ol>
+    <li><strong>Select a color</strong>: Click on the color picker to open the color selection dialog, or enter a HEX value directly.</li>
+    <li><strong>Adjust color</strong>: Use the color picker to adjust the hue, saturation, and lightness.</li>
+    <li><strong>View color values</strong>: The color values in different formats (HEX, RGB, HSL) will be displayed.</li>
+    <li><strong>Copy color format</strong>: Use the "Copy" buttons to copy the desired color format.</li>
+  </ol>
+
+  <h2>Step-by-Step Tutorial</h2>
+  <h3>Selecting a Color</h3>
+  <p>1. Click on the color picker area</p>
+  <p>2. Use the color wheel to select the hue</p>
+  <p>3. Use the slider to adjust the saturation and lightness</p>
+  <p>4. The color values will update automatically</p>
+  <p>5. Click the copy button next to the format you need</p>
+
+  <h3>Using HEX Values</h3>
+  <p>1. Type a HEX color code (e.g., #FF5733) into the color input</p>
+  <p>2. The color picker will update to show the selected color</p>
+  <p>3. The other color formats will update automatically</p>
+  <p>4. Copy the desired format using the copy buttons</p>
+
+  <h2>Why Use This Color Picker?</h2>
+  <ul>
+    <li><strong>Select colors visually</strong> with an intuitive color picker</li>
+    <li><strong>No data stored</strong> - all processing happens locally on your device</li>
+    <li><strong>Free forever</strong> - no hidden fees or limitations</li>
+    <li><strong>Shows color values in multiple formats</strong> (HEX, RGB, HSL)</li>
+    <li><strong>Fast and responsive</strong> - instant updates as you adjust colors</li>
+    <li><strong>Easy to use</strong> - simple interface for quick color selection</li>
+  </ul>
+
+  <h2>Use Cases</h2>
+  <h3>For Web Designers</h3>
+  <p>Selecting colors for websites, creating color schemes, and generating color codes for CSS.</p>
+
+  <h3>For Graphic Designers</h3>
+  <p>Choosing colors for designs, creating color palettes, and converting between color formats.</p>
+
+  <h3>For Developers</h3>
+  <p>Generating color codes for code, working with different color formats, and testing color combinations.</p>
+
+  <h3>For Content Creators</h3>
+  <p>Selecting colors for social media posts, marketing materials, and visual content.</p>
+
+  <h2>Color Picker Best Practices</h2>
+  <ul>
+    <li>Use HEX format for web development</li>
+    <li>Use RGB format for general digital design</li>
+    <li>Use HSL format for easier color adjustments</li>
+    <li>Test colors in different contexts to ensure readability</li>
+  </ul>
+
+  <h2>FAQ</h2>
+  <h3>Is this color picker free?</h3>
+  <p>Yes, it is completely free with no hidden fees. You can use it as often as you need without any limitations.</p>
+  
+  <h3>Does this tool store my data?</h3>
+  <p>No. All processing happens locally in your browser. Your color selections never leave your device.</p>
+  
+  <h3>What color formats are supported?</h3>
+  <p>This tool supports HEX, RGB, and HSL color formats.</p>
+  
+  <h3>Can I use this tool offline?</h3>
+  <p>Yes. Once the page is loaded, you can use the color picker offline as all processing happens in your browser.</p>
+</section>
+
+<footer>
+  <p>© 2026 nowoi.com – Free Online Tools</p>
+  <div class="footer-links">
+    <a href="../index.html">Home</a>
+    <a href="../about.html">About</a>
+    <a href="../privacy-policy.html">Privacy Policy</a>
+    <a href="../terms.html">Terms</a>
+    <a href="../contact.html">Contact</a>
+  </div>
+</footer>
+
+<script>
+function updateColor() {
+  const colorInput = document.getElementById('color-input');
+  const colorPreview = document.getElementById('color-preview');
+  const hexValue = document.getElementById('hex-value');
+  const rgbValue = document.getElementById('rgb-value');
+  const hslValue = document.getElementById('hsl-value');
+  
+  const color = colorInput.value;
+  colorPreview.style.background = color;
+  hexValue.textContent = color;
+  
+  // Convert HEX to RGB
+  const r = parseInt(color.slice(1, 3), 16);
+  const g = parseInt(color.slice(3, 5), 16);
+  const b = parseInt(color.slice(5, 7), 16);
+  rgbValue.textContent = `rgb(${r}, ${g}, ${b})`;
+  
+  // Convert RGB to HSL
+  const max = Math.max(r, g, b);
+  const min = Math.min(r, g, b);
+  let h, s, l = (max + min) / 2;
+  
+  if (max === min) {
+    h = s = 0; // achromatic
+  } else {
+    const d = max - min;
+    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+    switch (max) {
+      case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+      case g: h = (b - r) / d + 2; break;
+      case b: h = (r - g) / d + 4; break;
+    }
+    h /= 6;
+  }
+  
+  h = Math.round(h * 360);
+  s = Math.round(s * 100);
+  l = Math.round(l * 100);
+  hslValue.textContent = `hsl(${h}, ${s}%, ${l}%)`;
+}
+
+function copyHEX() {
+  const hexValue = document.getElementById('hex-value').textContent;
+  copyToClipboard(hexValue);
+}
+
+function copyRGB() {
+  const rgbValue = document.getElementById('rgb-value').textContent;
+  copyToClipboard(rgbValue);
+}
+
+function copyHSL() {
+  const hslValue = document.getElementById('hsl-value').textContent;
+  copyToClipboard(hslValue);
+}
+
+function copyToClipboard(text) {
+  const textarea = document.createElement('textarea');
+  textarea.value = text;
+  document.body.appendChild(textarea);
+  textarea.select();
+  document.execCommand('copy');
+  document.body.removeChild(textarea);
+  alert('Copied to clipboard!');
+}
+
+// Initialize
+updateColor();
+</script>
+</body>
+</html>

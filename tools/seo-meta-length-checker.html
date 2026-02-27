@@ -1,0 +1,170 @@
+﻿﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SEO Meta Description Length Checker | nowoi</title>
+  <meta name="description" content="Check SEO meta description length, pixel width, and SERP preview. Optimize for visibility with practical guidance." />
+  <link rel="icon" href="../assets/image/Nico.png" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <style>
+    .tool-wrap {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 20px;
+    }
+    .tool-panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      box-shadow: var(--shadow);
+    }
+    .tool-panel textarea {
+      width: 100%;
+      min-height: 180px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px;
+      font-size: 1rem;
+      line-height: 1.6;
+      background: var(--bg);
+      color: var(--text);
+      resize: vertical;
+    }
+    .serp-preview {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+    .serp-title {
+      color: #1a0dab;
+      font-size: 1.05rem;
+      margin-bottom: 4px;
+    }
+    .serp-url {
+      color: #006621;
+      font-size: 0.85rem;
+      margin-bottom: 6px;
+    }
+    .stat {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--bg);
+      margin-bottom: 10px;
+    }
+    .stat span { color: var(--muted); }
+    @media (max-width: 900px) { .tool-wrap { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-inner header-grid">
+      <a class="brand" href="../index.html"><img src="../assets/image/Nico.png" alt="nowoi logo">nowoi</a>
+      <nav class="nav nav-center" aria-label="Primary">
+        <a href="../index.html" data-i18n="C_Users_qhyos_Desktop_NOWOI_nowoi_tools_seo-meta-length-checker_html_k1">Home</a>
+        <a href="./index.html" data-i18n="C_Users_qhyos_Desktop_NOWOI_nowoi_tools_seo-meta-length-checker_html_k3">Tools</a>
+        <a href="../about.html" data-i18n="C_Users_qhyos_Desktop_NOWOI_nowoi_tools_seo-meta-length-checker_html_k4">About</a>
+        <a href="../contact.html">Contact</a>
+        <a href="../privacy-policy.html">Privacy</a>
+        <a href="../terms.html">Terms</a>
+      </nav>
+      <div class="lang-switch">
+        <button id="lang-btn">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <section class="card">
+      <h1 data-i18n="C_Users_qhyos_Desktop_NOWOI_nowoi_tools_seo-meta-length-checker_html_k5">SEO Meta Description Length Checker</h1>
+      <p data-i18n="C_Users_qhyos_Desktop_NOWOI_nowoi_tools_seo-meta-length-checker_html_k6">Measure character count, pixel width, and SERP preview to keep your meta descriptions visible.</p>
+    </section>
+
+    <section class="section tool-wrap">
+      <div class="tool-panel">
+        <label for="meta" class="sr-only">Meta description</label>
+        <textarea id="meta" placeholder="Write your meta description here..."></textarea>
+        <div class="serp-preview" id="serpPreview">
+          <div class="serp-title">Example Page Title - nowoi</div>
+          <div class="serp-url">https://nowoi.com/example</div>
+          <div id="serpDesc">Your meta description preview will appear here.</div>
+        </div>
+      </div>
+      <div class="tool-panel">
+        <div class="stat"><strong>Characters</strong><span id="charCount">0</span></div>
+        <div class="stat"><strong>Pixels (approx)</strong><span id="pixelCount">0 px</span></div>
+        <div class="stat"><strong>Status</strong><span id="status">Waiting</span></div>
+        <p style="color:var(--muted);font-size:0.9rem;">Recommended range: 50 to 160 characters. Pixel width varies by device and font.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 data-i18n="C_Users_qhyos_Desktop_NOWOI_nowoi_tools_seo-meta-length-checker_html_k7">Why Meta Description Length Matters</h2>
+      <p>Meta descriptions influence click-through rates. Even when rankings are strong, a weak or truncated description can reduce traffic. This tool helps you keep descriptions within an ideal range so they remain visible on search results pages. Length alone does not guarantee performance, but it prevents you from losing valuable characters that communicate value and relevance.</p>
+      <p>Search engines sometimes rewrite descriptions, but a well crafted summary still matters. It helps search engines understand page intent and gives users a clear reason to click. If your description is too long, it will be cut off. If it is too short, you miss a chance to explain why your page is useful.</p>
+      <p>Pixel width is the hidden factor. Different letters occupy different widths, and search engines display text based on pixel limits rather than strict character counts. That is why a 150 character description can still be truncated if it uses wide characters. This checker estimates pixel width so you can preview how much space you are using.</p>
+      <p>For best results, lead with the main keyword and a clear benefit. Use simple language and avoid repeating the title. If you have a strong call to action, include it near the middle so it shows even if the end is cut. Keep punctuation clean and avoid filler words that waste space.</p>
+      <p>Meta descriptions also help align your content strategy. When you can summarize a page in one or two sentences, it is usually a sign that the page is focused. If you struggle to summarize the value, the page may be too broad. That feedback loop makes this tool useful during content planning, not just final optimization.</p>
+      <p>Use this checker whenever you create a new page, update a landing page, or rewrite a guide. It is faster than guessing, and it ensures your descriptions are ready for search engines and users alike.</p>
+      <p>Keep in mind that search engines may bold query terms inside your description, which can slightly increase the visual width. This is another reason to keep the length within a safe band rather than pushing the limit. A concise description that still communicates value generally performs better than a long sentence that gets cut mid-thought.</p>
+      <p>As a practical workflow, draft three versions of a description and compare them in the preview. Pick the one that communicates the benefit in the fewest words. If two versions are similar, choose the one with clearer intent and stronger action verbs.</p>
+      <p>If you are working on a large site, consider keeping a consistent style across similar pages. This improves brand recognition in search results and helps users understand what each page offers. The checker helps you keep that style consistent without sacrificing clarity or length requirements.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <small>© <span id="year"></span> nowoi</small>
+      <small><a href="../about.html" data-i18n="C_Users_qhyos_Desktop_NOWOI_nowoi_tools_seo-meta-length-checker_html_k8">About</a></small>
+      <small><a href="../contact.html">Contact</a></small>
+      <small><a href="../privacy-policy.html">Privacy</a></small>
+      <small><a href="../terms.html">Terms</a></small>
+    </div>
+  </footer>
+
+  <script src="../assets/js/common.js" defer></script>
+  <script>
+    const meta = document.getElementById('meta');
+    const charCount = document.getElementById('charCount');
+    const pixelCount = document.getElementById('pixelCount');
+    const status = document.getElementById('status');
+    const serpDesc = document.getElementById('serpDesc');
+
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    ctx.font = '16px Arial';
+
+    function updateMeta() {
+      const text = meta.value.trim();
+      const chars = text.length;
+      const pixels = Math.round(ctx.measureText(text).width);
+
+      charCount.textContent = chars;
+      pixelCount.textContent = pixels + ' px';
+      serpDesc.textContent = text || 'Your meta description preview will appear here.';
+
+      if (chars === 0) {
+        status.textContent = 'Waiting';
+      } else if (chars < 50) {
+        status.textContent = 'Too short';
+      } else if (chars > 160) {
+        status.textContent = 'Too long';
+      } else {
+        status.textContent = 'Good';
+      }
+    }
+
+    meta.addEventListener('input', updateMeta);
+  </script>
+</body>
+</html>

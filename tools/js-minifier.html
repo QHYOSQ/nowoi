@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Free Online JS Minifier – Minify JavaScript</title>
+<meta name="description" content="Use our free online JS Minifier to minify JavaScript instantly. No installation required. Fast, secure, and easy to use." />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body>
+
+<header>
+  <h1>Free Online JS Minifier</h1>
+  <p>Minify JavaScript instantly. 100% free. No sign-up required.</p>
+</header>
+
+<section class="tool-box">
+  <textarea id="input" placeholder="Enter JavaScript here..." oninput="minifyJS()"></textarea>
+  <textarea id="output" placeholder="Minified JavaScript will appear here..."></textarea>
+  <button class="copy-btn" onclick="copyResult()">Copy to Clipboard</button>
+</section>
+
+<section>
+  <h2>How to Use</h2>
+  <ol>
+    <li>Enter JavaScript into the input box.</li>
+    <li>The JavaScript will be minified automatically.</li>
+    <li>Copy the minified JavaScript using the "Copy to Clipboard" button.</li>
+  </ol>
+</section>
+
+<section>
+  <h2>Why Use This Tool?</h2>
+  <ul>
+    <li>Works directly in your browser</li>
+    <li>Minifies JavaScript to reduce file size</li>
+    <li>Fast and secure</li>
+    <li>Free forever</li>
+  </ul>
+</section>
+
+<section>
+  <h2>FAQ</h2>
+  <h3>Is this JS minifier free?</h3>
+  <p>Yes, it is completely free with no hidden fees.</p>
+  
+  <h3>Does this tool store my data?</h3>
+  <p>No. All processing happens locally in your browser.</p>
+  
+  <h3>Is this tool safe to use?</h3>
+  <p>Yes. All processing is done in your browser, so your data never leaves your device.</p>
+</section>
+
+<footer>
+  <p>© 2026 nowoi.com – Free Online Tools</p>
+  <div class="footer-links">
+    <a href="../index.html">Home</a>
+    <a href="../about.html">About</a>
+    <a href="../privacy-policy.html">Privacy Policy</a>
+    <a href="../terms.html">Terms</a>
+    <a href="../contact.html">Contact</a>
+  </div>
+</footer>
+
+<script>
+function minifyJS() {
+  const input = document.getElementById('input').value;
+  const output = document.getElementById('output');
+  
+  // Simple JS minification
+  let minified = input
+    .replace(/\s+/g, ' ') // Replace multiple spaces with single space
+    .replace(/\/\*[\s\S]*?\*\//g, '') // Remove comments
+    .replace(/\/\/.*$/gm, '') // Remove single-line comments
+    .replace(/\s*:\s*/g, ':') // Remove spaces around colons
+    .replace(/\s*;\s*/g, ';') // Remove spaces around semicolons
+    .replace(/\s*{\s*/g, '{') // Remove spaces before braces
+    .replace(/\s*}\s*/g, '}') // Remove spaces after braces
+    .replace(/\s*\+\s*/g, '+') // Remove spaces around plus
+    .replace(/\s*-\s*/g, '-') // Remove spaces around minus
+    .replace(/\s*\*\s*/g, '*') // Remove spaces around multiply
+    .replace(/\s*\/\s*/g, '/') // Remove spaces around divide
+    .replace(/\s*==\s*/g, '==') // Remove spaces around equality
+    .replace(/\s*===\s*/g, '===') // Remove spaces around strict equality
+    .replace(/\s*!=\s*/g, '!=') // Remove spaces around inequality
+    .replace(/\s*!==\s*/g, '!==') // Remove spaces around strict inequality
+    .replace(/\s*<\s*/g, '<') // Remove spaces around less than
+    .replace(/\s*>\s*/g, '>') // Remove spaces around greater than
+    .replace(/\s*<=\s*/g, '<=') // Remove spaces around less than or equal
+    .replace(/\s*>=>\s*/g, '>=') // Remove spaces around greater than or equal
+    .replace(/\s*&&\s*/g, '&&') // Remove spaces around logical AND
+    .replace(/\s*\|\|\s*/g, '||') // Remove spaces around logical OR
+    .trim(); // Remove leading/trailing whitespace
+  
+  output.value = minified;
+}
+
+function copyResult() {
+  const output = document.getElementById('output');
+  output.select();
+  document.execCommand('copy');
+  alert('Copied to clipboard!');
+}
+</script>
+</body>
+</html>

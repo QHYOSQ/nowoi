@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Free Online Random Number Generator – Generate Random Numbers</title>
+<meta name="description" content="Use our free online Random Number Generator to generate random numbers instantly. No installation required. Fast, secure, and easy to use." />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body>
+
+<header>
+  <h1>Free Online Random Number Generator</h1>
+  <p>Generate random numbers instantly. 100% free. No sign-up required.</p>
+</header>
+
+<section class="tool-box">
+  <div class="options">
+    <label>
+      Min: 
+      <input type="number" id="min" value="1">
+    </label>
+    <br>
+    <label>
+      Max: 
+      <input type="number" id="max" value="100">
+    </label>
+    <br>
+    <label>
+      Count: 
+      <input type="number" id="count" min="1" max="100" value="1">
+    </label>
+  </div>
+  <button onclick="generateRandomNumbers()">Generate</button>
+  <textarea id="output" placeholder="Generated random numbers will appear here..."></textarea>
+  <button class="copy-btn" onclick="copyResult()">Copy to Clipboard</button>
+</section>
+
+<section>
+  <h2>How to Use</h2>
+  <ol>
+    <li>Set the minimum and maximum values.</li>
+    <li>Set the number of random numbers to generate.</li>
+    <li>Click the "Generate" button.</li>
+    <li>Copy the generated random numbers using the "Copy to Clipboard" button.</li>
+  </ol>
+</section>
+
+<section>
+  <h2>Why Use This Tool?</h2>
+  <ul>
+    <li>Works directly in your browser</li>
+    <li>Generates random numbers within a range</li>
+    <li>Fast and secure</li>
+    <li>Free forever</li>
+  </ul>
+</section>
+
+<section>
+  <h2>FAQ</h2>
+  <h3>Is this random number generator free?</h3>
+  <p>Yes, it is completely free with no hidden fees.</p>
+  
+  <h3>Does this tool store my data?</h3>
+  <p>No. All processing happens locally in your browser.</p>
+  
+  <h3>Is this tool safe to use?</h3>
+  <p>Yes. All processing is done in your browser, so your data never leaves your device.</p>
+</section>
+
+<footer>
+  <p>© 2026 nowoi.com – Free Online Tools</p>
+  <div class="footer-links">
+    <a href="../index.html">Home</a>
+    <a href="../about.html">About</a>
+    <a href="../privacy-policy.html">Privacy Policy</a>
+    <a href="../terms.html">Terms</a>
+    <a href="../contact.html">Contact</a>
+  </div>
+</footer>
+
+<script>
+function generateRandomNumbers() {
+  const min = parseInt(document.getElementById('min').value);
+  const max = parseInt(document.getElementById('max').value);
+  const count = parseInt(document.getElementById('count').value);
+  const output = document.getElementById('output');
+  
+  let numbers = [];
+  for (let i = 0; i < count; i++) {
+    const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+    numbers.push(randomNumber);
+  }
+  
+  output.value = numbers.join('\n');
+}
+
+function copyResult() {
+  const output = document.getElementById('output');
+  output.select();
+  document.execCommand('copy');
+  alert('Copied to clipboard!');
+}
+</script>
+</body>
+</html>

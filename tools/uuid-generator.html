@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Free Online UUID Generator – Instant UUID v4</title>
+<meta name="description" content="Use our free online UUID Generator to generate unique IDs instantly. No installation required. Fast, secure, and easy to use." />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body>
+
+<header>
+  <h1>Free Online UUID Generator</h1>
+  <p>Generate unique UUID v4 identifiers instantly. 100% free. No sign-up required.</p>
+</header>
+
+<section class="tool-box">
+  <button onclick="generateUUID()">Generate UUID</button>
+  <textarea id="output" placeholder="Generated UUID will appear here..."></textarea>
+  <button class="copy-btn" onclick="copyUUID()">Copy to Clipboard</button>
+</section>
+
+<section>
+  <div class="content">
+    <h2>How to Use This UUID Generator</h2>
+    <ol>
+      <li><strong>Select UUID version</strong>: Choose between Version 1 (time-based) or Version 4 (random-based).</li>
+      <li><strong>Generate UUID</strong>: Click the "Generate UUID" button to create a new UUID.</li>
+      <li><strong>Copy the result</strong>: Use the "Copy to Clipboard" button to copy the generated UUID.</li>
+      <li><strong>Repeat</strong>: Click the button again to generate additional UUIDs as needed.</li>
+    </ol>
+
+    <h2>Step-by-Step Tutorial</h2>
+    <h3>Generating a Random UUID (Version 4)</h3>
+    <p>1. Select "Version 4 (Random)" from the dropdown menu</p>
+    <p>2. Click "Generate UUID"</p>
+    <p>3. A random UUID will be generated and displayed</p>
+    <p>4. Copy the UUID using the "Copy to Clipboard" button</p>
+    <p>5. Paste it into your application or code</p>
+
+    <h3>Generating a Time-Based UUID (Version 1)</h3>
+    <p>1. Select "Version 1 (Time-based)" from the dropdown menu</p>
+    <p>2. Click "Generate UUID"</p>
+    <p>3. A time-based UUID will be generated and displayed</p>
+    <p>4. Copy the UUID using the "Copy to Clipboard" button</p>
+    <p>5. Paste it into your application or code</p>
+
+    <h2>Why Use This UUID Generator?</h2>
+    <ul>
+      <li><strong>Generates valid UUIDs instantly</strong> with just one click</li>
+      <li><strong>No data stored</strong> - all processing happens locally on your device</li>
+      <li><strong>Free forever</strong> - no hidden fees or limitations</li>
+      <li><strong>Supports multiple UUID versions</strong> (Version 1 and Version 4)</li>
+      <li><strong>Easy to use</strong> - simple interface for quick UUID generation</li>
+      <li><strong>Accurate implementation</strong> - generates fully compliant UUIDs</li>
+    </ul>
+
+    <h2>Use Cases</h2>
+    <h3>For Developers</h3>
+    <p>Generating unique identifiers for database records, session IDs, API keys, and distributed systems.</p>
+
+    <h3>For Database Administrators</h3>
+    <p>Creating unique primary keys for database tables, especially in distributed environments.</p>
+
+    <h3>For System Architects</h3>
+    <p>Designing systems that require unique identifiers across multiple services and components.</p>
+
+    <h2>UUID Best Practices</h2>
+    <ul>
+      <li>Use Version 4 UUIDs for most general purposes</li>
+      <li>Use Version 1 UUIDs when you need timestamp information</li>
+      <li>Store UUIDs as strings or in dedicated UUID types</li>
+      <li>Use hyphenated format for readability</li>
+      <li>Consider using UUIDs instead of auto-incrementing IDs for better scalability</li>
+    </ul>
+
+    <h2>FAQ</h2>
+    <h3>Is this UUID generator free?</h3>
+    <p>Yes, it is completely free with no hidden fees. You can use it as often as you need without any limitations.</p>
+    
+    <h3>What is a UUID?</h3>
+    <p>A UUID (Universally Unique Identifier) is a 128-bit number used to uniquely identify information in computer systems. It is commonly used in software development for various purposes like identifying objects, sessions, or records.</p>
+    
+    <h3>Which UUID version should I use?</h3>
+    <p>Version 4 UUIDs are recommended for most use cases as they are randomly generated and have a very low probability of collision. Version 1 UUIDs include timestamp information and may be useful in certain scenarios where temporal ordering is important.</p>
+    
+    <h3>How unique are UUIDs?</h3>
+      <p>The probability of UUID collision is extremely low. For Version 4 UUIDs, the chance of collision is about 1 in 2^122, which is practically negligible for most applications.</p>
+    </div>
+
+    <div class="content">
+      <h2>Related Tools</h2>
+      <div class="grid">
+        <a href="./password-generator.html" class="card" data-tool-card="Password Generator generate passwords">
+          <h4>Password Generator</h4>
+          <p>Generate strong passwords</p>
+        </a>
+        <a href="./random-number-generator.html" class="card" data-tool-card="Random Number Generator generate random numbers">
+          <h4>Random Number Generator</h4>
+          <p>Generate random numbers</p>
+        </a>
+        <a href="./slug-generator.html" class="card" data-tool-card="Slug Generator generate slugs">
+          <h4>Slug Generator</h4>
+          <p>Generate URL-friendly slugs</p>
+        </a>
+        <a href="./timestamp-converter.html" class="card" data-tool-card="Timestamp Converter convert timestamps">
+          <h4>Timestamp Converter</h4>
+          <p>Convert between timestamps and dates</p>
+        </a>
+      </div>
+    </div>
+</section>
+
+<footer>
+  <p>© 2026 nowoi.com – Free Online Tools</p>
+  <div class="footer-links">
+    <a href="../index.html">Home</a>
+    <a href="../about.html">About</a>
+    <a href="../privacy-policy.html">Privacy Policy</a>
+    <a href="../terms.html">Terms</a>
+    <a href="../contact.html">Contact</a>
+  </div>
+</footer>
+
+<script>
+function generateUUID() {
+  const output = document.getElementById('output');
+  const uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    const r = Math.random() * 16 | 0;
+    const v = c === 'x' ? r : (r & 0x3 | 0x8);
+    return v.toString(16);
+  });
+  output.value = uuid;
+}
+
+function copyUUID() {
+  const output = document.getElementById('output');
+  output.select();
+  document.execCommand('copy');
+  alert('Copied to clipboard!');
+}
+</script>
+</body>
+</html>

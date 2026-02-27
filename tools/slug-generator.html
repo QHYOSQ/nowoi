@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Free Online Slug Generator – Create SEO-Friendly Slugs</title>
+<meta name="description" content="Use our free online Slug Generator to create SEO-friendly slugs instantly. No installation required. Fast, secure, and easy to use." />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body>
+
+<header>
+  <h1>Free Online Slug Generator</h1>
+  <p>Create SEO-friendly slugs instantly. 100% free. No sign-up required.</p>
+</header>
+
+<section class="tool-box">
+  <textarea id="input" placeholder="Enter title or text here..." oninput="generateSlug()"></textarea>
+  <textarea id="output" placeholder="Generated slug will appear here..."></textarea>
+  <button class="copy-btn" onclick="copySlug()">Copy to Clipboard</button>
+</section>
+
+<section>
+  <h2>How to Use</h2>
+  <ol>
+    <li>Enter a title or text into the input box.</li>
+    <li>The slug will be generated automatically.</li>
+    <li>Copy the generated slug using the "Copy to Clipboard" button.</li>
+  </ol>
+</section>
+
+<section>
+  <h2>Why Use This Tool?</h2>
+  <ul>
+    <li>Works directly in your browser</li>
+    <li>Creates SEO-friendly slugs</li>
+    <li>Removes special characters and spaces</li>
+    <li>Fast and secure</li>
+    <li>Free forever</li>
+  </ul>
+</section>
+
+<section>
+  <h2>FAQ</h2>
+  <h3>Is this slug generator free?</h3>
+  <p>Yes, it is completely free with no hidden fees.</p>
+  
+  <h3>Does this tool store my data?</h3>
+  <p>No. All processing happens locally in your browser.</p>
+  
+  <h3>Is this tool safe to use?</h3>
+  <p>Yes. All processing is done in your browser, so your data never leaves your device.</p>
+</section>
+
+<footer>
+  <p>© 2026 nowoi.com – Free Online Tools</p>
+  <div class="footer-links">
+    <a href="../index.html">Home</a>
+    <a href="../about.html">About</a>
+    <a href="../privacy-policy.html">Privacy Policy</a>
+    <a href="../terms.html">Terms</a>
+    <a href="../contact.html">Contact</a>
+  </div>
+</footer>
+
+<script>
+function generateSlug() {
+  const input = document.getElementById('input').value;
+  const output = document.getElementById('output');
+  
+  // Convert to lowercase
+  let slug = input.toLowerCase();
+  
+  // Remove special characters
+  slug = slug.replace(/[àáâãäåæçèéêëìíîïðñòóôõöøùúûüýÿ]/g, function(c) {
+    const replacements = {
+      'à':'a', 'á':'a', 'â':'a', 'ã':'a', 'ä':'a', 'å':'a', 'æ':'ae', 'ç':'c',
+      'è':'e', 'é':'e', 'ê':'e', 'ë':'e', 'ì':'i', 'í':'i', 'î':'i', 'ï':'i',
+      'ð':'d', 'ñ':'n', 'ò':'o', 'ó':'o', 'ô':'o', 'õ':'o', 'ö':'o', 'ø':'o',
+      'ù':'u', 'ú':'u', 'û':'u', 'ü':'u', 'ý':'y', 'ÿ':'y'
+    };
+    return replacements[c] || c;
+  });
+  
+  // Replace spaces and other characters with hyphens
+  slug = slug.replace(/[^a-z0-9]+/g, '-');
+  
+  // Remove leading and trailing hyphens
+  slug = slug.replace(/^-+|-+$/g, '');
+  
+  output.value = slug;
+}
+
+function copySlug() {
+  const output = document.getElementById('output');
+  output.select();
+  document.execCommand('copy');
+  alert('Copied to clipboard!');
+}
+</script>
+</body>
+</html>
