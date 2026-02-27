@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Free Online Age Calculator – Calculate Your Age</title>
+<meta name="description" content="Use our free online Age Calculator to calculate your age in years, months, and days. No installation required. Fast, secure, and easy to use." />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow">
+<meta name="keywords" content="age calculator, calculate age, online age calculator, free age tool, age in years months days">
+<link rel="canonical" href="https://nowoi.com/tools/age-calculator.html">
+<link rel="stylesheet" href="../assets/css/style.css">
+<style>
+  .date-input-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+  .date-input-group input {
+    width: 80px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  .date-input-group label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  .error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+  }
+</style>
+</head>
+
+<body>
+  <div class="container">
+    <header class="site-header">
+      <div class="header-row">
+        <a href="../index.html" class="brand">nowoi.com</a>
+        <nav class="nav">
+          <a href="../index.html">Home</a>
+          <a href="./index.html" aria-current="page">Tools</a>
+          <a href="../about.html">About</a>
+          <a href="../contact.html">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <div class="page-head">
+      <h1>Free Online Age Calculator</h1>
+      <p>Calculate your age in years, months, and days. 100% free. No sign-up required.</p>
+    </div>
+
+    <div class="tool-box">
+      <div class="options">
+        <label>Date of Birth:</label>
+        <div class="date-input-group">
+          <div>
+            <label for="birth-year">Year</label>
+            <input type="number" id="birth-year" placeholder="YYYY" min="0" oninput="handleYearInput(this, 'birth-month', 'birth-day')">          </div>
+          <div>
+            <label for="birth-month">Month</label>
+            <input type="number" id="birth-month" placeholder="MM" min="1" max="12" oninput="handleMonthInput(this, 'birth-day', 'birth-year')">
+          </div>
+          <div>
+            <label for="birth-day">Day</label>
+            <input type="number" id="birth-day" placeholder="DD" min="1" max="31" oninput="handleDayInput(this, 'birth-month', 'birth-year')">
+          </div>
+        </div>
+        
+        <label>Current Date:</label>
+        <div class="date-input-group">
+          <div>
+            <label for="current-year">Year</label>
+            <input type="number" id="current-year" placeholder="YYYY" min="1900" max="2026" oninput="handleYearInput(this, 'current-month', 'current-day')">
+          </div>
+          <div>
+            <label for="current-month">Month</label>
+            <input type="number" id="current-month" placeholder="MM" min="1" max="12" oninput="handleMonthInput(this, 'current-day', 'current-year')">
+          </div>
+          <div>
+            <label for="current-day">Day</label>
+            <input type="number" id="current-day" placeholder="DD" min="1" max="31" oninput="handleDayInput(this, 'current-month', 'current-year')">
+          </div>
+        </div>
+      </div>
+      <button onclick="calculateAge()">Calculate Age</button>
+      <div id="age-result" class="results-box"></div>
+    </div>
+
+    <div class="content">
+      <h2>How to Use This Age Calculator</h2>
+      <ol>
+        <li><strong>Enter your birth date</strong>: Input your birth year, month, and day.</li>
+        <li><strong>Enter current date</strong>: Input the current year, month, and day (or any other date you want to calculate your age up to).</li>
+        <li><strong>Calculate age</strong>: Click the "Calculate Age" button to see your age in years, months, and days.</li>
+        <li><strong>View results</strong>: The calculated age will be displayed in the result area.</li>
+      </ol>
+
+      <h2>Step-by-Step Tutorial</h2>
+      <h3>Calculating Your Age</h3>
+      <p>1. Open the Age Calculator tool</p>
+      <p>2. Enter your birth year (4 digits), then automatically move to month input</p>
+      <p>3. Enter your birth month (1-12), then automatically move to day input</p>
+      <p>4. Enter your birth day (1-31, valid for the selected month)</p>
+      <p>5. Repeat for the current date</p>
+      <p>6. Click the "Calculate Age" button</p>
+      <p>7. Your age will be displayed in years, months, and days</p>
+      <p>8. Use this information for various purposes like applying for jobs, insurance, or just for fun</p>
+
+      <h2>Why Use This Age Calculator?</h2>
+      <ul>
+        <li><strong>Accurate age calculation</strong> in years, months, and days</li>
+        <li><strong>No data stored</strong> - all processing happens locally on your device</li>
+        <li><strong>Free forever</strong> - no hidden fees or limitations</li>
+        <li><strong>Easy to use</strong> - simple interface for quick age calculations</li>
+        <li><strong>Fast and reliable</strong> - instant results with accurate calculations</li>
+        <li><strong>Works for any date</strong> - calculate age up to any future or past date</li>
+      </ul>
+
+      <h2>Use Cases</h2>
+      <h3>For Personal Use</h3>
+      <p>Calculating your exact age for legal purposes, insurance applications, or just to know how old you are in detail.</p>
+
+      <h3>For Parents</h3>
+      <p>Tracking the exact age of children for developmental milestones, school enrollment, or pediatric appointments.</p>
+
+      <h3>For HR Professionals</h3>
+      <p>Verifying age requirements for job applications, retirement planning, or benefits eligibility.</p>
+
+      <h3>For Legal Purposes</h3>
+      <p>Calculating precise age for legal documents, contracts, or age-related regulations.</p>
+
+      <h2>FAQ</h2>
+      <h3>Is this age calculator free?</h3>
+      <p>Yes, it is completely free with no hidden fees. You can use it as often as you need without any limitations.</p>
+      
+      <h3>How accurate is this age calculator?</h3>
+      <p>This age calculator is highly accurate, calculating age down to the exact day, month, and year.</p>
+      
+      <h3>Can I calculate age for future dates?</h3>
+      <p>Yes. You can enter any future date to see how old you will be on that date.</p>
+      
+      <h3>Does this tool store my data?</h3>
+      <p>No. All processing happens locally in your browser. Your birth date and other information never leave your device.</p>
+    </div>
+
+    <div class="content">
+      <h2>Related Tools</h2>
+      <div class="grid">
+        <a href="./time-tools.html" class="card" data-tool-card="Time Tools world time converter time interval calculator">
+          <h4>Time Tools</h4>
+          <p>World Time Converter & Time Interval Calculator</p>
+        </a>
+        <a href="./percentage-calculator.html" class="card" data-tool-card="Percentage Calculator calculate percentages">
+          <h4>Percentage Calculator</h4>
+          <p>Calculate percentages</p>
+        </a>
+        <a href="./loan-calculator.html" class="card" data-tool-card="Loan Calculator calculate loan payments">
+          <h4>Loan Calculator</h4>
+          <p>Calculate loan payments</p>
+        </a>
+        <a href="./gpa-calculator.html" class="card" data-tool-card="GPA Calculator calculate GPA">
+          <h4>GPA Calculator</h4>
+          <p>Calculate GPA</p>
+        </a>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <p>© <span id="year">2026</span> nowoi.com – 100% Free Online Tools</p>
+      <div class="footer-links">
+        <a href="../index.html">Home</a>
+        <a href="./index.html">Tools</a>
+        <a href="../about.html">About</a>
+        <a href="../privacy-policy.html">Privacy Policy</a>
+        <a href="../terms.html">Terms</a>
+        <a href="../contact.html">Contact</a>
+      </div>
+    </footer>
+  </div>
+
+<script>
+// Check if a year is a leap year
+function isLeapYear(year) {
+  return (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
+}
+
+// Get the number of days in a month
+function getDaysInMonth(month, year) {
+  const daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+  if (month === 2 && isLeapYear(year)) {
+    return 29;
+  }
+  return daysInMonth[month - 1];
+}
+
+// Handle year input to auto-move to month
+// Get current year
+const currentYear = new Date().getFullYear();
+
+// Handle year input to auto-move to month
+function handleYearInput(input, monthId, dayId) {
+  let value = input.value;
+  // Limit year input to less than 5 digits (max 4 digits)
+  if (value.length >= 5) {
+    input.value = value.substring(0, 4);
+    value = input.value;
+  }
+  
+  // Check if we've entered 4 digits
+  if (value.length === 4 && value.match(/^\d{4}$/)) {
+    // Validate year range
+    const year = parseInt(value);
+    if (year < 1900) {
+      input.value = '1900';
+    } else if (year > currentYear) {
+      input.value = currentYear.toString();
+    }
+    // Move focus to month input
+    document.getElementById(monthId).focus();
+    // Update day input max value based on month and year
+    updateDayInput(monthId, dayId, input.value);
+  }
+}
+
+// Handle month input to auto-move to day
+function handleMonthInput(input, dayId, yearId) {
+  const value = input.value;
+  // Only move to day input if we've entered a valid month
+  if (value.length > 0) {
+    const month = parseInt(value);
+    // Validate month range
+    if (month > 12) {
+      input.value = '12';
+    } else if (month < 1) {
+      input.value = '1';
+    }
+    
+    // Only move to day input if:
+    // 1. We've entered 2 digits, or
+    // 2. We've entered 1 digit and it's not 1 (since 1 could be the start of 10, 11, 12)
+    if ((value.length === 2 && value.match(/^\d{2}$/)) || 
+        (value.length === 1 && value.match(/^[2-9]$/))) {
+      // Move focus to day input
+      document.getElementById(dayId).focus();
+      // Update day input max value based on month and year
+      const year = document.getElementById(yearId).value;
+      if (year) {
+        updateDayInput(input.id, dayId, year);
+      }
+    }
+  }
+}
+
+// Handle day input
+function handleDayInput(input, monthId, yearId) {
+  const value = input.value;
+  // Validate day range
+  if (value.length > 0) {
+    const month = parseInt(document.getElementById(monthId).value);
+    const year = parseInt(document.getElementById(yearId).value);
+    
+    if (month && year) {
+      const maxDays = getDaysInMonth(month, year);
+      const day = parseInt(value);
+      
+      if (day > maxDays) {
+        input.value = maxDays.toString();
+      } else if (day < 1) {
+        input.value = '1';
+      }
+    }
+  }
+}
+
+// Update day input max value based on month and year
+function updateDayInput(monthId, dayId, year) {
+  const month = parseInt(document.getElementById(monthId).value);
+  const dayInput = document.getElementById(dayId);
+  
+  if (month && year) {
+    const maxDays = getDaysInMonth(month, parseInt(year));
+    dayInput.max = maxDays;
+    
+    // Validate current day value
+    const currentDay = parseInt(dayInput.value);
+    if (currentDay > maxDays) {
+      dayInput.value = maxDays.toString();
+    }
+  }
+}
+
+function calculateAge() {
+  // Get birth date components
+  const birthYear = parseInt(document.getElementById('birth-year').value);
+  const birthMonth = parseInt(document.getElementById('birth-month').value);
+  const birthDay = parseInt(document.getElementById('birth-day').value);
+  
+  // Get current date components
+  const currentYear = parseInt(document.getElementById('current-year').value);
+  const currentMonth = parseInt(document.getElementById('current-month').value);
+  const currentDay = parseInt(document.getElementById('current-day').value);
+  
+  const resultDiv = document.getElementById('age-result');
+  
+  // Validate inputs
+  if (isNaN(birthYear) || isNaN(birthMonth) || isNaN(birthDay) || 
+      isNaN(currentYear) || isNaN(currentMonth) || isNaN(currentDay)) {
+    resultDiv.innerHTML = '<p>Please enter all date components.</p>';
+    return;
+  }
+  
+  try {
+    // Create date objects
+    const birth = new Date(birthYear, birthMonth - 1, birthDay);
+    const current = new Date(currentYear, currentMonth - 1, currentDay);
+    
+    // Validate that birth date is not in the future
+    if (birth > current) {
+      resultDiv.innerHTML = '<p>Birth date cannot be later than current date.</p>';
+      return;
+    }
+    
+    // Validate date integrity
+    if (birth.getFullYear() !== birthYear || birth.getMonth() !== birthMonth - 1 || birth.getDate() !== birthDay ||
+        current.getFullYear() !== currentYear || current.getMonth() !== currentMonth - 1 || current.getDate() !== currentDay) {
+      resultDiv.innerHTML = '<p>Please enter valid dates (e.g., no February 31st).</p>';
+      return;
+    }
+    
+    let years = current.getFullYear() - birth.getFullYear();
+    let months = current.getMonth() - birth.getMonth();
+    let days = current.getDate() - birth.getDate();
+    
+    // Adjust for negative values
+    if (days < 0) {
+      months--;
+      // Calculate days in previous month
+      const prevMonth = new Date(current.getFullYear(), current.getMonth(), 0);
+      days += prevMonth.getDate();
+    }
+    
+    if (months < 0) {
+      years--;
+      months += 12;
+    }
+    
+    // Calculate total age in years
+    const totalAgeInYears = years + (months / 12) + (days / 365.25);
+    
+    // Prepare result message
+    let resultMessage = `
+      <h3>Your Age</h3>
+      <p><strong>Birth Date:</strong> ${birth.toLocaleDateString('en-GB')}</p>
+      <p><strong>Current Date:</strong> ${current.toLocaleDateString('en-GB')}</p>
+      <p><strong>Age:</strong> ${years} years, ${months} months, ${days} days</p>
+    `;
+    
+    // Add age-specific message
+    const ageMessage = getAgeSpecificMessage(totalAgeInYears);
+    if (ageMessage) {
+      resultMessage += `<p style="color: #007bff; font-weight: bold; margin-top: 10px;">${ageMessage}</p>`;
+    }
+    
+    // Add special message for very old ages
+    if (totalAgeInYears > 123) {
+      resultMessage += '<p style="color: #28a745; font-weight: bold;">That\'s incredible, you\'re so long-lived!</p>';
+    }
+    
+    resultDiv.innerHTML = resultMessage;
+  } catch (error) {
+    resultDiv.innerHTML = '<p>Error calculating age. Please try again.</p>';
+  }
+}
+
+// Function to get age-specific message
+function getAgeSpecificMessage(age) {
+  // Don't return message for ages 123 and above
+  if (age >= 123) {
+    return null;
+  }
+  
+  const messages = {
+    '0-18': [
+      "Youth is the best time to dream big and explore the world!",
+      "Every day is a new adventure - enjoy your journey!",
+      "The future is bright, keep learning and growing!",
+      "Cherish your youth, it goes by faster than you think!",
+      "Your potential is limitless - believe in yourself!"
+    ],
+    '19-30': [
+      "This is your time to build your future - go for it!",
+      "The world is your oyster - seize every opportunity!",
+      "Embrace the challenges, they make you stronger!",
+      "Your best years are just beginning - make them count!",
+      "Follow your passions and create the life you want!"
+    ],
+    '31-50': [
+      "You're in your prime - make every moment matter!",
+      "Life is about balance - work hard, play hard!",
+      "Your experience is your superpower - share it!",
+      "The best is yet to come - keep pushing forward!",
+      "You've built a foundation - now build your legacy!"
+    ],
+    '51-70': [
+      "Wisdom comes with age - share your knowledge!",
+      "Life is a journey, not a destination - enjoy the ride!",
+      "You've earned your stripes - now relax and enjoy!",
+      "The golden years are here - make them shine!",
+      "Your life story is inspiring - keep writing it!"
+    ],
+    '71-100': [
+      "You're a living treasure - your stories are priceless!",
+      "Age is just a number - you're still going strong!",
+      "Your wisdom is a gift to those around you!",
+      "Every day is a blessing - cherish each moment!",
+      "You've lived a life worth celebrating!"
+    ],
+    '101-122': [
+      "You're a living legend - your life is remarkable!",
+      "Age is just a number - you're an inspiration!",
+      "Your wisdom and experience are invaluable!",
+      "Every day is a gift - keep enjoying life!",
+      "You've seen so much - your perspective is priceless!"
+    ]
+  };
+  
+  let ageRange;
+  if (age <= 18) ageRange = '0-18';
+  else if (age <= 30) ageRange = '19-30';
+  else if (age <= 50) ageRange = '31-50';
+  else if (age <= 70) ageRange = '51-70';
+  else if (age <= 100) ageRange = '71-100';
+  else if (age <= 122) ageRange = '101-122';
+  else ageRange = '123+';
+  
+  // Only return message if age is less than 123
+  if (age < 123) {
+    const ageMessages = messages[ageRange];
+    const randomIndex = Math.floor(Math.random() * ageMessages.length);
+    return ageMessages[randomIndex];
+  }
+  return null;
+}
+
+// Set default current date to today
+window.onload = function() {
+  const today = new Date();
+  document.getElementById('current-year').value = today.getFullYear();
+  document.getElementById('current-month').value = today.getMonth() + 1;
+  document.getElementById('current-day').value = today.getDate();
+  
+  // Update day input max for current date
+  updateDayInput('current-month', 'current-day', today.getFullYear());
+};
+</script>
+<script src="../assets/js/common.js"></script>
+</body>
+</html>

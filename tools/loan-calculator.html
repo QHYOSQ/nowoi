@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Free Online Loan Calculator – Calculate Loan Payments</title>
+<meta name="description" content="Use our free online Loan Calculator to calculate monthly loan payments. No installation required. Fast, secure, and easy to use." />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow">
+<meta name="keywords" content="loan calculator, calculate loan payments, online loan tool, free loan calculator, monthly payment calculator">
+<link rel="canonical" href="https://nowoi.com/tools/loan-calculator.html">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body>
+  <div class="container">
+    <header class="site-header">
+      <div class="header-row">
+        <a href="../index.html" class="brand">nowoi.com</a>
+        <nav class="nav">
+          <a href="../index.html">Home</a>
+          <a href="./index.html" aria-current="page">Tools</a>
+          <a href="../about.html">About</a>
+          <a href="../contact.html">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <div class="page-head">
+      <h1>Free Online Loan Calculator</h1>
+      <p>Calculate monthly loan payments and total interest. 100% free. No sign-up required.</p>
+    </div>
+
+
+
+    <div class="tool-box">
+      <div class="options">
+        <label for="loan-amount">Loan Amount:</label>
+        <input type="number" id="loan-amount" placeholder="Enter loan amount" min="1">
+        <br>
+        <label for="interest-rate">Annual Interest Rate (%):</label>
+        <input type="number" id="interest-rate" placeholder="Enter interest rate" min="0" step="0.01">
+        <br>
+        <label for="loan-term">Loan Term (years):</label>
+        <input type="number" id="loan-term" placeholder="Enter loan term" min="1">
+      </div>
+      <button onclick="calculateLoan()">Calculate</button>
+      <div id="loan-result" class="results-box"></div>
+    </div>
+
+
+
+    <div class="content">
+      <h2>How to Use This Loan Calculator</h2>
+      <ol>
+        <li><strong>Enter loan amount</strong>: Input the total amount of the loan.</li>
+        <li><strong>Enter interest rate</strong>: Input the annual interest rate as a percentage.</li>
+        <li><strong>Enter loan term</strong>: Input the length of the loan in years.</li>
+        <li><strong>Calculate</strong>: Click the "Calculate" button to see the monthly payment and total interest.</li>
+        <li><strong>View results</strong>: The calculated results will be displayed in the result area.</li>
+      </ol>
+
+      <h2>Step-by-Step Tutorial</h2>
+      <h3>Calculating Loan Payments</h3>
+      <p>1. Open the Loan Calculator tool</p>
+      <p>2. Enter the loan amount in the "Loan Amount" field (e.g., 100000 for a $100,000 loan)</p>
+      <p>3. Enter the annual interest rate in the "Annual Interest Rate" field (e.g., 4.5 for 4.5%)</p>
+      <p>4. Enter the loan term in the "Loan Term" field (e.g., 30 for a 30-year loan)</p>
+      <p>5. Click the "Calculate" button</p>
+      <p>6. The result will show the monthly payment and total interest paid over the life of the loan</p>
+      <p>7. Use this information to compare different loan options</p>
+
+      <h2>Why Use This Loan Calculator?</h2>
+      <ul>
+        <li><strong>Accurate calculations</strong> - precise monthly payment and total interest calculations</li>
+        <li><strong>No data stored</strong> - all processing happens locally on your device</li>
+        <li><strong>Free forever</strong> - no hidden fees or limitations</li>
+        <li><strong>Easy to use</strong> - simple interface for quick calculations</li>
+        <li><strong>Fast and reliable</strong> - instant results with accurate calculations</li>
+        <li><strong>Helps with financial planning</strong> - compare different loan options</li>
+      </ul>
+
+      <h2>Use Cases</h2>
+      <h3>For Home Buyers</h3>
+      <p>Calculating mortgage payments and comparing different loan terms.</p>
+
+      <h3>For Car Buyers</h3>
+      <p>Calculating car loan payments and comparing financing options.</p>
+
+      <h3>For Personal Loans</h3>
+      <p>Calculating monthly payments for personal loans and debt consolidation.</p>
+
+      <h3>For Business Owners</h3>
+      <p>Calculating business loan payments and planning for expansion.</p>
+
+      <h2>FAQ</h2>
+      <h3>Is this loan calculator free?</h3>
+      <p>Yes, it is completely free with no hidden fees. You can use it as often as you need without any limitations.</p>
+      
+      <h3>How accurate is this loan calculator?</h3>
+      <p>This loan calculator uses standard loan payment formulas to ensure accurate calculations.</p>
+      
+      <h3>Does this tool consider extra payments?</h3>
+      <p>No, this calculator provides basic loan payment calculations. For more complex scenarios with extra payments, you may need a more advanced calculator.</p>
+      
+      <h3>Does this tool store my data?</h3>
+      <p>No. All processing happens locally in your browser. Your loan details never leave your device.</p>
+    </div>
+
+    <div class="content">
+      <h2>Related Tools</h2>
+      <div class="grid">
+        <a href="./age-calculator.html" class="card" data-tool-card="Age Calculator calculate age">
+          <h4>Age Calculator</h4>
+          <p>Calculate age in years, months, and days</p>
+        </a>
+        <a href="./percentage-calculator.html" class="card" data-tool-card="Percentage Calculator calculate percentages">
+          <h4>Percentage Calculator</h4>
+          <p>Calculate percentages</p>
+        </a>
+        <a href="./gpa-calculator.html" class="card" data-tool-card="GPA Calculator calculate GPA">
+          <h4>GPA Calculator</h4>
+          <p>Calculate GPA</p>
+        </a>
+        <a href="./unit-converter.html" class="card" data-tool-card="Unit Converter convert units">
+          <h4>Unit Converter</h4>
+          <p>Convert between different units</p>
+        </a>
+      </div>
+    </div>
+
+
+
+    <footer class="footer">
+      <p>© <span id="year">2026</span> nowoi.com – 100% Free Online Tools</p>
+      <div class="footer-links">
+        <a href="../index.html">Home</a>
+        <a href="./index.html">Tools</a>
+        <a href="../about.html">About</a>
+        <a href="../privacy-policy.html">Privacy Policy</a>
+        <a href="../terms.html">Terms</a>
+        <a href="../contact.html">Contact</a>
+      </div>
+    </footer>
+  </div>
+
+<script>
+function calculateLoan() {
+  const loanAmount = parseFloat(document.getElementById('loan-amount').value);
+  const interestRate = parseFloat(document.getElementById('interest-rate').value);
+  const loanTerm = parseFloat(document.getElementById('loan-term').value);
+  const resultDiv = document.getElementById('loan-result');
+  
+  // Validate inputs
+  if (isNaN(loanAmount) || loanAmount <= 0) {
+    resultDiv.innerHTML = '<p>Please enter a valid loan amount greater than 0.</p>';
+    return;
+  }
+  
+  if (isNaN(interestRate) || interestRate < 0) {
+    resultDiv.innerHTML = '<p>Please enter a valid interest rate.</p>';
+    return;
+  }
+  
+  if (isNaN(loanTerm) || loanTerm <= 0) {
+    resultDiv.innerHTML = '<p>Please enter a valid loan term greater than 0.</p>';
+    return;
+  }
+  
+  try {
+    const monthlyInterestRate = interestRate / 100 / 12; // Monthly rate
+    const monthlyTerm = loanTerm * 12; // Monthly term
+    
+    // Calculate monthly payment
+    const monthlyPayment = loanAmount * (monthlyInterestRate * Math.pow(1 + monthlyInterestRate, monthlyTerm)) / (Math.pow(1 + monthlyInterestRate, monthlyTerm) - 1);
+    
+    // Calculate total payment
+    const totalPayment = monthlyPayment * monthlyTerm;
+    
+    // Calculate total interest
+    const totalInterest = totalPayment - loanAmount;
+    
+    resultDiv.innerHTML = `
+      <h3>Loan Calculation Results</h3>
+      <p><strong>Loan Amount:</strong> ${loanAmount.toFixed(2)}</p>
+      <p><strong>Annual Interest Rate:</strong> ${interestRate.toFixed(2)}%</p>
+      <p><strong>Loan Term:</strong> ${loanTerm} years (${monthlyTerm} months)</p>
+      <p><strong>Monthly Payment:</strong> ${monthlyPayment.toFixed(2)}</p>
+      <p><strong>Total Payment:</strong> ${totalPayment.toFixed(2)}</p>
+      <p><strong>Total Interest:</strong> ${totalInterest.toFixed(2)}</p>
+    `;
+  } catch (error) {
+    resultDiv.innerHTML = '<p>Error calculating loan. Please try again.</p>';
+  }
+}
+</script>
+<script src="../assets/js/common.js"></script>
+</body>
+</html>

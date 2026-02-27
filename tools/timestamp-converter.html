@@ -5,17 +5,34 @@
 <title>Free Online Timestamp Converter – Convert Timestamps</title>
 <meta name="description" content="Use our free online Timestamp Converter to convert timestamps instantly. No installation required. Fast, secure, and easy to use." />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow">
+<meta name="keywords" content="timestamp converter, convert timestamp, online timestamp tool, free timestamp converter, date to timestamp">
+<link rel="canonical" href="https://nowoi.com/tools/timestamp-converter.html">
 <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 
 <body>
+  <div class="container">
+    <header class="site-header">
+      <div class="header-row">
+        <a href="../index.html" class="brand">nowoi.com</a>
+        <nav class="nav">
+          <a href="../index.html">Home</a>
+          <a href="./index.html" aria-current="page">Tools</a>
+          <a href="../about.html">About</a>
+          <a href="../contact.html">Contact</a>
+        </nav>
+      </div>
+    </header>
 
-<header>
-  <h1>Free Online Timestamp Converter</h1>
-  <p>Convert timestamps instantly. 100% free. No sign-up required.</p>
-</header>
+    <div class="page-head">
+      <h1>Free Online Timestamp Converter</h1>
+      <p>Convert timestamps instantly. 100% free. No sign-up required.</p>
+    </div>
 
-<section class="tool-box">
+
+
+    <div class="tool-box">
   <div class="options">
     <button id="date-to-timestamp" class="active" onclick="setMode('date-to-timestamp')">Date to Timestamp</button>
     <button id="timestamp-to-date" onclick="setMode('timestamp-to-date')">Timestamp to Date</button>
@@ -96,16 +113,18 @@
   <p>Yes. Once the page is loaded, you can use the timestamp converter offline as all processing happens in your browser.</p>
 </section>
 
-<footer>
-  <p>© 2026 nowoi.com – Free Online Tools</p>
-  <div class="footer-links">
-    <a href="../index.html">Home</a>
-    <a href="../about.html">About</a>
-    <a href="../privacy-policy.html">Privacy Policy</a>
-    <a href="../terms.html">Terms</a>
-    <a href="../contact.html">Contact</a>
+    <footer class="footer">
+      <p>© <span id="year">2026</span> nowoi.com – 100% Free Online Tools</p>
+      <div class="footer-links">
+        <a href="../index.html">Home</a>
+        <a href="./index.html">Tools</a>
+        <a href="../about.html">About</a>
+        <a href="../privacy-policy.html">Privacy Policy</a>
+        <a href="../terms.html">Terms</a>
+        <a href="../contact.html">Contact</a>
+      </div>
+    </footer>
   </div>
-</footer>
 
 <script>
 let currentMode = 'date-to-timestamp';
@@ -159,8 +178,9 @@ function copyResult() {
   const output = document.getElementById('output');
   output.select();
   document.execCommand('copy');
-  alert('Copied to clipboard!');
+  showToast('Copied to clipboard!');
 }
 </script>
+<script src="../assets/js/common.js"></script>
 </body>
 </html>
