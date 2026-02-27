@@ -3,12 +3,65 @@
 <head>
 <meta charset="UTF-8">
 <title>Free Online Unit Converter – Convert Between Units</title>
-<meta name="description" content="Use our free online Unit Converter to convert between different units. No installation required. Fast, secure, and easy to use." />
+<meta name="description" content="Use our free online Unit Converter to convert between different units of measurement. No installation required. Fast, secure, and easy to use." />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="index, follow">
-<meta name="keywords" content="unit converter, online unit conversion, free unit tool, convert units, measurement converter">
+<meta name="keywords" content="unit converter, online unit converter, free unit tool, convert units, measurement converter">
 <link rel="canonical" href="https://nowoi.com/tools/unit-converter.html">
 <link rel="stylesheet" href="../assets/css/style.css">
+<style>
+  .unit-category {
+    margin-bottom: 30px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+  .unit-category h3 {
+    margin-top: 0;
+    color: #333;
+  }
+  .converter-row {
+    display: flex;
+    gap: 10px;
+    margin: 15px 0;
+    flex-wrap: wrap;
+  }
+  .converter-input {
+    flex: 1;
+    min-width: 150px;
+  }
+  .converter-input label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+  }
+  .converter-input input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  .converter-input select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  .converter-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: #666;
+  }
+  @media (max-width: 768px) {
+    .converter-arrow {
+      transform: rotate(90deg);
+      margin: 10px 0;
+    }
+  }
+</style>
 </head>
 
 <body>
@@ -27,100 +80,217 @@
 
     <div class="page-head">
       <h1>Free Online Unit Converter</h1>
-      <p>Convert between different units quickly and accurately. 100% free. No sign-up required.</p>
+      <p>Convert between different units of measurement. 100% free. No sign-up required.</p>
     </div>
-
-
 
     <div class="tool-box">
-      <div class="options">
-        <label for="unit-type">Unit Type:</label>
-        <select id="unit-type" onchange="updateUnits()">
-          <option value="length">Length</option>
-          <option value="weight">Weight</option>
-          <option value="volume">Volume</option>
-          <option value="temperature">Temperature</option>
-          <option value="time">Time</option>
-          <option value="area">Area</option>
-        </select>
-        <br>
-        <label for="from-unit">From Unit:</label>
-        <select id="from-unit"></select>
-        <br>
-        <label for="from-value">Value:</label>
-        <input type="number" id="from-value" placeholder="Enter value" step="any">
-        <br>
-        <label for="to-unit">To Unit:</label>
-        <select id="to-unit"></select>
+      <!-- Length Converter -->
+      <div class="unit-category">
+        <h3>Length Converter</h3>
+        <div class="converter-row">
+          <div class="converter-input">
+            <label for="length-input">Value</label>
+            <input type="number" id="length-input" placeholder="Enter value" oninput="convertLength()">
+          </div>
+          <div class="converter-input">
+            <label for="length-from">From</label>
+            <select id="length-from" onchange="convertLength()">
+              <option value="meter">Meter (m)</option>
+              <option value="kilometer">Kilometer (km)</option>
+              <option value="centimeter">Centimeter (cm)</option>
+              <option value="millimeter">Millimeter (mm)</option>
+              <option value="mile">Mile (mi)</option>
+              <option value="yard">Yard (yd)</option>
+              <option value="foot">Foot (ft)</option>
+              <option value="inch">Inch (in)</option>
+            </select>
+          </div>
+          <div class="converter-arrow">⇄</div>
+          <div class="converter-input">
+            <label for="length-to">To</label>
+            <select id="length-to" onchange="convertLength()">
+              <option value="meter">Meter (m)</option>
+              <option value="kilometer">Kilometer (km)</option>
+              <option value="centimeter">Centimeter (cm)</option>
+              <option value="millimeter">Millimeter (mm)</option>
+              <option value="mile">Mile (mi)</option>
+              <option value="yard">Yard (yd)</option>
+              <option value="foot">Foot (ft)</option>
+              <option value="inch">Inch (in)</option>
+            </select>
+          </div>
+          <div class="converter-input">
+            <label for="length-result">Result</label>
+            <input type="number" id="length-result" readonly>
+          </div>
+        </div>
       </div>
-      <button onclick="convertUnit()">Convert</button>
-      <div id="unit-result" class="results-box"></div>
+
+      <!-- Weight Converter -->
+      <div class="unit-category">
+        <h3>Weight Converter</h3>
+        <div class="converter-row">
+          <div class="converter-input">
+            <label for="weight-input">Value</label>
+            <input type="number" id="weight-input" placeholder="Enter value" oninput="convertWeight()">
+          </div>
+          <div class="converter-input">
+            <label for="weight-from">From</label>
+            <select id="weight-from" onchange="convertWeight()">
+              <option value="kilogram">Kilogram (kg)</option>
+              <option value="gram">Gram (g)</option>
+              <option value="milligram">Milligram (mg)</option>
+              <option value="ton">Ton (t)</option>
+              <option value="pound">Pound (lb)</option>
+              <option value="ounce">Ounce (oz)</option>
+            </select>
+          </div>
+          <div class="converter-arrow">⇄</div>
+          <div class="converter-input">
+            <label for="weight-to">To</label>
+            <select id="weight-to" onchange="convertWeight()">
+              <option value="kilogram">Kilogram (kg)</option>
+              <option value="gram">Gram (g)</option>
+              <option value="milligram">Milligram (mg)</option>
+              <option value="ton">Ton (t)</option>
+              <option value="pound">Pound (lb)</option>
+              <option value="ounce">Ounce (oz)</option>
+            </select>
+          </div>
+          <div class="converter-input">
+            <label for="weight-result">Result</label>
+            <input type="number" id="weight-result" readonly>
+          </div>
+        </div>
+      </div>
+
+      <!-- Temperature Converter -->
+      <div class="unit-category">
+        <h3>Temperature Converter</h3>
+        <div class="converter-row">
+          <div class="converter-input">
+            <label for="temp-input">Value</label>
+            <input type="number" id="temp-input" placeholder="Enter value" oninput="convertTemperature()">
+          </div>
+          <div class="converter-input">
+            <label for="temp-from">From</label>
+            <select id="temp-from" onchange="convertTemperature()">
+              <option value="celsius">Celsius (°C)</option>
+              <option value="fahrenheit">Fahrenheit (°F)</option>
+              <option value="kelvin">Kelvin (K)</option>
+            </select>
+          </div>
+          <div class="converter-arrow">⇄</div>
+          <div class="converter-input">
+            <label for="temp-to">To</label>
+            <select id="temp-to" onchange="convertTemperature()">
+              <option value="celsius">Celsius (°C)</option>
+              <option value="fahrenheit">Fahrenheit (°F)</option>
+              <option value="kelvin">Kelvin (K)</option>
+            </select>
+          </div>
+          <div class="converter-input">
+            <label for="temp-result">Result</label>
+            <input type="number" id="temp-result" readonly>
+          </div>
+        </div>
+      </div>
+
+      <!-- Volume Converter -->
+      <div class="unit-category">
+        <h3>Volume Converter</h3>
+        <div class="converter-row">
+          <div class="converter-input">
+            <label for="volume-input">Value</label>
+            <input type="number" id="volume-input" placeholder="Enter value" oninput="convertVolume()">
+          </div>
+          <div class="converter-input">
+            <label for="volume-from">From</label>
+            <select id="volume-from" onchange="convertVolume()">
+              <option value="liter">Liter (L)</option>
+              <option value="milliliter">Milliliter (mL)</option>
+              <option value="cubic-meter">Cubic Meter (m³)</option>
+              <option value="cubic-centimeter">Cubic Centimeter (cm³)</option>
+              <option value="gallon">Gallon (gal)</option>
+              <option value="quart">Quart (qt)</option>
+              <option value="pint">Pint (pt)</option>
+              <option value="cup">Cup (c)</option>
+            </select>
+          </div>
+          <div class="converter-arrow">⇄</div>
+          <div class="converter-input">
+            <label for="volume-to">To</label>
+            <select id="volume-to" onchange="convertVolume()">
+              <option value="liter">Liter (L)</option>
+              <option value="milliliter">Milliliter (mL)</option>
+              <option value="cubic-meter">Cubic Meter (m³)</option>
+              <option value="cubic-centimeter">Cubic Centimeter (cm³)</option>
+              <option value="gallon">Gallon (gal)</option>
+              <option value="quart">Quart (qt)</option>
+              <option value="pint">Pint (pt)</option>
+              <option value="cup">Cup (c)</option>
+            </select>
+          </div>
+          <div class="converter-input">
+            <label for="volume-result">Result</label>
+            <input type="number" id="volume-result" readonly>
+          </div>
+        </div>
+      </div>
     </div>
-
-
 
     <div class="content">
       <h2>How to Use This Unit Converter</h2>
       <ol>
-        <li><strong>Select unit type</strong>: Choose the type of unit you want to convert (e.g., Length, Weight, Volume).</li>
-        <li><strong>Select from unit</strong>: Choose the unit you want to convert from.</li>
-        <li><strong>Enter value</strong>: Enter the value you want to convert.</li>
-        <li><strong>Select to unit</strong>: Choose the unit you want to convert to.</li>
-        <li><strong>Convert</strong>: Click the "Convert" button to see the result.</li>
-        <li><strong>View results</strong>: The converted value will be displayed in the result area.</li>
+        <li><strong>Select the unit category</strong>: Choose the type of unit you want to convert (length, weight, temperature, or volume).</li>
+        <li><strong>Enter the value</strong>: Input the value you want to convert.</li>
+        <li><strong>Select the source unit</strong>: Choose the unit you're converting from.</li>
+        <li><strong>Select the target unit</strong>: Choose the unit you're converting to.</li>
+        <li><strong>View the result</strong>: The converted value will be displayed automatically.</li>
       </ol>
 
       <h2>Step-by-Step Tutorial</h2>
-      <h3>Converting Length Units</h3>
+      <h3>Converting Units</h3>
       <p>1. Open the Unit Converter tool</p>
-      <p>2. Select "Length" from the "Unit Type" dropdown</p>
-      <p>3. Select the unit you want to convert from (e.g., "Meters")</p>
-      <p>4. Enter the value you want to convert (e.g., "10")</p>
-      <p>5. Select the unit you want to convert to (e.g., "Feet")</p>
-      <p>6. Click the "Convert" button</p>
-      <p>7. The result will show that 10 meters is approximately 32.81 feet</p>
-
-      <h3>Converting Temperature Units</h3>
-      <p>1. Open the Unit Converter tool</p>
-      <p>2. Select "Temperature" from the "Unit Type" dropdown</p>
-      <p>3. Select the unit you want to convert from (e.g., "Celsius")</p>
-      <p>4. Enter the value you want to convert (e.g., "100")</p>
-      <p>5. Select the unit you want to convert to (e.g., "Fahrenheit")</p>
-      <p>6. Click the "Convert" button</p>
-      <p>7. The result will show that 100 degrees Celsius is 212 degrees Fahrenheit</p>
+      <p>2. Select the appropriate unit category (e.g., Length)</p>
+      <p>3. Enter the value you want to convert in the "Value" field</p>
+      <p>4. Select the unit you're converting from in the "From" dropdown</p>
+      <p>5. Select the unit you're converting to in the "To" dropdown</p>
+      <p>6. The converted value will be displayed in the "Result" field</p>
+      <p>7. Repeat for other unit conversions as needed</p>
 
       <h2>Why Use This Unit Converter?</h2>
       <ul>
-        <li><strong>Multiple unit types</strong> - supports length, weight, volume, temperature, time, and area</li>
-        <li><strong>Accurate conversions</strong> - precise unit conversion calculations</li>
+        <li><strong>Multiple unit categories</strong>: Convert between length, weight, temperature, and volume units</li>
+        <li><strong>Accurate conversions</strong>: Precise conversion factors for all units</li>
         <li><strong>No data stored</strong> - all processing happens locally on your device</li>
         <li><strong>Free forever</strong> - no hidden fees or limitations</li>
-        <li><strong>Easy to use</strong> - simple interface for quick conversions</li>
+        <li><strong>Easy to use</strong> - simple interface for quick unit conversions</li>
         <li><strong>Fast and reliable</strong> - instant results with accurate calculations</li>
       </ul>
 
       <h2>Use Cases</h2>
-      <h3>For Travelers</h3>
-      <p>Converting between metric and imperial units when traveling to different countries.</p>
+      <h3>For Travel</h3>
+      <p>Convert between metric and imperial units when traveling to different countries.</p>
 
-      <h3>For Students</h3>
-      <p>Completing homework assignments and understanding different measurement systems.</p>
+      <h3>For Cooking</h3>
+      <p>Convert recipe measurements between different units (e.g., cups to milliliters).</p>
 
-      <h3>For Professionals</h3>
-      <p>Converting units in engineering, construction, cooking, and other fields.</p>
+      <h3>For Science</h3>
+      <p>Convert between scientific units for experiments and calculations.</p>
 
-      <h3>For Everyday Use</h3>
-      <p>Converting recipe measurements, understanding product specifications, and more.</p>
+      <h3>For Construction</h3>
+      <p>Convert between length units for building and construction projects.</p>
 
       <h2>FAQ</h2>
       <h3>Is this unit converter free?</h3>
       <p>Yes, it is completely free with no hidden fees. You can use it as often as you need without any limitations.</p>
       
-      <h3>What unit types does this tool support?</h3>
-      <p>This tool supports length, weight, volume, temperature, time, and area conversions.</p>
+      <h3>How accurate is this unit converter?</h3>
+      <p>This unit converter uses standard conversion factors for accurate results.</p>
       
-      <h3>Is this tool accurate?</h3>
-      <p>Yes. This tool uses standard conversion factors to ensure accurate results.</p>
+      <h3>Can I convert between any units?</h3>
+      <p>You can convert between units within the same category (e.g., length to length, weight to weight).</p>
       
       <h3>Does this tool store my data?</h3>
       <p>No. All processing happens locally in your browser. Your input values never leave your device.</p>
@@ -131,7 +301,7 @@
       <div class="grid">
         <a href="./age-calculator.html" class="card" data-tool-card="Age Calculator calculate age">
           <h4>Age Calculator</h4>
-          <p>Calculate age in years, months, and days</p>
+          <p>Calculate your age in years, months, and days</p>
         </a>
         <a href="./percentage-calculator.html" class="card" data-tool-card="Percentage Calculator calculate percentages">
           <h4>Percentage Calculator</h4>
@@ -148,8 +318,6 @@
       </div>
     </div>
 
-
-
     <footer class="footer">
       <p>© <span id="year">2026</span> nowoi.com – 100% Free Online Tools</p>
       <div class="footer-links">
@@ -164,194 +332,142 @@
   </div>
 
 <script>
-// Unit conversion factors
-const unitConversions = {
-  length: {
-    meters: 1,
-    kilometers: 0.001,
-    centimeters: 100,
-    millimeters: 1000,
-    miles: 0.000621371,
-    feet: 3.28084,
-    inches: 39.3701
-  },
-  weight: {
-    kilograms: 1,
-    grams: 1000,
-    milligrams: 1000000,
-    pounds: 2.20462,
-    ounces: 35.274
-  },
-  volume: {
-    liters: 1,
-    milliliters: 1000,
-    cubicMeters: 0.001,
-    gallons: 0.264172,
-    quarts: 1.05669,
-    pints: 2.11338,
-    cups: 4.22675
-  },
-  temperature: {
-    celsius: {
-      toKelvin: (c) => c + 273.15,
-      toFahrenheit: (c) => (c * 9/5) + 32
-    },
-    fahrenheit: {
-      toCelsius: (f) => (f - 32) * 5/9,
-      toKelvin: (f) => (f - 32) * 5/9 + 273.15
-    },
-    kelvin: {
-      toCelsius: (k) => k - 273.15,
-      toFahrenheit: (k) => (k - 273.15) * 9/5 + 32
-    }
-  },
-  time: {
-    seconds: 1,
-    minutes: 1/60,
-    hours: 1/3600,
-    days: 1/86400,
-    weeks: 1/604800,
-    months: 1/2628000,
-    years: 1/31536000
-  },
-  area: {
-    squareMeters: 1,
-    squareKilometers: 0.000001,
-    squareCentimeters: 10000,
-    squareMillimeters: 1000000,
-    squareMiles: 3.86102e-7,
-    squareFeet: 10.7639,
-    squareInches: 1550,
-    acres: 0.000247105
-  }
+// Length conversion factors (relative to meter)
+const lengthFactors = {
+  meter: 1,
+  kilometer: 0.001,
+  centimeter: 100,
+  millimeter: 1000,
+  mile: 0.000621371,
+  yard: 1.09361,
+  foot: 3.28084,
+  inch: 39.3701
 };
 
-// Unit display names
-const unitNames = {
-  length: {
-    meters: 'Meters',
-    kilometers: 'Kilometers',
-    centimeters: 'Centimeters',
-    millimeters: 'Millimeters',
-    miles: 'Miles',
-    feet: 'Feet',
-    inches: 'Inches'
-  },
-  weight: {
-    kilograms: 'Kilograms',
-    grams: 'Grams',
-    milligrams: 'Milligrams',
-    pounds: 'Pounds',
-    ounces: 'Ounces'
-  },
-  volume: {
-    liters: 'Liters',
-    milliliters: 'Milliliters',
-    cubicMeters: 'Cubic Meters',
-    gallons: 'Gallons',
-    quarts: 'Quarts',
-    pints: 'Pints',
-    cups: 'Cups'
-  },
-  temperature: {
-    celsius: 'Celsius',
-    fahrenheit: 'Fahrenheit',
-    kelvin: 'Kelvin'
-  },
-  time: {
-    seconds: 'Seconds',
-    minutes: 'Minutes',
-    hours: 'Hours',
-    days: 'Days',
-    weeks: 'Weeks',
-    months: 'Months',
-    years: 'Years'
-  },
-  area: {
-    squareMeters: 'Square Meters',
-    squareKilometers: 'Square Kilometers',
-    squareCentimeters: 'Square Centimeters',
-    squareMillimeters: 'Square Millimeters',
-    squareMiles: 'Square Miles',
-    squareFeet: 'Square Feet',
-    squareInches: 'Square Inches',
-    acres: 'Acres'
-  }
+// Weight conversion factors (relative to kilogram)
+const weightFactors = {
+  kilogram: 1,
+  gram: 1000,
+  milligram: 1000000,
+  ton: 0.001,
+  pound: 2.20462,
+  ounce: 35.274
 };
 
-// Update units based on selected unit type
-function updateUnits() {
-  const unitType = document.getElementById('unit-type').value;
-  const fromUnitSelect = document.getElementById('from-unit');
-  const toUnitSelect = document.getElementById('to-unit');
-  
-  // Clear existing options
-  fromUnitSelect.innerHTML = '';
-  toUnitSelect.innerHTML = '';
-  
-  // Add new options
-  const units = unitType === 'temperature' ? unitConversions[unitType] : Object.keys(unitConversions[unitType]);
-  
-  for (const unit of Object.keys(units)) {
-    const option1 = document.createElement('option');
-    option1.value = unit;
-    option1.textContent = unitNames[unitType][unit];
-    fromUnitSelect.appendChild(option1);
-    
-    const option2 = document.createElement('option');
-    option2.value = unit;
-    option2.textContent = unitNames[unitType][unit];
-    toUnitSelect.appendChild(option2);
-  }
-  
-  // Set default to different unit
-  if (Object.keys(units).length > 1) {
-    toUnitSelect.selectedIndex = 1;
-  }
-}
+// Volume conversion factors (relative to liter)
+const volumeFactors = {
+  liter: 1,
+  milliliter: 1000,
+  "cubic-meter": 0.001,
+  "cubic-centimeter": 1000,
+  gallon: 0.264172,
+  quart: 1.05669,
+  pint: 2.11338,
+  cup: 4.22675
+};
 
-// Convert units
-function convertUnit() {
-  const unitType = document.getElementById('unit-type').value;
-  const fromUnit = document.getElementById('from-unit').value;
-  const fromValue = parseFloat(document.getElementById('from-value').value);
-  const toUnit = document.getElementById('to-unit').value;
-  const resultDiv = document.getElementById('unit-result');
+// Length converter
+function convertLength() {
+  const input = parseFloat(document.getElementById('length-input').value);
+  const fromUnit = document.getElementById('length-from').value;
+  const toUnit = document.getElementById('length-to').value;
+  const result = document.getElementById('length-result');
   
-  if (isNaN(fromValue)) {
-    resultDiv.innerHTML = '<p>Please enter a valid value.</p>';
+  if (isNaN(input)) {
+    result.value = '';
     return;
   }
   
-  let result;
+  // Convert to meters first
+  const meters = input / lengthFactors[fromUnit];
+  // Convert from meters to target unit
+  const convertedValue = meters * lengthFactors[toUnit];
   
-  if (unitType === 'temperature') {
-    // Temperature conversion
-    if (fromUnit === toUnit) {
-      result = fromValue;
-    } else if (fromUnit === 'celsius') {
-      result = unitConversions[unitType][fromUnit][`to${toUnit.charAt(0).toUpperCase() + toUnit.slice(1)}`](fromValue);
-    } else if (fromUnit === 'fahrenheit') {
-      result = unitConversions[unitType][fromUnit][`to${toUnit.charAt(0).toUpperCase() + toUnit.slice(1)}`](fromValue);
-    } else if (fromUnit === 'kelvin') {
-      result = unitConversions[unitType][fromUnit][`to${toUnit.charAt(0).toUpperCase() + toUnit.slice(1)}`](fromValue);
-    }
-  } else {
-    // Other unit conversions
-    const valueInBaseUnit = fromValue / unitConversions[unitType][fromUnit];
-    result = valueInBaseUnit * unitConversions[unitType][toUnit];
-  }
-  
-  resultDiv.innerHTML = `
-    <h3>Conversion Result</h3>
-    <p>${fromValue} ${unitNames[unitType][fromUnit]} = ${result.toFixed(4)} ${unitNames[unitType][toUnit]}</p>
-  `;
+  result.value = convertedValue;
 }
 
-// Initialize units
-window.onload = function() {
-  updateUnits();
-};
+// Weight converter
+function convertWeight() {
+  const input = parseFloat(document.getElementById('weight-input').value);
+  const fromUnit = document.getElementById('weight-from').value;
+  const toUnit = document.getElementById('weight-to').value;
+  const result = document.getElementById('weight-result');
+  
+  if (isNaN(input)) {
+    result.value = '';
+    return;
+  }
+  
+  // Convert to kilograms first
+  const kilograms = input / weightFactors[fromUnit];
+  // Convert from kilograms to target unit
+  const convertedValue = kilograms * weightFactors[toUnit];
+  
+  result.value = convertedValue;
+}
+
+// Temperature converter
+function convertTemperature() {
+  const input = parseFloat(document.getElementById('temp-input').value);
+  const fromUnit = document.getElementById('temp-from').value;
+  const toUnit = document.getElementById('temp-to').value;
+  const result = document.getElementById('temp-result');
+  
+  if (isNaN(input)) {
+    result.value = '';
+    return;
+  }
+  
+  let celsius;
+  // Convert to Celsius first
+  switch (fromUnit) {
+    case 'celsius':
+      celsius = input;
+      break;
+    case 'fahrenheit':
+      celsius = (input - 32) * 5/9;
+      break;
+    case 'kelvin':
+      celsius = input - 273.15;
+      break;
+  }
+  
+  // Convert from Celsius to target unit
+  let convertedValue;
+  switch (toUnit) {
+    case 'celsius':
+      convertedValue = celsius;
+      break;
+    case 'fahrenheit':
+      convertedValue = (celsius * 9/5) + 32;
+      break;
+    case 'kelvin':
+      convertedValue = celsius + 273.15;
+      break;
+  }
+  
+  result.value = convertedValue;
+}
+
+// Volume converter
+function convertVolume() {
+  const input = parseFloat(document.getElementById('volume-input').value);
+  const fromUnit = document.getElementById('volume-from').value;
+  const toUnit = document.getElementById('volume-to').value;
+  const result = document.getElementById('volume-result');
+  
+  if (isNaN(input)) {
+    result.value = '';
+    return;
+  }
+  
+  // Convert to liters first
+  const liters = input / volumeFactors[fromUnit];
+  // Convert from liters to target unit
+  const convertedValue = liters * volumeFactors[toUnit];
+  
+  result.value = convertedValue;
+}
 </script>
 <script src="../assets/js/common.js"></script>
 </body>
