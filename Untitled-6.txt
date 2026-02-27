@@ -1,1 +1,0 @@
-rmdir /s /q c:\Users\qhyos\Desktop\NOWOI\nowoi\resources
