@@ -1,0 +1,153 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Academic Word Counter | nowoi</title>
+  <meta name="description" content="Academic word counter for essays and reports. Count words, characters, sentences, paragraphs, and reading time in seconds." />
+  <link rel="icon" href="../assets/image/Nico.png" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <style>
+    .tool-wrap {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 20px;
+    }
+    .tool-panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      box-shadow: var(--shadow);
+    }
+    .tool-panel textarea {
+      width: 100%;
+      min-height: 240px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px;
+      font-size: 1rem;
+      line-height: 1.6;
+      background: var(--bg);
+      color: var(--text);
+      resize: vertical;
+    }
+    .stat-list {
+      display: grid;
+      gap: 10px;
+    }
+    .stat {
+      padding: 12px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .stat span {
+      color: var(--muted);
+    }
+    @media (max-width: 900px) {
+      .tool-wrap { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-inner header-grid">
+      <a class="brand" href="../index.html"><img src="../assets/image/Nico.png" alt="nowoi logo">nowoi</a>
+      <nav class="nav nav-center" aria-label="Primary">
+        <a href="../index.html" data-i18n="C_Users_qhyos_Desktop_NOWOI_nowoi_tools_academic-word-counter_html_k1">Home</a>
+        <a href="./index.html" data-i18n="C_Users_qhyos_Desktop_NOWOI_nowoi_tools_academic-word-counter_html_k3">Tools</a>
+        <a href="../about.html" data-i18n="C_Users_qhyos_Desktop_NOWOI_nowoi_tools_academic-word-counter_html_k4">About</a>
+        <a href="../contact.html">Contact</a>
+        <a href="../privacy-policy.html">Privacy</a>
+        <a href="../terms.html">Terms</a>
+      </nav>
+      <div class="lang-switch">
+        <button id="lang-btn">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <section class="card">
+      <h1 data-i18n="C_Users_qhyos_Desktop_NOWOI_nowoi_tools_academic-word-counter_html_k5">Academic Word Counter</h1>
+      <p data-i18n="C_Users_qhyos_Desktop_NOWOI_nowoi_tools_academic-word-counter_html_k6">Designed for essays, reports, and research papers. Count words, characters, sentences, paragraphs, and reading time instantly.</p>
+    </section>
+
+    <section class="section tool-wrap">
+      <div class="tool-panel">
+        <label for="essay" class="sr-only">Paste your text</label>
+        <textarea id="essay" placeholder="Paste your essay or report here..."></textarea>
+      </div>
+      <div class="tool-panel">
+        <div class="stat-list">
+          <div class="stat"><strong>Words</strong><span id="wordCount">0</span></div>
+          <div class="stat"><strong>Characters</strong><span id="charCount">0</span></div>
+          <div class="stat"><strong>Characters (no spaces)</strong><span id="charNoSpace">0</span></div>
+          <div class="stat"><strong>Sentences</strong><span id="sentenceCount">0</span></div>
+          <div class="stat"><strong>Paragraphs</strong><span id="paragraphCount">0</span></div>
+          <div class="stat"><strong>Reading time</strong><span id="readingTime">0 min</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 data-i18n="C_Users_qhyos_Desktop_NOWOI_nowoi_tools_academic-word-counter_html_k7">Why an Academic Word Counter Matters</h2>
+      <p>Academic writing has strict requirements: word limits, paragraph structure, and clarity are often graded directly. A generic word counter does not always reflect how instructors evaluate length or structure. This tool is built for academic workflows, with emphasis on paragraph detection, sentence counting, and reading time estimates. These metrics help you check pacing, reduce run-on sentences, and keep your paper within the required word range.</p>
+      <p>Word counts vary depending on the rules used by a class or publisher. Some count numbers as words, others count hyphenated terms as two words, and some ignore headings. To keep the tool consistent, we use common academic rules: we count a word as any sequence of letters or digits separated by whitespace. This matches most college and university guidelines. If you need a stricter or looser rule, you can still use this tool as a baseline and adjust manually.</p>
+      <p>Sentence and paragraph counts are not just cosmetic. Instructors often look for a balance of paragraph length and sentence rhythm. If you have an essay with 1,200 words and only two paragraphs, it will likely read as a wall of text. Similarly, if you have extremely long sentences, it can reduce readability. By seeing these counts live, you can revise more effectively.</p>
+      <p>Reading time is a practical estimate for presentations and oral exams. If you need to read your essay aloud, a typical speaking pace is around 130 to 160 words per minute. By seeing a rough reading time, you can adjust length to fit a time limit. It also helps you spot sections that are too dense for a listener to follow.</p>
+      <p>Finally, having all metrics in one place reduces friction. You can paste, edit, and see live updates as you refine your draft. This makes the tool useful not only for final checks but also during the writing process. You can test alternative introductions, compare different conclusions, and instantly see how much each section changes the total length.</p>
+      <p>For best results, format your text with clear paragraph breaks. Use a single blank line between paragraphs, and avoid manual line breaks within a paragraph unless they are intentional. This keeps paragraph detection consistent and helps the counts remain accurate.</p>
+      <p>If your class has a strict limit, plan a small buffer. For example, if the limit is 1,500 words, aim for 1,450 to 1,480 so you have room for final revisions. The counter helps you track progress as you iterate, rather than forcing a stressful cut at the end.</p>
+      <p>When revising, use the sentence count to improve readability. If your average sentence length feels too high, break long sentences into two. This improves clarity and often reduces word count without sacrificing meaning. That kind of micro-editing is what turns a good draft into a strong submission.</p>
+      <p>The counter also helps with section planning. If your introduction is too long relative to the body, you will see it in the word count distribution. Try writing section headings and checking counts per section to maintain a balanced structure.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <small>© <span id="year"></span> nowoi</small>
+      <small><a href="../about.html" data-i18n="C_Users_qhyos_Desktop_NOWOI_nowoi_tools_academic-word-counter_html_k8">About</a></small>
+      <small><a href="../contact.html">Contact</a></small>
+      <small><a href="../privacy-policy.html">Privacy</a></small>
+      <small><a href="../terms.html">Terms</a></small>
+    </div>
+  </footer>
+
+  <script src="../assets/js/common.js" defer></script>
+  <script>
+    const essay = document.getElementById('essay');
+    const wordCount = document.getElementById('wordCount');
+    const charCount = document.getElementById('charCount');
+    const charNoSpace = document.getElementById('charNoSpace');
+    const sentenceCount = document.getElementById('sentenceCount');
+    const paragraphCount = document.getElementById('paragraphCount');
+    const readingTime = document.getElementById('readingTime');
+
+    function updateStats() {
+      const text = essay.value;
+      const words = text.trim() ? text.trim().split(/\s+/).length : 0;
+      const chars = text.length;
+      const charsNoSpace = text.replace(/\s/g, '').length;
+      const sentences = text.trim() ? text.split(/[.!?]+/).filter(s => s.trim().length > 0).length : 0;
+      const paragraphs = text.trim() ? text.split(/\n\s*\n/).filter(p => p.trim().length > 0).length : 0;
+      const minutes = words === 0 ? 0 : Math.max(1, Math.round(words / 140));
+
+      wordCount.textContent = words;
+      charCount.textContent = chars;
+      charNoSpace.textContent = charsNoSpace;
+      sentenceCount.textContent = sentences;
+      paragraphCount.textContent = paragraphs;
+      readingTime.textContent = minutes + ' min';
+    }
+
+    essay.addEventListener('input', updateStats);
+  </script>
+</body>
+</html>
