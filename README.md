@@ -11,51 +11,39 @@ nowoi is a clean, modern platform designed to provide free online tools for deve
 
 ## Project Structure
 ```
-nowoi
-├── index.html
-├── 404.html
-├── about.html
-├── contact.html
-├── privacy-policy.html
-├── terms.html
-├── tools
-│   ├── index.html
-│   ├── academic-word-counter.html
-│   ├── base64-encoder.html
-│   ├── case-converter.html
-│   ├── color-picker.html
-│   ├── css-minifier.html
-│   ├── html-minifier.html
-│   ├── image-to-base64.html
-│   ├── js-minifier.html
-│   ├── json-formatter.html
-│   ├── json-validator.html
-│   ├── markdown-preview.html
-│   ├── password-generator.html
-│   ├── qr-code-generator.html
-│   ├── random-number-generator.html
-│   ├── remove-line-breaks.html
-│   ├── seo-meta-length-checker.html
-│   ├── slug-generator.html
-│   ├── text-diff-checker.html
-│   ├── timestamp-converter.html
-│   ├── url-encoder.html
-│   ├── uuid-generator.html
-│   └── word-counter.html
-├── assets
-│   ├── css
-│   │   └── style.css
-│   ├── js
-│   │   └── common.js
-│   └── image
-│       └── Nico.png
-├── data
-│   └── i18n
-│       ├── en.json
-│       └── zh.json
-├── sitemap.xml
-├── robots.txt
-└── README.md
+nowoi/
+├── index.html              # 首页
+├── about.html              # 关于页面
+├── contact.html            # 联系页面
+├── privacy-policy.html     # 隐私政策
+├── terms.html              # 服务条款
+├── sitemap.xml             # 站点地图
+├── robots.txt              #  robots文件
+├── assets/
+│   ├── css/
+│   │   └── style.css       # 样式文件
+│   ├── js/
+│   │   └── common.js       # 通用JavaScript
+│   └── images/
+│       └── Nico.png        # 网站图标
+└── tools/
+    ├── index.html          # 工具列表页
+    ├── age-calculator.html # 年龄计算器
+    ├── unit-converter.html # 单位转换器
+    ├── percentage-calculator.html # 百分比计算器
+    ├── loan-calculator.html # 贷款计算器
+    ├── gpa-calculator.html # GPA计算器
+    ├── time-tools.html     # 时间工具
+    ├── timestamp-converter.html # 时间戳转换器
+    ├── uuid-generator.html # UUID生成器
+    ├── json-formatter.html # JSON格式化工具
+    ├── base64-encoder-decoder.html # Base64编解码器
+    ├── text-tools.html     # 文本工具
+    ├── case-converter.html # 大小写转换器
+    ├── hash-generator.html # 哈希生成器
+    ├── url-encoder-decoder.html # URL编解码器
+    ├── color-converter.html # 颜色转换器
+    └── academic-word-counter.html # 学术单词计数器
 ```
 
 ## Getting Started
