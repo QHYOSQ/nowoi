@@ -1,3 +1,5 @@
+(function() {
+  'use strict';
 
   function byId(id) { return document.getElementById(id); }
   var input = byId('input');
@@ -184,50 +186,44 @@
   }
 
   if (toolType === 'uuid-generator') {
-    create('<input id=\"count\" type=\"number\" min=\"1\" max=\"100\" value=\"5\" />');
+    create('<input id="count" type="number" min="1" max="100" value="5" />');
   } else if (toolType === 'url-encoder' || toolType === 'base64-encoder') {
-    create('<select id=\"mode\"><option value=\"encode\">Encode</option><option value=\"decode\">Decode</option></select>');
+    create('<select id="mode"><option value="encode">Encode</option><option value="decode">Decode</option></select>');
   } else if (toolType === 'case-converter') {
-    create('<select id=\"mode\"><option value=\"upper\">UPPERCASE</option><option value=\"lower\">lowercase</option><option value=\"title\">Title Case</option><option value=\"sentence\">Sentence case</option></select>');
+    create('<select id="mode"><option value="upper">UPPERCASE</option><option value="lower">lowercase</option><option value="title">Title Case</option><option value="sentence">Sentence case</option></select>');
   } else if (toolType === 'password-generator') {
-    create('<div class=\"row\"><input id=\"length\" type=\"number\" min=\"6\" max=\"128\" value=\"16\" /><label><input id=\"symbols\" type=\"checkbox\" checked /> Include symbols</label></div>');
+    create('<div class="row"><input id="length" type="number" min="6" max="128" value="16" /><label><input id="symbols" type="checkbox" checked /> Include symbols</label></div>');
   } else if (toolType === 'qr-code-generator') {
-    create('<img id=\"qr\" alt=\"QR\" style=\"max-width:220px;border:1px solid #ddd;border-radius:10px;padding:8px;background:#fff\" />');
+    create('<img id="qr" alt="QR" style="max-width:220px;border:1px solid #ddd;border-radius:10px;padding:8px;background:#fff" />');
   } else if (toolType === 'timestamp-converter') {
-    create('<input id=\"dt\" type=\"datetime-local\" />');
+    create('<input id="dt" type="datetime-local" />');
   } else if (toolType === 'markdown-preview') {
-    create('<div id=\"preview\" style=\"border:1px solid #ddd;border-radius:10px;padding:12px;background:#fff\"></div>');
+    create('<div id="preview" style="border:1px solid #ddd;border-radius:10px;padding:12px;background:#fff"></div>');
   } else if (toolType === 'image-to-base64') {
-    create('<input id=\"file\" type=\"file\" accept=\"image/*\" />');
-  } else if (toolType === 'random-number-generator') {
-    create('<div class=\"row\"><input id=\"min\" type=\"number\" value=\"1\" /><input id=\"max\" type=\"number\" value=\"100\" /><input id=\"count\" type=\"number\" min=\"1\" max=\"500\" value=\"10\" /></div>');
+    create('<input id="file" type="file" accept="image/*" />');
   } else if (toolType === 'color-picker') {
-    create('<div class=\"row\"><input id=\"color\" type=\"color\" value=\"#1f2937\" /><div id=\"swatch\" style=\"width:64px;height:36px;border:1px solid #ccc;border-radius:8px;background:#1f2937\"></div></div>');
-    var colorNode = byId('color');
-    if (colorNode) {
-      colorNode.addEventListener('input', function () {
-        input.value = colorNode.value;
-        var sw = byId('swatch');
-        if (sw) sw.style.background = colorNode.value;
-      });
-    }
-  } else if (toolType === 'text-diff-checker') {
-    create('<textarea id=\"input2\" placeholder=\"Paste second text block...\"></textarea>');
+    create('<input id="color" type="color" value="#1f2937" />');
   }
 
-  runBtn.addEventListener('click', runTool);
-  if (copyBtn) {
-    copyBtn.addEventListener('click', function () {
-      output.select();
-      document.execCommand('copy');
-    });
+  if (runBtn) runBtn.addEventListener('click', runTool);
+  if (clearBtn) clearBtn.addEventListener('click', function () { input.value = ''; setOutput(''); setStatus(''); });
+  if (copyBtn) copyBtn.addEventListener('click', function () {
+    if (!output.value) return;
+    output.select();
+    document.execCommand('copy');
+    setStatus('Copied to clipboard!', 'status-ok');
+  });
+
+  // Auto-run on paste for certain tools
+  if (toolType === 'json-formatter' || toolType === 'json-validator' || toolType === 'markdown-preview') {
+    input.addEventListener('input', debounce(runTool, 300));
   }
-  if (clearBtn) {
-    clearBtn.addEventListener('click', function () {
-      input.value = '';
-      output.value = '';
-      if (byId('input2')) byId('input2').value = '';
-      setStatus('All processing runs in your browser.', '');
-    });
+
+  function debounce(fn, wait) {
+    var t;
+    return function() {
+      clearTimeout(t);
+      t = setTimeout(fn, wait);
+    };
   }
 })();
