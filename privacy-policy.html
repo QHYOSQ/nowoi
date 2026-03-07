@@ -2,11 +2,23 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Privacy Policy – Free Online Tools</title>
+<title>Privacy Policy –Free Online Tools</title>
 <meta name="description" content="Our privacy policy explains how we handle your data when you use our free online tools." />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" href="Nico.png" type="image/png">
-<link rel="stylesheet" href="./assets/css/style.css">
+<meta name="robots" content="index, follow">
+<meta name="keywords" content="privacy policy, data protection, free online tools, nowoi">
+<meta name="author" content="nowoi.com">
+<meta name="theme-color" content="#000000">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://nowoi.com/privacy-policy.html">
+<meta property="og:title" content="Privacy Policy | nowoi.com">
+<meta property="og:description" content="Our privacy policy explains how we handle your data when you use our free online tools.">
+<meta property="og:image" content="https://nowoi.com/assets/image/Nico.png">
+
+<link rel="canonical" href="https://nowoi.com/privacy-policy.html">
+<link rel="stylesheet" href="./assets/css/style.min.css">
 </head>
 
 <body>
@@ -19,6 +31,7 @@
           <a href="./tools/index.html">Tools</a>
           <a href="./about.html">About</a>
           <a href="./contact.html">Contact</a>
+          <button id="dark-mode-toggle" class="ghost" >Dark Mode</button>
         </nav>
       </div>
     </header>
@@ -65,7 +78,7 @@
     </div>
 
     <footer class="footer">
-      <p>© <span id="year">2026</span> nowoi.com – 100% Free Online Tools</p>
+      <p>© <span id="year">2026</span> nowoi.com –Free Online Tools</p>
       <div class="footer-links">
         <a href="./index.html">Home</a>
         <a href="./tools/index.html">Tools</a>
@@ -77,8 +90,24 @@
     </footer>
   </div>
 
+<script>
+  // Try to get network time from HTTP header, fallback to local time
+  async function updateYear() {
+    try {
+      const response = await fetch(window.location.href, { method: 'HEAD', cache: 'no-store' });
+      const dateHeader = response.headers.get('date');
+      if (dateHeader) {
+        const serverDate = new Date(dateHeader);
+        document.getElementById('year').textContent = serverDate.getFullYear();
+      } else {
+        document.getElementById('year').textContent = new Date().getFullYear();
+      }
+    } catch (e) {
+      document.getElementById('year').textContent = new Date().getFullYear();
+    }
+  }
+  updateYear();
+</script>
 <script src="./assets/js/common.js"></script>
 </body>
-
 </html>
-

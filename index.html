@@ -2,145 +2,223 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Free Online Text, Code & Utility Tools | Fast & Secure</title>
-<meta name="description" content="Free Online Tools for Text, SEO & Web Development. Simple, fast and secure utilities for developers, writers, and content creators. No installation required." />
+<title>Free Online Tools – JSON Formatter, Text Tools, Time Calculator, Unit Converter & More | nowoi</title>
+<meta name="description" content="Free online tools for developers and content creators: JSON formatter, regex tester, text tools, time calculator with world clock, unit converter, age calculator, password generator, UUID generator, CSV converter, and more. No installation required. Works offline.">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="index, follow">
-<meta name="keywords" content="free online tools, developer tools, text tools, json formatter, uuid generator, word counter, password generator">
+<meta name="keywords" content="free online tools, json formatter, json validator, json beautifier, regex tester, regular expression tester, text tools, word counter, character counter, case converter, text analyzer, time calculator, world clock, time zone converter, space time calculator, moon time, mars time, unit converter, length converter, weight converter, temperature converter, age calculator, date calculator, password generator, secure password generator, random password, uuid generator, guid generator, csv converter, csv to json, json to csv, html minifier, css minifier, js minifier, color picker, hex color converter, rgb color converter, percentage calculator, base64 encoder, base64 decoder, url encoder, url decoder, html encoder, html decoder, developer tools, web development tools, seo tools, online utilities, free tools, browser tools, no installation tools">
+<meta name="author" content="nowoi.com">
+<meta name="theme-color" content="#000000">
+
+<!-- Open Graph / Social Media -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://nowoi.com/">
+<meta property="og:title" content="Free Online Tools – JSON Formatter, Text Tools, Time Calculator, Unit Converter & More">
+<meta property="og:description" content="Free online tools for developers and content creators: JSON formatter, regex tester, text tools, time calculator with world clock, unit converter, age calculator, password generator, UUID generator, CSV converter, and more.">
+<meta property="og:image" content="https://nowoi.com/assets/image/Nico.png">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://nowoi.com/">
+<meta property="twitter:title" content="Free Online Tools – JSON Formatter, Text Tools, Time Calculator, Unit Converter & More">
+<meta property="twitter:description" content="Free online tools for developers and content creators: JSON formatter, regex tester, text tools, time calculator with world clock, unit converter, age calculator, password generator, UUID generator, CSV converter, and more.">
+
 <link rel="canonical" href="https://nowoi.com/">
-<link rel="icon" href="Nico.png" type="image/png">
-<link rel="stylesheet" href="./assets/css/style.css">
+<link rel="icon" href="./assets/image/Nico.png" type="image/png">
+
+<!-- Preconnect to external domains -->
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+<!-- Preload critical resources -->
+<link rel="preload" href="./assets/css/style.min.css" as="style">
+<link rel="preload" href="./assets/image/Nico.png" as="image" type="image/png">
+
+<link rel="stylesheet" href="./assets/css/style.min.css">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "nowoi.com - Free Online Tools",
+  "url": "https://nowoi.com/",
+  "description": "Free online tools for developers and content creators: JSON formatter, regex tester, text tools, time calculator with world clock, unit converter, age calculator, password generator, UUID generator, CSV converter, and more.",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://nowoi.com/tools/search={search_term_string}",
+    "query-input": "required name=search_term_string"
+  },
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "featureList": "JSON formatter and validator, Regex tester for regular expressions, Text tools including word counter and character counter, Case converter for text transformation, Time calculator with live analog and digital clock, World time converter for 30+ cities, Space time calculator for Moon and Mars, Unit converter for length, weight, and temperature, Age calculator for date calculations, Password generator with secure random passwords, UUID and GUID generator, CSV converter to/from JSON, HTML/CSS/JS minifier, Color picker with HEX and RGB conversion, Percentage calculator, Base64 encoder and decoder, URL encoder and decoder, HTML encoder and decoder, Developer tools for web development, SEO optimization utilities, No installation required, Works offline in browser, Privacy-focused with local processing"
+}
+</script>
 </head>
 
 <body>
-  <!-- <div class="service-modal">
-    <div class="service-modal-content">
-      <div class="logo">nowoi.com</div>
-      <h2>Service Unavailable</h2>
-      <p>We're currently performing maintenance. Please check back later.</p>
-    </div>
-  </div> -->
+  <a href="#main-content" class="sr-only">Skip to main content</a>
   
   <div class="container">
     <header class="site-header">
       <div class="header-row">
-        <a href="./index.html" class="brand">nowoi.com</a>
-        <nav class="nav">
+        <a href="./index.html" class="brand" aria-label="nowoi.com Home">nowoi.com</a>
+        <nav class="nav" aria-label="Main navigation">
           <a href="./index.html" aria-current="page">Home</a>
           <a href="./tools/index.html">Tools</a>
           <a href="./about.html">About</a>
           <a href="./contact.html">Contact</a>
+          <button id="dark-mode-toggle" class="ghost" >Dark Mode</button>
         </nav>
       </div>
     </header>
 
-    <div class="hero">
-      <h1>Free Online Text, Code & Utility Tools</h1>
-      <p>Fast, Secure and Easy-to-Use Tools — No Installation Required</p>
-      <div class="search-wrap">
-        <input type="text" placeholder="Search tools..." id="tool-search">
-        <button class="search-btn">Search</button>
-      </div>
-    </div>
-
-    <section class="section">
-      <h2>Featured Tools</h2>
-      <div class="grid">
-        <a href="./tools/json-formatter.html" class="card" data-tool-card="JSON Formatter format validate JSON">
-          <h3>JSON Formatter</h3>
-          <p>Format and validate JSON</p>
-        </a>
-        <a href="./tools/uuid-generator.html" class="card" data-tool-card="UUID Generator generate unique IDs">
-          <h3>UUID Generator</h3>
-          <p>Generate unique IDs</p>
-        </a>
-        <a href="./tools/word-counter.html" class="card" data-tool-card="Word Counter count words characters">
-          <h3>Word Counter</h3>
-          <p>Count words and characters</p>
-        </a>
-        <a href="./tools/password-generator.html" class="card" data-tool-card="Password Generator create secure passwords">
-          <h3>Password Generator</h3>
-          <p>Create secure passwords</p>
-        </a>
-        <a href="./tools/url-encoder.html" class="card" data-tool-card="URL Encoder encode decode URLs">
-          <h3>URL Encoder</h3>
-          <p>Encode and decode URLs</p>
-        </a>
-        <a href="./tools/base64-encoder.html" class="card" data-tool-card="Base64 Encoder encode decode base64">
-          <h3>Base64 Encoder</h3>
-          <p>Encode and decode Base64</p>
-        </a>
-      </div>
-    </section>
-
-    <section class="section">
-      <h2>Browse by Category</h2>
-      <div class="grid">
-        <a href="./tools/index.html" class="card" data-tool-card="Developer Tools">
-          <h3>Developer Tools</h3>
-          <p>JSON, UUID, Minifiers, and more</p>
-        </a>
-        <a href="./tools/index.html" class="card" data-tool-card="Text Tools">
-          <h3>Text Tools</h3>
-          <p>Word counter, case converter, and more</p>
-        </a>
-        <a href="./tools/index.html" class="card" data-tool-card="Encoding Tools">
-          <h3>Encoding Tools</h3>
-          <p>URL encoder, Base64, and more</p>
-        </a>
-        <a href="./tools/index.html" class="card" data-tool-card="Generators">
-          <h3>Generators</h3>
-          <p>Password, QR code, and more</p>
-        </a>
-      </div>
-    </section>
-
-    <section class="section">
-      <h2>Why Choose Us</h2>
-      <div class="grid">
-        <div class="card">
-          <h3>100% Free</h3>
-          <p>No hidden fees or limitations</p>
-        </div>
-        <div class="card">
-          <h3>No Registration</h3>
-          <p>Use all tools without signing up</p>
-        </div>
-        <div class="card">
-          <h3>Fast & Secure</h3>
-          <p>Instant processing with local execution</p>
-        </div>
-        <div class="card">
-          <h3>Works in Browser</h3>
-          <p>No installation required</p>
+    <main id="main-content">
+      <div class="hero">
+        <h1>Free Online Tools – JSON Formatter, Text Tools, Time Calculator & More</h1>
+        <p>Fast, free developer tools that run in your browser. No signup or download needed.</p>
+        <div class="search-wrap" role="search" aria-label="Search tools">
+          <input type="text" placeholder="Search tools..." id="tool-search" autocomplete="off" aria-label="Search tools">
+          <button class="search-btn" type="button">Search</button>
+          <div id="search-results" class="search-results" aria-live="polite"></div>
         </div>
       </div>
-    </section>
 
-    <section class="section">
-      <h2>About Our Tools</h2>
-      <div class="content">
-        <p>Online tools have become essential for developers, writers, and content creators in today's digital world. They provide a quick and efficient way to perform various tasks without the need for installing software or dealing with complex setups.</p>
-        <p>At nowoi.com, we offer a comprehensive collection of free online tools designed to make your work easier. Our tools range from web development utilities like JSON formatters and UUID generators to text processing tools like word counters and case converters, as well as SEO optimization utilities.</p>
-        <p>All our tools work directly in your browser, which means no installation is required. Your data is processed locally, ensuring privacy and security. Whether you're a professional web developer, a content creator, or a digital marketer, our tools are designed to help you work more efficiently.</p>
-        <p>With our user-friendly interface and fast processing, you can complete tasks in seconds. Best of all, all our tools are 100% free with no hidden fees or limitations. Explore our collection and discover how our tools can simplify your workflow.</p>
-        <p>We regularly update our tools to ensure they meet the latest standards and requirements. Our goal is to provide a reliable and efficient platform for all your online tool needs, whether you're working on text processing, SEO optimization, or web development tasks.</p>
-      </div>
-    </section>
+      <section class="section" aria-labelledby="featured-tools">
+        <h2 id="featured-tools">Featured Tools</h2>
+        <div class="grid">
+          <a href="./tools/json-formatter.html" class="card" data-tool-card="JSON Formatter format validate JSON">
+            <h3>JSON Formatter</h3>
+            <p>Format and validate JSON</p>
+          </a>
+          <a href="./tools/regex-tester.html" class="card" data-tool-card="Regex Tester test regular expressions">
+            <h3>Regex Tester</h3>
+            <p>Test regular expressions</p>
+          </a>
+          <a href="./tools/json-diff.html" class="card" data-tool-card="JSON Diff compare json">
+            <h3>JSON Diff Tool</h3>
+            <p>Compare JSON files</p>
+          </a>
+          <a href="./tools/csv-converter.html" class="card" data-tool-card="CSV Converter convert csv to json">
+            <h3>CSV Converter</h3>
+            <p>Convert between CSV and JSON</p>
+          </a>
+          <a href="./tools/age-calculator.html" class="card" data-tool-card="Age Calculator calculate age">
+            <h3>Age Calculator</h3>
+            <p>Calculate age in years, months, days</p>
+          </a>
+          <a href="./tools/unit-converter.html" class="card" data-tool-card="Unit Converter convert units">
+            <h3>Unit Converter</h3>
+            <p>Convert between measurement units</p>
+          </a>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="browse-categories">
+        <h2 id="browse-categories">Browse by Category</h2>
+        <div class="grid">
+          <a href="./tools/index.html#developer-tools" class="card" data-tool-card="Developer Tools">
+            <h3>Developer Tools</h3>
+            <p>JSON, Regex, Minifiers, and more</p>
+          </a>
+          <a href="./tools/index.html#text-tools" class="card" data-tool-card="Text Tools">
+            <h3>Text Tools</h3>
+            <p>Word counter, case converter, and more</p>
+          </a>
+          <a href="./tools/index.html#calculation-tools" class="card" data-tool-card="Calculation Tools">
+            <h3>Calculation Tools</h3>
+            <p>Age, Unit, Percentage calculators</p>
+          </a>
+          <a href="./tools/index.html#encoding-tools" class="card" data-tool-card="Encoding Tools">
+            <h3>Encoding Tools</h3>
+            <p>URL encoder, Base64, and more</p>
+          </a>
+          <a href="./tools/index.html#time-tools" class="card" data-tool-card="Time Tools">
+            <h3>Time Tools</h3>
+            <p>Time zone, timestamp, countdown</p>
+          </a>
+          <a href="./tools/index.html#generators" class="card" data-tool-card="Generators">
+            <h3>Generators</h3>
+            <p>Password, UUID, and more</p>
+          </a>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="why-choose">
+        <h2 id="why-choose">Why Choose Us</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Completely Free</h3>
+            <p>No hidden fees or limitations</p>
+          </div>
+          <div class="card">
+            <h3>No Registration</h3>
+            <p>Use all tools without signing up</p>
+          </div>
+          <div class="card">
+            <h3>Fast & Secure</h3>
+            <p>Instant processing with local execution</p>
+          </div>
+          <div class="card">
+            <h3>Works in Browser</h3>
+            <p>No installation required</p>
+          </div>
+          <div class="card">
+            <h3>Responsive Design</h3>
+            <p>Works on all devices</p>
+          </div>
+          <div class="card">
+            <h3>Regular Updates</h3>
+            <p>New tools added frequently</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="about-tools">
+        <h2 id="about-tools">About Our Tools</h2>
+        <div class="content">
+          <p>Our free online tools help developers and content creators work faster. Format JSON, test regex, convert units, calculate time zones, and more—all in your browser.</p>
+          <p>No signup or download required. These tools run locally, so your data stays private.</p>
+        </div>
+      </section>
+    </main>
 
     <footer class="footer">
-      <p>© <span id="year">2026</span> nowoi.com – Smart Online Tools for Creators & Developers</p>
-      <div class="footer-links">
+      <p>&copy; <span id="year">2026</span> nowoi.com – Free Online Tools</p>
+      <nav class="footer-links" aria-label="Footer navigation">
         <a href="./index.html">Home</a>
         <a href="./tools/index.html">Tools</a>
         <a href="./about.html">About</a>
         <a href="./privacy-policy.html">Privacy Policy</a>
         <a href="./terms.html">Terms</a>
         <a href="./contact.html">Contact</a>
-      </div>
+      </nav>
     </footer>
   </div>
 
+<script>
+  // Try to get network time from HTTP header, fallback to local time
+  async function updateYear() {
+    try {
+      const response = await fetch(window.location.href, { method: 'HEAD', cache: 'no-store' });
+      const dateHeader = response.headers.get('date');
+      if (dateHeader) {
+        const serverDate = new Date(dateHeader);
+        document.getElementById('year').textContent = serverDate.getFullYear();
+      } else {
+        document.getElementById('year').textContent = new Date().getFullYear();
+      }
+    } catch (e) {
+      document.getElementById('year').textContent = new Date().getFullYear();
+    }
+  }
+  updateYear();
+</script>
 <script src="./assets/js/common.js"></script>
 </body>
 </html>
