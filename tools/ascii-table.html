@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ASCII Table | Character Codes Reference | nowoi</title>
+<meta name="description" content="Complete ASCII table with decimal, hexadecimal, octal, and binary codes. Free online ASCII reference chart for developers.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow">
+<meta name="keywords" content="ASCII table, ASCII codes, character codes, ASCII chart, ASCII reference, decimal to ASCII, hex to ASCII">
+<meta name="author" content="nowoi.com">
+<meta name="theme-color" content="#000000">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://nowoi.com/tools/ascii-table.html">
+<meta property="og:title" content="ASCII Table | Character Codes Reference">
+<meta property="og:description" content="Complete ASCII table with decimal, hex, octal, and binary codes. Free reference for developers.">
+<meta property="og:image" content="https://nowoi.com/assets/image/Nico.png">
+
+<link rel="canonical" href="https://nowoi.com/tools/ascii-table.html">
+<link rel="icon" href="../assets/image/Nico.png" type="image/png">
+<link rel="stylesheet" href="../assets/css/style.min.css">
+
+<style>
+/* Prevent page horizontal scroll */
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+.ascii-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  font-size: 0.9rem;
+}
+.ascii-table th,
+.ascii-table td {
+  border: 1px solid var(--border);
+  padding: 8px 6px;
+  text-align: center;
+}
+.ascii-table th {
+  background: var(--surface-2);
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.ascii-table tr:hover {
+  background: var(--surface-2);
+}
+.ascii-table .char-col {
+  font-weight: 600;
+  background: var(--surface-2);
+}
+.ascii-table .control-char {
+  color: var(--muted);
+  font-style: italic;
+}
+.ascii-table-container {
+  max-height: 600px;
+  overflow: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  width: 100%;
+}
+.ascii-table-container table {
+  min-width: 700px;
+  width: 100%;
+}
+.ascii-search {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.ascii-search input {
+  flex: 1;
+  min-width: 200px;
+  max-width: 400px;
+}
+.ascii-categories {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.ascii-categories button {
+  margin: 0;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+}
+.ascii-categories button.active {
+  background: var(--surface-2);
+  color: var(--text);
+}
+.ascii-info {
+  background: var(--surface-2);
+  padding: 15px;
+  border-radius: var(--radius);
+  margin-top: 20px;
+}
+.ascii-info h3 {
+  margin-top: 0;
+}
+.highlight-row {
+  background: var(--surface-2) !important;
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+@media (max-width: 768px) {
+  .ascii-table {
+    font-size: 0.8rem;
+  }
+  .ascii-table th,
+  .ascii-table td {
+    padding: 6px 4px;
+  }
+}
+</style>
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "ASCII Table Reference",
+  "url": "https://nowoi.com/tools/ascii-table.html",
+  "description": "Complete ASCII table with decimal, hexadecimal, octal, and binary codes",
+  "applicationCategory": "ReferenceApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+</script>
+</head>
+
+<body>
+  <a href="#main-content" class="sr-only">Skip to main content</a>
+  
+  <div class="container">
+    <header class="site-header">
+      <div class="header-row">
+        <a href="../index.html" class="brand" aria-label="nowoi.com Home">nowoi.com</a>
+        <nav class="nav" aria-label="Main navigation">
+          <a href="../index.html">Home</a>
+          <a href="./index.html">Tools</a>
+          <a href="../about.html">About</a>
+          <a href="../contact.html">Contact</a>
+          <button id="dark-mode-toggle" class="ghost" >Dark Mode</button>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <div class="page-head">
+        <h1>ASCII Table</h1>
+        <p>Complete ASCII character codes reference with decimal, hexadecimal, octal, and binary values. free online ASCII chart for developers.</p>
+      </div>
+
+      <div class="tool-box">
+        <div class="ascii-search">
+          <input type="text" id="search-input" placeholder="Search by character or code..." oninput="filterTable()">
+          <button onclick="clearSearch()" class="ghost">Clear</button>
+        </div>
+        
+        <div class="ascii-categories">
+          <button onclick="showCategory('all')" class="active" id="btn-all">All</button>
+          <button onclick="showCategory('control')" id="btn-control">Control (0-31)</button>
+          <button onclick="showCategory('printable')" id="btn-printable">Printable (32-126)</button>
+          <button onclick="showCategory('extended')" id="btn-extended">Extended (127-255)</button>
+        </div>
+
+        <div class="ascii-table-container">
+          <table class="ascii-table" id="ascii-table">
+            <thead>
+              <tr>
+                <th>Bin<br><small>(Binary)</small></th>
+                <th>Oct<br><small>(Octal)</small></th>
+                <th>Dec<br><small>(Decimal)</small></th>
+                <th>Hex<br><small>(Hexadecimal)</small></th>
+                <th>Abbreviation/Char</th>
+                <th>Description</th>
+                <th>Meaning</th>
+              </tr>
+            </thead>
+            <tbody id="table-body">
+            </tbody>
+          </table>
+        </div>
+
+        <div class="ascii-info">
+          <h3>Quick Reference</h3>
+          <p><strong>Control Characters (0-31):</strong> Non-printable characters used for device control (NUL, TAB, LF, CR, etc.)</p>
+          <p><strong>Printable Characters (32-126):</strong> Standard ASCII including letters, digits, punctuation, and symbols</p>
+          <p><strong>Extended ASCII (127-255):</strong> Additional characters including DEL and extended Latin characters</p>
+        </div>
+      </div>
+
+      <article class="content">
+        <h2>About ASCII</h2>
+        <p>ASCII (American Standard Code for Information Interchange) is a character encoding standard that represents text in computers and communication equipment. It uses 7 bits to represent 128 characters, including control characters and printable characters.</p>
+
+        <h3>Common ASCII Codes</h3>
+        <ul>
+          <li><strong>NUL (0):</strong> Null character</li>
+          <li><strong>TAB (9):</strong> Horizontal tab</li>
+          <li><strong>LF (10):</strong> Line feed</li>
+          <li><strong>CR (13):</strong> Carriage return</li>
+          <li><strong>Space (32):</strong> Space character</li>
+          <li><strong>0-9 (48-57):</strong> Digit characters</li>
+          <li><strong>A-Z (65-90):</strong> Uppercase letters</li>
+          <li><strong>a-z (97-122):</strong> Lowercase letters</li>
+          <li><strong>DEL (127):</strong> Delete character</li>
+        </ul>
+
+        <h3>How to Use</h3>
+        <p>Use the search box to find specific characters. Click category buttons to filter by character type. The table shows decimal, hexadecimal, octal, and binary representations for each character.</p>
+
+        <h3>FAQ</h3>
+        <p><strong>Is it free</strong> Yes, no cost.</p>
+        <p><strong>Is my data safe</strong> Yes, everything stays on your device.</p>
+      </article>
+
+      <aside class="content" aria-labelledby="related-tools">
+        <h2 id="related-tools">Related Tools</h2>
+        <div class="grid">
+          <a href="./number-base-converter.html" class="card" data-tool-card="Number Base Converter convert bases">
+            <h4>Number Base Converter</h4>
+            <p>Convert between binary, decimal, hex</p>
+          </a>
+          <a href="./text-diff-checker.html" class="card" data-tool-card="Text Diff compare text">
+            <h4>Text Diff Checker</h4>
+            <p>Compare text differences</p>
+          </a>
+        </div>
+      </aside>
+    </main>
+
+    <footer class="footer">
+      <p>© <span id="year">2026</span> nowoi.com –Free Online Tools</p>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="../index.html">Home</a>
+        <a href="./index.html">Tools</a>
+        <a href="../about.html">About</a>
+        <a href="../privacy-policy.html">Privacy Policy</a>
+        <a href="../terms.html">Terms</a>
+        <a href="../contact.html">Contact</a>
+      </nav>
+    </footer>
+  </div>
+
+<script src="../assets/js/common.js" defer></script>
+<script>
+// ASCII control character names with abbreviations, descriptions and meanings
+const controlChars = {
+  0: { abbr: 'NUL', name: 'Null', desc: 'Null character', meaning: 'Null character' },
+  1: { abbr: 'SOH', name: 'Start of Heading', desc: 'Header start', meaning: 'Start of heading' },
+  2: { abbr: 'STX', name: 'Start of Text', desc: 'Text start', meaning: 'Start of text' },
+  3: { abbr: 'ETX', name: 'End of Text', desc: 'Text end', meaning: 'End of text' },
+  4: { abbr: 'EOT', name: 'End of Transmission', desc: 'Transmission end', meaning: 'End of transmission' },
+  5: { abbr: 'ENQ', name: 'Enquiry', desc: 'Enquiry', meaning: 'Enquiry' },
+  6: { abbr: 'ACK', name: 'Acknowledge', desc: 'Acknowledge', meaning: 'Acknowledge' },
+  7: { abbr: 'BEL', name: 'Bell', desc: 'Bell alert', meaning: 'Bell' },
+  8: { abbr: 'BS', name: 'Backspace', desc: 'Backspace', meaning: 'Backspace' },
+  9: { abbr: 'HT', name: 'Horizontal Tab', desc: 'Horizontal tab', meaning: 'Horizontal tab' },
+  10: { abbr: 'LF', name: 'Line Feed', desc: 'New line', meaning: 'Line feed / New line' },
+  11: { abbr: 'VT', name: 'Vertical Tab', desc: 'Vertical tab', meaning: 'Vertical tab' },
+  12: { abbr: 'FF', name: 'Form Feed', desc: 'Form feed / New page', meaning: 'Form feed / New page' },
+  13: { abbr: 'CR', name: 'Carriage Return', desc: 'Carriage return', meaning: 'Carriage return' },
+  14: { abbr: 'SO', name: 'Shift Out', desc: 'Shift out', meaning: 'Shift out' },
+  15: { abbr: 'SI', name: 'Shift In', desc: 'Shift in', meaning: 'Shift in' },
+  16: { abbr: 'DLE', name: 'Data Link Escape', desc: 'Data link escape', meaning: 'Data link escape' },
+  17: { abbr: 'DC1', name: 'Device Control 1', desc: 'Device control 1', meaning: 'Device control 1' },
+  18: { abbr: 'DC2', name: 'Device Control 2', desc: 'Device control 2', meaning: 'Device control 2' },
+  19: { abbr: 'DC3', name: 'Device Control 3', desc: 'Device control 3', meaning: 'Device control 3' },
+  20: { abbr: 'DC4', name: 'Device Control 4', desc: 'Device control 4', meaning: 'Device control 4' },
+  21: { abbr: 'NAK', name: 'Negative Acknowledge', desc: 'Negative acknowledge', meaning: 'Negative acknowledge' },
+  22: { abbr: 'SYN', name: 'Synchronous Idle', desc: 'Synchronous idle', meaning: 'Synchronous idle' },
+  23: { abbr: 'ETB', name: 'End of Transmission Block', desc: 'End of block', meaning: 'End of transmission block' },
+  24: { abbr: 'CAN', name: 'Cancel', desc: 'Cancel', meaning: 'Cancel' },
+  25: { abbr: 'EM', name: 'End of Medium', desc: 'End of medium', meaning: 'End of medium' },
+  26: { abbr: 'SUB', name: 'Substitute', desc: 'Substitute', meaning: 'Substitute' },
+  27: { abbr: 'ESC', name: 'Escape', desc: 'Escape', meaning: 'Escape' },
+  28: { abbr: 'FS', name: 'File Separator', desc: 'File separator', meaning: 'File separator' },
+  29: { abbr: 'GS', name: 'Group Separator', desc: 'Group separator', meaning: 'Group separator' },
+  30: { abbr: 'RS', name: 'Record Separator', desc: 'Record separator', meaning: 'Record separator' },
+  31: { abbr: 'US', name: 'Unit Separator', desc: 'Unit separator', meaning: 'Unit separator' },
+  32: { abbr: 'SP', name: 'Space', desc: 'Space character', meaning: 'Space' },
+  127: { abbr: 'DEL', name: 'Delete', desc: 'Delete character', meaning: 'Delete' }
+};
+
+// Meanings for printable characters
+const printableMeanings = {
+  33: 'Exclamation mark', 34: 'Double quote', 35: 'Hash / Number sign', 36: 'Dollar sign', 37: 'Percent sign', 38: 'Ampersand', 39: 'Single quote / Apostrophe',
+  40: 'Open parenthesis', 41: 'Close parenthesis', 42: 'Asterisk', 43: 'Plus sign', 44: 'Comma', 45: 'Hyphen / Minus', 46: 'Period / Dot', 47: 'Slash',
+  48: 'Digit zero', 49: 'Digit one', 50: 'Digit two', 51: 'Digit three', 52: 'Digit four', 53: 'Digit five', 54: 'Digit six', 55: 'Digit seven',
+  56: 'Digit eight', 57: 'Digit nine', 58: 'Colon', 59: 'Semicolon', 60: 'Less than', 61: 'Equals sign', 62: 'Greater than', 63: 'Question mark',
+  64: 'At sign', 65: 'Uppercase A', 66: 'Uppercase B', 67: 'Uppercase C', 68: 'Uppercase D', 69: 'Uppercase E', 70: 'Uppercase F', 71: 'Uppercase G',
+  72: 'Uppercase H', 73: 'Uppercase I', 74: 'Uppercase J', 75: 'Uppercase K', 76: 'Uppercase L', 77: 'Uppercase M', 78: 'Uppercase N', 79: 'Uppercase O',
+  80: 'Uppercase P', 81: 'Uppercase Q', 82: 'Uppercase R', 83: 'Uppercase S', 84: 'Uppercase T', 85: 'Uppercase U', 86: 'Uppercase V', 87: 'Uppercase W',
+  88: 'Uppercase X', 89: 'Uppercase Y', 90: 'Uppercase Z', 91: 'Open bracket', 92: 'Backslash', 93: 'Close bracket', 94: 'Caret', 95: 'Underscore',
+  96: 'Grave accent / Backtick', 97: 'Lowercase a', 98: 'Lowercase b', 99: 'Lowercase c', 100: 'Lowercase d', 101: 'Lowercase e', 102: 'Lowercase f', 103: 'Lowercase g',
+  104: 'Lowercase h', 105: 'Lowercase i', 106: 'Lowercase j', 107: 'Lowercase k', 108: 'Lowercase l', 109: 'Lowercase m', 110: 'Lowercase n', 111: 'Lowercase o',
+  112: 'Lowercase p', 113: 'Lowercase q', 114: 'Lowercase r', 115: 'Lowercase s', 116: 'Lowercase t', 117: 'Lowercase u', 118: 'Lowercase v', 119: 'Lowercase w',
+  120: 'Lowercase x', 121: 'Lowercase y', 122: 'Lowercase z', 123: 'Open brace', 124: 'Vertical bar', 125: 'Close brace', 126: 'Tilde'
+};
+
+let currentCategory = 'all';
+
+function generateASCIITable() {
+  const tbody = document.getElementById('table-body');
+  tbody.innerHTML = '';
+  
+  for (let i = 0; i <= 255; i++) {
+    const row = document.createElement('tr');
+    row.setAttribute('data-dec', i);
+    row.setAttribute('data-category', getCategory(i));
+    
+    const hex = i.toString(16).toUpperCase().padStart(2, '0');
+    const oct = i.toString(8).padStart(3, '0');
+    // Format binary with spaces for readability: 0000 0000
+    const binRaw = i.toString(2).padStart(8, '0');
+    const bin = binRaw.slice(0, 4) + ' ' + binRaw.slice(4);
+    
+    let charDisplay = '';
+    let description = '';
+    let charClass = '';
+    let meaning = '';
+    
+    if (i >= 32 && i <= 126) {
+      // Standard printable ASCII
+      charDisplay = String.fromCharCode(i);
+      description = 'Printable character';
+      meaning = printableMeanings[i] || 'Printable';
+      if (i === 32) {
+        charDisplay = 'SP';
+        description = 'Space character';
+        meaning = 'Space';
+      }
+    } else if (i < 32 || i === 127) {
+      // Control characters
+      charClass = 'control-char';
+      const ctrl = controlChars[i];
+      if (ctrl) {
+        charDisplay = ctrl.abbr + '(' + ctrl.name.toLowerCase() + ')';
+        description = ctrl.name;
+        meaning = ctrl.meaning;
+      } else {
+        charDisplay = 'CTRL';
+        description = 'Control character';
+        meaning = 'Control';
+      }
+    } else {
+      // Extended ASCII (128-255) - Windows-1252 / ISO-8859-1 characters
+      charClass = 'control-char';
+      description = 'Extended ASCII';
+      // Map extended ASCII to proper Unicode for display with meanings
+      const extendedChars = {
+        128: { char: '\u20AC', meaning: 'Euro sign' },
+        129: { char: '-', meaning: 'Unused' },
+        130: { char: '\u201A', meaning: 'Single low-9 quotation mark' },
+        131: { char: '\u0192', meaning: 'Latin small letter f with hook' },
+        132: { char: '\u201E', meaning: 'Double low-9 quotation mark' },
+        133: { char: '\u2026', meaning: 'Horizontal ellipsis' },
+        134: { char: '\u2020', meaning: 'Dagger' },
+        135: { char: '\u2021', meaning: 'Double dagger' },
+        136: { char: '\u02C6', meaning: 'Modifier letter circumflex accent' },
+        137: { char: '\u2030', meaning: 'Per mille sign' },
+        138: { char: '\u0160', meaning: 'Latin capital letter S with caron' },
+        139: { char: '\u2039', meaning: 'Single left-pointing angle quotation mark' },
+        140: { char: '\u0152', meaning: 'Latin capital ligature OE' },
+        141: { char: '-', meaning: 'Unused' },
+        142: { char: '\u017D', meaning: 'Latin capital letter Z with caron' },
+        143: { char: '-', meaning: 'Unused' },
+        144: { char: '-', meaning: 'Unused' },
+        145: { char: '\u2018', meaning: 'Left single quotation mark' },
+        146: { char: '\u2019', meaning: 'Right single quotation mark' },
+        147: { char: '\u201C', meaning: 'Left double quotation mark' },
+        148: { char: '\u201D', meaning: 'Right double quotation mark' },
+        149: { char: '\u2022', meaning: 'Bullet' },
+        150: { char: '\u2013', meaning: 'En dash' },
+        151: { char: '\u2014', meaning: 'Em dash' },
+        152: { char: '\u02DC', meaning: 'Small tilde' },
+        153: { char: '\u2122', meaning: 'Trade mark sign' },
+        154: { char: '\u0161', meaning: 'Latin small letter s with caron' },
+        155: { char: '\u203A', meaning: 'Single right-pointing angle quotation mark' },
+        156: { char: '\u0153', meaning: 'Latin small ligature oe' },
+        157: { char: '-', meaning: 'Unused' },
+        158: { char: '\u017E', meaning: 'Latin small letter z with caron' },
+        159: { char: '\u0178', meaning: 'Latin capital letter Y with diaeresis' },
+        160: { char: ' ', meaning: 'Non-breaking space' },
+        161: { char: '\u00A1', meaning: 'Inverted exclamation mark' },
+        162: { char: '\u00A2', meaning: 'Cent sign' },
+        163: { char: '\u00A3', meaning: 'Pound sign' },
+        164: { char: '\u00A4', meaning: 'Currency sign' },
+        165: { char: '\u00A5', meaning: 'Yen sign' },
+        166: { char: '\u00A6', meaning: 'Broken bar' },
+        167: { char: '\u00A7', meaning: 'Section sign' },
+        168: { char: '\u00A8', meaning: 'Diaeresis' },
+        169: { char: '\u00A9', meaning: 'Copyright sign' },
+        170: { char: '\u00AA', meaning: 'Feminine ordinal indicator' },
+        171: { char: '\u00AB', meaning: 'Left-pointing double angle quotation mark' },
+        172: { char: '\u00AC', meaning: 'Not sign' },
+        173: { char: '\u00AD', meaning: 'Soft hyphen' },
+        174: { char: '\u00AE', meaning: 'Registered sign' },
+        175: { char: '\u00AF', meaning: 'Macron' },
+        176: { char: '\u00B0', meaning: 'Degree sign' },
+        177: { char: '\u00B1', meaning: 'Plus-minus sign' },
+        178: { char: '\u00B2', meaning: 'Superscript two' },
+        179: { char: '\u00B3', meaning: 'Superscript three' },
+        180: { char: '\u00B4', meaning: 'Acute accent' },
+        181: { char: '\u00B5', meaning: 'Micro sign' },
+        182: { char: '\u00B6', meaning: 'Pilcrow sign' },
+        183: { char: '\u00B7', meaning: 'Middle dot' },
+        184: { char: '\u00B8', meaning: 'Cedilla' },
+        185: { char: '\u00B9', meaning: 'Superscript one' },
+        186: { char: '\u00BA', meaning: 'Masculine ordinal indicator' },
+        187: { char: '\u00BB', meaning: 'Right-pointing double angle quotation mark' },
+        188: { char: '\u00BC', meaning: 'Vulgar fraction one quarter' },
+        189: { char: '\u00BD', meaning: 'Vulgar fraction one half' },
+        190: { char: '\u00BE', meaning: 'Vulgar fraction three quarters' },
+        191: { char: '\u00BF', meaning: 'Inverted question mark' },
+        192: { char: '\u00C0', meaning: 'Latin capital letter A with grave' },
+        193: { char: '\u00C1', meaning: 'Latin capital letter A with acute' },
+        194: { char: '\u00C2', meaning: 'Latin capital letter A with circumflex' },
+        195: { char: '\u00C3', meaning: 'Latin capital letter A with tilde' },
+        196: { char: '\u00C4', meaning: 'Latin capital letter A with diaeresis' },
+        197: { char: '\u00C5', meaning: 'Latin capital letter A with ring above' },
+        198: { char: '\u00C6', meaning: 'Latin capital letter AE' },
+        199: { char: '\u00C7', meaning: 'Latin capital letter C with cedilla' },
+        200: { char: '\u00C8', meaning: 'Latin capital letter E with grave' },
+        201: { char: '\u00C9', meaning: 'Latin capital letter E with acute' },
+        202: { char: '\u00CA', meaning: 'Latin capital letter E with circumflex' },
+        203: { char: '\u00CB', meaning: 'Latin capital letter E with diaeresis' },
+        204: { char: '\u00CC', meaning: 'Latin capital letter I with grave' },
+        205: { char: '\u00CD', meaning: 'Latin capital letter I with acute' },
+        206: { char: '\u00CE', meaning: 'Latin capital letter I with circumflex' },
+        207: { char: '\u00CF', meaning: 'Latin capital letter I with diaeresis' },
+        208: { char: '\u00D0', meaning: 'Latin capital letter Eth' },
+        209: { char: '\u00D1', meaning: 'Latin capital letter N with tilde' },
+        210: { char: '\u00D2', meaning: 'Latin capital letter O with grave' },
+        211: { char: '\u00D3', meaning: 'Latin capital letter O with acute' },
+        212: { char: '\u00D4', meaning: 'Latin capital letter O with circumflex' },
+        213: { char: '\u00D5', meaning: 'Latin capital letter O with tilde' },
+        214: { char: '\u00D6', meaning: 'Latin capital letter O with diaeresis' },
+        215: { char: '\u00D7', meaning: 'Multiplication sign' },
+        216: { char: '\u00D8', meaning: 'Latin capital letter O with stroke' },
+        217: { char: '\u00D9', meaning: 'Latin capital letter U with grave' },
+        218: { char: '\u00DA', meaning: 'Latin capital letter U with acute' },
+        219: { char: '\u00DB', meaning: 'Latin capital letter U with circumflex' },
+        220: { char: '\u00DC', meaning: 'Latin capital letter U with diaeresis' },
+        221: { char: '\u00DD', meaning: 'Latin capital letter Y with acute' },
+        222: { char: '\u00DE', meaning: 'Latin capital letter Thorn' },
+        223: { char: '\u00DF', meaning: 'Latin small letter sharp s' },
+        224: { char: '\u00E0', meaning: 'Latin small letter a with grave' },
+        225: { char: '\u00E1', meaning: 'Latin small letter a with acute' },
+        226: { char: '\u00E2', meaning: 'Latin small letter a with circumflex' },
+        227: { char: '\u00E3', meaning: 'Latin small letter a with tilde' },
+        228: { char: '\u00E4', meaning: 'Latin small letter a with diaeresis' },
+        229: { char: '\u00E5', meaning: 'Latin small letter a with ring above' },
+        230: { char: '\u00E6', meaning: 'Latin small letter ae' },
+        231: { char: '\u00E7', meaning: 'Latin small letter c with cedilla' },
+        232: { char: '\u00E8', meaning: 'Latin small letter e with grave' },
+        233: { char: '\u00E9', meaning: 'Latin small letter e with acute' },
+        234: { char: '\u00EA', meaning: 'Latin small letter e with circumflex' },
+        235: { char: '\u00EB', meaning: 'Latin small letter e with diaeresis' },
+        236: { char: '\u00EC', meaning: 'Latin small letter i with grave' },
+        237: { char: '\u00ED', meaning: 'Latin small letter i with acute' },
+        238: { char: '\u00EE', meaning: 'Latin small letter i with circumflex' },
+        239: { char: '\u00EF', meaning: 'Latin small letter i with diaeresis' },
+        240: { char: '\u00F0', meaning: 'Latin small letter eth' },
+        241: { char: '\u00F1', meaning: 'Latin small letter n with tilde' },
+        242: { char: '\u00F2', meaning: 'Latin small letter o with grave' },
+        243: { char: '\u00F3', meaning: 'Latin small letter o with acute' },
+        244: { char: '\u00F4', meaning: 'Latin small letter o with circumflex' },
+        245: { char: '\u00F5', meaning: 'Latin small letter o with tilde' },
+        246: { char: '\u00F6', meaning: 'Latin small letter o with diaeresis' },
+        247: { char: '\u00F7', meaning: 'Division sign' },
+        248: { char: '\u00F8', meaning: 'Latin small letter o with stroke' },
+        249: { char: '\u00F9', meaning: 'Latin small letter u with grave' },
+        250: { char: '\u00FA', meaning: 'Latin small letter u with acute' },
+        251: { char: '\u00FB', meaning: 'Latin small letter u with circumflex' },
+        252: { char: '\u00FC', meaning: 'Latin small letter u with diaeresis' },
+        253: { char: '\u00FD', meaning: 'Latin small letter y with acute' },
+        254: { char: '\u00FE', meaning: 'Latin small letter thorn' },
+        255: { char: '\u00FF', meaning: 'Latin small letter y with diaeresis' }
+      };
+      const ext = extendedChars[i] || { char: '-', meaning: 'Extended ASCII' };
+      charDisplay = ext.char;
+      meaning = ext.meaning;
+    }
+    
+    // Create cells manually to handle special characters properly
+    const cells = [
+      bin, oct, i, `0x${hex}`, null, description, meaning
+    ];
+
+    cells.forEach((content, index) => {
+      const td = document.createElement('td');
+      if (index === 4) {
+        // Character column - use textContent for proper display
+        td.className = `char-col ${charClass}`;
+        td.textContent = charDisplay;
+      } else if (index === 5) {
+        // Description column
+        td.className = charClass;
+        td.textContent = content;
+      } else if (index === 6) {
+        // Meaning column
+        td.className = charClass;
+        td.textContent = content;
+      } else {
+        td.textContent = content;
+      }
+      row.appendChild(td);
+    });
+    
+    tbody.appendChild(row);
+  }
+}
+
+function getCategory(i) {
+  if (i < 32) return 'control';
+  if (i === 127) return 'control';
+  if (i >= 32 && i <= 126) return 'printable';
+  return 'extended';
+}
+
+function showCategory(category) {
+  currentCategory = category;
+  
+  // Update button states
+  document.querySelectorAll('.ascii-categories button').forEach(btn => {
+    btn.classList.remove('active');
+  });
+  document.getElementById(`btn-${category}`).classList.add('active');
+  
+  filterTable();
+}
+
+function filterTable() {
+  const searchInput = document.getElementById('search-input');
+  const rawInput = searchInput.value.trim();
+  const searchTerm = rawInput.toLowerCase();
+  const rows = document.querySelectorAll('#table-body tr');
+
+  // Check if search is a direct decimal, hex, or character match
+  let directMatch = null;
+  let searchDec = null;
+
+  // Single character search - check first to avoid matching hex patterns
+  if (rawInput.length === 1) {
+    searchDec = rawInput.charCodeAt(0);
+  }
+  // Try to parse as decimal number
+  else if (/^\d+$/.test(searchTerm) && parseInt(searchTerm) <= 255) {
+    searchDec = parseInt(searchTerm);
+  }
+  // Try to parse as hex with 0x prefix
+  else if (/^0x[0-9a-f]+$/.test(searchTerm)) {
+    searchDec = parseInt(searchTerm, 16);
+  }
+  // Try to parse as hex without prefix (only digits and a-f, at least 2 chars)
+  else if (/^[0-9a-f]{2}$/.test(searchTerm)) {
+    searchDec = parseInt(searchTerm, 16);
+  }
+  // Try to match by abbreviation (e.g., "NUL", "LF", "CR")
+  else if (searchTerm.length >= 2 && searchTerm.length <= 4) {
+    // Check control character abbreviations
+    for (let i = 0; i <= 127; i++) {
+      if (controlChars[i] && controlChars[i].abbr.toLowerCase() === searchTerm) {
+        searchDec = i;
+        break;
+      }
+    }
+  }
+
+  rows.forEach(row => {
+    const dec = parseInt(row.getAttribute('data-dec'));
+    const category = row.getAttribute('data-category');
+    const text = row.textContent.toLowerCase();
+
+    // Check for direct match by decimal value
+    if (searchDec !== null && dec === searchDec) {
+      directMatch = row;
+    }
+
+    // Check for direct match by character in Abbreviation/Char column
+    const charCell = row.querySelector('td:nth-child(5)');
+    if (charCell && rawInput.length === 1 && !directMatch) {
+      const charText = charCell.textContent.trim();
+      // Match exact character (case-sensitive for letters)
+      if (charText === rawInput) {
+        directMatch = row;
+      }
+    }
+
+    const matchesSearch = text.includes(searchTerm);
+    const matchesCategory = currentCategory === 'all' ||
+                           (currentCategory === 'control' && (category === 'control')) ||
+                           (currentCategory === 'printable' && category === 'printable') ||
+                           (currentCategory === 'extended' && category === 'extended');
+
+    row.style.display = matchesSearch && matchesCategory ? '' : 'none';
+    row.classList.remove('highlight-row');
+  });
+
+  // If direct match found, scroll to it and highlight
+  if (directMatch) {
+    directMatch.scrollIntoView({ behavior: 'auto', block: 'center' });
+    directMatch.classList.add('highlight-row');
+    // Show the row even if category filter would hide it
+    directMatch.style.display = '';
+  }
+}
+
+// Clear search and reset table
+function clearSearch() {
+  document.getElementById('search-input').value = '';
+  currentCategory = 'all';
+  
+  // Reset category buttons
+  document.querySelectorAll('.ascii-categories button').forEach(btn => {
+    btn.classList.remove('active');
+  });
+  document.getElementById('btn-all').classList.add('active');
+  
+  // Show all rows and clear highlights
+  const rows = document.querySelectorAll('#table-body tr');
+  rows.forEach(row => {
+    row.style.display = '';
+    row.classList.remove('highlight-row');
+  });
+}
+
+// Initialize table on page load
+generateASCIITable();
+</script>
+</body>
+</html>

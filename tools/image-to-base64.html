@@ -2,107 +2,126 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Free Online Image to Base64 – Convert Images to Base64</title>
-<meta name="description" content="Use our free online Image to Base64 tool to convert images to Base64 instantly. No installation required. Fast, secure, and easy to use." />
+<title>Image & Base64 Converter</title>
+<meta name="description" content="Convert images to Base64 and Base64 to images. Free online tool. Fast and easy to use." />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="../assets/css/style.css">
+<meta name="robots" content="index, follow">
+<meta name="keywords" content="image to base64, base64 to image, base64 converter, image converter, base64 decoder, base64 encoder">
+<meta name="author" content="nowoi.com">
+<meta name="theme-color" content="#000000">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://nowoi.com/tools/image-to-base64.html">
+<meta property="og:title" content="Image & Base64 Converter">
+<meta property="og:description" content="Convert images to Base64 and Base64 to images. Free tool." />
+<meta property="og:image" content="https://nowoi.com/assets/image/Nico.png">
+
+<link rel="canonical" href="https://nowoi.com/tools/image-to-base64.html">
+<link rel="stylesheet" href="../assets/css/style.min.css">
+
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Image & Base64 Converter",
+  "url": "https://nowoi.com/tools/image-to-base64.html",
+  "description": "Free online image and Base64 converter tool",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "featureList": "Image to Base64 conversion, Base64 to image conversion, File upload support, One-click copy, Download options"
+}
+</script>
 </head>
 
 <body>
-
-<header>
-  <h1>Free Online Image to Base64</h1>
-  <p>Convert images to Base64 instantly. 100% free. No sign-up required.</p>
-</header>
-
-<section class="tool-box">
-  <input type="file" id="image-input" accept="image/*" onchange="convertImageToBase64()">
-  <textarea id="output" placeholder="Base64 encoded image will appear here..."></textarea>
-  <button class="copy-btn" onclick="copyResult()">Copy to Clipboard</button>
-</section>
-
-<section class="content">
-  <h2>How to Use This Image to Base64 Converter</h2>
-  <ol>
-    <li><strong>Select an image</strong>: Click the file input to select an image from your device.</li>
-    <li><strong>View conversion</strong>: The image will be converted to Base64 automatically.</li>
-    <li><strong>Copy the result</strong>: Use the "Copy to Clipboard" button to copy the Base64 string.</li>
-    <li><strong>Reset</strong>: Use the "Clear" button to reset and select a new image.</li>
-  </ol>
-
-  <h2>Step-by-Step Tutorial</h2>
-  <h3>Converting an Image to Base64</h3>
-  <p>1. Click the file input button</p>
-  <p>2. Select an image from your device (JPEG, PNG, GIF, or WebP)</p>
-  <p>3. Wait for the image to be converted to Base64</p>
-  <p>4. The Base64 string will appear in the output box</p>
-  <p>5. Click "Copy to Clipboard" to copy the Base64 string</p>
-  <p>6. Paste the Base64 string into your application or code</p>
-
-  <h3>Using Base64 Images in HTML</h3>
-  <p>1. Convert your image to Base64 using this tool</p>
-  <p>2. Copy the Base64 string</p>
-  <p>3. Use it in your HTML like this:</p>
-  <pre>&lt;img src="data:image/png;base64,YOUR_BASE64_STRING_HERE" alt="Description"&gt;</pre>
-
-  <h2>Why Use This Image to Base64 Converter?</h2>
-  <ul>
-    <li><strong>Converts images to Base64 instantly</strong> with just one click</li>
-    <li><strong>No data stored</strong> - all processing happens locally on your device</li>
-    <li><strong>Free forever</strong> - no hidden fees or limitations</li>
-    <li><strong>Handles common image formats</strong> including JPEG, PNG, GIF, and WebP</li>
-    <li><strong>Fast and reliable</strong> - instant processing with accurate results</li>
-    <li><strong>Easy to use</strong> - simple interface for quick image conversion</li>
-  </ul>
-
-  <h2>Use Cases</h2>
-  <h3>For Developers</h3>
-  <p>Embedding small images directly into HTML/CSS/JS files, reducing HTTP requests and improving page load times.</p>
-
-  <h3>For Web Designers</h3>
-  <p>Creating self-contained HTML files with embedded images, and optimizing small images for web use.</p>
-
-  <h3>For Content Creators</h3>
-  <p>Adding images to emails, chat applications, and other platforms that support Base64-encoded images.</p>
-
-  <h3>For Students</h3>
-  <p>Learning about data encoding and working with different image formats in web development.</p>
-
-  <h2>Image to Base64 Best Practices</h2>
-  <ul>
-    <li>Use Base64 encoding for small images (under 10KB) to reduce HTTP requests</li>
-    <li>For larger images, use traditional image files with proper compression</li>
-    <li>Test the performance impact of Base64 images vs. traditional images</li>
-    <li>Remember that Base64 encoding increases file size by about 33%</li>
-    <li>Use appropriate image formats for different use cases</li>
-  </ul>
-
-  <h2>FAQ</h2>
-  <h3>Is this image to Base64 converter free?</h3>
-  <p>Yes, it is completely free with no hidden fees. You can use it as often as you need without any limitations.</p>
+  <a href="#main-content" class="sr-only">Skip to main content</a>
   
-  <h3>Does this tool store my images?</h3>
-  <p>No. All processing happens locally in your browser. Your images never leave your device.</p>
-  
-  <h3>What image formats are supported?</h3>
-  <p>This tool supports common image formats including JPEG, PNG, GIF, and WebP.</p>
-  
-  <h3>Can I use this tool offline?</h3>
-  <p>Yes. Once the page is loaded, you can use the image to Base64 converter offline as all processing happens in your browser.</p>
-</section>
+  <div class="container">
+    <header class="site-header">
+      <div class="header-row">
+        <a href="../index.html" class="brand" aria-label="nowoi.com Home">nowoi.com</a>
+        <nav class="nav" aria-label="Main navigation">
+          <a href="../index.html">Home</a>
+          <a href="./index.html">Tools</a>
+          <a href="../about.html">About</a>
+          <a href="../contact.html">Contact</a>
+          <button id="dark-mode-toggle" class="ghost" >Dark Mode</button>
+        </nav>
+      </div>
+    </header>
 
-<footer>
-  <p>© 2026 nowoi.com – Free Online Tools</p>
-  <div class="footer-links">
-    <a href="../index.html">Home</a>
-    <a href="../about.html">About</a>
-    <a href="../privacy-policy.html">Privacy Policy</a>
-    <a href="../terms.html">Terms</a>
-    <a href="../contact.html">Contact</a>
+    <main id="main-content">
+      <div class="page-head">
+        <h1>Image & Base64 Converter</h1>
+        <p>Convert images to Base64 and Base64 to images. Free, no signup.</p>
+      </div>
+
+      <div class="tool-box">
+        <h3>Image to Base64</h3>
+        <input type="file" id="image-input" accept="image/*" onchange="convertImageToBase64()" style="display: none;">
+        <button onclick="document.getElementById('image-input').click()" type="button" class="ghost">Select Image File</button>
+        <textarea id="output" placeholder="Base64 encoded image will appear here..."></textarea>
+        <div class="row">
+          <button class="copy-btn" onclick="copyResult()" type="button">Copy to Clipboard</button>
+          <button class="alt" onclick="downloadAsTxt()" type="button">Download as TXT</button>
+        </div>
+      </div>
+
+      <div class="tool-box">
+        <h3>Base64 to Image</h3>
+        <input type="file" id="base64-file-input" accept=".txt" onchange="loadBase64File()" style="display: none;">
+        <button onclick="document.getElementById('base64-file-input').click()" type="button" class="ghost">Upload TXT File</button>
+        <textarea id="base64-input" placeholder="Paste Base64 string here..."></textarea>
+        <div class="row">
+          <button onclick="convertBase64ToImage()" type="button">Convert to Image</button>
+          <button onclick="clearBase64Input()" type="button" class="ghost">Clear</button>
+        </div>
+        <div id="image-preview" class="hidden mt-20">
+          <img id="converted-image" style="max-width: 100%; border: 1px solid var(--border); border-radius: var(--radius);" alt="Converted image">
+        </div>
+        <div class="row mt-20">
+          <button class="alt hidden" onclick="downloadImage()" type="button" id="download-btn">Download Image</button>
+        </div>
+      </div>
+
+      <article class="content">
+        <h2>About This Tool</h2>
+        <p>Convert images to Base64 and back. Supports JPG, PNG, GIF, WebP. Free, no signup. Works in your browser.</p>
+
+        <p>This tool runs in your browser; no data is stored.</p>
+
+        <h3>How to Use</h3>
+        <p>Upload an image to get Base64. Or paste Base64 to get an image. Copy or download the result.</p>
+
+        <h3>FAQ</h3>
+        <p><strong>Is it free</strong> Yes, no cost.</p>
+        <p><strong>Is my data safe</strong> Yes, everything stays on your device.</p>
+      </article>
+    </main>
+
+    <footer class="footer">
+      <p>© <span id="year">2026</span> nowoi.com �Free Online Tools</p>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="../index.html">Home</a>
+        <a href="./index.html">Tools</a>
+        <a href="../about.html">About</a>
+        <a href="../privacy-policy.html">Privacy Policy</a>
+        <a href="../terms.html">Terms</a>
+        <a href="../contact.html">Contact</a>
+      </div>
+    </footer>
   </div>
-</footer>
 
-<script>
+  <script src="../assets/js/common.js"></script>
+  <script>
 function convertImageToBase64() {
   const input = document.getElementById('image-input');
   const output = document.getElementById('output');
@@ -118,12 +137,146 @@ function convertImageToBase64() {
   }
 }
 
+function showCopyFeedback(button) {
+  showToast('Copied to clipboard!', 'success');
+}
+
+function showError(message) {
+  showToast(message, 'error');
+}
+
 function copyResult() {
   const output = document.getElementById('output');
   output.select();
   document.execCommand('copy');
-  alert('Copied to clipboard!');
+  const btn = document.querySelector('.copy-btn');
+  showCopyFeedback(btn);
 }
+
+function downloadAsTxt() {
+  const output = document.getElementById('output');
+  const base64Data = output.value;
+  
+  if (!base64Data) {
+    showError('Please convert an image first before downloading.');
+    return;
+  }
+  
+  const blob = new Blob([base64Data], { type: 'text/plain' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'base64-image.txt';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  showToast('Download started!', 'success');
+}
+
+function loadBase64File() {
+  const fileInput = document.getElementById('base64-file-input');
+  const base64Input = document.getElementById('base64-input');
+  
+  if (fileInput.files && fileInput.files[0]) {
+    const file = fileInput.files[0];
+    const reader = new FileReader();
+    
+    reader.onload = function(e) {
+      base64Input.value = e.target.result.trim();
+      // Automatically convert after loading file
+      convertBase64ToImage();
+    };
+    
+    reader.readAsText(file);
+  }
+}
+
+function convertBase64ToImage() {
+  const base64Input = document.getElementById('base64-input').value.trim();
+  const imagePreview = document.getElementById('image-preview');
+  const convertedImage = document.getElementById('converted-image');
+  const downloadBtn = document.getElementById('download-btn');
+  
+  if (!base64Input) {
+    showError('Please paste a Base64 string first.');
+    return;
+  }
+  
+  // Ensure that base64 string has data URI prefix
+  let imageSrc = base64Input;
+  if (!base64Input.startsWith('data:image')) {
+    // Try to detect image type from string
+    if (base64Input.startsWith('/9j/')) {
+      imageSrc = 'data:image/jpeg;base64,' + base64Input;
+    } else if (base64Input.startsWith('iVBORw0KGgo')) {
+      imageSrc = 'data:image/png;base64,' + base64Input;
+    } else if (base64Input.startsWith('R0lGODlh')) {
+      imageSrc = 'data:image/gif;base64,' + base64Input;
+    } else if (base64Input.startsWith('UklGR')) {
+      imageSrc = 'data:image/webp;base64,' + base64Input;
+    } else {
+      // Default to PNG if can't detect
+      imageSrc = 'data:image/png;base64,' + base64Input;
+    }
+  }
+  
+  convertedImage.src = imageSrc;
+  imagePreview.classList.remove('hidden');
+  downloadBtn.classList.remove('hidden');
+}
+
+function clearBase64Input() {
+  document.getElementById('base64-input').value = '';
+  document.getElementById('image-preview').classList.add('hidden');
+  document.getElementById('converted-image').src = '';
+  document.getElementById('download-btn').classList.add('hidden');
+}
+
+function downloadImage() {
+  const convertedImage = document.getElementById('converted-image');
+  
+  if (!convertedImage.src || convertedImage.src === window.location.href) {
+    showError('Please convert a Base64 string to image first.');
+    return;
+  }
+  
+  const link = document.createElement('a');
+  link.href = convertedImage.src;
+  
+  // Determine file extension from data URI
+  let extension = 'png';
+  if (convertedImage.src.includes('image/jpeg') || convertedImage.src.includes('image/jpg')) {
+    extension = 'jpg';
+  } else if (convertedImage.src.includes('image/gif')) {
+    extension = 'gif';
+  } else if (convertedImage.src.includes('image/webp')) {
+    extension = 'webp';
+  }
+  
+  link.download = 'converted-image.' + extension;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  showToast('Download started!', 'success');
+}
+
+// Set current year - Try to get network time from HTTP header, fallback to local time
+async function updateYear() {
+  try {
+    const response = await fetch(window.location.href, { method: 'HEAD', cache: 'no-store' });
+    const dateHeader = response.headers.get('date');
+    if (dateHeader) {
+      const serverDate = new Date(dateHeader);
+      document.getElementById('year').textContent = serverDate.getFullYear();
+    } else {
+      document.getElementById('year').textContent = new Date().getFullYear();
+    }
+  } catch (e) {
+    document.getElementById('year').textContent = new Date().getFullYear();
+  }
+}
+updateYear();
 </script>
 </body>
 </html>

@@ -2,101 +2,156 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Free Online Slug Generator – Create SEO-Friendly Slugs</title>
-<meta name="description" content="Use our free online Slug Generator to create SEO-friendly slugs instantly. No installation required. Fast, secure, and easy to use." />
+<title>Slug Generator</title>
+<meta name="description" content="Free slug generator. Create SEO-friendly URL slugs from text. Remove special characters. No signup.">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="../assets/css/style.css">
+<meta name="robots" content="index, follow">
+<meta name="keywords" content="slug generator, url slug generator, seo slug generator, text to slug, create slug, url friendly slug, permalink generator">
+<meta name="author" content="nowoi.com">
+<meta name="theme-color" content="#000000">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://nowoi.com/tools/slug-generator.html">
+<meta property="og:title" content="Slug Generator | Free, No Signup">
+<meta property="og:description" content="Free slug generator. Create SEO-friendly URL slugs from text.">
+<meta property="og:image" content="https://nowoi.com/assets/image/Nico.png">
+
+<link rel="canonical" href="https://nowoi.com/tools/slug-generator.html">
+<link rel="stylesheet" href="../assets/css/style.min.css">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Slug Generator",
+  "url": "https://nowoi.com/tools/slug-generator.html",
+  "description": "Free online slug generator tool",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "featureList": "URL slug generation, SEO-friendly slugs, Text to slug conversion, Special character removal"
+}
+</script>
 </head>
 
 <body>
-
-<header>
-  <h1>Free Online Slug Generator</h1>
-  <p>Create SEO-friendly slugs instantly. 100% free. No sign-up required.</p>
-</header>
-
-<section class="tool-box">
-  <textarea id="input" placeholder="Enter title or text here..." oninput="generateSlug()"></textarea>
-  <textarea id="output" placeholder="Generated slug will appear here..."></textarea>
-  <button class="copy-btn" onclick="copySlug()">Copy to Clipboard</button>
-</section>
-
-<section>
-  <h2>How to Use</h2>
-  <ol>
-    <li>Enter a title or text into the input box.</li>
-    <li>The slug will be generated automatically.</li>
-    <li>Copy the generated slug using the "Copy to Clipboard" button.</li>
-  </ol>
-</section>
-
-<section>
-  <h2>Why Use This Tool?</h2>
-  <ul>
-    <li>Works directly in your browser</li>
-    <li>Creates SEO-friendly slugs</li>
-    <li>Removes special characters and spaces</li>
-    <li>Fast and secure</li>
-    <li>Free forever</li>
-  </ul>
-</section>
-
-<section>
-  <h2>FAQ</h2>
-  <h3>Is this slug generator free?</h3>
-  <p>Yes, it is completely free with no hidden fees.</p>
+  <a href="#main-content" class="sr-only">Skip to main content</a>
   
-  <h3>Does this tool store my data?</h3>
-  <p>No. All processing happens locally in your browser.</p>
-  
-  <h3>Is this tool safe to use?</h3>
-  <p>Yes. All processing is done in your browser, so your data never leaves your device.</p>
-</section>
+  <div class="container">
+    <header class="site-header">
+      <div class="header-row">
+        <a href="../index.html" class="brand" aria-label="nowoi.com Home">nowoi.com</a>
+        <nav class="nav" aria-label="Main navigation">
+          <a href="../index.html">Home</a>
+          <a href="./index.html">Tools</a>
+          <a href="../about.html">About</a>
+        </nav>
+        <button id="dark-mode-toggle" class="ghost" >Dark Mode</button>
+      </div>
+    </header>
 
-<footer>
-  <p>© 2026 nowoi.com – Free Online Tools</p>
-  <div class="footer-links">
-    <a href="../index.html">Home</a>
-    <a href="../about.html">About</a>
-    <a href="../privacy-policy.html">Privacy Policy</a>
-    <a href="../terms.html">Terms</a>
-    <a href="../contact.html">Contact</a>
+    <main id="main-content">
+      <div class="page-head">
+        <h1>Slug Generator</h1>
+        <p>Create SEO-friendly URL slugs from text. Free, no signup.</p>
+      </div>
+
+      <div class="tool-box">
+        <div class="row">
+          <input type="file" id="file-input" accept=".txt,.md" style="display: none;" onchange="loadFile(this)">
+          <button onclick="document.getElementById('file-input').click()" type="button" class="ghost">Upload File</button>
+          <button onclick="clearText()" type="button" class="ghost">Clear</button>
+        </div>
+        <textarea id="input" placeholder="Enter title or text here..." oninput="generateSlug()"></textarea>
+        <textarea id="output" placeholder="Generated slug will appear here..." readonly></textarea>
+        <button class="copy-btn" onclick="copySlug()">Copy to Clipboard</button>
+      </div>
+
+      <article class="content">
+        <h2>About This Tool</h2>
+        <p>Create SEO-friendly URL slugs from text. Removes special characters and spaces. Free, no signup. Works in your browser.</p>
+
+        <p>This tool runs in your browser; no data is stored.</p>
+
+        <h3>How to Use</h3>
+        <p>Enter title or text. Slug generates automatically. Copy the result.</p>
+
+        <h3>FAQ</h3>
+        <p><strong>Is it free</strong> Yes, no cost.</p>
+        <p><strong>Is my data safe</strong> Yes, everything stays on your device.</p>
+      </article>
+
+      <aside class="content" aria-labelledby="related-tools">
+        <h2 id="related-tools">Related Tools</h2>
+        <div class="grid">
+          <a href="./case-converter.html" class="card" data-tool-card="Case Converter text case">
+            <h4>Case Converter</h4>
+            <p>Convert text case</p>
+          </a>
+          <a href="./url-encoder.html" class="card" data-tool-card="URL Encoder url encode">
+            <h4>URL Encoder</h4>
+            <p>Encode URLs</p>
+          </a>
+          <a href="./remove-line-breaks.html" class="card" data-tool-card="Remove Line Breaks text format">
+            <h4>Remove Line Breaks</h4>
+            <p>Clean up text formatting</p>
+          </a>
+        </div>
+      </aside>
+    </main>
+
+    <footer class="footer">
+      <p>© <span id="year">2026</span> nowoi.com –Free Online Tools</p>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="../index.html">Home</a>
+        <a href="./index.html">Tools</a>
+        <a href="../about.html">About</a>
+        <a href="../privacy-policy.html">Privacy Policy</a>
+        <a href="../terms.html">Terms</a>
+        <a href="../contact.html">Contact</a>
+      </nav>
+    </footer>
   </div>
-</footer>
 
+<script src="../assets/js/common.js" defer></script>
 <script>
 function generateSlug() {
   const input = document.getElementById('input').value;
-  const output = document.getElementById('output');
-  
-  // Convert to lowercase
-  let slug = input.toLowerCase();
-  
-  // Remove special characters
-  slug = slug.replace(/[àáâãäåæçèéêëìíîïðñòóôõöøùúûüýÿ]/g, function(c) {
-    const replacements = {
-      'à':'a', 'á':'a', 'â':'a', 'ã':'a', 'ä':'a', 'å':'a', 'æ':'ae', 'ç':'c',
-      'è':'e', 'é':'e', 'ê':'e', 'ë':'e', 'ì':'i', 'í':'i', 'î':'i', 'ï':'i',
-      'ð':'d', 'ñ':'n', 'ò':'o', 'ó':'o', 'ô':'o', 'õ':'o', 'ö':'o', 'ø':'o',
-      'ù':'u', 'ú':'u', 'û':'u', 'ü':'u', 'ý':'y', 'ÿ':'y'
-    };
-    return replacements[c] || c;
-  });
-  
-  // Replace spaces and other characters with hyphens
-  slug = slug.replace(/[^a-z0-9]+/g, '-');
-  
-  // Remove leading and trailing hyphens
-  slug = slug.replace(/^-+|-+$/g, '');
-  
-  output.value = slug;
+  const slug = input
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+  document.getElementById('output').value = slug;
+}
+
+function clearText() {
+  document.getElementById('input').value = '';
+  document.getElementById('output').value = '';
 }
 
 function copySlug() {
   const output = document.getElementById('output');
   output.select();
   document.execCommand('copy');
-  alert('Copied to clipboard!');
+  showToast('Copied to clipboard!', 'success');
+}
+
+function loadFile(input) {
+  const file = input.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      document.getElementById('input').value = e.target.result;
+      generateSlug();
+    };
+    reader.readAsText(file);
+  }
 }
 </script>
 </body>

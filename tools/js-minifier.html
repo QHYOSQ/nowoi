@@ -2,68 +2,146 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Free Online JS Minifier – Minify JavaScript</title>
+<title>Online JS Minifier</title>
 <meta name="description" content="Use our free online JS Minifier to minify JavaScript instantly. No installation required. Fast, secure, and easy to use." />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="../assets/css/style.css">
+<meta name="robots" content="index, follow">
+<meta name="keywords" content="js minifier, minify javascript, online js minifier, free js tool, compress javascript">
+<meta name="author" content="nowoi.com">
+<meta name="theme-color" content="#000000">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://nowoi.com/tools/js-minifier.html">
+<meta property="og:title" content="Online JS Minifier">
+<meta property="og:description" content="Use our free online JS Minifier to minify JavaScript instantly. No installation required. Fast, secure, and easy to use." />
+<meta property="og:image" content="https://nowoi.com/assets/image/Nico.png">
+
+<link rel="canonical" href="https://nowoi.com/tools/js-minifier.html">
+<link rel="stylesheet" href="../assets/css/style.min.css">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "JS Minifier",
+  "url": "https://nowoi.com/tools/js-minifier.html",
+  "description": "Free online JS minifier tool",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "featureList": "JavaScript minification, File upload support, One-click copy, Download option"
+}
+</script>
 </head>
 
 <body>
-
-<header>
-  <h1>Free Online JS Minifier</h1>
-  <p>Minify JavaScript instantly. 100% free. No sign-up required.</p>
-</header>
-
-<section class="tool-box">
-  <textarea id="input" placeholder="Enter JavaScript here..." oninput="minifyJS()"></textarea>
-  <textarea id="output" placeholder="Minified JavaScript will appear here..."></textarea>
-  <button class="copy-btn" onclick="copyResult()">Copy to Clipboard</button>
-</section>
-
-<section>
-  <h2>How to Use</h2>
-  <ol>
-    <li>Enter JavaScript into the input box.</li>
-    <li>The JavaScript will be minified automatically.</li>
-    <li>Copy the minified JavaScript using the "Copy to Clipboard" button.</li>
-  </ol>
-</section>
-
-<section>
-  <h2>Why Use This Tool?</h2>
-  <ul>
-    <li>Works directly in your browser</li>
-    <li>Minifies JavaScript to reduce file size</li>
-    <li>Fast and secure</li>
-    <li>Free forever</li>
-  </ul>
-</section>
-
-<section>
-  <h2>FAQ</h2>
-  <h3>Is this JS minifier free?</h3>
-  <p>Yes, it is completely free with no hidden fees.</p>
+  <a href="#main-content" class="sr-only">Skip to main content</a>
   
-  <h3>Does this tool store my data?</h3>
-  <p>No. All processing happens locally in your browser.</p>
-  
-  <h3>Is this tool safe to use?</h3>
-  <p>Yes. All processing is done in your browser, so your data never leaves your device.</p>
-</section>
+  <div class="container">
+    <header class="site-header">
+      <div class="header-row">
+        <a href="../index.html" class="brand" aria-label="nowoi.com Home">nowoi.com</a>
+        <nav class="nav" aria-label="Main navigation">
+          <a href="../index.html">Home</a>
+          <a href="./index.html">Tools</a>
+          <a href="../about.html">About</a>
+          <a href="../contact.html">Contact</a>
+          <button id="dark-mode-toggle" class="ghost" >Dark Mode</button>
+        </nav>
+      </div>
+    </header>
 
-<footer>
-  <p>© 2026 nowoi.com – Free Online Tools</p>
-  <div class="footer-links">
-    <a href="../index.html">Home</a>
-    <a href="../about.html">About</a>
-    <a href="../privacy-policy.html">Privacy Policy</a>
-    <a href="../terms.html">Terms</a>
-    <a href="../contact.html">Contact</a>
+    <main id="main-content">
+      <div class="page-head">
+        <h1>Online JS Minifier</h1>
+        <p>Minify and compress JavaScript code. Free, no signup.</p>
+      </div>
+
+      <div class="tool-box">
+        <div class="row">
+          <input type="file" id="file-input" accept=".js,.txt" style="display: none;" onchange="loadFile(this)">
+          <button onclick="document.getElementById('file-input').click()" type="button" class="ghost">Upload File</button>
+          <button onclick="minifyJS()" type="button">Minify</button>
+          <button onclick="clearJS()" type="button" class="ghost">Clear</button>
+          <button onclick="downloadResult()" type="button" class="alt">Download</button>
+        </div>
+        <textarea id="input" placeholder="Enter JavaScript here..." oninput="minifyJS()"></textarea>
+        <textarea id="output" placeholder="Minified JavaScript will appear here..."></textarea>
+        <button class="copy-btn" onclick="copyResult()">Copy to Clipboard</button>
+      </div>
+
+      <article class="content">
+        <h2>About This Tool</h2>
+        <p>Minify JavaScript to reduce file size. Free, no signup. Works in your browser.</p>
+
+        <p>This tool runs in your browser; no data is stored.</p>
+
+        <h3>How to Use</h3>
+        <p>Paste JavaScript. Minification happens automatically. Copy or download the result.</p>
+
+        <h3>FAQ</h3>
+        <p><strong>Is it free</strong> Yes, no cost.</p>
+        <p><strong>Is my data safe</strong> Yes, everything stays on your device.</p>
+      </article>
+    </main>
+
+    <footer class="footer">
+      <p>© <span id="year">2026</span> nowoi.com –Free Online Tools</p>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="../index.html">Home</a>
+        <a href="./index.html">Tools</a>
+        <a href="../about.html">About</a>
+        <a href="../privacy-policy.html">Privacy Policy</a>
+        <a href="../terms.html">Terms</a>
+        <a href="../contact.html">Contact</a>
+      </div>
+    </footer>
   </div>
-</footer>
 
-<script>
+  <script src="../assets/js/common.js"></script>
+  <script>
+
+// File handling functions
+function loadFile(input) {
+  const file = input.files[0];
+  if (!file) return;
+  
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    document.getElementById('input').value = e.target.result;
+    minifyJS();
+  };
+  reader.readAsText(file);
+}
+
+function clearJS() {
+  document.getElementById('input').value = '';
+  document.getElementById('output').value = '';
+}
+
+function downloadResult() {
+  const output = document.getElementById('output').value;
+  if (!output) {
+    showToast('No data to download', 'error');
+    return;
+  }
+  
+  const blob = new Blob([output], { type: 'application/javascript' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'minified.js';
+  a.click();
+  URL.revokeObjectURL(url);
+  showToast('Download started!', 'success');
+}
+
 function minifyJS() {
   const input = document.getElementById('input').value;
   const output = document.getElementById('output');
@@ -71,7 +149,7 @@ function minifyJS() {
   // Simple JS minification
   let minified = input
     .replace(/\s+/g, ' ') // Replace multiple spaces with single space
-    .replace(/\/\*[\s\S]*?\*\//g, '') // Remove comments
+    .replace(/\/\*[\s\S]*\*\//g, '') // Remove comments
     .replace(/\/\/.*$/gm, '') // Remove single-line comments
     .replace(/\s*:\s*/g, ':') // Remove spaces around colons
     .replace(/\s*;\s*/g, ';') // Remove spaces around semicolons
@@ -100,8 +178,25 @@ function copyResult() {
   const output = document.getElementById('output');
   output.select();
   document.execCommand('copy');
-  alert('Copied to clipboard!');
+  showToast('Copied to clipboard!', 'success');
 }
+
+// Set current year - Try to get network time from HTTP header, fallback to local time
+async function updateYear() {
+  try {
+    const response = await fetch(window.location.href, { method: 'HEAD', cache: 'no-store' });
+    const dateHeader = response.headers.get('date');
+    if (dateHeader) {
+      const serverDate = new Date(dateHeader);
+      document.getElementById('year').textContent = serverDate.getFullYear();
+    } else {
+      document.getElementById('year').textContent = new Date().getFullYear();
+    }
+  } catch (e) {
+    document.getElementById('year').textContent = new Date().getFullYear();
+  }
+}
+updateYear();
 </script>
 </body>
 </html>

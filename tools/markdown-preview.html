@@ -2,123 +2,161 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Free Online Markdown Preview – Preview Markdown</title>
-<meta name="description" content="Use our free online Markdown Preview to preview markdown instantly. No installation required. Fast, secure, and easy to use." />
+<title>Online Markdown Preview</title>
+<meta name="description" content="Preview Markdown in your browser. Free online tool. Fast and easy to use.">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="../assets/css/style.css">
+<meta name="robots" content="index, follow">
+<meta name="keywords" content="markdown preview, markdown to html, online markdown tool, markdown editor">
+<meta name="author" content="nowoi.com">
+<meta name="theme-color" content="#000000">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://nowoi.com/tools/markdown-preview.html">
+<meta property="og:title" content="Online Markdown Preview">
+<meta property="og:description" content="Preview Markdown in your browser. Free tool.">
+<meta property="og:image" content="https://nowoi.com/assets/image/Nico.png">
+
+<link rel="canonical" href="https://nowoi.com/tools/markdown-preview.html">
+<link rel="stylesheet" href="../assets/css/style.min.css">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Markdown Preview",
+  "url": "https://nowoi.com/tools/markdown-preview.html",
+  "description": "Free online markdown preview tool",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "featureList": "Markdown preview, Markdown to HTML conversion, File upload support, One-click copy, HTML download"
+}
+</script>
 </head>
 
 <body>
+  <a href="#main-content" class="sr-only">Skip to main content</a>
+  
+  <div class="container">
+    <header class="site-header">
+      <div class="header-row">
+        <a href="../index.html" class="brand" aria-label="nowoi.com Home">nowoi.com</a>
+        <nav class="nav" aria-label="Main navigation">
+          <a href="../index.html">Home</a>
+          <a href="./index.html">Tools</a>
+          <a href="../about.html">About</a>
+          <a href="../contact.html">Contact</a>
+          <button id="dark-mode-toggle" class="ghost" >Dark Mode</button>
+        </nav>
+      </div>
+    </header>
 
-<header>
-  <h1>Free Online Markdown Preview</h1>
-  <p>Preview markdown instantly. 100% free. No sign-up required.</p>
-</header>
+    <main id="main-content">
+      <div class="page-head">
+        <h1>Online Markdown Preview</h1>
+        <p>Preview Markdown and convert to HTML. Free, no signup.</p>
+      </div>
 
-<section class="tool-box">
-  <textarea id="input" placeholder="Enter markdown here..." oninput="previewMarkdown()" style="height: 300px;"></textarea>
-  <div id="output" placeholder="Markdown preview will appear here..." style="border: 1px solid #ddd; border-radius: 4px; padding: 20px; min-height: 300px; background: white;"></div>
-  <button class="copy-btn" onclick="copyResult()">Copy HTML</button>
-</section>
+      <div class="tool-box">
+        <div class="row">
+          <input type="file" id="file-input" accept=".md,.txt" style="display: none;" onchange="loadFile(this)">
+          <button onclick="document.getElementById('file-input').click()" type="button" class="ghost">Upload File</button>
+          <button onclick="previewMarkdown()" type="button">Preview</button>
+          <button onclick="clearMarkdown()" type="button" class="ghost">Clear</button>
+          <button onclick="downloadResult()" type="button" class="alt">Download HTML</button>
+        </div>
+        <textarea id="input" placeholder="Enter markdown here..." oninput="previewMarkdown()"></textarea>
+        <div id="output" placeholder="Markdown preview will appear here..." class="results-box"></div>
+        <button class="copy-btn" onclick="copyResult()">Copy HTML</button>
+      </div>
 
-<section>
-    <div class="content">
-      <h2>How to Use This Markdown Previewer</h2>
-      <ol>
-        <li><strong>Enter your Markdown</strong>: Type or paste your Markdown text in the input box.</li>
-        <li><strong>View preview</strong>: The preview will update automatically as you type.</li>
-        <li><strong>Copy HTML</strong>: Use the "Copy HTML" button to copy the generated HTML output.</li>
-        <li><strong>Reset</strong>: Use the "Clear" button to reset the input and start over.</li>
-      </ol>
+      <article class="content">
+        <h2>About This Tool</h2>
+        <p>Preview Markdown and convert to HTML in real-time. Free, no signup. Works in your browser.</p>
 
-      <h2>Step-by-Step Tutorial</h2>
-      <h3>Creating and Previewing Markdown</h3>
-      <p>1. Type or paste your Markdown text into the input box</p>
-      <p>2. Watch as the preview updates in real-time</p>
-      <p>3. Use Markdown syntax to format your text (headings, lists, links, etc.)</p>
-      <p>4. When you're satisfied, click "Copy HTML" to get the HTML version</p>
-      <p>5. Paste the HTML into your website or application</p>
+        <p>This tool runs in your browser; no data is stored.</p>
 
-      <h3>Common Markdown Syntax Examples</h3>
-      <p><strong>Headings:</strong></p>
-      <pre># Heading 1
-## Heading 2
-### Heading 3</pre>
-      
-      <p><strong>Text Formatting:</strong></p>
-      <pre>**Bold**
-*Italic*
-~~Strikethrough~~</pre>
-      
-      <p><strong>Lists:</strong></p>
-      <pre>- Bullet list item
-- Another item
+        <h3>How to Use</h3>
+        <p>Type or paste Markdown. Preview updates automatically. Copy HTML if needed.</p>
 
-1. Numbered list item
-2. Another item</pre>
-      
-      <p><strong>Links:</strong></p>
-      <pre>[Link text](https://example.com)</pre>
+        <h3>FAQ</h3>
+        <p><strong>Is it free</strong> Yes, no cost.</p>
+        <p><strong>Is my data safe</strong> Yes, everything stays on your device.</p>
+      </article>
 
-      <h2>Why Use This Markdown Previewer?</h2>
-      <ul>
-        <li><strong>Real-time Markdown preview</strong> - see changes as you type</li>
-        <li><strong>No data stored</strong> - all processing happens locally on your device</li>
-        <li><strong>Free forever</strong> - no hidden fees or limitations</li>
-        <li><strong>Supports common Markdown syntax</strong> including headings, lists, links, bold, italic, and more</li>
-        <li><strong>Fast and responsive</strong> - instant updates as you type</li>
-        <li><strong>Easy to use</strong> - simple interface for quick Markdown editing</li>
-      </ul>
+      <aside class="content" aria-labelledby="related-tools">
+        <h2 id="related-tools">Related Tools</h2>
+        <div class="grid">
+          <a href="./html-minifier.html" class="card" data-tool-card="HTML Minifier minify html">
+            <h4>HTML Minifier</h4>
+            <p>Minify HTML</p>
+          </a>
+          <a href="./text-tools.html" class="card" data-tool-card="Text Tools text utilities">
+            <h4>Text Tools</h4>
+            <p>Text utilities</p>
+          </a>
+        </div>
+      </aside>
+    </main>
 
-      <h2>Use Cases</h2>
-      <h3>For Writers</h3>
-      <p>Creating formatted content for blogs, documentation, and online platforms that support Markdown.</p>
-
-      <h3>For Developers</h3>
-      <p>Writing README files, documentation, and comments in code that use Markdown formatting.</p>
-
-      <h3>For Content Creators</h3>
-      <p>Preparing content for platforms like GitHub, Reddit, and other sites that support Markdown.</p>
-
-      <h3>For Students</h3>
-      <p>Creating formatted notes and documents using Markdown syntax.</p>
-
-      <h2>Markdown Best Practices</h2>
-      <ul>
-        <li>Use consistent heading levels</li>
-        <li>Keep lines under 80 characters for readability</li>
-        <li>Use code blocks for code snippets</li>
-        <li>Add blank lines between paragraphs and sections</li>
-        <li>Use descriptive link text instead of URLs</li>
-      </ul>
-
-      <h2>FAQ</h2>
-      <h3>Is this Markdown previewer free?</h3>
-      <p>Yes, it is completely free with no hidden fees. You can use it as often as you need without any limitations.</p>
-      
-      <h3>Does this tool store my text?</h3>
-      <p>No. All processing happens locally in your browser. Your text never leaves your device.</p>
-      
-      <h3>What Markdown syntax is supported?</h3>
-      <p>This tool supports common Markdown syntax including headings, lists, links, bold, italic, code blocks, and more.</p>
-      
-      <h3>Can I use this tool offline?</h3>
-      <p>Yes. Once the page is loaded, you can use the Markdown previewer offline as all processing happens in your browser.</p>
-    </div>
-</section>
-
-<footer>
-  <p>© 2026 nowoi.com – Free Online Tools</p>
-  <div class="footer-links">
-    <a href="../index.html">Home</a>
-    <a href="../about.html">About</a>
-    <a href="../privacy-policy.html">Privacy Policy</a>
-    <a href="../terms.html">Terms</a>
-    <a href="../contact.html">Contact</a>
+    <footer class="footer">
+      <p>© <span id="year">2026</span> nowoi.com –Free Online Tools</p>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="../index.html">Home</a>
+        <a href="./index.html">Tools</a>
+        <a href="../about.html">About</a>
+        <a href="../privacy-policy.html">Privacy Policy</a>
+        <a href="../terms.html">Terms</a>
+        <a href="../contact.html">Contact</a>
+      </nav>
+    </footer>
   </div>
-</footer>
 
+<script src="../assets/js/common.js" defer></script>
 <script>
+
+// File handling functions
+function loadFile(input) {
+  const file = input.files[0];
+  if (!file) return;
+  
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    document.getElementById('input').value = e.target.result;
+    previewMarkdown();
+  };
+  reader.readAsText(file);
+}
+
+function clearMarkdown() {
+  document.getElementById('input').value = '';
+  document.getElementById('output').innerHTML = '';
+}
+
+function downloadResult() {
+  const output = document.getElementById('output');
+  const html = output.innerHTML;
+  if (!html) {
+    showToast('No data to download', 'error');
+    return;
+  }
+  
+  const blob = new Blob([html], { type: 'text/html' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'preview.html';
+  a.click();
+  URL.revokeObjectURL(url);
+  showToast('Download started!', 'success');
+}
+
 function previewMarkdown() {
   const input = document.getElementById('input').value;
   const output = document.getElementById('output');
@@ -151,8 +189,27 @@ function copyResult() {
   document.execCommand('copy');
   document.body.removeChild(textarea);
   
-  alert('Copied to clipboard!');
+  showToast('Copied to clipboard!', 'success');
 }
+
+window.onload = function() {
+  // Set current year - Try to get network time from HTTP header, fallback to local time
+  async function updateYear() {
+    try {
+      const response = await fetch(window.location.href, { method: 'HEAD', cache: 'no-store' });
+      const dateHeader = response.headers.get('date');
+      if (dateHeader) {
+        const serverDate = new Date(dateHeader);
+        document.getElementById('year').textContent = serverDate.getFullYear();
+      } else {
+        document.getElementById('year').textContent = new Date().getFullYear();
+      }
+    } catch (e) {
+      document.getElementById('year').textContent = new Date().getFullYear();
+    }
+  }
+  updateYear();
+};
 </script>
 </body>
 </html>

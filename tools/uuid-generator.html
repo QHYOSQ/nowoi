@@ -2,13 +2,42 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Free Online UUID Generator – Instant UUID v4</title>
-<meta name="description" content="Use our free online UUID Generator to generate unique IDs instantly. No installation required. Fast, secure, and easy to use." />
+<title>Free Online UUID Generator –Instant UUID v4</title>
+<meta name="description" content="Generate unique UUID v4 identifiers instantly. Free online tool. No signup required." />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="index, follow">
-<meta name="keywords" content="uuid generator, unique id, online uuid generator, free uuid tool, generate uuid online">
+<meta name="keywords" content="uuid generator, unique id, online uuid generator, free uuid tool, generate uuid online, uuid v4, unique identifier">
+<meta name="author" content="nowoi.com">
+<meta name="theme-color" content="#000000">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://nowoi.com/tools/uuid-generator.html">
+<meta property="og:title" content="Free Online UUID Generator –Instant UUID v4">
+<meta property="og:description" content="Generate unique UUID v4 identifiers instantly. Free tool." />
+<meta property="og:image" content="https://nowoi.com/assets/image/Nico.png">
+
 <link rel="canonical" href="https://nowoi.com/tools/uuid-generator.html">
-<link rel="stylesheet" href="../assets/css/style.css">
+<link rel="stylesheet" href="../assets/css/style.min.css">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "UUID Generator",
+  "url": "https://nowoi.com/tools/uuid-generator.html",
+  "description": "Free online UUID generator tool",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "featureList": "UUID v4 generation, One-click copy, Instant generation, Browser-based"
+}
+</script>
 </head>
 
 <body>
@@ -21,13 +50,14 @@
           <a href="./index.html" aria-current="page">Tools</a>
           <a href="../about.html">About</a>
           <a href="../contact.html">Contact</a>
+          <button id="dark-mode-toggle" class="ghost" >Dark Mode</button>
         </nav>
       </div>
     </header>
 
     <div class="page-head">
-      <h1>Free Online UUID Generator</h1>
-      <p>Generate unique UUID v4 identifiers instantly. 100% free. No sign-up required.</p>
+      <h1>UUID Generator</h1>
+      <p>Generate unique UUID v4 identifiers. Free, no signup.</p>
     </div>
 
 
@@ -40,71 +70,18 @@
 
 <section>
   <div class="content">
-    <h2>How to Use This UUID Generator</h2>
-    <ol>
-      <li><strong>Select UUID version</strong>: Choose between Version 1 (time-based) or Version 4 (random-based).</li>
-      <li><strong>Generate UUID</strong>: Click the "Generate UUID" button to create a new UUID.</li>
-      <li><strong>Copy the result</strong>: Use the "Copy to Clipboard" button to copy the generated UUID.</li>
-      <li><strong>Repeat</strong>: Click the button again to generate additional UUIDs as needed.</li>
-    </ol>
+    <h2>About This Tool</h2>
+    <p>Generate UUIDs (Version 1 and Version 4). Free, no signup. Works in your browser.</p>
 
-    <h2>Step-by-Step Tutorial</h2>
-    <h3>Generating a Random UUID (Version 4)</h3>
-    <p>1. Select "Version 4 (Random)" from the dropdown menu</p>
-    <p>2. Click "Generate UUID"</p>
-    <p>3. A random UUID will be generated and displayed</p>
-    <p>4. Copy the UUID using the "Copy to Clipboard" button</p>
-    <p>5. Paste it into your application or code</p>
+    <p>This tool runs in your browser; no data is stored.</p>
 
-    <h3>Generating a Time-Based UUID (Version 1)</h3>
-    <p>1. Select "Version 1 (Time-based)" from the dropdown menu</p>
-    <p>2. Click "Generate UUID"</p>
-    <p>3. A time-based UUID will be generated and displayed</p>
-    <p>4. Copy the UUID using the "Copy to Clipboard" button</p>
-    <p>5. Paste it into your application or code</p>
+    <h3>How to Use</h3>
+    <p>Select a version. Click generate. Copy the UUID.</p>
 
-    <h2>Why Use This UUID Generator?</h2>
-    <ul>
-      <li><strong>Generates valid UUIDs instantly</strong> with just one click</li>
-      <li><strong>No data stored</strong> - all processing happens locally on your device</li>
-      <li><strong>Free forever</strong> - no hidden fees or limitations</li>
-      <li><strong>Supports multiple UUID versions</strong> (Version 1 and Version 4)</li>
-      <li><strong>Easy to use</strong> - simple interface for quick UUID generation</li>
-      <li><strong>Accurate implementation</strong> - generates fully compliant UUIDs</li>
-    </ul>
-
-    <h2>Use Cases</h2>
-    <h3>For Developers</h3>
-    <p>Generating unique identifiers for database records, session IDs, API keys, and distributed systems.</p>
-
-    <h3>For Database Administrators</h3>
-    <p>Creating unique primary keys for database tables, especially in distributed environments.</p>
-
-    <h3>For System Architects</h3>
-    <p>Designing systems that require unique identifiers across multiple services and components.</p>
-
-    <h2>UUID Best Practices</h2>
-    <ul>
-      <li>Use Version 4 UUIDs for most general purposes</li>
-      <li>Use Version 1 UUIDs when you need timestamp information</li>
-      <li>Store UUIDs as strings or in dedicated UUID types</li>
-      <li>Use hyphenated format for readability</li>
-      <li>Consider using UUIDs instead of auto-incrementing IDs for better scalability</li>
-    </ul>
-
-    <h2>FAQ</h2>
-    <h3>Is this UUID generator free?</h3>
-    <p>Yes, it is completely free with no hidden fees. You can use it as often as you need without any limitations.</p>
-    
-    <h3>What is a UUID?</h3>
-    <p>A UUID (Universally Unique Identifier) is a 128-bit number used to uniquely identify information in computer systems. It is commonly used in software development for various purposes like identifying objects, sessions, or records.</p>
-    
-    <h3>Which UUID version should I use?</h3>
-    <p>Version 4 UUIDs are recommended for most use cases as they are randomly generated and have a very low probability of collision. Version 1 UUIDs include timestamp information and may be useful in certain scenarios where temporal ordering is important.</p>
-    
-    <h3>How unique are UUIDs?</h3>
-      <p>The probability of UUID collision is extremely low. For Version 4 UUIDs, the chance of collision is about 1 in 2^122, which is practically negligible for most applications.</p>
-    </div>
+    <h3>FAQ</h3>
+    <p><strong>Is it free</strong> Yes, no cost.</p>
+    <p><strong>Is my data safe</strong> Yes, everything stays on your device.</p>
+  </div>
 
     <div class="content">
       <h2>Related Tools</h2>
@@ -130,8 +107,8 @@
 </section>
 
     <footer class="footer">
-      <p>© <span id="year">2026</span> nowoi.com – 100% Free Online Tools</p>
-      <div class="footer-links">
+      <p>© <span id="year">2026</span> nowoi.com –Free Online Tools</p>
+      <nav class="footer-links" aria-label="Footer navigation">
         <a href="../index.html">Home</a>
         <a href="./index.html">Tools</a>
         <a href="../about.html">About</a>
@@ -142,6 +119,7 @@
     </footer>
   </div>
 
+<script src="../assets/js/common.js"></script>
 <script>
 function generateUUID() {
   const output = document.getElementById('output');
@@ -157,9 +135,8 @@ function copyUUID() {
   const output = document.getElementById('output');
   output.select();
   document.execCommand('copy');
-  showToast('Copied to clipboard!');
+  showToast('Copied to clipboard!', 'success');
 }
 </script>
-<script src="../assets/js/common.js"></script>
 </body>
 </html>

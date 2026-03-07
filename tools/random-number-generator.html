@@ -2,105 +2,167 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Free Online Random Number Generator – Generate Random Numbers</title>
-<meta name="description" content="Use our free online Random Number Generator to generate random numbers instantly. No installation required. Fast, secure, and easy to use." />
+<title>Random Number Generator</title>
+<meta name="description" content="Free random number generator. Generate random numbers in any range. Multiple numbers at once. No signup.">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="../assets/css/style.css">
+<meta name="robots" content="index, follow">
+<meta name="keywords" content="random number generator, random number picker, generate random numbers, random integer generator, random number between, dice roller, lottery number generator">
+<meta name="author" content="nowoi.com">
+<meta name="theme-color" content="#000000">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://nowoi.com/tools/random-number-generator.html">
+<meta property="og:title" content="Random Number Generator | Free, No Signup">
+<meta property="og:description" content="Free random number generator. Generate random numbers in any range.">
+<meta property="og:image" content="https://nowoi.com/assets/image/Nico.png">
+
+<link rel="canonical" href="https://nowoi.com/tools/random-number-generator.html">
+<link rel="stylesheet" href="../assets/css/style.min.css">
+<style>
+.options-row{display:flex;flex-wrap:wrap;gap:15px;margin-bottom:15px;align-items:center}
+.options-row label{display:flex;align-items:center;gap:8px}
+.options-row input[type="number"]{width:80px;padding:8px}
+</style>
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Random Number Generator",
+  "url": "https://nowoi.com/tools/random-number-generator.html",
+  "description": "Free online random number generator tool",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "featureList": "Random number generation, Custom range selection, Multiple number generation, Integer randomizer"
+}
+</script>
 </head>
 
 <body>
-
-<header>
-  <h1>Free Online Random Number Generator</h1>
-  <p>Generate random numbers instantly. 100% free. No sign-up required.</p>
-</header>
-
-<section class="tool-box">
-  <div class="options">
-    <label>
-      Min: 
-      <input type="number" id="min" value="1">
-    </label>
-    <br>
-    <label>
-      Max: 
-      <input type="number" id="max" value="100">
-    </label>
-    <br>
-    <label>
-      Count: 
-      <input type="number" id="count" min="1" max="100" value="1">
-    </label>
-  </div>
-  <button onclick="generateRandomNumbers()">Generate</button>
-  <textarea id="output" placeholder="Generated random numbers will appear here..."></textarea>
-  <button class="copy-btn" onclick="copyResult()">Copy to Clipboard</button>
-</section>
-
-<section>
-  <h2>How to Use</h2>
-  <ol>
-    <li>Set the minimum and maximum values.</li>
-    <li>Set the number of random numbers to generate.</li>
-    <li>Click the "Generate" button.</li>
-    <li>Copy the generated random numbers using the "Copy to Clipboard" button.</li>
-  </ol>
-</section>
-
-<section>
-  <h2>Why Use This Tool?</h2>
-  <ul>
-    <li>Works directly in your browser</li>
-    <li>Generates random numbers within a range</li>
-    <li>Fast and secure</li>
-    <li>Free forever</li>
-  </ul>
-</section>
-
-<section>
-  <h2>FAQ</h2>
-  <h3>Is this random number generator free?</h3>
-  <p>Yes, it is completely free with no hidden fees.</p>
+  <a href="#main-content" class="sr-only">Skip to main content</a>
   
-  <h3>Does this tool store my data?</h3>
-  <p>No. All processing happens locally in your browser.</p>
-  
-  <h3>Is this tool safe to use?</h3>
-  <p>Yes. All processing is done in your browser, so your data never leaves your device.</p>
-</section>
+  <div class="container">
+    <header class="site-header">
+      <div class="header-row">
+        <a href="../index.html" class="brand" aria-label="nowoi.com Home">nowoi.com</a>
+        <nav class="nav" aria-label="Main navigation">
+          <a href="../index.html">Home</a>
+          <a href="./index.html">Tools</a>
+          <a href="../about.html">About</a>
+        </nav>
+        <button id="dark-mode-toggle" class="ghost" >Dark Mode</button>
+      </div>
+    </header>
 
-<footer>
-  <p>© 2026 nowoi.com – Free Online Tools</p>
-  <div class="footer-links">
-    <a href="../index.html">Home</a>
-    <a href="../about.html">About</a>
-    <a href="../privacy-policy.html">Privacy Policy</a>
-    <a href="../terms.html">Terms</a>
-    <a href="../contact.html">Contact</a>
+    <main id="main-content">
+      <div class="page-head">
+        <h1>Random Number Generator</h1>
+        <p>Generate random numbers in any range. Free, no signup.</p>
+      </div>
+
+      <div class="tool-box">
+        <div class="options-row">
+          <label>
+            Min:
+            <input type="number" id="min" value="1">
+          </label>
+          <label>
+            Max:
+            <input type="number" id="max" value="100">
+          </label>
+          <label>
+            Count:
+            <input type="number" id="count" min="1" max="100" value="1">
+          </label>
+        </div>
+        <button onclick="generateRandomNumbers()" class="copy-btn">Generate</button>
+        <textarea id="output" placeholder="Generated random numbers will appear here..." readonly></textarea>
+        <button class="copy-btn" onclick="copyResult()">Copy to Clipboard</button>
+      </div>
+
+      <article class="content">
+        <h2>About This Tool</h2>
+        <p>Generate random numbers within a custom range. Free, no signup. Works in your browser.</p>
+
+        <p>This tool runs in your browser; no data is stored.</p>
+
+        <h3>How to Use</h3>
+        <p>Set min and max values. Choose count. Click generate. Copy the numbers.</p>
+
+        <h3>FAQ</h3>
+        <p><strong>Is it free</strong> Yes, no cost.</p>
+        <p><strong>Is my data safe</strong> Yes, everything stays on your device.</p>
+      </article>
+
+      <aside class="content" aria-labelledby="related-tools">
+        <h2 id="related-tools">Related Tools</h2>
+        <div class="grid">
+          <a href="./uuid-generator.html" class="card" data-tool-card="UUID Generator unique id">
+            <h4>UUID Generator</h4>
+            <p>Generate unique identifiers</p>
+          </a>
+          <a href="./password-generator.html" class="card" data-tool-card="Password Generator secure password">
+            <h4>Password Generator</h4>
+            <p>Create secure passwords</p>
+          </a>
+          <a href="./qr-code-generator.html" class="card" data-tool-card="QR Code Generator qr code">
+            <h4>QR Code Generator</h4>
+            <p>Create QR codes</p>
+          </a>
+        </div>
+      </aside>
+    </main>
+
+    <footer class="footer">
+      <p>© <span id="year">2026</span> nowoi.com �Free Online Tools</p>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="../index.html">Home</a>
+        <a href="./index.html">Tools</a>
+        <a href="../about.html">About</a>
+        <a href="../privacy-policy.html">Privacy Policy</a>
+        <a href="../terms.html">Terms</a>
+        <a href="../contact.html">Contact</a>
+      </nav>
+    </footer>
   </div>
-</footer>
 
+<script src="../assets/js/common.js" defer></script>
 <script>
 function generateRandomNumbers() {
   const min = parseInt(document.getElementById('min').value);
   const max = parseInt(document.getElementById('max').value);
   const count = parseInt(document.getElementById('count').value);
-  const output = document.getElementById('output');
   
-  let numbers = [];
-  for (let i = 0; i < count; i++) {
-    const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
-    numbers.push(randomNumber);
+  if (isNaN(min) || isNaN(max) || isNaN(count)) {
+    showToast('Please enter valid numbers', 'error');
+    return;
   }
   
-  output.value = numbers.join('\n');
+  if (min > max) {
+    showToast('Min must be less than or equal to Max', 'error');
+    return;
+  }
+  
+  const numbers = [];
+  for (let i = 0; i < count; i++) {
+    numbers.push(Math.floor(Math.random() * (max - min + 1)) + min);
+  }
+  
+  document.getElementById('output').value = numbers.join('\n');
 }
 
 function copyResult() {
   const output = document.getElementById('output');
   output.select();
   document.execCommand('copy');
-  alert('Copied to clipboard!');
+  showToast('Copied to clipboard!', 'success');
 }
 </script>
 </body>

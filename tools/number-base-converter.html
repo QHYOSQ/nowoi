@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Number Base Converter</title>
+<meta name="description" content="Free number base converter. Convert binary, decimal, hex, octal. Base calculator with arithmetic and bitwise operations. No signup.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow">
+<meta name="keywords" content="number base converter, binary to decimal, decimal to hex, hex to binary, octal converter, base calculator, binary calculator, hex calculator, radix converter, numeral system converter, base 2 to base 10, binary addition, hexadecimal addition, bitwise calculator, AND OR NOT calculator">
+<meta name="author" content="nowoi.com">
+<meta name="theme-color" content="#000000">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://nowoi.com/tools/number-base-converter.html">
+<meta property="og:title" content="Number Base Converter | Free, No Signup">
+<meta property="og:description" content="Free number base converter and calculator. Convert binary, decimal, hex. Perform arithmetic and bitwise operations.">
+<meta property="og:image" content="https://nowoi.com/assets/image/Nico.png">
+
+<link rel="canonical" href="https://nowoi.com/tools/number-base-converter.html">
+<link rel="stylesheet" href="../assets/css/style.min.css">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Number Base Converter and Calculator",
+  "url": "https://nowoi.com/tools/number-base-converter.html",
+  "description": "Free online number base converter and calculator. Convert between binary, decimal, hexadecimal, octal. Perform arithmetic and bitwise operations.",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "featureList": "Number base conversion, Binary to decimal conversion, Decimal to hex conversion, Base calculator, Bitwise operations, AND OR NOT calculator"
+}
+</script>
+
+<style>
+  .converter-row {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 15px;
+    align-items: end;
+    margin-bottom: 20px;
+  }
+  
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .input-group label {
+    font-weight: 500;
+    color: var(--text);
+  }
+  
+  .input-group input[type="number"] {
+    width: 80px;
+    padding: 8px 12px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--bg);
+    color: var(--text);
+    font-size: 0.95rem;
+  }
+  
+  .input-group input[type="text"] {
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--bg);
+    color: var(--text);
+    font-size: 1rem;
+    font-family: monospace;
+  }
+  
+  .swap-btn {
+    padding: 10px 15px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: var(--text);
+    transition: all 0.2s;
+  }
+  
+  .swap-btn:hover {
+    background: var(--border);
+    color: var(--text);
+  }
+  
+  .base-presets {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+  }
+  
+  .base-preset {
+    padding: 6px 12px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-size: 0.85rem;
+    color: var(--text);
+    transition: all 0.2s;
+  }
+  
+  .base-preset:hover {
+    background: var(--border);
+    color: var(--text);
+  }
+  
+  .base-preset.active {
+    background: var(--brand) !important;
+    color: var(--bg) !important;
+    font-weight: 600 !important;
+    box-shadow: 0 0 0 2px var(--brand), 0 0 0 4px var(--bg);
+    transform: translateY(-1px);
+  }
+  
+  .dark-mode .base-preset.active {
+    background: #000000 !important;
+    color: #ffffff !important;
+    box-shadow: 0 0 0 2px #000000, 0 0 0 4px var(--bg);
+  }
+  
+  .calculator-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  
+  .calc-number-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 120px;
+  }
+  
+  .calc-number-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  
+  .calc-number-header label {
+    font-size: 0.8rem;
+    color: var(--muted);
+    font-weight: 500;
+  }
+  
+  .base-input-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .base-label {
+    font-size: 0.8rem;
+    color: var(--muted);
+    white-space: nowrap;
+    font-weight: 500;
+  }
+  
+  .calc-number-group input[type="number"] {
+    width: 60px;
+    padding: 6px 8px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-size: 0.9rem;
+    text-align: center;
+    background: var(--input-bg);
+  }
+  
+  .calc-number-group input[type="number"]:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  }
+  
+  .calc-number-group input[type="text"] {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--bg);
+    color: var(--text);
+    font-size: 1rem;
+    font-family: monospace;
+  }
+  
+  .calc-number-group input[type="number"] {
+    width: 50px;
+    padding: 4px 6px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--bg);
+    color: var(--text);
+    font-size: 0.85rem;
+    text-align: center;
+  }
+  
+  .calc-number-group input[type="text"].input-error {
+    border-color: #dc2626;
+    background-color: #fef2f2;
+  }
+  
+  .calc-operator select {
+    padding: 8px 12px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--bg);
+    color: var(--text);
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
+  .calc-equals {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--muted);
+    padding-bottom: 8px;
+  }
+  
+  @media (max-width: 600px) {
+    .calculator-row {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .calc-equals {
+      text-align: center;
+      padding: 5px 0;
+    }
+  }
+  
+  .base-ref-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+    gap: 8px;
+  }
+  
+  .base-ref-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 8px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    transition: all 0.2s;
+  }
+  
+  .base-ref-item:hover {
+    background: var(--bg);
+    border-color: var(--brand);
+    transform: translateY(-2px);
+  }
+  
+  .base-ref-char {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--brand);
+    font-family: monospace;
+  }
+  
+  .base-ref-val {
+    font-size: 0.8rem;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+  
+  .result-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px;
+    margin-top: 15px;
+  }
+  
+  .result-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  
+  .result-item:last-child {
+    border-bottom: none;
+  }
+  
+  .result-label {
+    font-weight: 500;
+    color: var(--muted);
+  }
+  
+  .result-value {
+    font-family: monospace;
+    font-size: 1.1rem;
+    word-break: break-all;
+    text-align: right;
+    flex: 1;
+    margin-left: 15px;
+  }
+  
+  .copy-small {
+    padding: 4px 10px;
+    font-size: 0.8rem;
+    margin-left: 10px;
+  }
+  
+  @media (max-width: 600px) {
+    .converter-row {
+      grid-template-columns: 1fr;
+      gap: 15px;
+    }
+    
+    .swap-btn {
+      width: 100%;
+      transform: rotate(90deg);
+    }
+  }
+</style>
+</head>
+
+<body>
+  <a href="#main-content" class="sr-only">Skip to main content</a>
+  
+  <div class="container">
+    <header class="site-header">
+      <div class="header-row">
+        <a href="../index.html" class="brand" aria-label="nowoi.com Home">nowoi.com</a>
+        <nav class="nav" aria-label="Main navigation">
+          <a href="../index.html">Home</a>
+          <a href="./index.html">Tools</a>
+          <a href="../about.html">About</a>
+          <a href="../contact.html">Contact</a>
+          <button id="dark-mode-toggle" class="ghost" >Dark Mode</button>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <div class="page-head">
+        <h1>Number Base Converter</h1>
+        <p>Convert numbers between binary, decimal, hex, and any base (2-36). Free, no signup.</p>
+      </div>
+
+      <div class="tool-box">
+        <div class="converter-row">
+          <div class="input-group">
+            <label for="from-base">From Base (2-36)</label>
+            <input type="number" id="from-base" min="2" max="36" value="10" onchange="convert()">
+            <div class="base-presets" id="from-presets">
+              <button class="base-preset" onclick="setFromBase(2)">Binary (2)</button>
+              <button class="base-preset" onclick="setFromBase(8)">Octal (8)</button>
+              <button class="base-preset active" onclick="setFromBase(10)">Decimal (10)</button>
+              <button class="base-preset" onclick="setFromBase(16)">Hex (16)</button>
+            </div>
+          </div>
+          
+          <button class="swap-btn" onclick="swapBases()" title="Swap bases">�button>
+          
+          <div class="input-group">
+            <label for="to-base">To Base (2-36)</label>
+            <input type="number" id="to-base" min="2" max="36" value="16" onchange="convert()">
+            <div class="base-presets" id="to-presets">
+              <button class="base-preset" onclick="setToBase(2)">Binary (2)</button>
+              <button class="base-preset" onclick="setToBase(8)">Octal (8)</button>
+              <button class="base-preset" onclick="setToBase(10)">Decimal (10)</button>
+              <button class="base-preset active" onclick="setToBase(16)">Hex (16)</button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="input-group">
+          <label for="input-number">Enter Number</label>
+          <input type="text" id="input-number" placeholder="Enter number to convert..." oninput="convert()">
+        </div>
+        
+        <div class="row mt-20">
+          <button onclick="clearAll()" type="button" class="ghost">Clear</button>
+          <button onclick="copyResult()" type="button" class="copy-btn">Copy Result</button>
+        </div>
+        
+        <div class="result-box hidden" id="result-box">
+          <div class="result-item">
+            <span class="result-label">Original (<span id="result-from-base"></span>)</span>
+            <span class="result-value" id="result-original"></span>
+          </div>
+          <div class="result-item">
+            <span class="result-label">Converted (<span id="result-to-base"></span>)</span>
+            <span class="result-value" id="result-converted"></span>
+            <button class="copy-small" onclick="copyConverted()">Copy</button>
+          </div>
+          <div class="result-item">
+            <span class="result-label">Decimal (10)</span>
+            <span class="result-value" id="result-decimal"></span>
+            <button class="copy-small" onclick="copyDecimal()">Copy</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="tool-box" >
+        <h3 >Base Calculator</h3>
+        <div class="calculator-row">
+          <div class="calc-number-group">
+            <div class="calc-number-header">
+              <label>Number 1</label>
+              <div class="base-input-group">
+                <input type="number" id="calc-base1" min="2" max="36" value="2" placeholder="Base" onchange="updatePlaceholder1(); calculate()">
+                <span class="base-label">Base</span>
+              </div>
+            </div>
+            <input type="text" id="calc-num1" placeholder="Max: 1" oninput="calculate()">
+          </div>
+          <div class="calc-operator">
+            <select id="calc-op" onchange="calculate()">
+              <option value="+">+</option>
+              <option value="-">�option>
+              <option value="*">×</option>
+              <option value="/">÷</option>
+              <option value="&">AND</option>
+              <option value="|">OR</option>
+              <option value="~">NOT</option>
+            </select>
+          </div>
+          <div class="calc-number-group">
+            <div class="calc-number-header">
+              <label>Number 2</label>
+              <div class="base-input-group">
+                <input type="number" id="calc-base2" min="2" max="36" value="10" placeholder="Base" onchange="updatePlaceholder2(); calculate()">
+                <span class="base-label">Base</span>
+              </div>
+            </div>
+            <input type="text" id="calc-num2" placeholder="Max: 9" oninput="calculate()">
+          </div>
+          <div class="calc-equals">=</div>
+          <div class="calc-number-group">
+            <div class="calc-number-header">
+              <label>Result</label>
+              <div class="base-input-group">
+                <input type="number" id="calc-result-base" min="2" max="36" value="16" placeholder="Base" onchange="calculate()">
+                <span class="base-label">Base</span>
+              </div>
+            </div>
+            <input type="text" id="calc-result" readonly placeholder="Result">
+          </div>
+        </div>
+        <div class="row" class="mt-20">
+          <button onclick="clearCalculator()" type="button" class="ghost">Clear</button>
+        </div>
+      </div>
+
+      <div class="tool-box" >
+        <h3 >Base Reference Table</h3>
+        <div class="base-ref-grid">
+          <div class="base-ref-item">
+            <span class="base-ref-char">0-9</span>
+            <span class="base-ref-val">0-9</span>
+          </div>
+          <div class="base-ref-item">
+            <span class="base-ref-char">A</span>
+            <span class="base-ref-val">10</span>
+          </div>
+          <div class="base-ref-item">
+            <span class="base-ref-char">B</span>
+            <span class="base-ref-val">11</span>
+          </div>
+          <div class="base-ref-item">
+            <span class="base-ref-char">C</span>
+            <span class="base-ref-val">12</span>
+          </div>
+          <div class="base-ref-item">
+            <span class="base-ref-char">D</span>
+            <span class="base-ref-val">13</span>
+          </div>
+          <div class="base-ref-item">
+            <span class="base-ref-char">E</span>
+            <span class="base-ref-val">14</span>
+          </div>
+          <div class="base-ref-item">
+            <span class="base-ref-char">F</span>
+            <span class="base-ref-val">15</span>
+          </div>
+          <div class="base-ref-item">
+            <span class="base-ref-char">G</span>
+            <span class="base-ref-val">16</span>
+          </div>
+          <div class="base-ref-item">
+            <span class="base-ref-char">H</span>
+            <span class="base-ref-val">17</span>
+          </div>
+          <div class="base-ref-item">
+            <span class="base-ref-char">I</span>
+            <span class="base-ref-val">18</span>
+          </div>
+          <div class="base-ref-item">
+            <span class="base-ref-char">J</span>
+            <span class="base-ref-val">19</span>
+          </div>
+          <div class="base-ref-item">
+            <span class="base-ref-char">K</span>
+            <span class="base-ref-val">20</span>
+          </div>
+          <div class="base-ref-item">
+            <span class="base-ref-char">L</span>
+            <span class="base-ref-val">21</span>
+          </div>
+          <div class="base-ref-item">
+            <span class="base-ref-char">M</span>
+            <span class="base-ref-val">22</span>
+          </div>
+          <div class="base-ref-item">
+            <span class="base-ref-char">N</span>
+            <span class="base-ref-val">23</span>
+          </div>
+          <div class="base-ref-item">
+            <span class="base-ref-char">O</span>
+            <span class="base-ref-val">24</span>
+          </div>
+          <div class="base-ref-item">
+            <span class="base-ref-char">P</span>
+            <span class="base-ref-val">25</span>
+          </div>
+          <div class="base-ref-item">
+            <span class="base-ref-char">Q</span>
+            <span class="base-ref-val">26</span>
+          </div>
+          <div class="base-ref-item">
+            <span class="base-ref-char">R</span>
+            <span class="base-ref-val">27</span>
+          </div>
+          <div class="base-ref-item">
+            <span class="base-ref-char">S</span>
+            <span class="base-ref-val">28</span>
+          </div>
+          <div class="base-ref-item">
+            <span class="base-ref-char">T</span>
+            <span class="base-ref-val">29</span>
+          </div>
+          <div class="base-ref-item">
+            <span class="base-ref-char">U</span>
+            <span class="base-ref-val">30</span>
+          </div>
+          <div class="base-ref-item">
+            <span class="base-ref-char">V</span>
+            <span class="base-ref-val">31</span>
+          </div>
+          <div class="base-ref-item">
+            <span class="base-ref-char">W</span>
+            <span class="base-ref-val">32</span>
+          </div>
+          <div class="base-ref-item">
+            <span class="base-ref-char">X</span>
+            <span class="base-ref-val">33</span>
+          </div>
+          <div class="base-ref-item">
+            <span class="base-ref-char">Y</span>
+            <span class="base-ref-val">34</span>
+          </div>
+          <div class="base-ref-item">
+            <span class="base-ref-char">Z</span>
+            <span class="base-ref-val">35</span>
+          </div>
+        </div>
+        <p class="note">Example: In base 16 (hex), A=10, B=11, C=12, D=13, E=14, F=15</p>
+      </div>
+
+      <article class="content">
+        <h2>About This Tool</h2>
+        <p>Convert numbers between any bases (2-36). Supports binary, octal, decimal, and hexadecimal conversions. Includes a base calculator for arithmetic (+, �×, ÷) and bitwise operations (AND, OR, NOT). Free, no signup.</p>
+
+        <p>This tool runs in your browser; no data is stored.</p>
+
+        <h3>How to Use</h3>
+        <p><strong>Converter:</strong> Select source and target bases. Enter number. See converted result. Copy if needed.</p>
+        <p><strong>Calculator:</strong> Enter two numbers with their bases. Select operation. Choose result base. See calculated result.</p>
+
+        <h3>FAQ</h3>
+        <p><strong>Is it free</strong> Yes, no cost.</p>
+        <p><strong>Is my data safe</strong> Yes, everything stays on your device.</p>
+        <p><strong>What bases are supported</strong> Bases 2 through 36.</p>
+        <p><strong>Can I do calculations</strong> Yes, use the Base Calculator for arithmetic and bitwise operations.</p>
+      </article>
+
+      <aside class="content" aria-labelledby="related-tools">
+        <h2 id="related-tools">Related Tools</h2>
+        <div class="grid">
+          <a href="./base64-encoder.html" class="card" data-tool-card="Base64 Encoder encode decode">
+            <h4>Base64 Encoder/Decoder</h4>
+            <p>Encode and decode Base64</p>
+          </a>
+          <a href="./binary-converter.html" class="card" data-tool-card="Binary Converter binary text">
+            <h4>Binary Converter</h4>
+            <p>Convert text to binary</p>
+          </a>
+          <a href="./hex-converter.html" class="card" data-tool-card="Hex Converter hexadecimal">
+            <h4>Hex Converter</h4>
+            <p>Convert text to hexadecimal</p>
+          </a>
+        </div>
+      </aside>
+    </main>
+
+    <footer class="footer">
+      <p>© <span id="year">2026</span> nowoi.com –Free Online Tools</p>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="../index.html">Home</a>
+        <a href="./index.html">Tools</a>
+        <a href="../about.html">About</a>
+        <a href="../privacy-policy.html">Privacy Policy</a>
+        <a href="../terms.html">Terms</a>
+        <a href="../contact.html">Contact</a>
+      </nav>
+    </footer>
+  </div>
+
+<script src="../assets/js/common.js" defer></script>
+<script>
+function showError(message) {
+  showToast(message, 'error');
+}
+
+function convert() {
+  const inputNumber = document.getElementById('input-number').value.trim().toUpperCase();
+  const fromBase = parseInt(document.getElementById('from-base').value);
+  const toBase = parseInt(document.getElementById('to-base').value);
+  
+  // Clear existing toasts
+  document.querySelectorAll('.toast').forEach(toast => toast.remove());
+  
+  if (!inputNumber || isNaN(fromBase) || isNaN(toBase)) {
+    document.getElementById('result-box').classList.add('hidden');
+    return;
+  }
+
+  // Validate base range
+  if (fromBase < 2 || fromBase > 36 || toBase < 2 || toBase > 36) {
+    document.getElementById('result-box').classList.add('hidden');
+    return;
+  }
+
+  try {
+    // Validate input number format for the selected base
+    const validChars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'.substring(0, fromBase);
+    const hasInvalidChars = [...inputNumber].some(char => !validChars.includes(char));
+
+    if (hasInvalidChars) {
+      document.getElementById('result-box').classList.add('hidden');
+      showError(`Invalid characters for base ${fromBase}. Please use only: ${validChars}`);
+      return;
+    }
+
+    // Convert from source base to decimal
+    const decimalValue = parseInt(inputNumber, fromBase);
+
+    if (isNaN(decimalValue)) {
+      document.getElementById('result-box').classList.add('hidden');
+      showError('Invalid number format for the selected base.');
+      return;
+    }
+
+    // Convert from decimal to target base
+    const convertedValue = decimalValue.toString(toBase).toUpperCase();
+    const decimalString = decimalValue.toString(10);
+
+    // Display results
+    document.getElementById('result-original').textContent = inputNumber;
+    document.getElementById('result-converted').textContent = convertedValue;
+    document.getElementById('result-decimal').textContent = decimalString;
+    document.getElementById('result-from-base').textContent = fromBase;
+    document.getElementById('result-to-base').textContent = toBase;
+    document.getElementById('result-box').classList.remove('hidden');
+
+  } catch (e) {
+    document.getElementById('result-box').classList.add('hidden');
+    showError('Error during conversion. Please check your input.');
+  }
+}
+
+function setFromBase(base) {
+  document.getElementById('from-base').value = base;
+  updatePresetButtons('from-presets', base);
+  convert();
+}
+
+function setToBase(base) {
+  document.getElementById('to-base').value = base;
+  updatePresetButtons('to-presets', base);
+  convert();
+}
+
+function updatePresetButtons(containerId, activeBase) {
+  const container = document.getElementById(containerId);
+  const buttons = container.querySelectorAll('.base-preset');
+  
+  buttons.forEach(btn => {
+    btn.classList.remove('active');
+    if (btn.textContent.includes(`(${activeBase})`)) {
+      btn.classList.add('active');
+    }
+  });
+}
+
+function swapBases() {
+  const fromBase = document.getElementById('from-base').value;
+  const toBase = document.getElementById('to-base').value;
+  
+  document.getElementById('from-base').value = toBase;
+  document.getElementById('to-base').value = fromBase;
+  
+  updatePresetButtons('from-presets', toBase);
+  updatePresetButtons('to-presets', fromBase);
+  
+  // Also swap the input value if there's a result
+  const convertedValue = document.getElementById('result-converted').textContent;
+  if (convertedValue && !document.getElementById('result-box').classList.contains('hidden')) {
+    document.getElementById('input-number').value = convertedValue;
+  }
+  
+  convert();
+}
+
+function clearAll() {
+  document.getElementById('input-number').value = '';
+  document.getElementById('result-box').classList.add('hidden');
+}
+
+function calculate() {
+  const num1 = document.getElementById('calc-num1').value.trim().toUpperCase();
+  const num2 = document.getElementById('calc-num2').value.trim().toUpperCase();
+  const base1 = parseInt(document.getElementById('calc-base1').value);
+  const base2 = parseInt(document.getElementById('calc-base2').value);
+  const operator = document.getElementById('calc-op').value;
+  const resultBase = parseInt(document.getElementById('calc-result-base').value);
+  const resultInput = document.getElementById('calc-result');
+  
+  if (!num1 || !num2 || isNaN(base1) || isNaN(base2) || isNaN(resultBase)) {
+    resultInput.value = '';
+    return;
+  }
+  
+  try {
+    // Validate input number format for selected base
+    const validChars1 = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'.substring(0, base1);
+    const validChars2 = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'.substring(0, base2);
+    const hasInvalidChars1 = [...num1].some(char => !validChars1.includes(char));
+    const hasInvalidChars2 = [...num2].some(char => !validChars2.includes(char));
+    
+    // Reset error styles
+    document.getElementById('calc-num1').classList.remove('input-error');
+    document.getElementById('calc-num2').classList.remove('input-error');
+    
+    if (hasInvalidChars1) {
+      document.getElementById('calc-num1').classList.add('input-error');
+      resultInput.value = `Max: ${validChars1.slice(-1)}`;
+      return;
+    }
+    
+    if (hasInvalidChars2) {
+      document.getElementById('calc-num2').classList.add('input-error');
+      resultInput.value = `Max: ${validChars2.slice(-1)}`;
+      return;
+    }
+    
+    // Convert both numbers to decimal
+    const decimal1 = parseInt(num1, base1);
+    const decimal2 = parseInt(num2, base2);
+    
+    if (isNaN(decimal1) || isNaN(decimal2)) {
+      resultInput.value = 'Invalid input';
+      return;
+    }
+    
+    let result;
+    switch (operator) {
+      case '+':
+        result = decimal1 + decimal2;
+        break;
+      case '-':
+        result = decimal1 - decimal2;
+        break;
+      case '*':
+        result = decimal1 * decimal2;
+        break;
+      case '/':
+        if (decimal2 === 0) {
+          resultInput.value = 'Cannot divide by zero';
+          return;
+        }
+        result = decimal1 / decimal2;
+        break;
+      case '&':
+        result = decimal1 & decimal2;
+        break;
+      case '|':
+        result = decimal1 | decimal2;
+        break;
+      case '~':
+        result = ~decimal1;
+        break;
+      default:
+        resultInput.value = '';
+        return;
+    }
+    
+    // Convert result to target base
+    const resultString = result.toString(resultBase).toUpperCase();
+    resultInput.value = resultString;
+  } catch (e) {
+    resultInput.value = 'Error';
+  }
+}
+
+function getMaxChar(base) {
+  const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  return chars[base - 1] || '9';
+}
+
+function updatePlaceholder1() {
+  const base = parseInt(document.getElementById('calc-base1').value) || 10;
+  document.getElementById('calc-num1').placeholder = `Max: ${getMaxChar(base)}`;
+}
+
+function updatePlaceholder2() {
+  const base = parseInt(document.getElementById('calc-base2').value) || 10;
+  document.getElementById('calc-num2').placeholder = `Max: ${getMaxChar(base)}`;
+}
+
+function clearCalculator() {
+  document.getElementById('calc-num1').value = '';
+  document.getElementById('calc-num2').value = '';
+  document.getElementById('calc-base1').value = '2';
+  document.getElementById('calc-base2').value = '10';
+  document.getElementById('calc-op').value = '+';
+  document.getElementById('calc-result-base').value = '16';
+  document.getElementById('calc-result').value = '';
+  updatePlaceholder1();
+  updatePlaceholder2();
+}
+
+function showCopyFeedback(button) {
+  showToast('Copied to clipboard!', 'success');
+}
+
+function copyResult() {
+  const converted = document.getElementById('result-converted').textContent;
+  if (converted) {
+    navigator.clipboard.writeText(converted).then(() => {
+      const btn = document.querySelector('.copy-btn');
+      showCopyFeedback(btn);
+    });
+  }
+}
+
+function copyConverted() {
+  const converted = document.getElementById('result-converted').textContent;
+  if (converted) {
+    navigator.clipboard.writeText(converted).then(() => {
+      const btn = event.target;
+      showCopyFeedback(btn);
+    });
+  }
+}
+
+function copyDecimal() {
+  const decimal = document.getElementById('result-decimal').textContent;
+  if (decimal) {
+    navigator.clipboard.writeText(decimal).then(() => {
+      const btn = event.target;
+      showCopyFeedback(btn);
+    });
+  }
+}
+
+// Set current year - Try to get network time from HTTP header, fallback to local time
+async function updateYear() {
+  try {
+    const response = await fetch(window.location.href, { method: 'HEAD', cache: 'no-store' });
+    const dateHeader = response.headers.get('date');
+    if (dateHeader) {
+      const serverDate = new Date(dateHeader);
+      document.getElementById('year').textContent = serverDate.getFullYear();
+    } else {
+      document.getElementById('year').textContent = new Date().getFullYear();
+    }
+  } catch (e) {
+    document.getElementById('year').textContent = new Date().getFullYear();
+  }
+}
+updateYear();
+</script>
+</body>
+</html>

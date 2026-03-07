@@ -2,119 +2,235 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Free Online Text Diff Checker – Compare Text</title>
-<meta name="description" content="Use our free online Text Diff Checker to compare text instantly. No installation required. Fast, secure, and easy to use." />
+<title>Online Text Diff Checker</title>
+<meta name="description" content="Compare text differences in your browser. Free online text diff tool. Fast and easy to use.">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="../assets/css/style.css">
+<meta name="robots" content="index, follow">
+<meta name="keywords" content="text diff, compare text, text comparison, diff checker, online diff tool">
+<meta name="author" content="nowoi.com">
+<meta name="theme-color" content="#000000">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://nowoi.com/tools/text-diff-checker.html">
+<meta property="og:title" content="Online Text Diff Checker | Free, No Signup">
+<meta property="og:description" content="Compare text differences in your browser. Free tool.">
+<meta property="og:image" content="https://nowoi.com/assets/image/Nico.png">
+
+<link rel="canonical" href="https://nowoi.com/tools/text-diff-checker.html">
+<link rel="stylesheet" href="../assets/css/style.min.css">
+<style>
+.diff-output {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  min-height: 200px;
+  max-height: 500px;
+  overflow-y: auto;
+  background: var(--bg);
+}
+
+.diff-removed {
+  color: var(--danger);
+  margin-left: 20px;
+}
+
+.diff-added {
+  color: var(--success);
+  margin-left: 20px;
+}
+</style>
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Text Diff Checker",
+  "url": "https://nowoi.com/tools/text-diff-checker.html",
+  "description": "Free online text diff checker tool",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+</script>
 </head>
 
 <body>
-
-<header>
-  <h1>Free Online Text Diff Checker</h1>
-  <p>Compare text instantly. 100% free. No sign-up required.</p>
-</header>
-
-<section class="tool-box">
-  <h3>Text 1</h3>
-  <textarea id="text1" placeholder="Enter first text here..." oninput="compareText()"></textarea>
-  <h3>Text 2</h3>
-  <textarea id="text2" placeholder="Enter second text here..." oninput="compareText()"></textarea>
-  <div id="output" style="border: 1px solid #ddd; border-radius: 4px; padding: 20px; min-height: 200px; background: white;"></div>
-  <button class="copy-btn" onclick="copyResult()">Copy Result</button>
-</section>
-
-<section>
-  <h2>How to Use</h2>
-  <ol>
-    <li>Enter text into the first text box.</li>
-    <li>Enter text into the second text box.</li>
-    <li>The differences will be highlighted automatically.</li>
-    <li>Copy the result using the "Copy Result" button.</li>
-  </ol>
-</section>
-
-<section>
-  <h2>Why Use This Tool?</h2>
-  <ul>
-    <li>Works directly in your browser</li>
-    <li>Highlights differences between texts</li>
-    <li>Fast and secure</li>
-    <li>Free forever</li>
-  </ul>
-</section>
-
-<section>
-  <h2>FAQ</h2>
-  <h3>Is this text diff checker free?</h3>
-  <p>Yes, it is completely free with no hidden fees.</p>
+  <a href="#main-content" class="sr-only">Skip to main content</a>
   
-  <h3>Does this tool store my data?</h3>
-  <p>No. All processing happens locally in your browser.</p>
-  
-  <h3>Is this tool safe to use?</h3>
-  <p>Yes. All processing is done in your browser, so your data never leaves your device.</p>
-</section>
+  <div class="container">
+    <header class="site-header">
+      <div class="header-row">
+        <a href="../index.html" class="brand" aria-label="nowoi.com Home">nowoi.com</a>
+        <nav class="nav" aria-label="Main navigation">
+          <a href="../index.html">Home</a>
+          <a href="./index.html">Tools</a>
+          <a href="../about.html">About</a>
+          <a href="../contact.html">Contact</a>
+          <button id="dark-mode-toggle" class="ghost" >Dark Mode</button>
+        </nav>
+      </div>
+    </header>
 
-<footer>
-  <p>© 2026 nowoi.com – Free Online Tools</p>
-  <div class="footer-links">
-    <a href="../index.html">Home</a>
-    <a href="../about.html">About</a>
-    <a href="../privacy-policy.html">Privacy Policy</a>
-    <a href="../terms.html">Terms</a>
-    <a href="../contact.html">Contact</a>
+    <main id="main-content">
+      <div class="page-head">
+        <h1>Online Text Diff Checker</h1>
+        <p>Compare text differences and find changes. Free, no signup.</p>
+      </div>
+
+      <div class="tool-box">
+        <div class="row">
+          <input type="file" id="file1" accept=".txt" style="display: none;" onchange="loadFile('text1', this)">
+          <button onclick="document.getElementById('file1').click()" type="button" class="ghost">Upload Text 1</button>
+          <input type="file" id="file2" accept=".txt" style="display: none;" onchange="loadFile('text2', this)">
+          <button onclick="document.getElementById('file2').click()" type="button" class="ghost">Upload Text 2</button>
+          <button onclick="clearText()" type="button" class="ghost">Clear</button>
+        </div>
+        <h3>Text 1</h3>
+        <textarea id="text1" placeholder="Enter first text here..." oninput="compareText()"></textarea>
+        <h3>Text 2</h3>
+        <textarea id="text2" placeholder="Enter second text here..." oninput="compareText()"></textarea>
+        <h3>Comparison Result</h3>
+        <div id="output" class="diff-output"></div>
+        <button class="copy-btn" onclick="copyResult()">Copy Result</button>
+      </div>
+
+      <article class="content">
+        <h2>About This Tool</h2>
+        <p>Compare two texts and see differences highlighted. Free, no signup. Works in your browser.</p>
+        
+        <p>This tool runs in your browser; no data is stored.</p>
+        
+        <h3>How to Use</h3>
+        <p>Paste text in both boxes. Differences show up automatically.</p>
+        
+        <h3>FAQ</h3>
+        <p><strong>Is it free</strong> Yes, no cost.</p>
+        <p><strong>Is my data safe</strong> Yes, everything stays on your device.</p>
+      </article>
+
+      <aside class="content" aria-labelledby="related-tools">
+        <h2 id="related-tools">Related Tools</h2>
+        <div class="grid">
+          <a href="./json-formatter.html" class="card" data-tool-card="JSON Formatter format json">
+            <h4>JSON Formatter</h4>
+            <p>Format and validate JSON</p>
+          </a>
+          <a href="./JSON-Diff.html" class="card" data-tool-card="JSON Diff compare json">
+            <h4>JSON Diff Tool</h4>
+            <p>Compare JSON files</p>
+          </a>
+          <a href="./text-diff-checker.html" class="card" data-tool-card="Text Diff compare text">
+            <h4>Text Diff Checker</h4>
+            <p>Compare text differences</p>
+          </a>
+        </div>
+      </aside>
+    </main>
+
+    <footer class="footer">
+      <p>© <span id="year">2026</span> nowoi.com –Free Online Tools</p>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="../index.html">Home</a>
+        <a href="./index.html">Tools</a>
+        <a href="../about.html">About</a>
+        <a href="../privacy-policy.html">Privacy Policy</a>
+        <a href="../terms.html">Terms</a>
+        <a href="../contact.html">Contact</a>
+      </div>
+    </footer>
   </div>
-</footer>
 
-<script>
-function compareText() {
-  const text1 = document.getElementById('text1').value;
-  const text2 = document.getElementById('text2').value;
-  const output = document.getElementById('output');
-  
-  // Simple text comparison
-  if (!text1 || !text2) {
-    output.innerHTML = '<p>Enter text in both boxes to compare.</p>';
-    return;
-  }
-  
-  const lines1 = text1.split('\n');
-  const lines2 = text2.split('\n');
-  
-  let html = '<h3>Differences:</h3>';
-  
-  for (let i = 0; i < Math.max(lines1.length, lines2.length); i++) {
-    const line1 = lines1[i] || '';
-    const line2 = lines2[i] || '';
-    
-    if (line1 !== line2) {
-      html += `<p><strong>Line ${i + 1}:</strong></p>`;
-      if (line1) {
-        html += `<p style="color: red; margin-left: 20px;">- ${line1}</p>`;
+  <script src="../assets/js/common.js"></script>
+  <script>
+    // File handling functions
+    function loadFile(textId, input) {
+      const file = input.files[0];
+      if (!file) return;
+      
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        document.getElementById(textId).value = e.target.result;
+        compareText();
+      };
+      reader.readAsText(file);
+    }
+
+    function clearText() {
+      document.getElementById('text1').value = '';
+      document.getElementById('text2').value = '';
+      document.getElementById('output').innerHTML = '';
+    }
+
+    function compareText() {
+      const text1 = document.getElementById('text1').value;
+      const text2 = document.getElementById('text2').value;
+      const output = document.getElementById('output');
+      
+      // Simple text comparison
+      if (!text1 || !text2) {
+        output.innerHTML = '<p>Enter text in both boxes to compare.</p>';
+        return;
       }
-      if (line2) {
-        html += `<p style="color: green; margin-left: 20px;">+ ${line2}</p>`;
+      
+      const lines1 = text1.split('\n');
+      const lines2 = text2.split('\n');
+      
+      let html = '<h3>Differences:</h3>';
+      
+      for (let i = 0; i < Math.max(lines1.length, lines2.length); i++) {
+        const line1 = lines1[i] || '';
+        const line2 = lines2[i] || '';
+        
+        if (line1 !== line2) {
+          html += `<p><strong>Line ${i + 1}:</strong></p>`;
+          if (line1) {
+            html += `<p class="diff-removed">- ${line1}</p>`;
+          }
+          if (line2) {
+            html += `<p class="diff-added">+ ${line2}</p>`;
+          }
+        }
+      }
+      
+      output.innerHTML = html;
+    }
+
+    function copyResult() {
+      const output = document.getElementById('output');
+      const text = output.textContent;
+      
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textarea);
+      
+      showToast('Copied to clipboard!', 'success');
+    }
+
+    // Set current year - Try to get network time from HTTP header, fallback to local time
+    async function updateYear() {
+      try {
+        const response = await fetch(window.location.href, { method: 'HEAD', cache: 'no-store' });
+        const dateHeader = response.headers.get('date');
+        if (dateHeader) {
+          const serverDate = new Date(dateHeader);
+          document.getElementById('year').textContent = serverDate.getFullYear();
+        } else {
+          document.getElementById('year').textContent = new Date().getFullYear();
+        }
+      } catch (e) {
+        document.getElementById('year').textContent = new Date().getFullYear();
       }
     }
-  }
-  
-  output.innerHTML = html;
-}
-
-function copyResult() {
-  const output = document.getElementById('output');
-  const text = output.textContent;
-  
-  const textarea = document.createElement('textarea');
-  textarea.value = text;
-  document.body.appendChild(textarea);
-  textarea.select();
-  document.execCommand('copy');
-  document.body.removeChild(textarea);
-  
-  alert('Copied to clipboard!');
-}
-</script>
+    updateYear();
+  </script>
 </body>
 </html>

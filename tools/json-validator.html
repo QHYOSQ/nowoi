@@ -2,79 +2,158 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Free Online JSON Validator – Validate JSON</title>
-<meta name="description" content="Use our free online JSON Validator to validate JSON instantly. No installation required. Fast, secure, and easy to use." />
+<title>Online JSON Validator</title>
+<meta name="description" content="Validate JSON syntax in your browser. Free online JSON validator tool. Fast and easy to use.">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="../assets/css/style.css">
+<meta name="robots" content="index, follow">
+<meta name="keywords" content="json validator, validate json, online json validator, free json tool">
+<meta name="author" content="nowoi.com">
+<meta name="theme-color" content="#000000">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://nowoi.com/tools/json-validator.html">
+<meta property="og:title" content="Online JSON Validator">
+<meta property="og:description" content="Validate JSON syntax in your browser. Free tool.">
+<meta property="og:image" content="https://nowoi.com/assets/image/Nico.png">
+
+<link rel="canonical" href="https://nowoi.com/tools/json-validator.html">
+<link rel="stylesheet" href="../assets/css/style.min.css">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "JSON Validator",
+  "url": "https://nowoi.com/tools/json-validator.html",
+  "description": "Free online JSON validator tool",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "featureList": "JSON validation, Error detection, File upload support, One-click copy"
+}
+</script>
 </head>
 
 <body>
-
-<header>
-  <h1>Free Online JSON Validator</h1>
-  <p>Validate JSON instantly. 100% free. No sign-up required.</p>
-</header>
-
-<section class="tool-box">
-  <textarea id="input" placeholder="Paste your JSON here..." oninput="validateJSON()"></textarea>
-  <textarea id="output" placeholder="Validation result will appear here..."></textarea>
-  <button class="copy-btn" onclick="copyResult()">Copy to Clipboard</button>
-</section>
-
-<section>
-  <h2>How to Use</h2>
-  <ol>
-    <li>Paste your JSON into the input box.</li>
-    <li>The JSON will be validated automatically.</li>
-    <li>Copy the validation result using the "Copy to Clipboard" button.</li>
-  </ol>
-</section>
-
-<section>
-  <h2>Why Use This Tool?</h2>
-  <ul>
-    <li>Works directly in your browser</li>
-    <li>Validates JSON syntax</li>
-    <li>Fast and secure</li>
-    <li>Free forever</li>
-  </ul>
-</section>
-
-<section>
-  <h2>FAQ</h2>
-  <h3>Is this JSON validator free?</h3>
-  <p>Yes, it is completely free with no hidden fees.</p>
+  <a href="#main-content" class="sr-only">Skip to main content</a>
   
-  <h3>Does this tool store my data?</h3>
-  <p>No. All processing happens locally in your browser.</p>
-  
-  <h3>Is this tool safe to use?</h3>
-  <p>Yes. All processing is done in your browser, so your data never leaves your device.</p>
-</section>
+  <div class="container">
+    <header class="site-header">
+      <div class="header-row">
+        <a href="../index.html" class="brand" aria-label="nowoi.com Home">nowoi.com</a>
+        <nav class="nav" aria-label="Main navigation">
+          <a href="../index.html">Home</a>
+          <a href="./index.html">Tools</a>
+          <a href="../about.html">About</a>
+          <a href="../contact.html">Contact</a>
+          <button id="dark-mode-toggle" class="ghost" >Dark Mode</button>
+        </nav>
+      </div>
+    </header>
 
-<footer>
-  <p>© 2026 nowoi.com – Free Online Tools</p>
-  <div class="footer-links">
-    <a href="../index.html">Home</a>
-    <a href="../about.html">About</a>
-    <a href="../privacy-policy.html">Privacy Policy</a>
-    <a href="../terms.html">Terms</a>
-    <a href="../contact.html">Contact</a>
+    <main id="main-content">
+      <div class="page-head">
+        <h1>Online JSON Validator</h1>
+        <p>Validate JSON syntax and detect errors. Free, no signup.</p>
+      </div>
+
+      <div class="tool-box">
+        <input type="file" id="file-input" accept=".json,.txt" style="display: none;" onchange="loadFile(this)">
+        <div class="row">
+          <button onclick="document.getElementById('file-input').click()" type="button" class="ghost">Upload File</button>
+          <button onclick="validateJSON()" type="button">Validate JSON</button>
+          <button onclick="clearJSON()" type="button" class="ghost">Clear</button>
+        </div>
+        <textarea id="input" placeholder="Paste your JSON here..." oninput="validateJSON()"></textarea>
+        <textarea id="output" placeholder="Validation result will appear here..." readonly></textarea>
+        <div class="row">
+          <button class="copy-btn" onclick="copyResult()">Copy to Clipboard</button>
+        </div>
+      </div>
+
+      <article class="content">
+        <h2>About This Tool</h2>
+        <p>Validate JSON syntax and find errors. Free, no signup. Works in your browser.</p>
+
+        <p>This tool runs in your browser; no data is stored.</p>
+
+        <h3>How to Use</h3>
+        <p>Paste JSON. Validation happens automatically. See result instantly.</p>
+
+        <h3>FAQ</h3>
+        <p><strong>Is it free</strong> Yes, no cost.</p>
+        <p><strong>Is my data safe</strong> Yes, everything stays on your device.</p>
+      </article>
+
+      <aside class="content" aria-labelledby="related-tools">
+        <h2 id="related-tools">Related Tools</h2>
+        <div class="grid">
+          <a href="./json-formatter.html" class="card" data-tool-card="JSON Formatter format json">
+            <h4>JSON Formatter</h4>
+            <p>Format and validate JSON</p>
+          </a>
+          <a href="./JSON-Diff.html" class="card" data-tool-card="JSON Diff compare json">
+            <h4>JSON Diff</h4>
+            <p>Compare JSON files</p>
+          </a>
+        </div>
+      </aside>
+    </main>
+
+    <footer class="footer">
+      <p>© <span id="year">2026</span> nowoi.com –Free Online Tools</p>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="../index.html">Home</a>
+        <a href="./index.html">Tools</a>
+        <a href="../about.html">About</a>
+        <a href="../privacy-policy.html">Privacy Policy</a>
+        <a href="../terms.html">Terms</a>
+        <a href="../contact.html">Contact</a>
+      </nav>
+    </footer>
   </div>
-</footer>
 
+<script src="../assets/js/common.js" defer></script>
 <script>
+function loadFile(input) {
+  const file = input.files[0];
+  if (!file) return;
+  
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    document.getElementById('input').value = e.target.result;
+    validateJSON();
+  };
+  reader.readAsText(file);
+}
+
+function clearJSON() {
+  document.getElementById('input').value = '';
+  document.getElementById('output').value = '';
+}
+
 function validateJSON() {
   const input = document.getElementById('input').value;
   const output = document.getElementById('output');
   
+  if (!input.trim()) {
+    output.value = '';
+    return;
+  }
+  
   try {
     JSON.parse(input);
     output.value = 'Valid JSON!';
-    output.style.color = 'green';
+    output.style.color = 'var(--success)';
   } catch (error) {
     output.value = 'Error: ' + error.message;
-    output.style.color = 'red';
+    output.style.color = 'var(--danger)';
   }
 }
 
@@ -82,8 +161,25 @@ function copyResult() {
   const output = document.getElementById('output');
   output.select();
   document.execCommand('copy');
-  alert('Copied to clipboard!');
+  showToast('Copied to clipboard!', 'success');
 }
+
+// Set current year - Try to get network time from HTTP header, fallback to local time
+async function updateYear() {
+  try {
+    const response = await fetch(window.location.href, { method: 'HEAD', cache: 'no-store' });
+    const dateHeader = response.headers.get('date');
+    if (dateHeader) {
+      const serverDate = new Date(dateHeader);
+      document.getElementById('year').textContent = serverDate.getFullYear();
+    } else {
+      document.getElementById('year').textContent = new Date().getFullYear();
+    }
+  } catch (e) {
+    document.getElementById('year').textContent = new Date().getFullYear();
+  }
+}
+updateYear();
 </script>
 </body>
 </html>

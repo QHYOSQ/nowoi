@@ -2,24 +2,25 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Free Online Unit Converter – Convert Between Units</title>
+<title>Unit Converter</title>
 <meta name="description" content="Use our free online Unit Converter to convert between different units of measurement. No installation required. Fast, secure, and easy to use." />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="index, follow">
 <meta name="keywords" content="unit converter, online unit converter, free unit tool, convert units, measurement converter">
 <link rel="canonical" href="https://nowoi.com/tools/unit-converter.html">
-<link rel="stylesheet" href="../assets/css/style.css">
+<link rel="icon" href="../assets/image/Nico.png" type="image/png">
+<link rel="stylesheet" href="../assets/css/style.min.css">
 <style>
   .unit-category {
     margin-bottom: 30px;
     padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #f9f9f9;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background-color: var(--card-bg);
   }
   .unit-category h3 {
     margin-top: 0;
-    color: #333;
+    color: var(--text);
   }
   .converter-row {
     display: flex;
@@ -33,27 +34,32 @@
   }
   .converter-input label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom:5px;
     font-size: 14px;
+    color: var(--text);
   }
   .converter-input input {
     width: 100%;
     padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background-color: var(--bg);
+    color: var(--text);
   }
   .converter-input select {
     width: 100%;
     padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background-color: var(--bg);
+    color: var(--text);
   }
   .converter-arrow {
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 20px;
-    color: #666;
+    color: var(--text-muted);
   }
   @media (max-width: 768px) {
     .converter-arrow {
@@ -74,13 +80,14 @@
           <a href="./index.html" aria-current="page">Tools</a>
           <a href="../about.html">About</a>
           <a href="../contact.html">Contact</a>
+          <button id="dark-mode-toggle" class="ghost" >Dark Mode</button>
         </nav>
       </div>
     </header>
 
     <div class="page-head">
-      <h1>Free Online Unit Converter</h1>
-      <p>Convert between different units of measurement. 100% free. No sign-up required.</p>
+      <h1>Unit Converter</h1>
+      <p>Convert length, weight, temperature, and volume units. Free, no signup.</p>
     </div>
 
     <div class="tool-box">
@@ -105,7 +112,7 @@
               <option value="inch">Inch (in)</option>
             </select>
           </div>
-          <div class="converter-arrow">⇄</div>
+          <div class="converter-arrow">�div>
           <div class="converter-input">
             <label for="length-to">To</label>
             <select id="length-to" onchange="convertLength()">
@@ -145,7 +152,7 @@
               <option value="ounce">Ounce (oz)</option>
             </select>
           </div>
-          <div class="converter-arrow">⇄</div>
+          <div class="converter-arrow">�div>
           <div class="converter-input">
             <label for="weight-to">To</label>
             <select id="weight-to" onchange="convertWeight()">
@@ -180,7 +187,7 @@
               <option value="kelvin">Kelvin (K)</option>
             </select>
           </div>
-          <div class="converter-arrow">⇄</div>
+          <div class="converter-arrow">�div>
           <div class="converter-input">
             <label for="temp-to">To</label>
             <select id="temp-to" onchange="convertTemperature()">
@@ -217,7 +224,7 @@
               <option value="cup">Cup (c)</option>
             </select>
           </div>
-          <div class="converter-arrow">⇄</div>
+          <div class="converter-arrow">�div>
           <div class="converter-input">
             <label for="volume-to">To</label>
             <select id="volume-to" onchange="convertVolume()">
@@ -240,60 +247,17 @@
     </div>
 
     <div class="content">
-      <h2>How to Use This Unit Converter</h2>
-      <ol>
-        <li><strong>Select the unit category</strong>: Choose the type of unit you want to convert (length, weight, temperature, or volume).</li>
-        <li><strong>Enter the value</strong>: Input the value you want to convert.</li>
-        <li><strong>Select the source unit</strong>: Choose the unit you're converting from.</li>
-        <li><strong>Select the target unit</strong>: Choose the unit you're converting to.</li>
-        <li><strong>View the result</strong>: The converted value will be displayed automatically.</li>
-      </ol>
-
-      <h2>Step-by-Step Tutorial</h2>
-      <h3>Converting Units</h3>
-      <p>1. Open the Unit Converter tool</p>
-      <p>2. Select the appropriate unit category (e.g., Length)</p>
-      <p>3. Enter the value you want to convert in the "Value" field</p>
-      <p>4. Select the unit you're converting from in the "From" dropdown</p>
-      <p>5. Select the unit you're converting to in the "To" dropdown</p>
-      <p>6. The converted value will be displayed in the "Result" field</p>
-      <p>7. Repeat for other unit conversions as needed</p>
-
-      <h2>Why Use This Unit Converter?</h2>
-      <ul>
-        <li><strong>Multiple unit categories</strong>: Convert between length, weight, temperature, and volume units</li>
-        <li><strong>Accurate conversions</strong>: Precise conversion factors for all units</li>
-        <li><strong>No data stored</strong> - all processing happens locally on your device</li>
-        <li><strong>Free forever</strong> - no hidden fees or limitations</li>
-        <li><strong>Easy to use</strong> - simple interface for quick unit conversions</li>
-        <li><strong>Fast and reliable</strong> - instant results with accurate calculations</li>
-      </ul>
-
-      <h2>Use Cases</h2>
-      <h3>For Travel</h3>
-      <p>Convert between metric and imperial units when traveling to different countries.</p>
-
-      <h3>For Cooking</h3>
-      <p>Convert recipe measurements between different units (e.g., cups to milliliters).</p>
-
-      <h3>For Science</h3>
-      <p>Convert between scientific units for experiments and calculations.</p>
-
-      <h3>For Construction</h3>
-      <p>Convert between length units for building and construction projects.</p>
-
-      <h2>FAQ</h2>
-      <h3>Is this unit converter free?</h3>
-      <p>Yes, it is completely free with no hidden fees. You can use it as often as you need without any limitations.</p>
+      <h2>About This Tool</h2>
+      <p>Convert between length, weight, temperature and volume units. Free, no signup. Works in your browser.</p>
       
-      <h3>How accurate is this unit converter?</h3>
-      <p>This unit converter uses standard conversion factors for accurate results.</p>
+      <p>This tool runs in your browser; no data is stored.</p>
       
-      <h3>Can I convert between any units?</h3>
-      <p>You can convert between units within the same category (e.g., length to length, weight to weight).</p>
+      <h3>How to Use</h3>
+      <p>Select a category. Enter a value. Choose units. See result.</p>
       
-      <h3>Does this tool store my data?</h3>
-      <p>No. All processing happens locally in your browser. Your input values never leave your device.</p>
+      <h3>FAQ</h3>
+      <p><strong>Is it free</strong> Yes, no cost.</p>
+      <p><strong>Is my data safe</strong> Yes, everything stays on your device.</p>
     </div>
 
     <div class="content">
@@ -319,7 +283,7 @@
     </div>
 
     <footer class="footer">
-      <p>© <span id="year">2026</span> nowoi.com – 100% Free Online Tools</p>
+      <p>© <span id="year">2026</span> nowoi.com –Free Online Tools</p>
       <div class="footer-links">
         <a href="../index.html">Home</a>
         <a href="./index.html">Tools</a>

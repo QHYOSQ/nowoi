@@ -2,245 +2,620 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Free Online Time Tools – World Time Converter & Time Interval Calculator</title>
-<meta name="description" content="Use our free online time tools to convert between time zones and calculate time intervals. No installation required. Fast, secure, and easy to use." />
+<title>Free Online Time Tools – World Clock, Time Zone Converter, Space Time Calculator & Interval Timer | nowoi</title>
+<meta name="description" content="Free online time tools with live analog clock, world time converter for 30+ cities, space time calculator for Moon/Mars/planets, and time interval calculator. No installation. Works offline.">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="index, follow">
-<meta name="keywords" content="time converter, world time, time zone converter, time interval calculator, time difference calculator">
+<meta name="keywords" content="world clock, online clock with seconds, time zone converter, space time calculator, moon time, mars time, planetary time calculator, time interval calculator, time difference calculator, world time now, multiple time zone clock, analog clock online, digital clock online, timezone converter tool, calculate time between dates, elapsed time calculator, space clock, planetary clock, solar system time, world cities time, international time converter, free online clock, browser clock, live clock widget, time calculator tool, date time calculator">
+<meta name="author" content="nowoi.com">
+<meta name="theme-color" content="#000000">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://nowoi.com/tools/time-tools.html">
+<meta property="og:title" content="Free Online Time Tools – World Clock, Time Zone & Space Time Calculator">
+<meta property="og:description" content="Free online time tools with live analog clock, world time converter for 30+ cities, space time calculator for Moon/Mars/planets, and time interval calculator.">
+<meta property="og:image" content="https://nowoi.com/assets/image/Nico.png">
+
 <link rel="canonical" href="https://nowoi.com/tools/time-tools.html">
-<link rel="stylesheet" href="../assets/css/style.css">
+<link rel="stylesheet" href="../assets/css/style.min.css">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Free Online Time Tools",
+  "url": "https://nowoi.com/tools/time-tools.html",
+  "description": "Free online time tools with live analog clock, world time converter for 30+ cities, space time calculator for Moon/Mars/planets, and time interval calculator.",
+  "applicationCategory": "UtilityApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "featureList": "Live analog and digital clock with real-time updates, World time converter supporting 30+ time zones and cities, Space time calculator for Moon, Mars, Mercury, Venus, Jupiter, Saturn, Uranus, Neptune, Time interval calculator to find duration between two dates/times, World cities time display for New York, London, Tokyo, Paris, Sydney"
+}
+</script>
+
 <style>
   .time-tool-wrap {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    gap: 30px;
     margin-bottom: 40px;
   }
   
   @media (max-width: 768px) {
     .time-tool-wrap {
       grid-template-columns: 1fr;
+      gap: 20px;
     }
   }
   
+  .time-tool-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    box-shadow: var(--shadow);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .time-tool-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  
   .time-zone-select {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    text-align: center;
   }
   
-  .time-result {
-    margin-top: 15px;
-    padding: 15px;
-    background: var(--surface-2);
+  .time-zone-select label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500;
+    color: var(--text);
+  }
+  
+  .time-zone-select select,
+  .time-zone-select input[type="date"],
+  .time-zone-select input[type="time"] {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
     border-radius: var(--radius);
+    background: var(--surface);
+    color: var(--text);
+    font-size: 14px;
+    transition: border-color 0.2s ease;
   }
   
+  .time-zone-select select:focus,
+  .time-zone-select input[type="date"]:focus,
+  .time-zone-select input[type="time"]:focus {
+    outline: none;
+    border-color: var(--brand);
+    box-shadow: 0 0 0 3px rgba(0,0,0,0.1);
+  }
+  
+  .time-result,
   .interval-result {
-    margin-top: 15px;
-    padding: 15px;
+    margin-top: 20px;
+    padding: 20px;
     background: var(--surface-2);
     border-radius: var(--radius);
+    border-left: 4px solid var(--brand);
+  }
+  
+  .time-result h3,
+  .interval-result h3 {
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+  }
+  
+  .time-result p,
+  .interval-result p {
+    margin: 6px 0;
+    line-height: 1.4;
+  }
+  
+  .time-result p strong,
+  .interval-result p strong {
+    color: var(--text);
+  }
+  
+  .time-tool-card button {
+    margin-top: 10px;
+  }
+
+  /* ===== Precision Analog Clock ===== */
+
+  #analog-clock{
+    width:280px;
+    height:280px;
+    position:relative;
+    margin:0 auto;
+    border-radius:50%;
+
+    background:
+    radial-gradient(circle at center,
+    var(--surface) 64%,
+    var(--bg) 100%);
+
+    border:3px solid var(--border);
+
+    box-shadow:
+    0 8px 24px rgba(0,0,0,0.25),
+    inset 0 2px 4px rgba(255,255,255,0.15),
+    inset 0 -4px 10px rgba(0,0,0,0.2);
+
+    overflow:hidden;
+  }
+
+  /* hour hand */
+
+  #hour-hand{
+    width:6px;
+    height:72px;
+    background:linear-gradient(#444,#000);
+    border-radius:3px;
+
+    position:absolute;
+    top:50%;
+    left:50%;
+
+    transform-origin:50% 100%;
+    transform:translate(-50%,-100%) rotate(0deg);
+
+    z-index:5;
+  }
+
+  /* minute hand */
+
+  #minute-hand{
+    width:4px;
+    height:100px;
+    background:linear-gradient(#666,#111);
+    border-radius:2px;
+
+    position:absolute;
+    top:50%;
+    left:50%;
+
+    transform-origin:50% 100%;
+    transform:translate(-50%,-100%) rotate(0deg);
+
+    z-index:4;
+  }
+
+  /* second hand */
+
+  #second-hand{
+    width:2px;
+    height:112px;
+
+    background:#ff3b3b;
+
+    border-radius:1px;
+
+    position:absolute;
+    top:50%;
+    left:50%;
+
+    transform-origin:50% 100%;
+    transform:translate(-50%,-100%) rotate(0deg);
+
+    box-shadow:0 0 6px rgba(255,0,0,0.55);
+
+    z-index:6;
+  }
+
+  /* center */
+
+  #clock-center{
+    width:14px;
+    height:14px;
+    border-radius:50%;
+
+    background:linear-gradient(#333,#000);
+
+    position:absolute;
+    top:50%;
+    left:50%;
+
+    transform:translate(-50%,-50%);
+
+    border:3px solid var(--bg);
+
+    box-shadow:
+    0 0 6px rgba(0,0,0,0.45),
+    inset 0 1px 2px rgba(255,255,255,0.3);
+
+    z-index:10;
+  }
+
+  /* containers */
+
+  #clock-numbers,
+  #clock-ticks{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+  }
+
+  #world-cities {
+    font-size: 14px;
+    color: var(--text-secondary);
+  }
+
+  #world-cities .city-time {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 12px;
+    background: var(--surface-2);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+
+  #world-cities .city-name {
+    font-weight: 500;
+    color: var(--text);
+  }
+
+  #world-cities .city-time-value {
+    font-family: monospace;
+    font-size: 15px;
+    color: var(--text);
   }
 </style>
 </head>
 
 <body>
+  <a href="#main-content" class="sr-only">Skip to main content</a>
+  
   <div class="container">
     <header class="site-header">
       <div class="header-row">
-        <a href="../index.html" class="brand">nowoi.com</a>
-        <nav class="nav">
+        <a href="../index.html" class="brand" aria-label="nowoi.com Home">nowoi.com</a>
+        <nav class="nav" aria-label="Main navigation">
           <a href="../index.html">Home</a>
           <a href="./index.html" aria-current="page">Tools</a>
           <a href="../about.html">About</a>
           <a href="../contact.html">Contact</a>
+          <button id="dark-mode-toggle" class="ghost">Dark Mode</button>
         </nav>
       </div>
     </header>
 
-    <div class="page-head">
-      <h1>Free Online Time Tools</h1>
-      <p>World Time Converter & Time Interval Calculator – Fast, Secure, No Installation</p>
-    </div>
+    <main id="main-content">
+      <div class="page-head">
+        <h1>Time Tools</h1>
+        <p>Convert time zones and calculate time intervals. Free, no signup.</p>
+      </div>
 
-
-
-    <div class="tool-box">
-      <div class="time-tool-wrap">
-        <!-- World Time Converter -->
-        <div>
-          <h2>World Time Converter</h2>
+      <!-- Live Clock Section -->
+      <div class="tool-box" style="margin-bottom: 30px;">
+        <h2 style="text-align: center; margin-bottom: 20px;">Live Clock</h2>
+        
+        <!-- Time Zone Selection - Moved to top -->
+        <div style="max-width: 400px; margin: 0 auto 30px;">
           <div class="time-zone-select">
-            <label for="from-timezone">From Time Zone:</label>
-            <select id="from-timezone">
+            <label for="clock-timezone">Select Time Zone:</label>
+            <select id="clock-timezone" aria-label="Select time zone for live clock">
+              <option value="local">Local Time (Auto-detected)</option>
               <option value="UTC">UTC</option>
+              <!-- North America -->
               <option value="America/New_York">Eastern Time (US & Canada)</option>
               <option value="America/Chicago">Central Time (US & Canada)</option>
+              <option value="America/Denver">Mountain Time (US & Canada)</option>
               <option value="America/Los_Angeles">Pacific Time (US & Canada)</option>
+              <option value="America/Anchorage">Alaska Time (US)</option>
+              <option value="America/Honolulu">Hawaii Time (US)</option>
+              <option value="America/Toronto">Toronto</option>
+              <option value="America/Mexico_City">Mexico City</option>
+              <option value="America/Bogota">Bogota</option>
+              <option value="America/Sao_Paulo">Sao Paulo</option>
+              <option value="America/Santiago">Santiago</option>
+              <!-- Europe -->
               <option value="Europe/London">London</option>
               <option value="Europe/Paris">Paris</option>
-              <option value="Asia/Tokyo">Tokyo</option>
+              <option value="Europe/Berlin">Berlin</option>
+              <option value="Europe/Rome">Rome</option>
+              <option value="Europe/Madrid">Madrid</option>
+              <option value="Europe/Amsterdam">Amsterdam</option>
+              <option value="Europe/Moscow">Moscow</option>
+              <option value="Europe/Istanbul">Istanbul</option>
+              <!-- Asia -->
+              <option value="Asia/Dubai">Dubai</option>
+              <option value="Asia/Kolkata">India Standard Time</option>
+              <option value="Asia/Bangkok">Bangkok</option>
+              <option value="Asia/Singapore">Singapore</option>
               <option value="Asia/Shanghai">Shanghai</option>
+              <option value="Asia/Seoul">Seoul</option>
+              <option value="Asia/Tokyo">Tokyo</option>
+              <option value="Asia/Sydney">Sydney</option>
+              <option value="Asia/Mumbai">Mumbai</option>
+              <option value="Asia/Jakarta">Jakarta</option>
+              <!-- Africa -->
+              <option value="Africa/Cairo">Cairo</option>
+              <option value="Africa/Johannesburg">Johannesburg</option>
+              <option value="Africa/Lagos">Lagos</option>
+              <option value="Africa/Nairobi">Nairobi</option>
+              <!-- Oceania -->
               <option value="Australia/Sydney">Sydney</option>
+              <option value="Australia/Melbourne">Melbourne</option>
+              <option value="Australia/Perth">Perth</option>
+              <option value="Pacific/Auckland">Auckland</option>
+              <option value="Pacific/Fiji">Fiji</option>
+              <!-- Space -->
+              <option value="UTC">Moon (Lunar Time) - UTC reference</option>
+              <option value="UTC">Mars (Mars Sol) - UTC reference</option>
+              <option value="UTC">Mercury - UTC reference</option>
+              <option value="UTC">Venus - UTC reference</option>
+              <option value="UTC">Jupiter - UTC reference</option>
+              <option value="UTC">Saturn - UTC reference</option>
+              <option value="UTC">Uranus - UTC reference</option>
+              <option value="UTC">Neptune - UTC reference</option>
             </select>
           </div>
-          <div class="time-zone-select">
-            <label for="from-date">Date:</label>
-            <input type="date" id="from-date">
-          </div>
-          <div class="time-zone-select">
-            <label for="from-time">Time:</label>
-            <input type="time" id="from-time">
-          </div>
-          <div class="time-zone-select">
-            <label for="to-timezone">To Time Zone:</label>
-            <select id="to-timezone">
-              <option value="UTC">UTC</option>
-              <option value="America/New_York">Eastern Time (US & Canada)</option>
-              <option value="America/Chicago">Central Time (US & Canada)</option>
-              <option value="America/Los_Angeles">Pacific Time (US & Canada)</option>
-              <option value="Europe/London">London</option>
-              <option value="Europe/Paris">Paris</option>
-              <option value="Asia/Tokyo">Tokyo</option>
-              <option value="Asia/Shanghai">Shanghai</option>
-              <option value="Australia/Sydney">Sydney</option>
-            </select>
-          </div>
-          <button onclick="convertTime()">Convert Time</button>
-          <div class="time-result" id="time-result"></div>
         </div>
-
-        <!-- Time Interval Calculator -->
-        <div>
-          <h2>Time Interval Calculator</h2>
-          <div class="time-zone-select">
-            <label for="start-date">Start Date:</label>
-            <input type="date" id="start-date">
+        
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 30px;">
+          <!-- Digital time display above clock -->
+          <div style="text-align: center; order: 1;">
+            <div id="digital-clock" style="font-size: 36px; font-weight: 600; text-align: center; margin-bottom: 8px; font-variant-numeric: tabular-nums;"></div>
+            <div id="date-display" style="font-size: 16px; text-align: center; color: var(--text-secondary);"></div>
           </div>
-          <div class="time-zone-select">
-            <label for="start-time">Start Time:</label>
-            <input type="time" id="start-time">
+          
+          <!-- Analog clock -->
+          <div style="order: 2;">
+            <div id="analog-clock">
+              <!-- Clock hands -->
+              <div id="hour-hand"></div>
+              <div id="minute-hand"></div>
+              <div id="second-hand"></div>
+              <div id="clock-center"></div>
+              
+              <!-- Clock numbers container - will be populated by JavaScript -->
+              <div id="clock-numbers"></div>
+              
+              <!-- Tick marks container - will be populated by JavaScript -->
+              <div id="clock-ticks"></div>
+            </div>
+            
+            <!-- World cities time -->
+            <div id="world-cities" style="display: flex; flex-direction: column; gap: 8px; margin-top: 25px; text-align: center;"></div>
           </div>
-          <div class="time-zone-select">
-            <label for="end-date">End Date:</label>
-            <input type="date" id="end-date">
-          </div>
-          <div class="time-zone-select">
-            <label for="end-time">End Time:</label>
-            <input type="time" id="end-time">
-          </div>
-          <button onclick="calculateInterval()">Calculate Interval</button>
-          <div class="interval-result" id="interval-result"></div>
         </div>
       </div>
-    </div>
 
+      <div class="tool-box">
+        <div class="time-tool-wrap">
+          <!-- World Time Converter -->
+          <div class="time-tool-card">
+            <h2>World Time Converter</h2>
+            <div class="time-zone-select">
+              <label for="from-timezone">From Time Zone:</label>
+              <select id="from-timezone" aria-label="Select source time zone">
+                <option value="UTC">UTC</option>
+                <!-- North America -->
+                <option value="America/New_York">Eastern Time (US & Canada)</option>
+                <option value="America/Chicago">Central Time (US & Canada)</option>
+                <option value="America/Denver">Mountain Time (US & Canada)</option>
+                <option value="America/Los_Angeles">Pacific Time (US & Canada)</option>
+                <option value="America/Anchorage">Alaska Time (US)</option>
+                <option value="America/Honolulu">Hawaii Time (US)</option>
+                <option value="America/Toronto">Toronto</option>
+                <option value="America/Mexico_City">Mexico City</option>
+                <option value="America/Bogota">Bogota</option>
+                <option value="America/Sao_Paulo">Sao Paulo</option>
+                <option value="America/Santiago">Santiago</option>
+                <!-- Europe -->
+                <option value="Europe/London">London</option>
+                <option value="Europe/Paris">Paris</option>
+                <option value="Europe/Berlin">Berlin</option>
+                <option value="Europe/Rome">Rome</option>
+                <option value="Europe/Madrid">Madrid</option>
+                <option value="Europe/Amsterdam">Amsterdam</option>
+                <option value="Europe/Moscow">Moscow</option>
+                <option value="Europe/Istanbul">Istanbul</option>
+                <!-- Asia -->
+                <option value="Asia/Dubai">Dubai</option>
+                <option value="Asia/Kolkata">India Standard Time</option>
+                <option value="Asia/Bangkok">Bangkok</option>
+                <option value="Asia/Singapore">Singapore</option>
+                <option value="Asia/Shanghai">Shanghai</option>
+                <option value="Asia/Seoul">Seoul</option>
+                <option value="Asia/Tokyo">Tokyo</option>
+                <option value="Asia/Sydney">Sydney</option>
+                <option value="Asia/Mumbai">Mumbai</option>
+                <option value="Asia/Jakarta">Jakarta</option>
+                <!-- Africa -->
+                <option value="Africa/Cairo">Cairo</option>
+                <option value="Africa/Johannesburg">Johannesburg</option>
+                <option value="Africa/Lagos">Lagos</option>
+                <option value="Africa/Nairobi">Nairobi</option>
+                <!-- Oceania -->
+                <option value="Australia/Sydney">Sydney</option>
+                <option value="Australia/Melbourne">Melbourne</option>
+                <option value="Australia/Perth">Perth</option>
+                <option value="Pacific/Auckland">Auckland</option>
+                <option value="Pacific/Fiji">Fiji</option>
+                <!-- Space -->
+                <option value="UTC">Moon (Lunar Time) - UTC reference</option>
+                <option value="UTC">Mars (Mars Sol) - UTC reference</option>
+                <option value="UTC">Mercury - UTC reference</option>
+                <option value="UTC">Venus - UTC reference</option>
+                <option value="UTC">Jupiter - UTC reference</option>
+                <option value="UTC">Saturn - UTC reference</option>
+                <option value="UTC">Uranus - UTC reference</option>
+                <option value="UTC">Neptune - UTC reference</option>
+              </select>
+            </div>
+            <div class="time-zone-select">
+              <label for="from-date">Date:</label>
+              <input type="date" id="from-date" aria-label="Select date">
+            </div>
+            <div class="time-zone-select">
+              <label for="from-time">Time:</label>
+              <input type="time" id="from-time" aria-label="Select time">
+            </div>
+            <div class="time-zone-select">
+              <label for="to-timezone">To Time Zone:</label>
+              <select id="to-timezone" aria-label="Select target time zone">
+                <option value="UTC">UTC</option>
+                <!-- North America -->
+                <option value="America/New_York">Eastern Time (US & Canada)</option>
+                <option value="America/Chicago">Central Time (US & Canada)</option>
+                <option value="America/Denver">Mountain Time (US & Canada)</option>
+                <option value="America/Los_Angeles">Pacific Time (US & Canada)</option>
+                <option value="America/Anchorage">Alaska Time (US)</option>
+                <option value="America/Honolulu">Hawaii Time (US)</option>
+                <option value="America/Toronto">Toronto</option>
+                <option value="America/Mexico_City">Mexico City</option>
+                <option value="America/Bogota">Bogota</option>
+                <option value="America/Sao_Paulo">Sao Paulo</option>
+                <option value="America/Santiago">Santiago</option>
+                <!-- Europe -->
+                <option value="Europe/London">London</option>
+                <option value="Europe/Paris">Paris</option>
+                <option value="Europe/Berlin">Berlin</option>
+                <option value="Europe/Rome">Rome</option>
+                <option value="Europe/Madrid">Madrid</option>
+                <option value="Europe/Amsterdam">Amsterdam</option>
+                <option value="Europe/Moscow">Moscow</option>
+                <option value="Europe/Istanbul">Istanbul</option>
+                <!-- Asia -->
+                <option value="Asia/Dubai">Dubai</option>
+                <option value="Asia/Kolkata">India Standard Time</option>
+                <option value="Asia/Bangkok">Bangkok</option>
+                <option value="Asia/Singapore">Singapore</option>
+                <option value="Asia/Shanghai">Shanghai</option>
+                <option value="Asia/Seoul">Seoul</option>
+                <option value="Asia/Tokyo">Tokyo</option>
+                <option value="Asia/Sydney">Sydney</option>
+                <option value="Asia/Mumbai">Mumbai</option>
+                <option value="Asia/Jakarta">Jakarta</option>
+                <!-- Africa -->
+                <option value="Africa/Cairo">Cairo</option>
+                <option value="Africa/Johannesburg">Johannesburg</option>
+                <option value="Africa/Lagos">Lagos</option>
+                <option value="Africa/Nairobi">Nairobi</option>
+                <!-- Oceania -->
+                <option value="Australia/Sydney">Sydney</option>
+                <option value="Australia/Melbourne">Melbourne</option>
+                <option value="Australia/Perth">Perth</option>
+                <option value="Pacific/Auckland">Auckland</option>
+                <option value="Pacific/Fiji">Fiji</option>
+                <!-- Space -->
+                <option value="UTC">Moon (Lunar Time) - UTC reference</option>
+                <option value="UTC">Mars (Mars Sol) - UTC reference</option>
+                <option value="UTC">Mercury - UTC reference</option>
+                <option value="UTC">Venus - UTC reference</option>
+                <option value="UTC">Jupiter - UTC reference</option>
+                <option value="UTC">Saturn - UTC reference</option>
+                <option value="UTC">Uranus - UTC reference</option>
+                <option value="UTC">Neptune - UTC reference</option>
+              </select>
+            </div>
+            <div style="display: flex; gap: 10px; margin-top: 10px;">
+              <button onclick="convertTime()" type="button">Convert Time</button>
+              <button onclick="swapTimezones()" type="button" class="ghost">Swap Time Zones</button>
+            </div>
+            <div class="time-result" id="time-result" role="status" aria-live="polite"></div>
+          </div>
 
+          <!-- Time Interval Calculator -->
+          <div class="time-tool-card">
+            <h2>Time Interval Calculator</h2>
+            <div class="time-zone-select">
+              <label for="start-date">Start Date:</label>
+              <input type="date" id="start-date" aria-label="Select start date">
+            </div>
+            <div class="time-zone-select">
+              <label for="start-time">Start Time:</label>
+              <input type="time" id="start-time" aria-label="Select start time">
+            </div>
+            <div class="time-zone-select">
+              <label for="end-date">End Date:</label>
+              <input type="date" id="end-date" aria-label="Select end date">
+            </div>
+            <div class="time-zone-select">
+              <label for="end-time">End Time:</label>
+              <input type="time" id="end-time" aria-label="Select end time">
+            </div>
+            <button onclick="calculateInterval()" type="button">Calculate Interval</button>
+            <div class="interval-result" id="interval-result" role="status" aria-live="polite"></div>
+          </div>
+        </div>
+      </div>
 
-    <div class="content">
-      <h2>How to Use These Time Tools</h2>
-      <h3>World Time Converter</h3>
-      <ol>
-        <li><strong>Select source time zone</strong>: Choose the time zone you want to convert from the "From Time Zone" dropdown.</li>
-        <li><strong>Set date and time</strong>: Choose the date and time you want to convert using the date and time pickers.</li>
-        <li><strong>Select target time zone</strong>: Choose the time zone you want to convert to from the "To Time Zone" dropdown.</li>
-        <li><strong>Convert time</strong>: Click the "Convert Time" button to see the converted time.</li>
-      </ol>
+      <article class="content">
+        <h2>About This Tool</h2>
+        <p>Convert between time zones and calculate time intervals. Free, no signup. Works in your browser.</p>
 
-      <h3>Time Interval Calculator</h3>
-      <ol>
-        <li><strong>Set start date and time</strong>: Choose the start date and time using the date and time pickers.</li>
-        <li><strong>Set end date and time</strong>: Choose the end date and time using the date and time pickers.</li>
-        <li><strong>Calculate interval</strong>: Click the "Calculate Interval" button to see the time difference.</li>
-      </ol>
+        <p>This tool runs in your browser; no data is stored.</p>
 
-      <h2>Step-by-Step Tutorial</h2>
-      <h3>Converting Between Time Zones</h3>
-      <p>1. Select your local time zone from the "From Time Zone" dropdown</p>
-      <p>2. Set the current date and time</p>
-      <p>3. Select the target time zone (e.g., "Europe/London") from the "To Time Zone" dropdown</p>
-      <p>4. Click "Convert Time"</p>
-      <p>5. The converted time will be displayed in the result area</p>
-      <p>6. Use this information to schedule meetings or plan activities across time zones</p>
+        <h3>How to Use</h3>
+        <p>For time zone conversion: Select source and target time zones, set date and time, click convert. For time intervals: Set start and end date/time, click calculate.</p>
 
-      <h3>Calculating Time Intervals</h3>
-      <p>1. Set the start date and time for your event or task</p>
-      <p>2. Set the end date and time</p>
-      <p>3. Click "Calculate Interval"</p>
-      <p>4. The time difference will be displayed in days, hours, minutes, and seconds</p>
-      <p>5. Use this information for project planning, event scheduling, or time tracking</p>
+        <h3>FAQ</h3>
+        <p><strong>Is it free</strong> Yes, no cost.</p>
+        <p><strong>Is my data safe</strong> Yes, everything stays on your device.</p>
+      </article>
 
-      <h2>Why Use These Time Tools?</h2>
-      <ul>
-        <li><strong>Works directly in your browser</strong> - no installation required</li>
-        <li><strong>Convert between multiple time zones instantly</strong> - perfect for global teams and travelers</li>
-        <li><strong>Calculate exact time intervals between two dates</strong> - ideal for project planning and scheduling</li>
-        <li><strong>Fast and secure</strong> - all processing happens locally on your device</li>
-        <li><strong>Free forever</strong> - no hidden fees or limitations</li>
-        <li><strong>Easy to use</strong> - simple interface for quick time conversions and calculations</li>
-      </ul>
-
-      <h2>Use Cases</h2>
-      <h3>For Global Teams</h3>
-      <p>Scheduling meetings across different time zones, coordinating work hours, and planning deadlines.</p>
-
-      <h3>For Travelers</h3>
-      <p>Converting between home and destination time zones, planning flights, and avoiding jet lag.</p>
-
-      <h3>For Project Managers</h3>
-      <p>Calculating project timelines, tracking task durations, and setting realistic deadlines.</p>
-
-      <h3>For Event Planners</h3>
-      <p>Scheduling events across different time zones, planning countdowns, and managing event timelines.</p>
-
-      <h2>Time Management Best Practices</h2>
-      <ul>
-        <li>Always double-check time zone conversions for important events</li>
-        <li>Use UTC as a reference time zone for global communications</li>
-        <li>Consider daylight saving time changes when planning across seasons</li>
-        <li>Use time interval calculations to estimate project completion times</li>
-        <li>Set reminders for important time zone transitions</li>
-      </ul>
-
-      <h2>FAQ</h2>
-      <h3>Is this time converter free?</h3>
-      <p>Yes, it is completely free with no hidden fees. You can use it as often as you need without any limitations.</p>
-      
-      <h3>Does this tool store my data?</h3>
-      <p>No. All processing happens locally in your browser. Your data never leaves your device.</p>
-      
-      <h3>Is this tool accurate?</h3>
-      <p>Yes. The tool uses the browser's built-in time zone support to ensure accurate conversions.</p>
-      
-      <h3>Can I use this tool offline?</h3>
-      <p>Yes. Once the page is loaded, you can use these time tools offline as all processing happens in your browser.</p>
-      
-      <h3>How many time zones are supported?</h3>
-      <p>This tool supports all major time zones from around the world, including UTC, American, European, Asian, and Australian time zones.</p>
-    </div>
-
-
+      <aside class="content" aria-labelledby="related-tools">
+        <h2 id="related-tools">Related Tools</h2>
+        <div class="grid">
+          <a href="./timestamp-converter.html" class="card" data-tool-card="Timestamp Converter convert timestamp">
+            <h4>Timestamp Converter</h4>
+            <p>Convert between timestamp and date</p>
+          </a>
+          <a href="./age-calculator.html" class="card" data-tool-card="Age Calculator calculate age">
+            <h4>Age Calculator</h4>
+            <p>Calculate age in years, months, days</p>
+          </a>
+          <a href="./unit-converter.html" class="card" data-tool-card="Unit Converter convert units">
+            <h4>Unit Converter</h4>
+            <p>Convert between measurement units</p>
+          </a>
+        </div>
+      </aside>
+    </main>
 
     <footer class="footer">
-      <p>© <span id="year">2026</span> nowoi.com – Smart Online Tools for Creators & Developers</p>
-      <div class="footer-links">
+      <p>© <span id="year">2026</span> nowoi.com –Free Online Tools</p>
+      <nav class="footer-links" aria-label="Footer navigation">
         <a href="../index.html">Home</a>
         <a href="./index.html">Tools</a>
         <a href="../about.html">About</a>
         <a href="../privacy-policy.html">Privacy Policy</a>
         <a href="../terms.html">Terms</a>
         <a href="../contact.html">Contact</a>
-      </div>
+      </nav>
     </footer>
   </div>
 
+<script src="../assets/js/common.js" defer></script>
 <script>
 // World Time Converter
 function convertTime() {
-  const fromTimezone = document.getElementById('from-timezone').value;
-  const fromDate = document.getElementById('from-date').value;
-  const fromTime = document.getElementById('from-time').value;
-  const toTimezone = document.getElementById('to-timezone').value;
-  const resultDiv = document.getElementById('time-result');
+  var fromTimezoneSelect = document.getElementById('from-timezone');
+  var toTimezoneSelect = document.getElementById('to-timezone');
+  var fromTimezone = fromTimezoneSelect.value;
+  var fromTimezoneText = fromTimezoneSelect.options[fromTimezoneSelect.selectedIndex].text;
+  var fromDate = document.getElementById('from-date').value;
+  var fromTime = document.getElementById('from-time').value;
+  var toTimezone = toTimezoneSelect.value;
+  var toTimezoneText = toTimezoneSelect.options[toTimezoneSelect.selectedIndex].text;
+  var resultDiv = document.getElementById('time-result');
   
   if (!fromDate || !fromTime) {
     resultDiv.innerHTML = '<p>Please select a date and time.</p>';
@@ -249,49 +624,72 @@ function convertTime() {
   
   try {
     // Create a date object from the input
-    const dateStr = fromDate + 'T' + fromTime;
-    const date = new Date(dateStr);
+    var dateStr = fromDate + 'T' + fromTime;
+    var date = new Date(dateStr);
     
-    // Convert to the target timezone
-    const options = {
+    // Check if source or target is a space body
+    var isFromSpace = fromTimezoneText.includes('Moon') || fromTimezoneText.includes('Mars') || fromTimezoneText.includes('Mercury') || fromTimezoneText.includes('Venus') || fromTimezoneText.includes('Jupiter') || fromTimezoneText.includes('Saturn') || fromTimezoneText.includes('Uranus') || fromTimezoneText.includes('Neptune');
+    var isToSpace = toTimezoneText.includes('Moon') || toTimezoneText.includes('Mars') || toTimezoneText.includes('Mercury') || toTimezoneText.includes('Venus') || toTimezoneText.includes('Jupiter') || toTimezoneText.includes('Saturn') || toTimezoneText.includes('Uranus') || toTimezoneText.includes('Neptune');
+    
+    var fromTimeDisplay = date.toLocaleString('en-GB', {
       year: 'numeric',
       month: 'long',
       day: 'numeric',
       hour: '2-digit',
       minute: '2-digit',
       second: '2-digit',
-      timeZone: toTimezone,
+      timeZone: fromTimezone,
       timeZoneName: 'short'
-    };
+    });
     
-    const convertedTime = date.toLocaleString('en-GB', options);
+    var convertedTime = '';
     
-    resultDiv.innerHTML = `
-      <h3>Converted Time</h3>
-      <p><strong>From:</strong> ${date.toLocaleString('en-GB', {
+    if (isToSpace) {
+      // Calculate space body time
+      convertedTime = calculateSpaceTime(date, toTimezoneText);
+    } else {
+      // Regular time zone conversion
+      var options = {
         year: 'numeric',
         month: 'long',
         day: 'numeric',
         hour: '2-digit',
         minute: '2-digit',
         second: '2-digit',
-        timeZone: fromTimezone,
+        timeZone: toTimezone,
         timeZoneName: 'short'
-      })}</p>
+      };
+      convertedTime = date.toLocaleString('en-GB', options);
+    }
+    
+    resultDiv.innerHTML = `
+      <h3>Converted Time</h3>
+      <p><strong>From:</strong> ${fromTimeDisplay} (${fromTimezoneText})</p>
       <p><strong>To:</strong> ${convertedTime}</p>
+      <button onclick="copyResult('time-result')" type="button" class="ghost" style="margin-top: 10px; font-size: 12px;">Copy Result</button>
     `;
   } catch (error) {
     resultDiv.innerHTML = '<p>Error converting time. Please try again.</p>';
   }
 }
 
+// Swap time zones
+function swapTimezones() {
+  var fromTimezone = document.getElementById('from-timezone');
+  var toTimezone = document.getElementById('to-timezone');
+  var temp = fromTimezone.value;
+  fromTimezone.value = toTimezone.value;
+  toTimezone.value = temp;
+  convertTime();
+}
+
 // Time Interval Calculator
 function calculateInterval() {
-  const startDate = document.getElementById('start-date').value;
-  const startTime = document.getElementById('start-time').value;
-  const endDate = document.getElementById('end-date').value;
-  const endTime = document.getElementById('end-time').value;
-  const resultDiv = document.getElementById('interval-result');
+  var startDate = document.getElementById('start-date').value;
+  var startTime = document.getElementById('start-time').value;
+  var endDate = document.getElementById('end-date').value;
+  var endTime = document.getElementById('end-time').value;
+  var resultDiv = document.getElementById('interval-result');
   
   if (!startDate || !startTime || !endDate || !endTime) {
     resultDiv.innerHTML = '<p>Please select both start and end date/time.</p>';
@@ -300,33 +698,60 @@ function calculateInterval() {
   
   try {
     // Create date objects
-    const start = new Date(startDate + 'T' + startTime);
-    const end = new Date(endDate + 'T' + endTime);
+    var start = new Date(startDate + 'T' + startTime);
+    var end = new Date(endDate + 'T' + endTime);
     
     // Calculate difference in milliseconds
-    const diffMs = Math.abs(end - start);
+    var diffMs = Math.abs(end - start);
     
     // Convert to days, hours, minutes, seconds
-    const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
-    const diffHours = Math.floor((diffMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const diffMinutes = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
-    const diffSeconds = Math.floor((diffMs % (1000 * 60)) / 1000);
+    var diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+    var diffHours = Math.floor((diffMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var diffMinutes = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
+    var diffSeconds = Math.floor((diffMs % (1000 * 60)) / 1000);
+    
+    // Calculate total hours and minutes for easier reference
+    var totalHours = Math.floor(diffMs / (1000 * 60 * 60));
+    var totalMinutes = Math.floor(diffMs / (1000 * 60));
     
     resultDiv.innerHTML = `
       <h3>Time Interval</h3>
       <p><strong>Start:</strong> ${start.toLocaleString('en-GB')}</p>
       <p><strong>End:</strong> ${end.toLocaleString('en-GB')}</p>
       <p><strong>Total Time:</strong> ${diffDays} days, ${diffHours} hours, ${diffMinutes} minutes, ${diffSeconds} seconds</p>
+      <p><strong>Total Hours:</strong> ${totalHours} hours</p>
+      <p><strong>Total Minutes:</strong> ${totalMinutes} minutes</p>
+      <button onclick="copyResult('interval-result')" type="button" class="ghost" style="margin-top: 10px; font-size: 12px;">Copy Result</button>
     `;
   } catch (error) {
     resultDiv.innerHTML = '<p>Error calculating interval. Please try again.</p>';
   }
 }
 
+// Copy result to clipboard
+function copyResult(elementId) {
+  var resultDiv = document.getElementById(elementId);
+  var text = resultDiv.textContent;
+  
+  navigator.clipboard.writeText(text).then(function() {
+    // Change button text to indicate success
+    var button = resultDiv.querySelector('button');
+    if (button) {
+      var originalText = button.textContent;
+      button.textContent = 'Copied!';
+      setTimeout(function() {
+        button.textContent = originalText;
+      }, 2000);
+    }
+  }).catch(function(err) {
+    console.error('Failed to copy: ', err);
+  });
+}
+
 // Set default dates to today
 window.onload = function() {
-  const today = new Date().toISOString().split('T')[0];
-  const now = new Date().toTimeString().split(' ')[0].substring(0, 5);
+  var today = new Date().toISOString().split('T')[0];
+  var now = new Date().toTimeString().split(' ')[0].substring(0, 5);
   
   document.getElementById('from-date').value = today;
   document.getElementById('from-time').value = now;
@@ -335,7 +760,291 @@ window.onload = function() {
   document.getElementById('end-date').value = today;
   document.getElementById('end-time').value = now;
 };
+
+// Live Clock Functionality
+// ===== LIVE CLOCK OPTIMIZED VERSION ===== 
+
+// space body day length 
+const spaceDayLength = { 
+  Moon: 29.53 * 24 * 60 * 60 * 1000, 
+  Mars: (24*60*60 + 39*60 + 35) * 1000, 
+  Mercury: 58.6 * 24 * 60 * 60 * 1000, 
+  Venus: 243 * 24 * 60 * 60 * 1000, 
+  Jupiter: (9*60*60 + 55*60) * 1000, 
+  Saturn: (10*60*60 + 33*60) * 1000, 
+  Uranus: (17*60*60 + 14*60) * 1000, 
+  Neptune: (16*60*60 + 6*60) * 1000 
+}; 
+
+function getSpaceDay(body){ 
+  for(let b in spaceDayLength){ 
+    if(body.includes(b)) return spaceDayLength[b]; 
+  } 
+  return 86400000; 
+} 
+
+// calculate space time 
+function calculateSpaceInfo(ms,body){ 
+  const dayLength=getSpaceDay(body); 
+  const day=Math.floor(ms/dayLength)+1; 
+  const ratio=(ms%dayLength)/dayLength; 
+  const hours=ratio*24; 
+  const minutes=(ratio*24*60)%60; 
+  const seconds=(ratio*24*3600)%60; 
+  const milliseconds=(ratio*24*3600*1000)%1000; 
+  return {day,hours,minutes,seconds,milliseconds}; 
+}
+
+// DOM 
+let clock={ 
+  select:null, 
+  digital:null, 
+  date:null, 
+  hour:null, 
+  minute:null, 
+  second:null 
+}; 
+
+// detect space body 
+function isSpace(text){ 
+  return ( 
+    text.includes("Moon")|| 
+    text.includes("Mars")|| 
+    text.includes("Mercury")|| 
+    text.includes("Venus")|| 
+    text.includes("Jupiter")|| 
+    text.includes("Saturn")|| 
+    text.includes("Uranus")|| 
+    text.includes("Neptune") 
+  ); 
+} 
+
+// clock loop 
+function updateClock(){ 
+  const now=Date.now(); 
+  const select=clock.select; 
+  const text=select.options[select.selectedIndex].text; 
+  let zone=select.value; 
+  
+  // Handle local time zone
+  if(zone==="local"){
+    zone=undefined; // undefined will use browser's local time zone
+  }
+
+  if(isSpace(text)){ 
+    const space=calculateSpaceInfo(now,text); 
+    const h=space.hours; 
+    const m=space.minutes; 
+    const s=space.seconds; 
+    const ms=space.milliseconds; 
+
+    const hourAngle=h%12*30; 
+    const minuteAngle=m*6; 
+    const secondAngle=s*6; 
+
+    clock.hour.style.transform=`translate(-50%, -100%) rotate(${hourAngle}deg)`; 
+    clock.minute.style.transform=`translate(-50%, -100%) rotate(${minuteAngle}deg)`; 
+    clock.second.style.transform=`translate(-50%, -100%) rotate(${secondAngle}deg)`; 
+
+    const body=text.split(" ")[0]; 
+    clock.digital.innerHTML= 
+      `<div style="font-size: 22px; margin-bottom: 5px;">${body} Day ${space.day}, ${Math.floor(h).toString().padStart(2,"0")}:${Math.floor(m).toString().padStart(2,"0")}:${Math.floor(s).toString().padStart(2,"0")}:${Math.floor(ms).toString().padStart(3,"0")}</div>`+
+      `<div style="font-size: 16px; color: var(--text-secondary);">Earth Time: ${new Date(now).toLocaleTimeString("en-US",{hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:true})}</div>`; 
+
+    clock.date.innerText= 
+      new Date(now).toLocaleDateString("en-US",{ 
+        weekday:"long", 
+        year:"numeric", 
+        month:"long", 
+        day:"numeric" 
+      }); 
+  } 
+  else{ 
+    const nowDate=new Date(); 
+    const timeStr=nowDate.toLocaleTimeString("en-US",{ 
+      hour:'2-digit', 
+      minute:'2-digit', 
+      second:'2-digit', 
+      hour12:false, 
+      timeZone:zone 
+    }); 
+
+    const [h,m,s]=timeStr.split(":").map(Number); 
+    const ms=nowDate.getMilliseconds(); 
+
+    const second=s+ms/1000; 
+    const minute=m+second/60; 
+    const hour=(h%12)+minute/60; 
+
+    const secondAngle=second*6; 
+    const minuteAngle=minute*6; 
+    const hourAngle=hour*30; 
+
+    clock.hour.style.transform=`translate(-50%, -100%) rotate(${hourAngle}deg)`; 
+    clock.minute.style.transform=`translate(-50%, -100%) rotate(${minuteAngle}deg)`; 
+    clock.second.style.transform=`translate(-50%, -100%) rotate(${secondAngle}deg)`; 
+
+    clock.digital.innerText= 
+      nowDate.toLocaleTimeString("en-US",{ 
+        hour:'2-digit', 
+        minute:'2-digit', 
+        second:'2-digit', 
+        hour12:true, 
+        timeZone:zone 
+      }); 
+
+    clock.date.innerText= 
+      nowDate.toLocaleDateString("en-US",{ 
+        weekday:'long', 
+        year:'numeric', 
+        month:'long', 
+        day:'numeric', 
+        timeZone:zone 
+      }); 
+  } 
+
+  requestAnimationFrame(updateClock); 
+} 
+
+function generateClockTicks(){
+
+  const container=document.getElementById("clock-ticks");
+  if(!container) return;
+
+  const clockSize=280;
+  const center=clockSize/2;
+
+  // 刻度外端紧贴表盘内边缘
+  const tickStartRadius=134;
+
+  for(let i=0;i<60;i++){
+
+    const angleDeg=i*6;
+    const angleRad=(angleDeg-90)*Math.PI/180;
+
+    const isHour=i%5===0;
+    const tickLength=isHour?14:8;
+    const tickWidth=isHour?3:1;
+
+    // 刻度中心位置
+    const midX=center+Math.cos(angleRad)*(tickStartRadius-tickLength/2);
+    const midY=center+Math.sin(angleRad)*(tickStartRadius-tickLength/2);
+
+    const tick=document.createElement("div");
+
+    tick.style.position="absolute";
+    tick.style.left=midX+"px";
+    tick.style.top=midY+"px";
+
+    tick.style.width=tickWidth+"px";
+    tick.style.height=tickLength+"px";
+
+    tick.style.background="var(--text)";
+    tick.style.borderRadius=isHour?"1.5px":"0.5px";
+    tick.style.opacity=isHour?"0.85":"0.4";
+
+    tick.style.transformOrigin="center";
+    tick.style.transform=`translate(-50%,-50%) rotate(${angleDeg}deg)`;
+
+    container.appendChild(tick);
+  }
+
+}
+
+function generateClockNumbers(){
+
+  const container=document.getElementById("clock-numbers");
+  if(!container) return;
+
+  const clockSize=280;
+  const center=clockSize/2;
+
+  // 数字位置：在刻度内侧
+  const numberRadius=108;
+
+  const numbers=[12,1,2,3,4,5,6,7,8,9,10,11];
+
+  numbers.forEach((num,index)=>{
+
+    const angleDeg=index*30;
+    const angleRad=(angleDeg-90)*Math.PI/180;
+
+    const x=center+Math.cos(angleRad)*numberRadius;
+    const y=center+Math.sin(angleRad)*numberRadius;
+
+    const div=document.createElement("div");
+
+    div.textContent=num;
+
+    div.style.position="absolute";
+    div.style.left=x+"px";
+    div.style.top=y+"px";
+
+    div.style.transform="translate(-50%,-50%)";
+
+    div.style.textAlign="center";
+    div.style.lineHeight="1";
+
+    div.style.fontFamily="system-ui, -apple-system, Arial, sans-serif";
+    div.style.fontWeight=num%3===0?"600":"400";
+
+    div.style.fontSize=num%3===0?"18px":"14px";
+
+    div.style.color="var(--text)";
+    div.style.opacity="0.85";
+
+    container.appendChild(div);
+
+  });
+
+}
+
+// start 
+// world cities time zones
+const worldCities = [
+  { name: 'New York', timezone: 'America/New_York' },
+  { name: 'London', timezone: 'Europe/London' },
+  { name: 'Tokyo', timezone: 'Asia/Tokyo' },
+  { name: 'Paris', timezone: 'Europe/Paris' },
+  { name: 'Sydney', timezone: 'Australia/Sydney' }
+];
+
+// update world cities time
+function updateWorldCities() {
+  const citiesContainer = document.getElementById('world-cities');
+  if (!citiesContainer) return;
+  
+  const now = new Date();
+  
+  citiesContainer.innerHTML = worldCities.map(city => {
+    const timeStr = now.toLocaleTimeString('en-US', {
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false,
+      timeZone: city.timezone
+    });
+    
+    return `
+      <div class="city-time">
+        <span class="city-name">${city.name}</span>
+        <span class="city-time-value">${timeStr}</span>
+      </div>
+    `;
+  }).join('');
+}
+
+document.addEventListener("DOMContentLoaded",()=>{ 
+  clock.select=document.getElementById("clock-timezone"); 
+  clock.digital=document.getElementById("digital-clock"); 
+  clock.date=document.getElementById("date-display"); 
+  clock.hour=document.getElementById("hour-hand"); 
+  clock.minute=document.getElementById("minute-hand"); 
+  clock.second=document.getElementById("second-hand"); 
+  generateClockNumbers();
+  generateClockTicks();
+  updateWorldCities();
+  requestAnimationFrame(updateClock); 
+});
 </script>
-<script src="../assets/js/common.js"></script>
 </body>
 </html>

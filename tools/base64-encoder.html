@@ -2,119 +2,114 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Free Online Base64 Encoder & Decoder</title>
+<title>Online Base64 Encoder & Decoder</title>
 <meta name="description" content="Use our free online Base64 Encoder & Decoder to encode and decode Base64 instantly. No installation required. Fast, secure, and easy to use." />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="index, follow">
 <meta name="keywords" content="base64 encoder, base64 decoder, online base64, free base64 tool, encode decode base64">
+<meta name="author" content="nowoi.com">
+<meta name="theme-color" content="#000000">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://nowoi.com/tools/base64-encoder.html">
+<meta property="og:title" content="Free Online Base64 Encoder & Decoder">
+<meta property="og:description" content="Use our free online Base64 Encoder & Decoder to encode and decode Base64 instantly. No installation required. Fast, secure, and easy to use." />
+<meta property="og:image" content="https://nowoi.com/assets/image/Nico.png">
+
 <link rel="canonical" href="https://nowoi.com/tools/base64-encoder.html">
-<link rel="stylesheet" href="../assets/css/style.css">
+<link rel="stylesheet" href="../assets/css/style.min.css">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Base64 Encoder & Decoder",
+  "url": "https://nowoi.com/tools/base64-encoder.html",
+  "description": "Free online Base64 encoder and decoder tool",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "featureList": "Base64 encoding, Base64 decoding, File upload support, One-click copy"
+}
+</script>
 </head>
 
 <body>
+  <a href="#main-content" class="sr-only">Skip to main content</a>
+  
   <div class="container">
     <header class="site-header">
       <div class="header-row">
-        <a href="../index.html" class="brand">nowoi.com</a>
-        <nav class="nav">
+        <a href="../index.html" class="brand" aria-label="nowoi.com Home">nowoi.com</a>
+        <nav class="nav" aria-label="Main navigation">
           <a href="../index.html">Home</a>
-          <a href="./index.html" aria-current="page">Tools</a>
+          <a href="./index.html">Tools</a>
           <a href="../about.html">About</a>
           <a href="../contact.html">Contact</a>
+          <button id="dark-mode-toggle" class="ghost" >Dark Mode</button>
         </nav>
       </div>
     </header>
 
-    <div class="page-head">
-      <h1>Free Online Base64 Encoder & Decoder</h1>
-      <p>Encode and decode Base64 instantly. 100% free. No sign-up required.</p>
-    </div>
+    <main id="main-content">
+      <div class="page-head">
+        <h1>Online Base64 Encoder</h1>
+        <p>Encode and decode Base64 text. Free, no signup.</p>
+      </div>
 
+      <div class="tool-box">
+        <div class="row">
+          <input type="file" id="file-input" accept=".txt,.base64" style="display: none;" onchange="loadFile(this)">
+          <button onclick="document.getElementById('file-input').click()" type="button" class="ghost">Upload File</button>
+          <button onclick="clearText()" type="button" class="ghost">Clear</button>
+        </div>
+        <div class="options">
+          <button id="encode-btn" class="active" onclick="setMode('encode')">Encode</button>
+          <button id="decode-btn" onclick="setMode('decode')">Decode</button>
+        </div>
+        <textarea id="input" placeholder="Enter text here..." oninput="processBase64()"></textarea>
+        <textarea id="output" placeholder="Result will appear here..."></textarea>
+        <button class="copy-btn" onclick="copyResult()">Copy to Clipboard</button>
+      </div>
 
+      <article class="content">
+        <h2>About This Tool</h2>
+        <p>Encode and decode Base64 strings. Free, no signup. Works in your browser.</p>
 
-    <div class="tool-box">
-  <div class="options">
-    <button id="encode-btn" class="active" onclick="setMode('encode')">Encode</button>
-    <button id="decode-btn" onclick="setMode('decode')">Decode</button>
-  </div>
-  <textarea id="input" placeholder="Enter text here..." oninput="processBase64()"></textarea>
-  <textarea id="output" placeholder="Result will appear here..."></textarea>
-  <button class="copy-btn" onclick="copyResult()">Copy to Clipboard</button>
-</section>
+        <p>This tool runs in your browser; no data is stored.</p>
 
-<section>
-    <div class="content">
-      <h2>How to Use This Base64 Encoder</h2>
-      <ol>
-        <li><strong>Enter your text</strong>: Type or paste the text you want to encode or decode in the input box.</li>
-        <li><strong>Select operation</strong>: Choose between "Encode" or "Decode" from the dropdown menu.</li>
-        <li><strong>Process</strong>: Click the "Process" button to perform the operation.</li>
-        <li><strong>Copy result</strong>: Use the "Copy to Clipboard" button to copy the processed text.</li>
-        <li><strong>Reset</strong>: Use the "Clear" button to reset the input and start over.</li>
-      </ol>
+        <h3>How to Use</h3>
+        <p>Enter text. Select encode or decode. See result instantly. Copy if needed.</p>
 
-      <h2>Step-by-Step Tutorial</h2>
-      <h3>Encoding Text to Base64</h3>
-      <p>1. Type or paste the text you want to encode into the input box</p>
-      <p>2. Select "Encode" from the dropdown menu</p>
-      <p>3. Click the "Process" button</p>
-      <p>4. The Base64 encoded text will appear in the output box</p>
-      <p>5. Copy the encoded text using the "Copy to Clipboard" button</p>
+        <h3>FAQ</h3>
+        <p><strong>Is it free</strong> Yes, no cost.</p>
+        <p><strong>Is my data safe</strong> Yes, everything stays on your device.</p>
+      </article>
 
-      <h3>Decoding Base64 to Text</h3>
-      <p>1. Type or paste the Base64 encoded text into the input box</p>
-      <p>2. Select "Decode" from the dropdown menu</p>
-      <p>3. Click the "Process" button</p>
-      <p>4. The decoded text will appear in the output box</p>
-      <p>5. Copy the decoded text using the "Copy to Clipboard" button</p>
-
-      <h2>Why Use This Base64 Encoder?</h2>
-      <ul>
-        <li><strong>Encodes and decodes Base64 strings</strong> with just one click</li>
-        <li><strong>No data stored</strong> - all processing happens locally on your device</li>
-        <li><strong>Free forever</strong> - no hidden fees or limitations</li>
-        <li><strong>Handles special characters correctly</strong> including non-ASCII characters</li>
-        <li><strong>Fast and reliable</strong> - instant processing with accurate results</li>
-        <li><strong>Easy to use</strong> - simple interface for quick Base64 encoding/decoding</li>
-      </ul>
-
-      <h2>Use Cases</h2>
-      <h3>For Developers</h3>
-      <p>Encoding binary data for API requests, embedding images in HTML/CSS, and working with data in text-based formats.</p>
-
-      <h3>For Web Designers</h3>
-      <p>Embedding small images directly into HTML or CSS files to reduce HTTP requests and improve page load times.</p>
-
-      <h3>For Content Creators</h3>
-      <p>Encoding data for secure transmission, creating data URIs, and working with various web technologies.</p>
-
-      <h2>Base64 Encoding Best Practices</h2>
-      <ul>
-        <li>Use Base64 encoding for binary data that needs to be transmitted over text-based protocols</li>
-        <li>Remember that Base64 encoding increases file size by about 33%</li>
-        <li>Use decoding to troubleshoot Base64 encoded data</li>
-        <li>Test encoded data to ensure it decodes correctly</li>
-        <li>Be aware of character encoding when working with non-ASCII text</li>
-      </ul>
-
-      <h2>FAQ</h2>
-      <h3>Is this Base64 encoder free?</h3>
-      <p>Yes, it is completely free with no hidden fees. You can use it as often as you need without any limitations.</p>
-      
-      <h3>What is Base64 encoding?</h3>
-      <p>Base64 encoding is a way to represent binary data in an ASCII string format. It is commonly used for encoding data that needs to be stored or transferred over media that can only handle ASCII characters.</p>
-      
-      <h3>When should I use Base64 encoding?</h3>
-      <p>Base64 encoding is commonly used for encoding binary data in email attachments, embedding images in HTML, and transmitting data over protocols that only support ASCII.</p>
-      
-      <h3>Can I use this tool offline?</h3>
-      <p>Yes. Once the page is loaded, you can use the Base64 encoder offline as all processing happens in your browser.</p>
-    </div>
-</section>
+      <aside class="content" aria-labelledby="related-tools">
+        <h2 id="related-tools">Related Tools</h2>
+        <div class="grid">
+          <a href="./url-encoder.html" class="card" data-tool-card="URL Encoder encode url">
+            <h4>URL Encoder</h4>
+            <p>Encode and decode URLs</p>
+          </a>
+          <a href="./json-formatter.html" class="card" data-tool-card="JSON Formatter format json">
+            <h4>JSON Formatter</h4>
+            <p>Format and validate JSON</p>
+          </a>
+        </div>
+      </aside>
+    </main>
 
     <footer class="footer">
-      <p>© <span id="year">2026</span> nowoi.com – 100% Free Online Tools</p>
-      <div class="footer-links">
+      <p>© <span id="year">2026</span> nowoi.com –Free Online Tools</p>
+      <nav class="footer-links" aria-label="Footer navigation">
         <a href="../index.html">Home</a>
         <a href="./index.html">Tools</a>
         <a href="../about.html">About</a>
@@ -125,8 +120,26 @@
     </footer>
   </div>
 
+<script src="../assets/js/common.js"></script>
 <script>
 let currentMode = 'encode';
+
+function loadFile(input) {
+  const file = input.files[0];
+  if (!file) return;
+  
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    document.getElementById('input').value = e.target.result;
+    processBase64();
+  };
+  reader.readAsText(file);
+}
+
+function clearText() {
+  document.getElementById('input').value = '';
+  document.getElementById('output').value = '';
+}
 
 function setMode(mode) {
   currentMode = mode;
@@ -170,9 +183,25 @@ function copyResult() {
   const output = document.getElementById('output');
   output.select();
   document.execCommand('copy');
-  showToast('Copied to clipboard!');
+  showToast('Copied to clipboard!', 'success');
 }
+
+// Set current year - Try to get network time from HTTP header, fallback to local time
+async function updateYear() {
+  try {
+    const response = await fetch(window.location.href, { method: 'HEAD', cache: 'no-store' });
+    const dateHeader = response.headers.get('date');
+    if (dateHeader) {
+      const serverDate = new Date(dateHeader);
+      document.getElementById('year').textContent = serverDate.getFullYear();
+    } else {
+      document.getElementById('year').textContent = new Date().getFullYear();
+    }
+  } catch (e) {
+    document.getElementById('year').textContent = new Date().getFullYear();
+  }
+}
+updateYear();
 </script>
-<script src="../assets/js/common.js"></script>
 </body>
 </html>
