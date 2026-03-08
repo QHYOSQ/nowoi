@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Free Online Time Tools – World Clock, Time Zone Converter, Space Time Calculator & Interval Timer | nowoi</title>
+<title>Free Online Time Tools - World Clock, Time Zone Converter, Space Time Calculator & Interval Timer | nowoi</title>
 <meta name="description" content="Free online time tools with live analog clock, world time converter for 30+ cities, space time calculator for Moon/Mars/planets, and time interval calculator. No installation. Works offline.">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="index, follow">
@@ -13,12 +13,12 @@
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://nowoi.com/tools/time-tools.html">
-<meta property="og:title" content="Free Online Time Tools – World Clock, Time Zone & Space Time Calculator">
+<meta property="og:title" content="Free Online Time Tools - World Clock, Time Zone & Space Time Calculator">
 <meta property="og:description" content="Free online time tools with live analog clock, world time converter for 30+ cities, space time calculator for Moon/Mars/planets, and time interval calculator.">
 <meta property="og:image" content="https://nowoi.com/assets/image/Nico.png">
 
 <link rel="canonical" href="https://nowoi.com/tools/time-tools.html">
-<link rel="stylesheet" href="../assets/css/style.min.css">
+<link rel="stylesheet" href="../assets/css/style.css">
 
 <!-- Structured Data -->
 <script type="application/ld+json">
@@ -158,6 +158,34 @@
     overflow:hidden;
   }
 
+  /* Responsive clock sizes */
+  @media (max-width: 480px) {
+    #analog-clock{
+      width:220px;
+      height:220px;
+    }
+    
+    #hour-hand{
+      height:56px;
+      width:5px;
+    }
+    
+    #minute-hand{
+      height:78px;
+      width:3px;
+    }
+    
+    #second-hand{
+      height:88px;
+      width:2px;
+    }
+    
+    #clock-center{
+      width:12px;
+      height:12px;
+    }
+  }
+
   /* hour hand */
 
   #hour-hand{
@@ -251,7 +279,7 @@
 
   #world-cities {
     font-size: 14px;
-    color: var(--text-secondary);
+    color: var(--muted);
   }
 
   #world-cities .city-time {
@@ -297,7 +325,7 @@
     <main id="main-content">
       <div class="page-head">
         <h1>Time Tools</h1>
-        <p>Convert time zones and calculate time intervals. Free, no signup.</p>
+        <p>Convert time zones and calculate time intervals. - Free, no signup.</p>
       </div>
 
       <!-- Live Clock Section -->
@@ -376,12 +404,12 @@
               <span id="space-time-value"></span>
             </div>
             <!-- Elapsed time display: fixed label + dynamic value -->
-            <div style="font-size: 16px; text-align: center; color: var(--text-secondary); margin-bottom: 8px;">
+            <div style="font-size: 16px; text-align: center; color: var(--muted); margin-bottom: 8px;">
               <span id="elapsed-label" data-i18n="true"></span>
               <span id="elapsed-value"></span>
             </div>
             <div id="digital-clock" style="font-size: 36px; font-weight: 600; text-align: center; margin-bottom: 8px; font-variant-numeric: tabular-nums;"></div>
-            <div id="date-display" style="font-size: 16px; text-align: center; color: var(--text-secondary); margin-bottom: 8px;"></div>
+            <div id="date-display" style="font-size: 16px; text-align: center; color: var(--muted); margin-bottom: 8px;"></div>
             <div id="planet-info" data-i18n="true"></div>
           </div>
           
@@ -570,7 +598,7 @@
 
       <article class="content">
         <h2>About This Tool</h2>
-        <p>Convert between time zones and calculate time intervals. Free, no signup. Works in your browser.</p>
+        <p>Convert between time zones and calculate time intervals. - Free, no signup. Works in your browser.</p>
 
         <p>This tool runs in your browser; no data is stored.</p>
 
@@ -578,7 +606,7 @@
         <p>For time zone conversion: Select source and target time zones, set date and time, click convert. For time intervals: Set start and end date/time, click calculate.</p>
 
         <h3>FAQ</h3>
-        <p><strong>Is it free</strong> Yes, no cost.</p>
+        <p><strong>Is it free?</strong> Yes, no cost.</p>
         <p><strong>Is my data safe</strong> Yes, everything stays on your device.</p>
       </article>
 
@@ -602,7 +630,7 @@
     </main>
 
     <footer class="footer">
-      <p>© <span id="year">2026</span> nowoi.com –Free Online Tools</p>
+      <p>&copy; <span id="year">2026</span> nowoi.com - Free Online Tools</p>
       <nav class="footer-links" aria-label="Footer navigation">
         <a href="../index.html">Home</a>
         <a href="./index.html">Tools</a>
@@ -990,7 +1018,7 @@ function generateClockTicks(){
   const clockSize=280;
   const center=clockSize/2;
 
-  // 刻度外端紧贴表盘内边缘
+  // 刻度外端紧贴表盘内边
   const tickStartRadius=134;
 
   for(let i=0;i<60;i++){
@@ -999,8 +1027,8 @@ function generateClockTicks(){
     const angleRad=(angleDeg-90)*Math.PI/180;
 
     const isHour=i%5===0;
-    const tickLength=isHour?14:8;
-    const tickWidth=isHour?3:1;
+    const tickLength=isHour ? 14 : 8;
+    const tickWidth=isHour ? 3 : 1;
 
     // 刻度中心位置
     const midX=center+Math.cos(angleRad)*(tickStartRadius-tickLength/2);
@@ -1016,8 +1044,8 @@ function generateClockTicks(){
     tick.style.height=tickLength+"px";
 
     tick.style.background="var(--text)";
-    tick.style.borderRadius=isHour?"1.5px":"0.5px";
-    tick.style.opacity=isHour?"0.85":"0.4";
+    tick.style.borderRadius=isHour ? "1.5px" : "0.5px";
+    tick.style.opacity=isHour ? "0.85" : "0.4";
 
     tick.style.transformOrigin="center";
     tick.style.transform=`translate(-50%,-50%) rotate(${angleDeg}deg)`;
@@ -1062,9 +1090,9 @@ function generateClockNumbers(){
     div.style.lineHeight="1";
 
     div.style.fontFamily="system-ui, -apple-system, Arial, sans-serif";
-    div.style.fontWeight=num%3===0?"600":"400";
+    div.style.fontWeight=num%3===0 ? "600" : "400";
 
-    div.style.fontSize=num%3===0?"18px":"14px";
+    div.style.fontSize=num%3===0 ? "18px" : "14px";
 
     div.style.color="var(--text)";
     div.style.opacity="0.85";
@@ -1129,3 +1157,8 @@ document.addEventListener("DOMContentLoaded",()=>{
 </script>
 </body>
 </html>
+
+
+
+
+
