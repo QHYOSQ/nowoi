@@ -372,17 +372,17 @@
           <div style="text-align: center; order: 1;">
             <!-- Space time display: fixed label + dynamic value -->
             <div style="font-size: 22px; font-weight: 600; text-align: center; margin-bottom: 4px; font-variant-numeric: tabular-nums;">
-              <span id="space-time-label"></span>
+              <span id="space-time-label" data-i18n="true"></span>
               <span id="space-time-value"></span>
             </div>
             <!-- Elapsed time display: fixed label + dynamic value -->
             <div style="font-size: 16px; text-align: center; color: var(--text-secondary); margin-bottom: 8px;">
-              <span id="elapsed-label"></span>
+              <span id="elapsed-label" data-i18n="true"></span>
               <span id="elapsed-value"></span>
             </div>
             <div id="digital-clock" style="font-size: 36px; font-weight: 600; text-align: center; margin-bottom: 8px; font-variant-numeric: tabular-nums;"></div>
             <div id="date-display" style="font-size: 16px; text-align: center; color: var(--text-secondary); margin-bottom: 8px;"></div>
-            <div id="planet-info" style="font-size: 14px; text-align: center; color: var(--text-secondary);"></div>
+            <div id="planet-info" data-i18n="true"></div>
           </div>
           
           <!-- Analog clock -->
@@ -822,6 +822,15 @@ let clock={
   lastPlanet:null
 }; 
 
+// Restore text from data attribute (for browser translation compatibility)
+function restoreText(element){
+  if(!element) return;
+  const originalText = element.getAttribute('data-text');
+  if(originalText && element.innerText !== originalText){
+    element.innerText = originalText;
+  }
+} 
+
 // detect space body 
 function isSpace(text){ 
   return ( 
@@ -871,18 +880,24 @@ function updateClock(){
     
     // Update FIXED labels only when planet changes
     if(clock.lastPlanet !== body){
-      // Fixed: Planet rotation info
+      // Fixed: Planet rotation info (use data attribute to avoid translation issues)
       if(clock.planetInfo){
         const clockRotationsPerDay = dayLengthHours / 12;
-        clock.planetInfo.innerHTML = `1 ${body} Day (${dayLengthHours.toFixed(1)}h) = Clock rotates ${clockRotationsPerDay.toFixed(1)}×`;
+        const planetText = `1 ${body} Day (${dayLengthHours.toFixed(1)}h) = Clock rotates ${clockRotationsPerDay.toFixed(1)}×`;
+        clock.planetInfo.setAttribute('data-text', planetText);
+        clock.planetInfo.innerText = planetText;
       }
       // Fixed: Space time label (e.g., "Jupiter Day ")
       if(clock.spaceTimeLabel){
-        clock.spaceTimeLabel.innerText = `${body} Day `;
+        const labelText = `${body} Day `;
+        clock.spaceTimeLabel.setAttribute('data-text', labelText);
+        clock.spaceTimeLabel.innerText = labelText;
       }
       // Fixed: Elapsed time label (e.g., "Elapsed: ")
       if(clock.elapsedLabel){
-        clock.elapsedLabel.innerText = `Elapsed: `;
+        const elapsedText = `Elapsed: `;
+        clock.elapsedLabel.setAttribute('data-text', elapsedText);
+        clock.elapsedLabel.innerText = elapsedText;
       }
       clock.lastPlanet = body;
     }
@@ -891,6 +906,11 @@ function updateClock(){
     // Calculate elapsed time since current planet day started
     const elapsedMs = now % dayLength;
     const elapsedHours = elapsedMs / (60 * 60 * 1000);
+    
+    // Restore fixed labels (in case browser translation modified them)
+    restoreText(clock.spaceTimeLabel);
+    restoreText(clock.elapsedLabel);
+    restoreText(clock.planetInfo);
     
     // Dynamic: Space time value (e.g., "49663, 05:58:38:583")
     if(clock.spaceTimeValue){
