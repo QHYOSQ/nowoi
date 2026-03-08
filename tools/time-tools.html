@@ -370,8 +370,19 @@
         <div style="display: flex; flex-direction: column; align-items: center; gap: 30px;">
           <!-- Digital time display above clock -->
           <div style="text-align: center; order: 1;">
+            <!-- Space time display: fixed label + dynamic value -->
+            <div style="font-size: 22px; font-weight: 600; text-align: center; margin-bottom: 4px; font-variant-numeric: tabular-nums;">
+              <span id="space-time-label"></span>
+              <span id="space-time-value"></span>
+            </div>
+            <!-- Elapsed time display: fixed label + dynamic value -->
+            <div style="font-size: 16px; text-align: center; color: var(--text-secondary); margin-bottom: 8px;">
+              <span id="elapsed-label"></span>
+              <span id="elapsed-value"></span>
+            </div>
             <div id="digital-clock" style="font-size: 36px; font-weight: 600; text-align: center; margin-bottom: 8px; font-variant-numeric: tabular-nums;"></div>
-            <div id="date-display" style="font-size: 16px; text-align: center; color: var(--text-secondary);"></div>
+            <div id="date-display" style="font-size: 16px; text-align: center; color: var(--text-secondary); margin-bottom: 8px;"></div>
+            <div id="planet-info" style="font-size: 14px; text-align: center; color: var(--text-secondary);"></div>
           </div>
           
           <!-- Analog clock -->
@@ -802,7 +813,13 @@ let clock={
   date:null, 
   hour:null, 
   minute:null, 
-  second:null 
+  second:null,
+  planetInfo:null,
+  spaceTimeLabel:null,
+  spaceTimeValue:null,
+  elapsedLabel:null,
+  elapsedValue:null,
+  lastPlanet:null
 }; 
 
 // detect space body 
@@ -846,18 +863,50 @@ function updateClock(){
     clock.minute.style.transform=`translate(-50%, -100%) rotate(${minuteAngle}deg)`; 
     clock.second.style.transform=`translate(-50%, -100%) rotate(${secondAngle}deg)`; 
 
-    const body=text.split(" ")[0]; 
-    clock.digital.innerHTML= 
-      `<div style="font-size: 22px; margin-bottom: 5px;">${body} Day ${space.day}, ${Math.floor(h).toString().padStart(2,"0")}:${Math.floor(m).toString().padStart(2,"0")}:${Math.floor(s).toString().padStart(2,"0")}:${Math.floor(ms).toString().padStart(3,"0")}</div>`+
-      `<div style="font-size: 16px; color: var(--text-secondary);">Earth Time: ${new Date(now).toLocaleTimeString("en-US",{hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:true})}</div>`; 
+    const body=text.split(" ")[0];
+    
+    // Get day length info (used for both planet info and elapsed time)
+    const dayLength=getSpaceDay(body);
+    const dayLengthHours=dayLength/(60*60*1000);
+    
+    // Update FIXED labels only when planet changes
+    if(clock.lastPlanet !== body){
+      // Fixed: Planet rotation info
+      if(clock.planetInfo){
+        const clockRotationsPerDay = dayLengthHours / 12;
+        clock.planetInfo.innerHTML = `1 ${body} Day (${dayLengthHours.toFixed(1)}h) = Clock rotates ${clockRotationsPerDay.toFixed(1)}×`;
+      }
+      // Fixed: Space time label (e.g., "Jupiter Day ")
+      if(clock.spaceTimeLabel){
+        clock.spaceTimeLabel.innerText = `${body} Day `;
+      }
+      // Fixed: Elapsed time label (e.g., "Elapsed: ")
+      if(clock.elapsedLabel){
+        clock.elapsedLabel.innerText = `Elapsed: `;
+      }
+      clock.lastPlanet = body;
+    }
+    
+    // Update DYNAMIC values every frame
+    // Calculate elapsed time since current planet day started
+    const elapsedMs = now % dayLength;
+    const elapsedHours = elapsedMs / (60 * 60 * 1000);
+    
+    // Dynamic: Space time value (e.g., "49663, 05:58:38:583")
+    if(clock.spaceTimeValue){
+      clock.spaceTimeValue.innerText = `${space.day}, ${Math.floor(h).toString().padStart(2,"0")}:${Math.floor(m).toString().padStart(2,"0")}:${Math.floor(s).toString().padStart(2,"0")}:${Math.floor(ms).toString().padStart(3,"0")}`;
+    }
+    
+    // Dynamic: Elapsed time value (e.g., "4.5h / 9.9h day")
+    if(clock.elapsedValue){
+      clock.elapsedValue.innerText = `${elapsedHours.toFixed(1)}h / ${dayLengthHours.toFixed(1)}h day`;
+    }
+    
+    // Clear digital clock for space time (using separate elements instead)
+    if(clock.digital) clock.digital.innerText = "";
 
-    clock.date.innerText= 
-      new Date(now).toLocaleDateString("en-US",{ 
-        weekday:"long", 
-        year:"numeric", 
-        month:"long", 
-        day:"numeric" 
-      }); 
+    // Clear date display for space time (no Earth date needed)
+    if(clock.date) clock.date.innerText = "";
   } 
   else{ 
     const nowDate=new Date(); 
@@ -889,7 +938,7 @@ function updateClock(){
         hour:'2-digit', 
         minute:'2-digit', 
         second:'2-digit', 
-        hour12:true, 
+        hour12:false, 
         timeZone:zone 
       }); 
 
@@ -900,7 +949,14 @@ function updateClock(){
         month:'long', 
         day:'numeric', 
         timeZone:zone 
-      }); 
+      });
+    
+    // Clear space time elements when in normal time zone mode
+    if(clock.planetInfo) clock.planetInfo.innerText = "";
+    if(clock.spaceTimeLabel) clock.spaceTimeLabel.innerText = "";
+    if(clock.spaceTimeValue) clock.spaceTimeValue.innerText = "";
+    if(clock.elapsedLabel) clock.elapsedLabel.innerText = "";
+    if(clock.elapsedValue) clock.elapsedValue.innerText = "";
   } 
 
   requestAnimationFrame(updateClock); 
@@ -1040,6 +1096,11 @@ document.addEventListener("DOMContentLoaded",()=>{
   clock.hour=document.getElementById("hour-hand"); 
   clock.minute=document.getElementById("minute-hand"); 
   clock.second=document.getElementById("second-hand"); 
+  clock.planetInfo=document.getElementById("planet-info");
+  clock.spaceTimeLabel=document.getElementById("space-time-label");
+  clock.spaceTimeValue=document.getElementById("space-time-value");
+  clock.elapsedLabel=document.getElementById("elapsed-label");
+  clock.elapsedValue=document.getElementById("elapsed-value");
   generateClockNumbers();
   generateClockTicks();
   updateWorldCities();
