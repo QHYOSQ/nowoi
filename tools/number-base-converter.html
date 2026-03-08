@@ -236,10 +236,36 @@
     .calculator-row {
       flex-direction: column;
       align-items: stretch;
+      padding: 0 10px;
     }
     .calc-equals {
       text-align: center;
-      padding: 5px 0;
+      padding: 10px 0;
+      font-size: 1.2rem;
+    }
+    
+    .calc-number-group {
+      min-width: auto;
+    }
+    
+    .calc-number-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+    }
+    
+    .base-input-group {
+      align-items: flex-start;
+      gap: 4px;
+    }
+    
+    .calc-number-group input[type="number"] {
+      width: 80px;
+    }
+    
+    .calc-operator select {
+      width: 100%;
+      margin: 10px 0;
     }
   }
   
@@ -326,8 +352,28 @@
     }
     
     .swap-btn {
+      width: 60px;
+      height: 60px;
+      margin: 0 auto;
+      transform: none;
+    }
+    
+    .input-group {
+      padding: 0 10px;
+    }
+    
+    .input-group input[type="number"] {
       width: 100%;
-      transform: rotate(90deg);
+      max-width: 100px;
+    }
+    
+    .base-presets {
+      justify-content: center;
+    }
+    
+    .base-preset {
+      font-size: 0.75rem;
+      padding: 4px 8px;
     }
   }
 </style>
