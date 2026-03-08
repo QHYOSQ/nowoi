@@ -1135,6 +1135,38 @@ function generateClockNumbers(){
 
 }
 
+// Update clock hands size based on clock dimensions
+function updateClockHandsSize() {
+  const clockElement = document.getElementById("analog-clock");
+  if (!clockElement) return;
+  
+  const clockSize = clockElement.offsetWidth;
+  const hourHand = document.getElementById("hour-hand");
+  const minuteHand = document.getElementById("minute-hand");
+  const secondHand = document.getElementById("second-hand");
+  const clockCenter = document.getElementById("clock-center");
+  
+  if (hourHand) {
+    hourHand.style.height = (clockSize * 0.257) + "px"; // 72/280 ≈ 0.257
+    hourHand.style.width = Math.max(3, clockSize * 0.021) + "px"; // 6/280 ≈ 0.021
+  }
+  
+  if (minuteHand) {
+    minuteHand.style.height = (clockSize * 0.357) + "px"; // 100/280 ≈ 0.357
+    minuteHand.style.width = Math.max(2, clockSize * 0.014) + "px"; // 4/280 ≈ 0.014
+  }
+  
+  if (secondHand) {
+    secondHand.style.height = (clockSize * 0.4) + "px"; // 112/280 = 0.4
+    secondHand.style.width = Math.max(1, clockSize * 0.007) + "px"; // 2/280 ≈ 0.007
+  }
+  
+  if (clockCenter) {
+    clockCenter.style.width = (clockSize * 0.05) + "px"; // 14/280 = 0.05
+    clockCenter.style.height = (clockSize * 0.05) + "px"; // 14/280 = 0.05
+  }
+}
+
 // start 
 // world cities time zones
 const worldCities = [
@@ -1184,6 +1216,7 @@ document.addEventListener("DOMContentLoaded",()=>{
   generateClockNumbers();
   generateClockTicks();
   updateWorldCities();
+  updateClockHandsSize();
   requestAnimationFrame(updateClock);
   
   // Regenerate clock on resize
@@ -1197,6 +1230,7 @@ document.addEventListener("DOMContentLoaded",()=>{
       if (numbersContainer) numbersContainer.innerHTML = '';
       generateClockNumbers();
       generateClockTicks();
+      updateClockHandsSize();
     }, 250);
   });
 });

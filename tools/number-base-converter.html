@@ -258,36 +258,64 @@
     .calculator-row {
       flex-direction: column;
       align-items: stretch;
-      padding: 0 10px;
+      padding: 0 15px;
+      gap: 15px;
     }
     .calc-equals {
       text-align: center;
-      padding: 10px 0;
-      font-size: 1.2rem;
+      padding: 15px 0;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--text);
     }
     
     .calc-number-group {
       min-width: auto;
+      width: 100%;
     }
     
     .calc-number-header {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 4px;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    
+    .calc-number-header label {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
     }
     
     .base-input-group {
-      align-items: flex-start;
-      gap: 4px;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .base-label {
+      font-size: 0.9rem;
+      white-space: nowrap;
     }
     
     .calc-number-group input[type="number"] {
-      width: 80px;
+      width: 70px;
+      padding: 6px 8px;
+      font-size: 0.9rem;
+    }
+    
+    .calc-number-group input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      font-size: 1rem;
+      box-sizing: border-box;
     }
     
     .calc-operator select {
       width: 100%;
-      margin: 10px 0;
+      padding: 12px;
+      font-size: 1rem;
+      margin: 0;
     }
   }
   
@@ -362,9 +390,35 @@
   }
   
   .copy-small {
-    padding: 4px 10px;
-    font-size: 0.8rem;
+    padding: 6px 12px;
+    font-size: 0.85rem;
     margin-left: 10px;
+    white-space: nowrap;
+  }
+  
+  @media (max-width: 600px) {
+    .result-box {
+      padding: 15px;
+      margin: 15px;
+    }
+    
+    .result-item {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+      padding: 12px 0;
+    }
+    
+    .result-value {
+      width: 100%;
+      margin-left: 0;
+      text-align: left;
+    }
+    
+    .copy-small {
+      align-self: flex-end;
+      margin-left: 0;
+    }
   }
   
   @media (max-width: 600px) {
