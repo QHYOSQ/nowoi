@@ -24,8 +24,7 @@ nowoi
 ├── sitemap.xml             # XML Sitemap
 ├── assets/
 │   ├── css/
-│   │   ├── style.css       # Main stylesheet
-│   │   └── style.min.css   # Minified stylesheet
+│   │   └── style.css       # Main stylesheet
 │   ├── js/
 │   │   ├── common.js       # Common JavaScript
 │   │   ├── slider.js       # Slider component
