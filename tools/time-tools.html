@@ -161,28 +161,55 @@
   /* Responsive clock sizes */
   @media (max-width: 480px) {
     #analog-clock{
-      width:220px;
-      height:220px;
+      width:200px;
+      height:200px;
     }
     
     #hour-hand{
-      height:56px;
+      height:50px;
       width:5px;
     }
     
     #minute-hand{
-      height:78px;
+      height:70px;
       width:3px;
     }
     
     #second-hand{
-      height:88px;
+      height:80px;
       width:2px;
     }
     
     #clock-center{
-      width:12px;
-      height:12px;
+      width:10px;
+      height:10px;
+    }
+  }
+  
+  @media (max-width: 360px) {
+    #analog-clock{
+      width:180px;
+      height:180px;
+    }
+    
+    #hour-hand{
+      height:45px;
+      width:4px;
+    }
+    
+    #minute-hand{
+      height:63px;
+      width:3px;
+    }
+    
+    #second-hand{
+      height:72px;
+      width:2px;
+    }
+    
+    #clock-center{
+      width:9px;
+      height:9px;
     }
   }
 
@@ -1015,11 +1042,13 @@ function generateClockTicks(){
   const container=document.getElementById("clock-ticks");
   if(!container) return;
 
-  const clockSize=280;
+  // Get actual clock size
+  const clockElement = document.getElementById("analog-clock");
+  const clockSize = clockElement ? clockElement.offsetWidth : 280;
   const center=clockSize/2;
 
-  // 刻度外端紧贴表盘内边
-  const tickStartRadius=134;
+  // 刻度外端紧贴表盘内边 (按比例缩放)
+  const tickStartRadius=clockSize * 0.478; // 134/280 ≈ 0.478
 
   for(let i=0;i<60;i++){
 
@@ -1027,8 +1056,8 @@ function generateClockTicks(){
     const angleRad=(angleDeg-90)*Math.PI/180;
 
     const isHour=i%5===0;
-    const tickLength=isHour ? 14 : 8;
-    const tickWidth=isHour ? 3 : 1;
+    const tickLength=isHour ? clockSize * 0.05 : clockSize * 0.028; // 14/280 ≈ 0.05, 8/280 ≈ 0.028
+    const tickWidth=isHour ? Math.max(2, clockSize * 0.01) : Math.max(1, clockSize * 0.003); // 按比例缩放，最小1-2px
 
     // 刻度中心位置
     const midX=center+Math.cos(angleRad)*(tickStartRadius-tickLength/2);
@@ -1060,11 +1089,13 @@ function generateClockNumbers(){
   const container=document.getElementById("clock-numbers");
   if(!container) return;
 
-  const clockSize=280;
+  // Get actual clock size
+  const clockElement = document.getElementById("analog-clock");
+  const clockSize = clockElement ? clockElement.offsetWidth : 280;
   const center=clockSize/2;
 
-  // 数字位置：在刻度内侧
-  const numberRadius=108;
+  // 数字位置：在刻度内侧 (按比例缩放)
+  const numberRadius=clockSize * 0.386; // 108/280 ≈ 0.386
 
   const numbers=[12,1,2,3,4,5,6,7,8,9,10,11];
 
@@ -1092,7 +1123,8 @@ function generateClockNumbers(){
     div.style.fontFamily="system-ui, -apple-system, Arial, sans-serif";
     div.style.fontWeight=num%3===0 ? "600" : "400";
 
-    div.style.fontSize=num%3===0 ? "18px" : "14px";
+    // 字体大小按比例缩放
+    div.style.fontSize=num%3===0 ? Math.max(14, clockSize * 0.064) + "px" : Math.max(11, clockSize * 0.05) + "px"; // 18/280 ≈ 0.064, 14/280 ≈ 0.05
 
     div.style.color="var(--text)";
     div.style.opacity="0.85";
@@ -1152,7 +1184,21 @@ document.addEventListener("DOMContentLoaded",()=>{
   generateClockNumbers();
   generateClockTicks();
   updateWorldCities();
-  requestAnimationFrame(updateClock); 
+  requestAnimationFrame(updateClock);
+  
+  // Regenerate clock on resize
+  let resizeTimeout;
+  window.addEventListener('resize', function() {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(function() {
+      const ticksContainer = document.getElementById("clock-ticks");
+      const numbersContainer = document.getElementById("clock-numbers");
+      if (ticksContainer) ticksContainer.innerHTML = '';
+      if (numbersContainer) numbersContainer.innerHTML = '';
+      generateClockNumbers();
+      generateClockTicks();
+    }, 250);
+  });
 });
 </script>
 </body>
