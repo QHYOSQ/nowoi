@@ -31,11 +31,6 @@ nowoi
 │   │   └── tools.js        # Tools JavaScript
 │   └── image/
 │       └── Nico.png        # Logo image
-├── data/
-│   ├── i18n/               # Internationalization
-│   │   ├── en.json
-│   │   └── zh.json
-│   └── resources.json
 └── tools/                  # All tool pages
     ├── index.html
     ├── academic-word-counter.html
