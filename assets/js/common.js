@@ -2,6 +2,27 @@
 (function() {
   'use strict';
 
+  // Inject Google Ads script into pages that don't already include it
+  // This ensures pages without an inline ads script still load the ad library,
+  // while avoiding duplication on pages that already include the script.
+  try {
+    const ADS_SRC_PREFIX = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
+    const CLIENT_PARAM = '?client=ca-pub-9763893832622385';
+    const hasAdScript = !!document.querySelector(`script[src^="${ADS_SRC_PREFIX}"]`);
+    if (!hasAdScript) {
+      const s = document.createElement('script');
+      s.async = true;
+      s.src = ADS_SRC_PREFIX + CLIENT_PARAM;
+      s.crossOrigin = 'anonymous';
+      // Insert as early as possible in head to mimic placement in <head>
+      if (document.head) document.head.appendChild(s);
+      else document.documentElement.appendChild(s);
+    }
+  } catch (e) {
+    // Fail silently - ad loading is non-critical
+    console.warn('Ads injection skipped:', e);
+  }
+
   // Utility: Debounce function for performance
   function debounce(fn, wait) {
     let t;
