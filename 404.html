@@ -1,72 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Page not found –nowoi</title>
-<meta name="description" content="The page you are looking for does not exist." />
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="./assets/css/style.css">
-</head>
-
-<body>
-  <div class="container">
-    <header class="site-header">
-      <div class="header-row">
-        <a href="./index.html" class="brand">nowoi.com</a>
-        <nav class="nav">
-          <a href="./index.html">Home</a>
-          <a href="./tools/index.html">Tools</a>
-          <a href="./about.html">About</a>
-          <a href="./contact.html">Contact</a>
-        </nav>
-      </div>
-    </header>
-
-    <div class="page-head">
-      <h1>404 –Page not found</h1>
-      <p>The page you are looking for does not exist.</p>
-    </div>
-
-    <div class="content">
-      <p>Try going back to the homepage or explore our tools.</p>
-      <button onclick="window.location.href='./index.html'">Go to Home</button>
-      <button class="alt" onclick="window.location.href='./tools/index.html'">Explore Tools</button>
-    </div>
-
-    <footer class="footer">
-      <p>© <span id="year">2026</span> nowoi.com –Free Online Tools</p>
-      <div class="footer-links">
-        <a href="./index.html">Home</a>
-        <a href="./tools/index.html">Tools</a>
-        <a href="./about.html">About</a>
-        <a href="./privacy-policy.html">Privacy Policy</a>
-        <a href="./terms.html">Terms</a>
-        <a href="./contact.html">Contact</a>
-      </div>
-    </footer>
-  </div>
-
-<script>
-  // Try to get network time from HTTP header, fallback to local time
-  async function updateYear() {
-    try {
-      const response = await fetch(window.location.href, { method: 'HEAD', cache: 'no-store' });
-      const dateHeader = response.headers.get('date');
-      if (dateHeader) {
-        const serverDate = new Date(dateHeader);
-        document.getElementById('year').textContent = serverDate.getFullYear();
-      } else {
-        document.getElementById('year').textContent = new Date().getFullYear();
-      }
-    } catch (e) {
-      document.getElementById('year').textContent = new Date().getFullYear();
-    }
-  }
-  updateYear();
-</script>
-<script src="./assets/js/common.js"></script>
-</body>
-</html>
-
-
-
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>这个页面不在手册里。 · NOWOI</title><meta name="description" content="地址可能已改变。回到手册目录，或搜索你想解决的问题。"><meta name="theme-color" content="#f6f4ed"><meta name="google-adsense-account" content="ca-pub-9763893832622385"><meta name="robots" content="noindex, follow"><link rel="canonical" href="https://nowoi.com/404.html"><link rel="alternate" hreflang="zh-CN" href="https://nowoi.com/404.html"><link rel="alternate" hreflang="en" href="https://nowoi.com/en/404.html"><link rel="alternate" hreflang="x-default" href="https://nowoi.com/404.html"><meta property="og:type" content="website"><meta property="og:title" content="这个页面不在手册里。"><meta property="og:description" content="地址可能已改变。回到手册目录，或搜索你想解决的问题。"><meta property="og:url" content="https://nowoi.com/404.html"><meta property="og:site_name" content="NOWOI"><link rel="icon" href="/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/assets/style.css"><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"这个页面不在手册里。","headline":"这个页面不在手册里。","description":"地址可能已改变。回到手册目录，或搜索你想解决的问题。","inLanguage":"zh-CN","url":"https://nowoi.com/404.html","isPartOf":{"@type":"WebSite","name":"NOWOI","url":"https://nowoi.com"}}</script></head>
+<body data-lang="zh"><a class="skip-link" href="#main">跳到正文</a><div class="reading-progress" aria-hidden="true"><i></i></div>
+<header class="site-header"><div class="header-inner"><a class="brand" href="/" aria-label="NOWOI 返回首页"><svg class="brand-mark" viewBox="0 0 26 26" aria-hidden="true"><path d="M3 23V3h6l8 12V3h6v20h-6L9 11v12z" fill="currentColor"/></svg><span>NOWOI<small>独立网站制作手册</small></span></a><button class="mobile-menu icon-button" aria-expanded="false" aria-controls="main-nav">菜单 <span aria-hidden="true">☰</span></button><nav id="main-nav" class="main-nav" aria-label="主导航"><a href="/guides/" >阅读手册</a><a href="/workshop/" >动手实验</a><a href="/checklist/" >发布清单</a><a href="/about/" >关于</a></nav><div class="header-actions"><button class="search-open icon-button" aria-label="搜索手册" title="搜索手册"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5"/></svg></button><a class="language-switch" href="/en/" lang="en" aria-label="Read this page in English">EN</a></div></div></header>
+<main id="main" tabindex="-1"><section class="not-found page-width"><div class="error-404" aria-hidden="true">404</div><h1>这个页面不在手册里。</h1><p>地址可能已改变。回到手册目录，或搜索你想解决的问题。</p><a class="button button-primary" href="/guides/">全部指南 →</a> <a class="text-link" href="/en/guides/" lang="en">Browse the guide in English ↗</a></section></main>
+<footer class="site-footer"><div class="footer-top"><a class="brand" href="/"><svg class="brand-mark" viewBox="0 0 26 26" aria-hidden="true"><path d="M3 23V3h6l8 12V3h6v20h-6L9 11v12z" fill="currentColor"/></svg><span>NOWOI</span></a><p>为小而认真的网站，留一份可实践的手册。</p><a class="back-top" href="#main" aria-label="回到顶部">↑</a></div><div class="footer-bottom"><span>© 2026 NOWOI <span class="footer-descriptor">/ 独立网站制作手册</span></span><nav aria-label="页脚导航"><a href="/about/">关于与编辑方法</a><a href="/privacy/">隐私说明</a><a href="/contact/">联系与纠错</a></nav></div></footer>
+<dialog id="search-dialog" class="search-dialog" aria-labelledby="search-heading"><div class="search-dialog-head"><h2 id="search-heading">搜索手册</h2><button class="search-close icon-button" aria-label="关闭">×</button></div><label class="sr-only" for="site-search">搜索标题、主题和内容摘要</label><input id="site-search" type="search" placeholder="试试“图片”“表单”或“发布”" autocomplete="off"><p class="search-summary" aria-live="polite"></p><div class="search-results"></div><div class="search-dialog-foot"><span>搜索标题、主题和内容摘要</span><kbd>Esc</kbd></div></dialog>
+<div id="announcement" class="sr-only" role="status" aria-live="polite"></div>
+<script id="search-data" type="application/json">[{"id":"readable-data","title":"把 CSV 变成真正可读的数据页","dek":"从带逗号的名称开始，处理引号、空值与表头，让数据既读得懂，也不会变成可执行页面。","topic":"构建基础","url":"/guides/readable-data/"},{"id":"useful-form-errors","title":"让表单错误告诉人下一步","dek":"从一封发不出去的咨询邮件出发，把标签、原生校验、错误说明与恢复路径放在同一条流程里。","topic":"使用体验","url":"/guides/useful-form-errors/"},{"id":"keyboard-first","title":"只用键盘，走完一张网页","dek":"从原生按钮到焦点返回，沿着一次完整任务检查每个可以操作、看见和退出的位置。","topic":"使用体验","url":"/guides/keyboard-first/"},{"id":"image-budget","title":"图片预算，先于压缩","dek":"先决定一张图为什么存在、显示多大、何时需要，再决定把质量滑块拉到哪里。","topic":"构建基础","url":"/guides/image-budget/"},{"id":"local-first-honestly","title":"“本地处理”到底能承诺什么","dek":"把工具输入、浏览器存储、网站访问和第三方请求分别说清楚，隐私说明才有可核对的边界。","topic":"使用体验","url":"/guides/local-first-honestly/"},{"id":"first-week","title":"网站发布后的第一周","dek":"把上线当作观察的起点：先确认访问与操作真实可用，再让反馈决定下一次修改。","topic":"发布与维护","url":"/guides/first-week/"}]</script><script type="module" src="/assets/app.js"></script></body></html>
