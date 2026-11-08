@@ -1,0 +1,13 @@
+{
+  "name": "nowoi-fieldguide",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "node scripts/check.mjs",
+    "dev": "node scripts/serve.mjs",
+    "test:browser": "node scripts/browser-check.mjs"
+  },
+  "devDependencies": { "playwright": "1.65.0" }
+}
